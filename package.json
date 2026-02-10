@@ -1,0 +1,30 @@
+{
+  "name": "swift-sales-healthcare",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.js",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^12.29.2",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^7.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "axios": "^1.13.4",
+    "fs-extra": "^11.3.3",
+    "openai": "^6.17.0",
+    "path": "^0.12.7",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}

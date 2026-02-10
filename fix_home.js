@@ -1,0 +1,10 @@
+const fs = require('fs');
+const path = 'c:/Users/mimra/Downloads/swift-sales-healthcare/pages/Home.tsx';
+let content = fs.readFileSync(path, 'utf8');
+content = content.replace(/Global Healthcare/g, 'Better Healthcare');
+content = content.replace(/world-class manufacturers and the patients who need them\. Delivering essential medicines with precision, integrity, and speed to over 50 countries/g, 'regional manufacturers and the pharmacies that serve the community. Delivering essential medicines with precision, integrity, and speed to every district');
+content = content.replace(/global healthcare ecosystem/g, "city's healthcare ecosystem");
+const imgRegex = /<img[^>]*alt="World Map"[^>]*>/g;
+content = content.replace(imgRegex, '<div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] bg-[size:30px_30px] opacity-20"></div>');
+fs.writeFileSync(path, content);
+console.log('Successfully updated Home.tsx');
