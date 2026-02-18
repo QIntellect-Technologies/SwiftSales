@@ -3,7 +3,7 @@ const path = require('path');
 const OpenAI = require('openai');
 const axios = require('axios');
 
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = 'sk-proj-PLACEHOLDER_KEY_DO_NOT_COMMIT';
 
 const openai = new OpenAI({
     apiKey: OPENAI_API_KEY,

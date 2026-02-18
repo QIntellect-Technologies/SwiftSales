@@ -27,3 +27,5 @@ dist-ssr
 ceo_website/
 Swift-Bot-Panel/
 .history/
+server/.env
+*.env
