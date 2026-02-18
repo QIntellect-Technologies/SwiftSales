@@ -98,7 +98,7 @@ const About: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              Swift Sales is dedicated to serving the local healthcare community. We connect manufacturers to pharmacies and clinics, ensuring safe, consistent, and easy access to essential medicines.
+              Swift Sales is dedicated to serving the local healthcare sector. We connect manufacturers to pharmacies and clinics, ensuring safe, consistent, and easy access to essential medicines.
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@ const About: React.FC = () => {
               <div className="w-20 h-1.5 bg-blue-600 rounded-full mb-6"></div>
             </div>
             <p className="text-slate-600 text-lg leading-relaxed">
-              We started as a simple delivery service and grew into the city's most trusted partner for medicine. Today, we handle supplies for the biggest manufacturers, making sure life-saving drugs reach every neighborhood.
+              We started as a simple delivery service and grew into the city's most trusted partner for medicine. Today, we handle supplies for the biggest manufacturers, making sure life saving drugs reach every neighborhood.
             </p>
             <p className="text-slate-600 text-lg leading-relaxed">
               We believe that healthcare depends on safety and speed. That is why we focus on getting the right medicine to your local pharmacy, clinic, or hospital exactly when it is needed.
@@ -176,14 +176,14 @@ const About: React.FC = () => {
       </Section>
 
 
-      {/* --- 3.2 EXCLUSIVE NATIONAL PARTNERS --- */}
+      {/* --- 3.2 EXCLUSIVE SOLE DISTRIBUTORS --- */}
       <Section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
 
         <div className="container mx-auto px-6 relative z-10">
           <SectionHeader
-            title="National Sole Distributor"
-            subtitle="We are honored to be the exclusive national partners for leading global pharmaceutical innovators."
+            title="Sole Distributor Partnerships"
+            subtitle="We are honored to be the exclusive Sole Distributors for leading global pharmaceutical innovators."
           />
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -193,7 +193,7 @@ const About: React.FC = () => {
               <Award size={48} className="text-blue-200 mb-6" />
               <h3 className="text-3xl font-bold mb-4">Trusted Exclusivity</h3>
               <p className="text-blue-100 text-lg leading-relaxed mb-8">
-                Being a sole distributor isn't just a contract; it's a pledge of integrity. We manage the entire lifecycle of these brands within the country, ensuring brand protection and market penetration.
+                Being a sole distributor isn't just a contract. It's a pledge of integrity. We manage the entire lifecycle of these brands within the country, ensuring brand protection and market penetration.
               </p>
               <div className="flex items-center gap-4 mt-auto">
                 <div className="text-4xl font-black">34</div>
@@ -233,7 +233,7 @@ const About: React.FC = () => {
                 icon: Search,
                 step: "Step 01",
                 name: "Sourcing",
-                desc: "We buy directly from verified national manufacturers. We check every box to make sure it is 100% genuine. This way, you always get safe and effective medicine for your patients.",
+                desc: "We buy directly from verified manufacturers. We check every box to make sure it is 100% genuine. This way, you always get safe and effective medicine for your patients.",
                 details: [
                   "Direct Deals",
                   "Verified Stock"
@@ -253,7 +253,7 @@ const About: React.FC = () => {
                 icon: Truck,
                 step: "Step 03",
                 name: "Delivery Fleet",
-                desc: "Our vans and bikes reach every corner of the city. Our drivers are trained to handle medicine with care. We make sure every package arrives safely at your door.",
+                desc: "Our vans and bikes reach every corner of the city. Our suppliers are trained to handle medicine with care. We make sure every package arrives safely at your door.",
                 details: [
                   "Temperature Controlled",
                   "Safe Handling"
@@ -673,6 +673,34 @@ const About: React.FC = () => {
                 </div>
               </div>
             ))}
+
+            {/* VIDEO CARD - LOGO PENDULUM */}
+            <div className="group relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer h-[300px]">
+              <video
+                src="/logo/logo_pendulum.mp4"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-blue-900/20 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+
+              {/* Title: Operational Excellence */}
+              <div className="absolute bottom-6 left-6 z-20 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <h4 className="text-white font-bold text-lg tracking-tight">Operational Excellence</h4>
+                <div className="h-1 w-12 bg-blue-500 rounded-full mt-2"></div>
+              </div>
+
+              {/* Tag: Swift Sales */}
+              <div className="absolute top-6 right-6 z-20 transform -translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="text-[10px] font-black text-white/60 uppercase tracking-[0.2em]">
+                  Swift Sales
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Section>

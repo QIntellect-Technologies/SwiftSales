@@ -1,0 +1,159 @@
+[
+  {
+    "id": "conv_20000",
+    "question": "Hi",
+    "variations": [
+      "hello",
+      "hey",
+      "greetings",
+      "good morning",
+      "good afternoon",
+      "salam"
+    ],
+    "answer": "Hello! 👋 Welcome to Swift Sales Healthcare! I'm here to help you find medicines, place orders, or answer any health-related questions. What can I do for you today?",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20001",
+    "question": "Thank you",
+    "variations": [
+      "thanks",
+      "thank you so much",
+      "appreciate it",
+      "grateful",
+      "blessed"
+    ],
+    "answer": "You're very welcome! 😊 If you need anything else, I'm always here to help. Stay healthy!",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20002",
+    "question": "Goodbye",
+    "variations": [
+      "bye",
+      "see you",
+      "later",
+      "take care",
+      "Allah Hafiz"
+    ],
+    "answer": "Goodbye! Take care and stay healthy! 🌟 Feel free to reach out anytime you need assistance. Allah Hafiz!",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20003",
+    "question": "I need help",
+    "variations": [
+      "help me",
+      "I need assistance",
+      "can you help",
+      "I'm confused"
+    ],
+    "answer": "Of course! I'm here to help. You can:\n• Ask about medicines\n• Place an order\n• Check stock availability\n• Get health advice\n• Contact our team\n\nWhat would you like to know?",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20004",
+    "question": "Who are you?",
+    "variations": [
+      "what are you",
+      "who is this",
+      "are you a bot",
+      "your name",
+      "tell me about yourself"
+    ],
+    "answer": "Thank you for asking! I'm **SwiftBot**, your intelligent pharmaceutical assistant powered by Swift Sales Healthcare! 😊 I'm here to guide you, help you find medicines, and make ordering easy and direct. How can I assist you today?",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20005",
+    "question": "Are you open now?",
+    "variations": [
+      "operating hours",
+      "business hours",
+      "when are you open",
+      "what time do you close"
+    ],
+    "answer": "**Swift Sales Healthcare Operating Hours:**\n\n• Monday - Saturday: 9:00 AM - 6:00 PM\n• Sunday: Closed (Emergency support via phone)\n\n📞 24/7 Emergency: +92 321 7780623",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20006",
+    "question": "I have an emergency",
+    "variations": [
+      "urgent",
+      "emergency",
+      "critical situation",
+      "serious problem"
+    ],
+    "answer": "🚨 **For medical emergencies:**\n\n1. Call emergency services: 1122\n2. Contact us: +92 321 7780623\n3. Visit nearest hospital\n\nWe're here to support you, but please seek immediate medical attention for emergencies!",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  },
+  {
+    "id": "conv_20007",
+    "question": "Where are you located?",
+    "variations": [
+      "location",
+      "address",
+      "where is your shop",
+      "office location"
+    ],
+    "answer": "📍 **Swift Sales Healthcare**\n\nAddress: C8GM+HFF, Sardar Colony, Rahim Yar Khan, Pakistan\n\nYou can visit us during business hours or contact us:\n• Phone: +92 321 7780623\n• Email: swiftsales.healthcare@gmail.com",
+    "category": "Conversational",
+    "products": [],
+    "tags": [
+      "conversation",
+      "greeting",
+      "general",
+      "help"
+    ]
+  }
+]

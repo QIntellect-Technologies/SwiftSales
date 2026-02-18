@@ -19,7 +19,7 @@ const Services: React.FC = () => {
       <div className="bg-white">
          <SEO
             title="Our Services"
-            description="Comprehensive medicine supply chain services: Cold Chain Storage, City-wide Delivery, and Pharmacy Restocking in Rahim Yar Khan and beyond."
+            description="Comprehensive medicine supply chain services: Cold Chain Storage, City wide Delivery, and Pharmacy Restocking in Rahim Yar Khan and beyond."
             keywords="Cold Chain, Medicine Delivery, Pharmacy Restocking, Logistics, Rahim Yar Khan Services, Swift Sales"
          />
          {/* --- 1. HERO SECTION --- */}
@@ -154,7 +154,7 @@ const Services: React.FC = () => {
                   {
                      title: 'Urgent Emergency Help',
                      icon: Stethoscope,
-                     desc: 'Quickly getting hard-to-find medicines to patients when it is an absolute emergency.',
+                     desc: 'Quickly getting hard to find medicines to patients when it is an absolute emergency.',
                      features: ['Direct Shipping', 'Fast Support'],
                      color: 'rose'
                   }
@@ -414,7 +414,7 @@ const Services: React.FC = () => {
                {[
                   { step: "01", title: "Order Check", desc: "We receive your order and check it thoroughly to make sure it is correct.", icon: FileText, color: "blue" },
                   { step: "02", title: "Safe Packing", desc: "Medicines are packed in safe clinical boxes with temperature monitors.", icon: Box, color: "indigo" },
-                  { step: "03", title: "Smart Route", desc: "Our drivers take the fastest and safest route across the city districts.", icon: Truck, color: "cyan" },
+                  { step: "03", title: "Smart Route", desc: "Our suppliers take the fastest and safest route across the city districts.", icon: Truck, color: "cyan" },
                   { step: "04", title: "Fast Delivery", desc: "You receive the medicine at your door, safe and sound.", icon: BadgeCheck, color: "emerald" }
                ].map((item, i) => (
                   <div key={i} className="group relative">
@@ -517,7 +517,7 @@ const Services: React.FC = () => {
 
                <div className="space-y-4">
                   {[
-                     { q: 'How fast can you deliver in an emergency?', a: 'For urgent needs, we can deliver life-saving medicines within 2-4 hours. Regular delivery is usually next day.' },
+                     { q: 'How fast can you deliver in an emergency?', a: 'For urgent needs, we can deliver life saving medicines within 2-4 hours. Regular delivery is usually next day.' },
                      { q: 'Do you check the temperature?', a: 'Yes. Every shipment is tracked to sure the temperature is perfect from our door to yours.' },
                      { q: 'Are the correct documents included?', a: 'Yes. All necessary papers, certificates, and safety forms are included with every order.' },
                      { q: 'Is there a minimum order size?', a: 'We work with pharmacies of all sizes. Talk to us to find a schedule that fits your needs.' }

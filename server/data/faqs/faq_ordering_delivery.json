@@ -1,0 +1,264 @@
+[
+  {
+    "id": "ORD001",
+    "question": "how to order medicine",
+    "variations": [
+      "how do i order",
+      "ordering process",
+      "steps to order",
+      "how to buy medicine",
+      "how to ordar",
+      "place oder",
+      "ordering procedur"
+    ],
+    "answer": "**📋 How to Order Medicine:**\n\n**Option 1: Through Chatbot** 🤖\n1. Tell me the medicine name (e.g., \"I want PANADOL\")\n2. Specify quantity (e.g., \"5 packs\")\n3. Provide your name\n4. Share phone number\n5. Give delivery address\n6. Confirm order\n\n**Option 2: Direct Contact** 📞\n• Call/WhatsApp: +92 321 7780623\n• Email: swiftsales.healthcare@gmail.com\n• Visit our store\n\n**We deliver across Pakistan!** 🚚",
+    "category": "ordering_process",
+    "tags": [
+      "order",
+      "how to order",
+      "process",
+      "buy"
+    ]
+  },
+  {
+    "id": "ORD002",
+    "question": "delivery time",
+    "variations": [
+      "how long delivery",
+      "when will i get order",
+      "shipping time",
+      "delivery duration",
+      "dilvery time",
+      "delivry time",
+      "deelivry time"
+    ],
+    "answer": "**🚚 Delivery Timeline:**\n\n**Rahim Yar Khan (Local):**\n• Same-day delivery (order before 2 PM)\n• 2-4 hours delivery time\n• Delivery fee: Rs. 100-150\n\n**Nearby Cities** (Bahawalpur, Sadiqabad):\n• 1-2 days\n• Fee: Rs. 200-300\n\n**Nationwide** (Lahore, Karachi, Islamabad):\n• 2-4 days via courier\n• Fee: Rs. 300-500 (depends on weight)\n\n**FREE Delivery** on orders above Rs. 5,000! 🎉",
+    "category": "delivery",
+    "tags": [
+      "delivery",
+      "time",
+      "shipping",
+      "how long"
+    ]
+  },
+  {
+    "id": "ORD003",
+    "question": "delivery charges",
+    "variations": [
+      "shipping cost",
+      "delivery fee",
+      "how much delivery",
+      "courier charges"
+    ],
+    "answer": "**💰 Delivery Charges:**\n\n**Rahim Yar Khan:**\n• Rs. 100-150\n\n**Punjab (Major Cities):**\n• Rs. 200-400\n\n**Nationwide:**\n• Rs. 300-500\n\n**FREE DELIVERY:**\n✅ Orders above Rs. 5,000\n✅ Bulk orders (contact us)\n\n**Charges depend on:**\n• Distance\n• Package weight\n• Delivery urgency",
+    "category": "delivery_cost",
+    "tags": [
+      "delivery",
+      "charges",
+      "cost",
+      "fee",
+      "shipping"
+    ]
+  },
+  {
+    "id": "ORD004",
+    "question": "payment methods",
+    "variations": [
+      "how to pay",
+      "payment options",
+      "can i pay online",
+      "payment mode"
+    ],
+    "answer": "**💳 Payment Methods:**\n\n**Cash on Delivery (COD):**\n• Pay when you receive the order\n• Most popular option\n\n**Bank Transfer:**\n• Bank: Allied Bank\n• Account details provided after order\n\n**Mobile Wallets:**\n• EasyPaisa\n• JazzCash\n• Account: +92 321 7780623\n\n**Credit/Debit Card:**\n• Coming soon!\n\n**Advance Payment:**\n• 50% advance for bulk orders\n• Full payment for high-value items",
+    "category": "payment",
+    "tags": [
+      "payment",
+      "pay",
+      "COD",
+      "bank transfer",
+      "easypaisa"
+    ]
+  },
+  {
+    "id": "ORD005",
+    "question": "minimum order amount",
+    "variations": [
+      "minimum order value",
+      "least order amount",
+      "how much minimum order"
+    ],
+    "answer": "**📦 Minimum Order:**\n\n**No minimum order requirement!**\n\nYou can order even a single medicine.\n\n**However:**\n• Delivery charges apply for small orders\n• FREE delivery on orders Rs. 5,000+\n\n**Bulk Orders:**\n• Special discounts available\n• Contact us: +92 321 7780623",
+    "category": "order_policy",
+    "tags": [
+      "minimum",
+      "order",
+      "amount",
+      "value"
+    ]
+  },
+  {
+    "id": "ORD006",
+    "question": "can i cancel order",
+    "variations": [
+      "order cancellation",
+      "how to cancel",
+      "cancel my order"
+    ],
+    "answer": "**❌ Order Cancellation:**\n\n**Before Dispatch:**\n✅ Can cancel anytime\n✅ Full refund if prepaid\n✅ No charges\n\n**After Dispatch:**\n⚠️ Cannot cancel\n⚠️ Can refuse delivery (return shipping charges apply)\n\n**How to Cancel:**\n1. Call/WhatsApp: +92 321 7780623\n2. Provide Order ID\n3. Reason (optional)\n\n**Refund Time:**\n• 3-5 business days",
+    "category": "cancellation",
+    "tags": [
+      "cancel",
+      "cancellation",
+      "refund",
+      "return"
+    ]
+  },
+  {
+    "id": "ORD007",
+    "question": "return policy",
+    "variations": [
+      "can i return medicine",
+      "return and refund",
+      "exchange policy"
+    ],
+    "answer": "**🔄 Return & Exchange Policy:**\n\n**We Accept Returns For:**\n✅ Damaged products\n✅ Wrong item sent\n✅ Manufacturing defects\n✅ Expired products\n\n**Return Period:**\n• Within 7 days of delivery\n\n**Cannot Return:**\n❌ Opened/unsealed medicines\n❌ Temperature-sensitive items (if not complained immediately)\n❌ Change of mind (for medicines)\n\n**Process:**\n1. Contact us immediately\n2. Send photo of issue\n3. We arrange pickup\n4. Refund/replacement within 3-5 days",
+    "category": "returns",
+    "tags": [
+      "return",
+      "refund",
+      "exchange",
+      "damaged"
+    ]
+  },
+  {
+    "id": "ORD008",
+    "question": "track my order",
+    "variations": [
+      "order tracking",
+      "where is my order",
+      "delivery status"
+    ],
+    "answer": "**📍 Track Your Order:**\n\n**Methods:**\n\n**1. Call/WhatsApp:**\n• +92 321 7780623\n• Provide Order ID\n\n**2. SMS:**\n• Send Order ID to +92 321 7780623\n\n**3. Email:**\n• swiftsales.healthcare@gmail.com\n\n**You'll Get:**\n• Current status\n• Expected delivery time\n• Rider contact (for local delivery)\n• Tracking number (for courier)\n\n**Order Statuses:**\n• Pending - Being prepared\n• Confirmed - Ready for dispatch\n• Dispatched - On the way\n• Delivered - Completed",
+    "category": "tracking",
+    "tags": [
+      "track",
+      "tracking",
+      "status",
+      "where is order"
+    ]
+  },
+  {
+    "id": "ORD009",
+    "question": "bulk order discount",
+    "variations": [
+      "wholesale price",
+      "bulk discount",
+      "quantity discount",
+      "large order"
+    ],
+    "answer": "**💼 Bulk Orders & Discounts:**\n\n**Discount Tiers:**\n• 10-50 items: 5% off\n• 50-100 items: 10% off\n• 100+ items: 15% off\n• Regular customers: Special rates\n\n**Wholesale Pricing:**\n✅ Available for registered pharmacies\n✅ Minimum order: Rs. 50,000\n✅ Monthly credit facility\n\n**Benefits:**\n• FREE delivery\n• Priority processing\n• Dedicated support\n• Flexible payment terms\n\n**Contact:**\n📞 +92 321 7780623\n📧 swiftsales.healthcare@gmail.com",
+    "category": "bulk_orders",
+    "tags": [
+      "bulk",
+      "wholesale",
+      "discount",
+      "large order"
+    ]
+  },
+  {
+    "id": "ORD010",
+    "question": "prescription required",
+    "variations": [
+      "do i need prescription",
+      "prescription needed",
+      "prescription mandatory"
+    ],
+    "answer": "**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+    "category": "prescription_policy",
+    "tags": [
+      "prescription",
+      "required",
+      "needed",
+      "rx"
+    ]
+  },
+  {
+    "id": "ORD011",
+    "question": "urgent medicine delivery",
+    "variations": [
+      "emergency delivery",
+      "same day delivery",
+      "fast delivery",
+      "quick delivery"
+    ],
+    "answer": "**⚡ Urgent/Emergency Delivery:**\n\n**Same-Day Delivery** (Rahim Yar Khan):\n• Order before 2 PM\n• Delivered within 2-4 hours\n• Extra charge: Rs. 200\n\n**Express Delivery:**\n• Within 1-2 hours\n• Extra charge: Rs. 300-500\n• Subject to availability\n\n**Nationwide Express:**\n• TCS/Leopard overnight service\n• Extra charges apply\n\n**For Emergencies:**\n📞 **Call immediately**: +92 321 7780623\n\nWe'll do our best to help! 🚑",
+    "category": "urgent_delivery",
+    "tags": [
+      "urgent",
+      "emergency",
+      "same day",
+      "fast",
+      "quick"
+    ]
+  },
+  {
+    "id": "ORD012",
+    "question": "order not received",
+    "variations": [
+      "didn't get order",
+      "order missing",
+      "delivery not received",
+      "where is my order"
+    ],
+    "answer": "**❓ Order Not Received:**\n\n**If Past Expected Delivery Date:**\n\n**Step 1: Track Order**\n• Call: +92 321 7780623\n• Provide Order ID\n\n**Step 2: Check Status**\n• Delayed in transit?\n• Wrong address?\n• Attempted delivery?\n\n**Step 3: Resolution**\n• Immediate re-dispatch\n• Or full refund\n\n**If Marked 'Delivered' But Not Received:**\n1. Check with family/neighbors\n2. Contact us immediately\n3. We'll investigate with courier\n4. Replacement/refund guaranteed\n\n**We take responsibility!** 🛡️",
+    "category": "delivery_issues",
+    "tags": [
+      "not received",
+      "missing",
+      "lost",
+      "delivery problem"
+    ]
+  },
+  {
+    "id": "ORD013",
+    "question": "same day delivery priority",
+    "variations": [
+      "urgent local delivery",
+      "how fast in ryk",
+      "priority shipping",
+      "city wide delivery"
+    ],
+    "answer": "**Same-Day City-Wide Priority:**\n\nFor all local orders in **Rahim Yar Khan**, we provide a same-day delivery service. \n\n• **Order Deadline:** Place your order before 2 PM for same-day delivery.\n• **Delivery Window:** Usually within 2-4 hours.\n• **Cost:** Local delivery is very affordable (Rs. 100-150).\n• **Express Option:** If it's an emergency, we can deliver within 1-2 hours for a small priority fee.",
+    "category": "delivery_priority",
+    "tags": [
+      "same day",
+      "priority",
+      "local",
+      "ryk",
+      "fast"
+    ]
+  },
+  {
+    "id": "ORD014",
+    "question": "delivery regions and coverage",
+    "variations": [
+      "where do you deliver",
+      "regional coverage",
+      "sindh delivery",
+      "punjab delivery",
+      "nationwide coverage",
+      "deliver to sind",
+      "deliver to panjab",
+      "ryl coverage"
+    ],
+    "answer": "**Our Regional Distribution Hubs:**\n\n• **Punjab Region:** Primary focus on Rahim Yar Khan, Multan, and surrounding districts. Delivery within 1-3 hours in local hubs.\n• **Sindh Region:** Specialized routes covering Sukkur and Hyderabad. Delivery within 2 hours in these key hubs.\n• **Nationwide:** Full coverage across Pakistan (including KPK and District HQs) via our partner courier network. Delivery within 2-4 business days.",
+    "category": "coverage",
+    "tags": [
+      "regions",
+      "coverage",
+      "sindh",
+      "punjab",
+      "nationwide"
+    ]
+  }
+]

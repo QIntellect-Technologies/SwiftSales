@@ -1,0 +1,1747 @@
+[
+  {
+    "scenario": "Auto Scenario 1",
+    "passes": 8,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-1-1770823364687",
+        "customerName": "Test User",
+        "customerPhone": "+923001234567",
+        "customerEmail": null,
+        "deliveryAddress": "House 1, Test City",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "FORTADOL TAB",
+            "productId": "001218",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "10S",
+            "quantity": 2,
+            "unitPrice": 0,
+            "stockAvailable": 100
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "FORTADOL TAB",
+              "productId": "001218",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "10S",
+              "quantity": 2,
+              "unitPrice": 0,
+              "stockAvailable": 100
+            }
+          ],
+          "customerName": "Test User",
+          "customerPhone": "+923001234567",
+          "deliveryAddress": "House 1, Test City",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 2",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Yes! I found **1** matching product in our catalog:\n\n1. **ONE D DROPS**\n   • Manufacturer: UMMATI TRADERS\n   • Pack Size: 15ML\n   • Stock: ✅ Available (100 units)\n\nWould you like to:\n• Order any of these products?\n• Get more details about a specific one?\n• Check other products? 😊",
+      "relevantProducts": [
+        {
+          "name": "MONEPRA 40MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.24392703603829902
+        },
+        {
+          "name": "MONEPRA 20MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23809209539960727
+        },
+        {
+          "name": "DRUGAB 50MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23479911310752663
+        },
+        {
+          "name": "CONARD 50MG CAP",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "7S",
+          "similarity": 0.21824890107139663
+        },
+        {
+          "name": "XFIT CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "20`S",
+          "similarity": 0.21809420224919776
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 3",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "OXIVANT DROP",
+          "company": "AVANT PHARMA",
+          "pack_size": "20ML",
+          "similarity": 0.45965957573212746
+        },
+        {
+          "name": "OXIVANT SYP",
+          "company": "AVANT PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.43549284696082785
+        },
+        {
+          "name": "O-PLUS SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4245319622300699
+        },
+        {
+          "name": "STOM CARE PEPPERMINT SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.41656065510750845
+        },
+        {
+          "name": "DISPRIDE 25MG (OLD 20S)",
+          "company": "AVANT PHARMA",
+          "pack_size": "20`S",
+          "similarity": 0.41334137548951166
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 4",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "GETXIME 30ML SYP",
+          "company": "B.G PHARMA",
+          "pack_size": "30ML",
+          "similarity": 0.4833065765212094
+        },
+        {
+          "name": "PROFILL SACHET",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.4815653149167796
+        },
+        {
+          "name": "CARTIFLEX 250/200MG CAP",
+          "company": "CURATECH PHARMA",
+          "pack_size": "20S",
+          "similarity": 0.4704369361657292
+        },
+        {
+          "name": "CURAVERINE 135MG TAB",
+          "company": "CURATECH PHARMA",
+          "pack_size": "30S",
+          "similarity": 0.46927496309525407
+        },
+        {
+          "name": "COUGH GO SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4677712339745193
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 5",
+    "passes": 6,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-5-1770823370565",
+        "customerName": "Alice",
+        "customerPhone": "03001234567",
+        "customerEmail": null,
+        "deliveryAddress": "Address: Test Area",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "ORNISIT SACHET",
+            "productId": "001080",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "5S",
+            "quantity": 3,
+            "unitPrice": 0,
+            "stockAvailable": 85
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "MELANEEZ CREAM",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "30 GM",
+          "similarity": 0.16862221961752916
+        },
+        {
+          "name": "MELANEEZ BAR",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "90 GM",
+          "similarity": 0.14650691998139187
+        },
+        {
+          "name": "GEMTONIX 1GM INJ",
+          "company": "OSPHERIC PHARMACEUTICALS (015)",
+          "pack_size": "1VAIL",
+          "similarity": 0.1452925738430426
+        },
+        {
+          "name": "BETZONE 2GM INJ",
+          "company": "TARGET PHARMA",
+          "pack_size": "1VAIL",
+          "similarity": 0.13870945528460277
+        },
+        {
+          "name": "TRADIX INJ IV",
+          "company": "ACUMEN PHARMACEUTICALS",
+          "pack_size": "1S",
+          "similarity": 0.13205158983474963
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "ORNISIT SACHET",
+              "productId": "001080",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "5S",
+              "quantity": 3,
+              "unitPrice": 0,
+              "stockAvailable": 85
+            }
+          ],
+          "customerName": "Alice",
+          "customerPhone": "03001234567",
+          "deliveryAddress": "Address: Test Area",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 6",
+    "passes": 8,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-6-1770823372115",
+        "customerName": "Test User",
+        "customerPhone": "+923001234567",
+        "customerEmail": null,
+        "deliveryAddress": "House 1, Test City",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "FORTADOL TAB",
+            "productId": "001218",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "10S",
+            "quantity": 2,
+            "unitPrice": 0,
+            "stockAvailable": 98
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "FORTADOL TAB",
+              "productId": "001218",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "10S",
+              "quantity": 2,
+              "unitPrice": 0,
+              "stockAvailable": 98
+            }
+          ],
+          "customerName": "Test User",
+          "customerPhone": "+923001234567",
+          "deliveryAddress": "House 1, Test City",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 7",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Yes! I found **1** matching product in our catalog:\n\n1. **ONE D DROPS**\n   • Manufacturer: UMMATI TRADERS\n   • Pack Size: 15ML\n   • Stock: ✅ Available (100 units)\n\nWould you like to:\n• Order any of these products?\n• Get more details about a specific one?\n• Check other products? 😊",
+      "relevantProducts": [
+        {
+          "name": "MONEPRA 40MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.24392703603829902
+        },
+        {
+          "name": "MONEPRA 20MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23809209539960727
+        },
+        {
+          "name": "DRUGAB 50MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23479911310752663
+        },
+        {
+          "name": "CONARD 50MG CAP",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "7S",
+          "similarity": 0.21824890107139663
+        },
+        {
+          "name": "XFIT CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "20`S",
+          "similarity": 0.21809420224919776
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 8",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "OXIVANT DROP",
+          "company": "AVANT PHARMA",
+          "pack_size": "20ML",
+          "similarity": 0.45965957573212746
+        },
+        {
+          "name": "OXIVANT SYP",
+          "company": "AVANT PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.43549284696082785
+        },
+        {
+          "name": "O-PLUS SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4245319622300699
+        },
+        {
+          "name": "STOM CARE PEPPERMINT SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.41656065510750845
+        },
+        {
+          "name": "DISPRIDE 25MG (OLD 20S)",
+          "company": "AVANT PHARMA",
+          "pack_size": "20`S",
+          "similarity": 0.41334137548951166
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 9",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "GETXIME 30ML SYP",
+          "company": "B.G PHARMA",
+          "pack_size": "30ML",
+          "similarity": 0.4833065765212094
+        },
+        {
+          "name": "PROFILL SACHET",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.4815653149167796
+        },
+        {
+          "name": "CARTIFLEX 250/200MG CAP",
+          "company": "CURATECH PHARMA",
+          "pack_size": "20S",
+          "similarity": 0.4704369361657292
+        },
+        {
+          "name": "CURAVERINE 135MG TAB",
+          "company": "CURATECH PHARMA",
+          "pack_size": "30S",
+          "similarity": 0.46927496309525407
+        },
+        {
+          "name": "COUGH GO SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4677712339745193
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 10",
+    "passes": 6,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-10-1770823376116",
+        "customerName": "Alice",
+        "customerPhone": "03001234567",
+        "customerEmail": null,
+        "deliveryAddress": "Address: Test Area",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "ORNISIT SACHET",
+            "productId": "001080",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "5S",
+            "quantity": 3,
+            "unitPrice": 0,
+            "stockAvailable": 82
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "MELANEEZ CREAM",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "30 GM",
+          "similarity": 0.16862221961752916
+        },
+        {
+          "name": "MELANEEZ BAR",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "90 GM",
+          "similarity": 0.14650691998139187
+        },
+        {
+          "name": "GEMTONIX 1GM INJ",
+          "company": "OSPHERIC PHARMACEUTICALS (015)",
+          "pack_size": "1VAIL",
+          "similarity": 0.1452925738430426
+        },
+        {
+          "name": "BETZONE 2GM INJ",
+          "company": "TARGET PHARMA",
+          "pack_size": "1VAIL",
+          "similarity": 0.13870945528460277
+        },
+        {
+          "name": "TRADIX INJ IV",
+          "company": "ACUMEN PHARMACEUTICALS",
+          "pack_size": "1S",
+          "similarity": 0.13205158983474963
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "ORNISIT SACHET",
+              "productId": "001080",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "5S",
+              "quantity": 3,
+              "unitPrice": 0,
+              "stockAvailable": 82
+            }
+          ],
+          "customerName": "Alice",
+          "customerPhone": "03001234567",
+          "deliveryAddress": "Address: Test Area",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 11",
+    "passes": 8,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-11-1770823377432",
+        "customerName": "Test User",
+        "customerPhone": "+923001234567",
+        "customerEmail": null,
+        "deliveryAddress": "House 1, Test City",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "FORTADOL TAB",
+            "productId": "001218",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "10S",
+            "quantity": 2,
+            "unitPrice": 0,
+            "stockAvailable": 96
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "FORTADOL TAB",
+              "productId": "001218",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "10S",
+              "quantity": 2,
+              "unitPrice": 0,
+              "stockAvailable": 96
+            }
+          ],
+          "customerName": "Test User",
+          "customerPhone": "+923001234567",
+          "deliveryAddress": "House 1, Test City",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 12",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Yes! I found **1** matching product in our catalog:\n\n1. **ONE D DROPS**\n   • Manufacturer: UMMATI TRADERS\n   • Pack Size: 15ML\n   • Stock: ✅ Available (100 units)\n\nWould you like to:\n• Order any of these products?\n• Get more details about a specific one?\n• Check other products? 😊",
+      "relevantProducts": [
+        {
+          "name": "MONEPRA 40MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.24392703603829902
+        },
+        {
+          "name": "MONEPRA 20MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23809209539960727
+        },
+        {
+          "name": "DRUGAB 50MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23479911310752663
+        },
+        {
+          "name": "CONARD 50MG CAP",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "7S",
+          "similarity": 0.21824890107139663
+        },
+        {
+          "name": "XFIT CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "20`S",
+          "similarity": 0.21809420224919776
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 13",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "OXIVANT DROP",
+          "company": "AVANT PHARMA",
+          "pack_size": "20ML",
+          "similarity": 0.45965957573212746
+        },
+        {
+          "name": "OXIVANT SYP",
+          "company": "AVANT PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.43549284696082785
+        },
+        {
+          "name": "O-PLUS SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4245319622300699
+        },
+        {
+          "name": "STOM CARE PEPPERMINT SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.41656065510750845
+        },
+        {
+          "name": "DISPRIDE 25MG (OLD 20S)",
+          "company": "AVANT PHARMA",
+          "pack_size": "20`S",
+          "similarity": 0.41334137548951166
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 14",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "GETXIME 30ML SYP",
+          "company": "B.G PHARMA",
+          "pack_size": "30ML",
+          "similarity": 0.4833065765212094
+        },
+        {
+          "name": "PROFILL SACHET",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.4815653149167796
+        },
+        {
+          "name": "CARTIFLEX 250/200MG CAP",
+          "company": "CURATECH PHARMA",
+          "pack_size": "20S",
+          "similarity": 0.4704369361657292
+        },
+        {
+          "name": "CURAVERINE 135MG TAB",
+          "company": "CURATECH PHARMA",
+          "pack_size": "30S",
+          "similarity": 0.46927496309525407
+        },
+        {
+          "name": "COUGH GO SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4677712339745193
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 15",
+    "passes": 6,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-15-1770823381470",
+        "customerName": "Alice",
+        "customerPhone": "03001234567",
+        "customerEmail": null,
+        "deliveryAddress": "Address: Test Area",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "ORNISIT SACHET",
+            "productId": "001080",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "5S",
+            "quantity": 3,
+            "unitPrice": 0,
+            "stockAvailable": 79
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "MELANEEZ CREAM",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "30 GM",
+          "similarity": 0.16862221961752916
+        },
+        {
+          "name": "MELANEEZ BAR",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "90 GM",
+          "similarity": 0.14650691998139187
+        },
+        {
+          "name": "GEMTONIX 1GM INJ",
+          "company": "OSPHERIC PHARMACEUTICALS (015)",
+          "pack_size": "1VAIL",
+          "similarity": 0.1452925738430426
+        },
+        {
+          "name": "BETZONE 2GM INJ",
+          "company": "TARGET PHARMA",
+          "pack_size": "1VAIL",
+          "similarity": 0.13870945528460277
+        },
+        {
+          "name": "TRADIX INJ IV",
+          "company": "ACUMEN PHARMACEUTICALS",
+          "pack_size": "1S",
+          "similarity": 0.13205158983474963
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "ORNISIT SACHET",
+              "productId": "001080",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "5S",
+              "quantity": 3,
+              "unitPrice": 0,
+              "stockAvailable": 79
+            }
+          ],
+          "customerName": "Alice",
+          "customerPhone": "03001234567",
+          "deliveryAddress": "Address: Test Area",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 16",
+    "passes": 8,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-16-1770823382712",
+        "customerName": "Test User",
+        "customerPhone": "+923001234567",
+        "customerEmail": null,
+        "deliveryAddress": "House 1, Test City",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "FORTADOL TAB",
+            "productId": "001218",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "10S",
+            "quantity": 2,
+            "unitPrice": 0,
+            "stockAvailable": 94
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "FORTADOL TAB",
+              "productId": "001218",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "10S",
+              "quantity": 2,
+              "unitPrice": 0,
+              "stockAvailable": 94
+            }
+          ],
+          "customerName": "Test User",
+          "customerPhone": "+923001234567",
+          "deliveryAddress": "House 1, Test City",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 17",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Yes! I found **1** matching product in our catalog:\n\n1. **ONE D DROPS**\n   • Manufacturer: UMMATI TRADERS\n   • Pack Size: 15ML\n   • Stock: ✅ Available (100 units)\n\nWould you like to:\n• Order any of these products?\n• Get more details about a specific one?\n• Check other products? 😊",
+      "relevantProducts": [
+        {
+          "name": "MONEPRA 40MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.24392703603829902
+        },
+        {
+          "name": "MONEPRA 20MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23809209539960727
+        },
+        {
+          "name": "DRUGAB 50MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23479911310752663
+        },
+        {
+          "name": "CONARD 50MG CAP",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "7S",
+          "similarity": 0.21824890107139663
+        },
+        {
+          "name": "XFIT CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "20`S",
+          "similarity": 0.21809420224919776
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 18",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "OXIVANT DROP",
+          "company": "AVANT PHARMA",
+          "pack_size": "20ML",
+          "similarity": 0.45965957573212746
+        },
+        {
+          "name": "OXIVANT SYP",
+          "company": "AVANT PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.43549284696082785
+        },
+        {
+          "name": "O-PLUS SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4245319622300699
+        },
+        {
+          "name": "STOM CARE PEPPERMINT SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.41656065510750845
+        },
+        {
+          "name": "DISPRIDE 25MG (OLD 20S)",
+          "company": "AVANT PHARMA",
+          "pack_size": "20`S",
+          "similarity": 0.41334137548951166
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 19",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "GETXIME 30ML SYP",
+          "company": "B.G PHARMA",
+          "pack_size": "30ML",
+          "similarity": 0.4833065765212094
+        },
+        {
+          "name": "PROFILL SACHET",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.4815653149167796
+        },
+        {
+          "name": "CARTIFLEX 250/200MG CAP",
+          "company": "CURATECH PHARMA",
+          "pack_size": "20S",
+          "similarity": 0.4704369361657292
+        },
+        {
+          "name": "CURAVERINE 135MG TAB",
+          "company": "CURATECH PHARMA",
+          "pack_size": "30S",
+          "similarity": 0.46927496309525407
+        },
+        {
+          "name": "COUGH GO SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4677712339745193
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 20",
+    "passes": 6,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-20-1770823390581",
+        "customerName": "Alice",
+        "customerPhone": "03001234567",
+        "customerEmail": null,
+        "deliveryAddress": "Address: Test Area",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "ORNISIT SACHET",
+            "productId": "001080",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "5S",
+            "quantity": 3,
+            "unitPrice": 0,
+            "stockAvailable": 76
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "MELANEEZ CREAM",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "30 GM",
+          "similarity": 0.16862221961752916
+        },
+        {
+          "name": "MELANEEZ BAR",
+          "company": "SERVING HEALTH PAKISTAN",
+          "pack_size": "90 GM",
+          "similarity": 0.14650691998139187
+        },
+        {
+          "name": "GEMTONIX 1GM INJ",
+          "company": "OSPHERIC PHARMACEUTICALS (015)",
+          "pack_size": "1VAIL",
+          "similarity": 0.1452925738430426
+        },
+        {
+          "name": "BETZONE 2GM INJ",
+          "company": "TARGET PHARMA",
+          "pack_size": "1VAIL",
+          "similarity": 0.13870945528460277
+        },
+        {
+          "name": "TRADIX INJ IV",
+          "company": "ACUMEN PHARMACEUTICALS",
+          "pack_size": "1S",
+          "similarity": 0.13205158983474963
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "ORNISIT SACHET",
+              "productId": "001080",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "5S",
+              "quantity": 3,
+              "unitPrice": 0,
+              "stockAvailable": 76
+            }
+          ],
+          "customerName": "Alice",
+          "customerPhone": "03001234567",
+          "deliveryAddress": "Address: Test Area",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 21",
+    "passes": 8,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "type": "order_ready",
+      "response": "✅ Stock verified! Processing your order... 🔄.",
+      "orderData": {
+        "sessionId": "EXT-21-1770823392653",
+        "customerName": "Test User",
+        "customerPhone": "+923001234567",
+        "customerEmail": null,
+        "deliveryAddress": "House 1, Test City",
+        "deliveryCity": "Not specified",
+        "orderItems": [
+          {
+            "productName": "FORTADOL TAB",
+            "productId": "001218",
+            "productCompany": "SHROOQ PHARMA",
+            "packSize": "10S",
+            "quantity": 2,
+            "unitPrice": 0,
+            "stockAvailable": 92
+          }
+        ],
+        "orderNotes": null
+      },
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {
+        "orderState": "order_confirmed",
+        "orderData": {
+          "items": [
+            {
+              "productName": "FORTADOL TAB",
+              "productId": "001218",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "10S",
+              "quantity": 2,
+              "unitPrice": 0,
+              "stockAvailable": 92
+            }
+          ],
+          "customerName": "Test User",
+          "customerPhone": "+923001234567",
+          "deliveryAddress": "House 1, Test City",
+          "deliveryCity": "Not specified",
+          "customerEmail": null
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Auto Scenario 22",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Yes! I found **1** matching product in our catalog:\n\n1. **ONE D DROPS**\n   • Manufacturer: UMMATI TRADERS\n   • Pack Size: 15ML\n   • Stock: ✅ Available (100 units)\n\nWould you like to:\n• Order any of these products?\n• Get more details about a specific one?\n• Check other products? 😊",
+      "relevantProducts": [
+        {
+          "name": "MONEPRA 40MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.24392703603829902
+        },
+        {
+          "name": "MONEPRA 20MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23809209539960727
+        },
+        {
+          "name": "DRUGAB 50MG CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "14`S",
+          "similarity": 0.23479911310752663
+        },
+        {
+          "name": "CONARD 50MG CAP",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "7S",
+          "similarity": 0.21824890107139663
+        },
+        {
+          "name": "XFIT CAP",
+          "company": "PINNACLE BIOTEC (PVT) LTD.",
+          "pack_size": "20`S",
+          "similarity": 0.21809420224919776
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 23",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "OXIVANT DROP",
+          "company": "AVANT PHARMA",
+          "pack_size": "20ML",
+          "similarity": 0.45965957573212746
+        },
+        {
+          "name": "OXIVANT SYP",
+          "company": "AVANT PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.43549284696082785
+        },
+        {
+          "name": "O-PLUS SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4245319622300699
+        },
+        {
+          "name": "STOM CARE PEPPERMINT SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.41656065510750845
+        },
+        {
+          "name": "DISPRIDE 25MG (OLD 20S)",
+          "company": "AVANT PHARMA",
+          "pack_size": "20`S",
+          "similarity": 0.41334137548951166
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Auto Scenario 24",
+    "passes": 2,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "**prescription_policy:**\n\n**📋 Prescription Requirements:**\n\n**Prescription Required For:**\n⚠️ Antibiotics (Augmentin, Azithromycin, etc.)\n⚠️ Controlled substances\n⚠️ Prescription-only medicines\n⚠️ High-dose medications\n\n**No Prescription Needed For:**\n✅ OTC medicines (Panadol, Brufen)\n✅ Vitamins and supplements\n✅ First-aid items\n✅ Baby care products\n\n**How to Send Prescription:**\n1. Take clear photo\n2. Send via WhatsApp: +92 321 7780623\n3. Or email: swiftsales.healthcare@gmail.com\n\n**We verify prescriptions** for your safety! 🔐",
+      "relevantProducts": [
+        {
+          "name": "GETXIME 30ML SYP",
+          "company": "B.G PHARMA",
+          "pack_size": "30ML",
+          "similarity": 0.4833065765212094
+        },
+        {
+          "name": "PROFILL SACHET",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.4815653149167796
+        },
+        {
+          "name": "CARTIFLEX 250/200MG CAP",
+          "company": "CURATECH PHARMA",
+          "pack_size": "20S",
+          "similarity": 0.4704369361657292
+        },
+        {
+          "name": "CURAVERINE 135MG TAB",
+          "company": "CURATECH PHARMA",
+          "pack_size": "30S",
+          "similarity": 0.46927496309525407
+        },
+        {
+          "name": "COUGH GO SYP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.4677712339745193
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Ext - Typo check",
+    "passes": 3,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Perfect! I'm adding **2 x ELO EXTRA SUN CREAM** to your order.\n\n📦 **Product Details:**\n• Manufacturer: SHROOQ PHARMA\n• Pack Size: 1`S\n\nWould you like to:\n1️⃣ Add more items? (Just tell me what else you need)\n2️⃣ Proceed to checkout? (Type \"proceed\" or \"checkout\")\n3️⃣ Cancel this order? (Type \"cancel\")",
+      "relevantProducts": [
+        {
+          "name": "ELO EXTRA SUN CREAM",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "1`S",
+          "similarity": 0.2687898870246356
+        },
+        {
+          "name": "SHARBAT PODINA PLUS ADRAK",
+          "company": "UMMATI TRADERS",
+          "pack_size": "120ML",
+          "similarity": 0.2537759222307087
+        },
+        {
+          "name": "ZINTAR PLUS SHAMPOO",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "1`S",
+          "similarity": 0.2533005126756321
+        },
+        {
+          "name": "JETEPAR 2ML INJ",
+          "company": "POPULAR CHEMICAL WORKS",
+          "pack_size": "2ML",
+          "similarity": 0.2516761824758158
+        },
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.2516217766420448
+        }
+      ],
+      "updatedContext": {
+        "orderState": "confirm_product",
+        "orderData": {
+          "items": [
+            {
+              "productName": "ELO EXTRA SUN CREAM",
+              "productId": "001081",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "1`S",
+              "quantity": 2,
+              "unitPrice": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Ext - FAQ vs product",
+    "passes": 3,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "I found **5 relevant items** in our pharmaceutical catalog:\n\n1. **MEMORY COOL BACK CARE**\n   • Manufacturer: MOLTY FOAM\n   • Pack Size: 1S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n2. **MEMORY COOL COCCYX CUSHION BLUE**\n   • Manufacturer: MOLTY FOAM\n   • Pack Size: 1S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n3. **D-SAVE INJ**\n   • Manufacturer: TARGET PHARMA\n   • Pack Size: 1AMP\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n4. **MONFLU CAP 150 MG**\n   • Manufacturer: AUSTIN PHARMA\n   • Pack Size: 1\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n5. **PILES CARE CAP**\n   • Manufacturer: UMMATI TRADERS\n   • Pack Size: 12S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\nWould you like more details about any of these, or should I help you with the ordering process? 😊",
+      "relevantProducts": [
+        {
+          "name": "MEMORY COOL BACK CARE",
+          "company": "MOLTY FOAM",
+          "pack_size": "1S",
+          "similarity": 0.20389372949235388
+        },
+        {
+          "name": "MEMORY COOL COCCYX CUSHION BLUE",
+          "company": "MOLTY FOAM",
+          "pack_size": "1S",
+          "similarity": 0.18371864274059999
+        },
+        {
+          "name": "D-SAVE INJ",
+          "company": "TARGET PHARMA",
+          "pack_size": "1AMP",
+          "similarity": 0.17785413655716756
+        },
+        {
+          "name": "MONFLU CAP 150 MG",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.17238858448939476
+        },
+        {
+          "name": "PILES CARE CAP",
+          "company": "UMMATI TRADERS",
+          "pack_size": "12S",
+          "similarity": 0.15696710393044674
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Ext - Prescription flow",
+    "passes": 3,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "🤖 I'm SwiftBot, but I understand sometimes you need a human!\n\nYou can talk to our real staff here:\n• 📞 **Call/WhatsApp:** +92 321 7780623\n• 🏪 **Visit:** C8GM+HFF, Sardar Colony, Rahim Yar Khan, Pakistan\n\nThey are available Monday - Saturday: 9:00 AM - 6:00 PM.",
+      "relevantProducts": [
+        {
+          "name": "CLOSE",
+          "company": "AVANT PHARMA",
+          "pack_size": "10S",
+          "similarity": 0.48799892356651986
+        },
+        {
+          "name": "UTINOS SACHET",
+          "company": "WELLZYNE PHARMA",
+          "pack_size": "10S",
+          "similarity": 0.4840189764518242
+        },
+        {
+          "name": "CLOSE",
+          "company": "B.G PHARMA",
+          "pack_size": "1AMP",
+          "similarity": 0.4818551041357757
+        },
+        {
+          "name": "CP ADAN SYP",
+          "company": "WELLZYNE PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.4790908753883399
+        },
+        {
+          "name": "IROVANT SYP",
+          "company": "AVANT PHARMA",
+          "pack_size": "120ML",
+          "similarity": 0.4762960513856347
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Long Complex Conversation",
+    "passes": 36,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "Added **12 x SILYMAX TAB** to your order! ✅\n\n**Current cart:** 12 item(s)\n\nWant to add more or proceed to checkout?",
+      "relevantProducts": [
+        {
+          "name": "SILYMAX TAB",
+          "company": "SHROOQ PHARMA",
+          "pack_size": "20S",
+          "similarity": 0.2569157491367742
+        },
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.24446283451980635
+        },
+        {
+          "name": "VOTEC 500MG TAB",
+          "company": "SIZA INTERNATIONAL",
+          "pack_size": "10S",
+          "similarity": 0.24074277979586461
+        },
+        {
+          "name": "GLIZA 2MG TAB",
+          "company": "SIZA INTERNATIONAL",
+          "pack_size": "20S",
+          "similarity": 0.2397162115487543
+        },
+        {
+          "name": "GLIZA 4MG TAB",
+          "company": "SIZA INTERNATIONAL",
+          "pack_size": "20S",
+          "similarity": 0.2365902725840966
+        }
+      ],
+      "updatedContext": {
+        "orderState": "confirm_product",
+        "orderData": {
+          "items": [
+            {
+              "productName": "URGE PLUS TAB",
+              "productId": "007006",
+              "productCompany": "QURRUM PHARMA",
+              "packSize": "10`S",
+              "quantity": 1,
+              "unitPrice": 0
+            },
+            {
+              "productName": "URGE PLUS TAB",
+              "productId": "007006",
+              "productCompany": "QURRUM PHARMA",
+              "packSize": "10`S",
+              "quantity": 2,
+              "unitPrice": 0
+            },
+            {
+              "productName": "KAIRDON 3MG TAB",
+              "productId": "009039",
+              "productCompany": "SWISS PHARMACUTICALS (09)",
+              "packSize": "30S",
+              "quantity": 3,
+              "unitPrice": 0
+            },
+            {
+              "productName": "GLIZA 4MG TAB",
+              "productId": "042102",
+              "productCompany": "SIZA INTERNATIONAL",
+              "packSize": "20S",
+              "quantity": 4,
+              "unitPrice": 0
+            },
+            {
+              "productName": "VOTEC 500MG TAB",
+              "productId": "042023",
+              "productCompany": "SIZA INTERNATIONAL",
+              "packSize": "10S",
+              "quantity": 5,
+              "unitPrice": 0
+            },
+            {
+              "productName": "AUSTA-Z 250MG TAB",
+              "productId": "020030",
+              "productCompany": "AUSTIN PHARMA",
+              "packSize": "6`S",
+              "quantity": 6,
+              "unitPrice": 0
+            },
+            {
+              "productName": "URGE PLUS TAB",
+              "productId": "007006",
+              "productCompany": "QURRUM PHARMA",
+              "packSize": "10`S",
+              "quantity": 7,
+              "unitPrice": 0
+            },
+            {
+              "productName": "LUMEZA DS 40/240MG TAB",
+              "productId": "042069",
+              "productCompany": "SIZA INTERNATIONAL",
+              "packSize": "8S",
+              "quantity": 8,
+              "unitPrice": 0
+            },
+            {
+              "productName": "VOTEC 500MG TAB",
+              "productId": "042023",
+              "productCompany": "SIZA INTERNATIONAL",
+              "packSize": "10S",
+              "quantity": 9,
+              "unitPrice": 0
+            },
+            {
+              "productName": "XYFEX TAB",
+              "productId": "042103",
+              "productCompany": "SIZA INTERNATIONAL",
+              "packSize": "10S",
+              "quantity": 10,
+              "unitPrice": 0
+            },
+            {
+              "productName": "URGE PLUS TAB",
+              "productId": "007006",
+              "productCompany": "QURRUM PHARMA",
+              "packSize": "10`S",
+              "quantity": 11,
+              "unitPrice": 0
+            },
+            {
+              "productName": "SILYMAX TAB",
+              "productId": "001212",
+              "productCompany": "SHROOQ PHARMA",
+              "packSize": "20S",
+              "quantity": 12,
+              "unitPrice": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "scenario": "Extra 29",
+    "passes": 5,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "I found **5 relevant items** in our pharmaceutical catalog:\n\n1. **URGE PLUS TAB**\n   • Manufacturer: QURRUM PHARMA\n   • Pack Size: 10`S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n2. **MYOSES SACHET**\n   • Manufacturer: DERMA SHINE PHARM\n   • Pack Size: 10S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n3. **ELKAZ-10 TAB (NEW) CLOSE**\n   • Manufacturer: QURRUM PHARMA\n   • Pack Size: 10`S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n4. **CRYS VIT SYRUP**\n   • Manufacturer: AUSTIN PHARMA\n   • Pack Size: 1\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n5. **AUSTASONE OINTMENT**\n   • Manufacturer: AUSTIN PHARMA\n   • Pack Size: 1\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\nWould you like more details about any of these, or should I help you with the ordering process? 😊",
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {}
+    }
+  },
+  {
+    "scenario": "Extra 30",
+    "passes": 5,
+    "fails": 0,
+    "lastResponse": {
+      "success": true,
+      "response": "I found **5 relevant items** in our pharmaceutical catalog:\n\n1. **URGE PLUS TAB**\n   • Manufacturer: QURRUM PHARMA\n   • Pack Size: 10`S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n2. **MYOSES SACHET**\n   • Manufacturer: DERMA SHINE PHARM\n   • Pack Size: 10S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n3. **ELKAZ-10 TAB (NEW) CLOSE**\n   • Manufacturer: QURRUM PHARMA\n   • Pack Size: 10`S\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n4. **CRYS VIT SYRUP**\n   • Manufacturer: AUSTIN PHARMA\n   • Pack Size: 1\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\n5. **AUSTASONE OINTMENT**\n   • Manufacturer: AUSTIN PHARMA\n   • Pack Size: 1\n   • Stock: ✅ Available\n   • Primary Use: undefined\n\nWould you like more details about any of these, or should I help you with the ordering process? 😊",
+      "relevantProducts": [
+        {
+          "name": "URGE PLUS TAB",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.16984497916823216
+        },
+        {
+          "name": "MYOSES SACHET",
+          "company": "DERMA SHINE PHARM",
+          "pack_size": "10S",
+          "similarity": 0.16578387305809458
+        },
+        {
+          "name": "ELKAZ-10 TAB (NEW) CLOSE",
+          "company": "QURRUM PHARMA",
+          "pack_size": "10`S",
+          "similarity": 0.15767092943253574
+        },
+        {
+          "name": "CRYS VIT SYRUP",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.15438127869658205
+        },
+        {
+          "name": "AUSTASONE OINTMENT",
+          "company": "AUSTIN PHARMA",
+          "pack_size": "1",
+          "similarity": 0.14687999502464139
+        }
+      ],
+      "updatedContext": {}
+    }
+  }
+]

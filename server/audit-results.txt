@@ -1,0 +1,52 @@
+﻿≡ƒÜÇ INITIALIZING PHASE 4 BRUTAL AUDIT ≡ƒÜÇ
+
+Γû╢∩╕Å SCENARIO: A.1 Add with Quantity
+Query: "Add 5 Motilium to my cart"
+Response Snippet: Γ£à **Added to Cart:**
+ΓÇó 5 x Motilium
+
+≡ƒ¢Æ **Cart Total:** PKR 126.515
+
+Be sure to checkout when you're done! ≡ƒ¢ì∩╕Å...
+Γ£à PASSED
+
+Γû╢∩╕Å SCENARIO: A.2 Add without Quantity
+Query: "I want to buy some Concor 5mg"
+Response Snippet: ≡ƒæç How many **Concor 5mg** would you like to add?...
+Γ£à PASSED
+
+--- Turn 1: Triggering Ambiguity ---
+
+Γû╢∩╕Å SCENARIO: D.1 Trigger Ambiguity
+Query: "Add 5 Amoxil"
+Response Snippet: ≡ƒñö I found **2 versions** of "**amoxil**":
+1. AMOXIL 500MG (29)
+2. AMOXIL 500MG (26)
+≡ƒæç Which one would you like?
+
+...
+Γ£à PASSED
+
+--- Turn 2: Resolving Ambiguity via "number 1" ---
+
+Γû╢∩╕Å SCENARIO: D.2 Select Option #1
+Query: "number 1"
+Response Snippet: Perfect! Added **1 x Amoxil 500mg** to your cart. ≡ƒ¢Æ
+
+≡ƒ¢Æ **Cart:** 2 product(s), 6 total items
+≡ƒÆ░ **Total:** SAR 155.37
+
+Be sure to checkout when you'...
+Γ£à PASSED
+
+Γû╢∩╕Å SCENARIO: E.1 Typo Handling
+Query: "Add 2 Motiliun"
+Response Snippet: Γ£à **Added to Cart:**
+ΓÇó 2 x Motilium
+
+≡ƒ¢Æ **Cart Total:** PKR 205.973
+
+Be sure to checkout when you're done! ≡ƒ¢ì∩╕Å...
+Γ£à PASSED
+
+--- Phase 4 Validation (A-E) Done ---

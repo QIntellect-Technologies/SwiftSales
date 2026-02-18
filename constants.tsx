@@ -20,14 +20,12 @@ export const STATS = [
 ];
 
 export const MILESTONES = [
-  { year: '2003', title: 'Beginning the Journey', description: 'Started in herbal medicine sales; a 6-month foundational period in the industry.' },
-  { year: '2005', title: 'Graduation & Growth', description: 'Completed 3 years as SPO while pursuing B.A. graduation, fueled by a desire for continuous learning.' },
-  { year: '2012', title: 'Swift Sales Launch', description: 'Started Swift Sales in Feb 2012 as a wholesale distributor with an initial team of 5.' },
-  { year: '2015', title: 'Scaling Operations', description: 'Grew the team to 12 members and secured distribution partnerships with 6-7 companies.' },
-  { year: '2018', title: 'Resilience through COVID', description: 'Navigated pandemic challenges and economic shifts, focusing on rebuilding and adaptation.' },
-  { year: '2021', title: 'The Comeback', description: 'Regained momentum with a core team of 15 to 18 resources, strengthening our foundation.' },
+  { year: '2012', title: 'Swift Sales Launch', description: 'Launched Swift Sales as a dedicated wholesale distributor with a focused founding team.' },
+  { year: '2015', title: 'Scaling Operations', description: 'Expanded operations significantly and secured key distribution partnerships with leading companies.' },
+  { year: '2018', title: 'Resilience through COVID', description: 'Navigated global market challenges and economic shifts, focusing on resilience and adaptation.' },
+  { year: '2021', title: 'The Comeback', description: 'Regained strong momentum, strengthening our foundation and expanding our dedicated workforce.' },
   { year: '2024', title: 'Group Expansion', description: 'Successfully evolved into a group of companies, broadening our impact across the healthcare sector.' },
-  { year: '2026', title: 'Future Vision', description: 'Projected growth to 60+ skilled resources, driven by modern systems and operational excellence.' },
+  { year: '2026', title: 'Future Vision', description: 'Projected significant organizational growth, driven by modern systems and operational excellence.' },
   { year: 'Beyond', title: 'Continuous Evolution', description: 'Our journey never ends. We remain committed to refining our systems and expanding our reach for decades to come.' },
 ];
 
@@ -530,8 +528,8 @@ export const LEADERSHIP = [
     name: 'Ejaz Malik',
     role: 'Chief Executive Officer',
     quote: 'Systems always win.',
-    bio: "In my two decades of experience, from a sales representative to a founder, I've learned one absolute truth: people can falter, but robust systems never do. Swift Sales was built on this foundation of systemic excellence, ensuring that life-saving medicine is never a matter of luck, but a result of a process.",
-    bioExtended: "Our evolution from a small team in 2012 to a group of companies today is a testament to the power of structured operations. We don't just distribute medicine; we deploy a reliable, technology-driven framework that guarantees availability and integrity for every patient, every single time. Systems are the backbone of trust.",
+    bio: "In my two decades of experience, from a sales representative to a founder, I've learned one absolute truth: people can falter, but robust systems never do. Swift Sales was built on this foundation of systemic excellence, ensuring that life saving medicine is never a matter of luck, but a result of a process.",
+    bioExtended: "Our evolution from a small team in 2012 to a group of companies today is a testament to the power of structured operations. We don't just distribute medicine. We deploy a reliable, technology driven framework that guarantees availability and integrity for every patient, every single time. Systems are the backbone of trust.",
     img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
     signature: 'Ejaz Malik'
   },
@@ -550,8 +548,8 @@ export const LEADERSHIP = [
     name: 'Mr. Faisal Qureshi',
     role: 'Chief Technology Officer',
     quote: 'Technology bridges the gap between demand and supply.',
-    bio: 'At Swift Sales, we believe in a data-driven future. Our SwiftBot AI and smart inventory management are key to eliminating human error in healthcare logistics.',
-    bioExtended: 'Innovation isn\'t just a buzzword for us; it is a tool to ensure transparency, traceability, and 100% stock accuracy for our partners at all times.',
+    bio: 'At Swift Sales, we believe in a data driven future. Our SwiftBot AI and smart inventory management are key to eliminating human error in healthcare logistics.',
+    bioExtended: 'Innovation isn\'t just a buzzword for us. It is a tool to ensure transparency, traceability, and 100% stock accuracy for our partners at all times.',
     img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop',
     signature: 'Faisal Q.'
   },
@@ -571,7 +569,7 @@ export const LEADERSHIP = [
     role: 'Head of Supply Chain',
     quote: 'Logistics is about the promise, not just the package.',
     bio: 'My team works around the clock to ensure that our network hub in Rahim Yar Khan is always stocked and ready for immediate deployment.',
-    bioExtended: 'We don\'t just manage inventory; we manage a promise made to the community – that the healthcare vital link will never be broken, no matter the challenges.',
+    bioExtended: 'We don\'t just manage inventory. We manage a promise made to our partners that the healthcare vital link will never be broken, no matter the challenges.',
     img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
     signature: 'Rohail S.'
   }

@@ -43,7 +43,7 @@ const Home: React.FC = () => {
                   </h1>
 
                   <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl animate-fade-in-up border-l-4 border-blue-600 pl-6" style={{ animationDelay: '0.2s' }}>
-                     We bridge the gap between world-class manufacturers and the patients who need them. Delivering essential medicines with precision, integrity, and speed to every district across the city.
+                     We bridge the gap between world class manufacturers and the patients who need them. Delivering essential medicines with precision, integrity, and speed to every district across the city.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10">
                <SectionHeader
                   title="Our Core Mission"
-                  subtitle="Empowering Healthcare through precision distribution, ensuring that every patient, in every district, has access to life-saving medication exactly when they need it."
+                  subtitle="Empowering Healthcare through precision distribution, ensuring that every patient, in every district, has access to life saving medication exactly when they need it."
                />
 
                <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
                         },
                         {
                            label: 'Patients First',
-                           desc: 'Everything we do is for the people who need help. We put patient safety above all else, making sure life-saving medicine is always available.',
+                           desc: 'Everything we do is for the people who need help. We put patient safety above all else, making sure life saving medicine is always available.',
                            icon: HeartPulse, color: 'text-rose-600', hue: 'bg-rose-50'
                         },
                         {
@@ -193,7 +193,7 @@ const Home: React.FC = () => {
                   <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Our Innovations</h2>
                   <div className="h-1.5 w-24 bg-blue-600 rounded-full mb-8 mx-auto"></div>
                   <p className="text-slate-600 text-lg max-w-5xl mx-auto leading-relaxed font-medium text-justify">
-                     Redefining customer service with intelligent, always-on support. To ensure our partners and clients have instant access to critical information, we have deployed a state-of-the-art AI system. "SwiftBot" is not just a tool
+                     Redefining customer service with intelligent, always on support. To ensure our partners and clients have instant access to critical information, we have deployed a state of the art AI system. "SwiftBot" is not just a tool
                      it's a dedicated digital assistant capable of verifying order status, checking stock availability instantly, and guiding you through our extensive portfolio. Whether you are a pharmacy owner checking a delivery or a hospital administrator sourcing urgent vaccines, our intelligent support system eliminates wait times and delivers precision answers, 24/7.
                   </p>
                </div>
@@ -290,7 +290,7 @@ const Home: React.FC = () => {
          <Section className="py-32 bg-slate-50">
             <SectionHeader
                title="Your Trusted Medicine Distributor"
-               subtitle="Service grounded in trust, consistency, and a deep respect for the local healthcare community."
+               subtitle="Service grounded in trust, consistency, and a deep respect for the local healthcare network."
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -318,19 +318,19 @@ const Home: React.FC = () => {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">Your Trusted Partner</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
-                     We believe in long-term relationships. We listen to your needs, resolve issues directly, and treat your business with the dignity it deserves.
+                     We believe in long term relationships. We listen to your needs, resolve issues directly, and treat your business with the dignity it deserves.
                   </p>
                </Card>
             </div>
 
-            {/* --- 7. NATIONAL SOLE DISTRIBUTOR SECTION --- */}
+            {/* --- 7. SOLE DISTRIBUTOR SECTION --- */}
             <Section className="py-24 bg-slate-50 relative overflow-hidden">
                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
 
                <div className="container mx-auto px-6 relative z-10">
                   <SectionHeader
-                     title="National Sole Distributor"
-                     subtitle="We are honored to be the exclusive national partners for leading global pharmaceutical innovators."
+                     title="Sole Distributor Partnerships"
+                     subtitle="We are honored to be the exclusive Sole Distributors for leading global pharmaceutical innovators."
                   />
 
                   <div className="mt-16 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100 relative overflow-hidden">

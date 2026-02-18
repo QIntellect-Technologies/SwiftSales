@@ -1,0 +1,20 @@
+﻿[dotenv@17.2.3] injecting env (5) from server\.env -- tip: ΓÜÖ∩╕Å  specify custom .env file path with { path: '/custom/path/.env' }
+≡ƒÜÇ INITIALIZING CATEGORY F: REAL-TIME SYNC AUDIT ≡ƒÜÇ
+[BASE] Initial Price for Motilium: 25.303019669000093
+[MUTATION] Updating price to: 35.30301966900009
+
+Γû╢∩╕Å SCENARIO: F.1 Price Update Reflection
+Query: "How much is Motilium?"
+Γ£à PASSED
+[MUTATION] Reducing stock to 2
+
+Γû╢∩╕Å SCENARIO: F.2 Stock Negotiation
+Query: "Add 10 Motilium to my cart"
+Γ£à PASSED
+[MUTATION] Marking as Unavailable
+
+Γû╢∩╕Å SCENARIO: F.3 Deleted Product Lookup
+Query: "Add 2 Motilium"
+Γ£à PASSED
+
+--- Category F Validation Done ---

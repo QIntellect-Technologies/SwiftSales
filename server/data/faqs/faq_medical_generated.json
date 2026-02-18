@@ -1,0 +1,2373 @@
+[
+  {
+    "id": "med_1000",
+    "question": "What medicine should I take for headache?",
+    "variations": [
+      "medicine for headache",
+      "treatment for headache",
+      "I have headache, what should I take?",
+      "best medicine for headache",
+      "what to take for head pain"
+    ],
+    "answer": "For headache, we recommend: **PANADOL, BRUFEN, DISPRIN**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "PANADOL",
+      "BRUFEN",
+      "DISPRIN"
+    ],
+    "tags": [
+      "headache",
+      "head pain",
+      "migraine",
+      "tension",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1001",
+    "question": "I have head pain, what should I do?",
+    "variations": [
+      "head pain treatment",
+      "medicine for head pain",
+      "I'm experiencing head pain",
+      "how to cure head pain"
+    ],
+    "answer": "Head pain is commonly associated with headache. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "head pain",
+      "headache",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1002",
+    "question": "I have migraine, what should I do?",
+    "variations": [
+      "migraine treatment",
+      "medicine for migraine",
+      "I'm experiencing migraine",
+      "how to cure migraine"
+    ],
+    "answer": "Migraine is commonly associated with headache. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "migraine",
+      "headache",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1003",
+    "question": "I have tension, what should I do?",
+    "variations": [
+      "tension treatment",
+      "medicine for tension",
+      "I'm experiencing tension",
+      "how to cure tension"
+    ],
+    "answer": "Tension is commonly associated with headache. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "tension",
+      "headache",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1004",
+    "question": "What medicine should I take for fever?",
+    "variations": [
+      "medicine for fever",
+      "treatment for fever",
+      "I have fever, what should I take?",
+      "best medicine for fever",
+      "what to take for high temperature"
+    ],
+    "answer": "For fever, we recommend: **PANADOL, CALPOL, DISPRIN**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "PANADOL",
+      "CALPOL",
+      "DISPRIN"
+    ],
+    "tags": [
+      "fever",
+      "high temperature",
+      "body heat",
+      "temperature",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1005",
+    "question": "I have high temperature, what should I do?",
+    "variations": [
+      "high temperature treatment",
+      "medicine for high temperature",
+      "I'm experiencing high temperature",
+      "how to cure high temperature"
+    ],
+    "answer": "High temperature is commonly associated with fever. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "high temperature",
+      "fever",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1006",
+    "question": "I have body heat, what should I do?",
+    "variations": [
+      "body heat treatment",
+      "medicine for body heat",
+      "I'm experiencing body heat",
+      "how to cure body heat"
+    ],
+    "answer": "Body heat is commonly associated with fever. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "body heat",
+      "fever",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1007",
+    "question": "I have temperature, what should I do?",
+    "variations": [
+      "temperature treatment",
+      "medicine for temperature",
+      "I'm experiencing temperature",
+      "how to cure temperature"
+    ],
+    "answer": "Temperature is commonly associated with fever. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "temperature",
+      "fever",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1008",
+    "question": "What medicine should I take for cold?",
+    "variations": [
+      "medicine for cold",
+      "treatment for cold",
+      "I have cold, what should I take?",
+      "best medicine for cold",
+      "what to take for runny nose"
+    ],
+    "answer": "For cold, we recommend: **ACTIFED, SINEX, CLARINASE**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "ACTIFED",
+      "SINEX",
+      "CLARINASE"
+    ],
+    "tags": [
+      "cold",
+      "runny nose",
+      "sneezing",
+      "congestion",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1009",
+    "question": "I have runny nose, what should I do?",
+    "variations": [
+      "runny nose treatment",
+      "medicine for runny nose",
+      "I'm experiencing runny nose",
+      "how to cure runny nose"
+    ],
+    "answer": "Runny nose is commonly associated with cold. We recommend: **ACTIFED** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "ACTIFED"
+    ],
+    "tags": [
+      "runny nose",
+      "cold",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1010",
+    "question": "I have sneezing, what should I do?",
+    "variations": [
+      "sneezing treatment",
+      "medicine for sneezing",
+      "I'm experiencing sneezing",
+      "how to cure sneezing"
+    ],
+    "answer": "Sneezing is commonly associated with cold. We recommend: **ACTIFED** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "ACTIFED"
+    ],
+    "tags": [
+      "sneezing",
+      "cold",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1011",
+    "question": "I have congestion, what should I do?",
+    "variations": [
+      "congestion treatment",
+      "medicine for congestion",
+      "I'm experiencing congestion",
+      "how to cure congestion"
+    ],
+    "answer": "Congestion is commonly associated with cold. We recommend: **ACTIFED** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "ACTIFED"
+    ],
+    "tags": [
+      "congestion",
+      "cold",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1012",
+    "question": "What medicine should I take for cough?",
+    "variations": [
+      "medicine for cough",
+      "treatment for cough",
+      "I have cough, what should I take?",
+      "best medicine for cough",
+      "what to take for dry cough"
+    ],
+    "answer": "For cough, we recommend: **COFEX, TIXYLIX, BENADRYL**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "COFEX",
+      "TIXYLIX",
+      "BENADRYL"
+    ],
+    "tags": [
+      "cough",
+      "dry cough",
+      "wet cough",
+      "throat irritation",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1013",
+    "question": "I have dry cough, what should I do?",
+    "variations": [
+      "dry cough treatment",
+      "medicine for dry cough",
+      "I'm experiencing dry cough",
+      "how to cure dry cough"
+    ],
+    "answer": "Dry cough is commonly associated with cough. We recommend: **COFEX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "COFEX"
+    ],
+    "tags": [
+      "dry cough",
+      "cough",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1014",
+    "question": "I have wet cough, what should I do?",
+    "variations": [
+      "wet cough treatment",
+      "medicine for wet cough",
+      "I'm experiencing wet cough",
+      "how to cure wet cough"
+    ],
+    "answer": "Wet cough is commonly associated with cough. We recommend: **COFEX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "COFEX"
+    ],
+    "tags": [
+      "wet cough",
+      "cough",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1015",
+    "question": "I have throat irritation, what should I do?",
+    "variations": [
+      "throat irritation treatment",
+      "medicine for throat irritation",
+      "I'm experiencing throat irritation",
+      "how to cure throat irritation"
+    ],
+    "answer": "Throat irritation is commonly associated with cough. We recommend: **COFEX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "COFEX"
+    ],
+    "tags": [
+      "throat irritation",
+      "cough",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1016",
+    "question": "What medicine should I take for sore throat?",
+    "variations": [
+      "medicine for sore throat",
+      "treatment for sore throat",
+      "I have sore throat, what should I take?",
+      "best medicine for sore throat",
+      "what to take for throat pain"
+    ],
+    "answer": "For sore throat, we recommend: **BETADINE GARGLE, STREPSILS, DIFFLAM**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "BETADINE GARGLE",
+      "STREPSILS",
+      "DIFFLAM"
+    ],
+    "tags": [
+      "sore throat",
+      "throat pain",
+      "difficulty swallowing",
+      "scratchy throat",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1017",
+    "question": "I have throat pain, what should I do?",
+    "variations": [
+      "throat pain treatment",
+      "medicine for throat pain",
+      "I'm experiencing throat pain",
+      "how to cure throat pain"
+    ],
+    "answer": "Throat pain is commonly associated with sore throat. We recommend: **BETADINE GARGLE** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BETADINE GARGLE"
+    ],
+    "tags": [
+      "throat pain",
+      "sore throat",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1018",
+    "question": "I have difficulty swallowing, what should I do?",
+    "variations": [
+      "difficulty swallowing treatment",
+      "medicine for difficulty swallowing",
+      "I'm experiencing difficulty swallowing",
+      "how to cure difficulty swallowing"
+    ],
+    "answer": "Difficulty swallowing is commonly associated with sore throat. We recommend: **BETADINE GARGLE** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BETADINE GARGLE"
+    ],
+    "tags": [
+      "difficulty swallowing",
+      "sore throat",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1019",
+    "question": "I have scratchy throat, what should I do?",
+    "variations": [
+      "scratchy throat treatment",
+      "medicine for scratchy throat",
+      "I'm experiencing scratchy throat",
+      "how to cure scratchy throat"
+    ],
+    "answer": "Scratchy throat is commonly associated with sore throat. We recommend: **BETADINE GARGLE** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BETADINE GARGLE"
+    ],
+    "tags": [
+      "scratchy throat",
+      "sore throat",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1020",
+    "question": "What medicine should I take for allergies?",
+    "variations": [
+      "medicine for allergies",
+      "treatment for allergies",
+      "I have allergies, what should I take?",
+      "best medicine for allergies",
+      "what to take for sneezing"
+    ],
+    "answer": "For allergies, we recommend: **AVIL, ZYRTEC, ALLEGRA**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "AVIL",
+      "ZYRTEC",
+      "ALLEGRA"
+    ],
+    "tags": [
+      "allergies",
+      "sneezing",
+      "itching",
+      "rash",
+      "hives",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1021",
+    "question": "I have sneezing, what should I do?",
+    "variations": [
+      "sneezing treatment",
+      "medicine for sneezing",
+      "I'm experiencing sneezing",
+      "how to cure sneezing"
+    ],
+    "answer": "Sneezing is commonly associated with allergies. We recommend: **AVIL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AVIL"
+    ],
+    "tags": [
+      "sneezing",
+      "allergies",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1022",
+    "question": "I have itching, what should I do?",
+    "variations": [
+      "itching treatment",
+      "medicine for itching",
+      "I'm experiencing itching",
+      "how to cure itching"
+    ],
+    "answer": "Itching is commonly associated with allergies. We recommend: **AVIL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AVIL"
+    ],
+    "tags": [
+      "itching",
+      "allergies",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1023",
+    "question": "I have rash, what should I do?",
+    "variations": [
+      "rash treatment",
+      "medicine for rash",
+      "I'm experiencing rash",
+      "how to cure rash"
+    ],
+    "answer": "Rash is commonly associated with allergies. We recommend: **AVIL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AVIL"
+    ],
+    "tags": [
+      "rash",
+      "allergies",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1024",
+    "question": "I have hives, what should I do?",
+    "variations": [
+      "hives treatment",
+      "medicine for hives",
+      "I'm experiencing hives",
+      "how to cure hives"
+    ],
+    "answer": "Hives is commonly associated with allergies. We recommend: **AVIL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AVIL"
+    ],
+    "tags": [
+      "hives",
+      "allergies",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1025",
+    "question": "What medicine should I take for pain?",
+    "variations": [
+      "medicine for pain",
+      "treatment for pain",
+      "I have pain, what should I take?",
+      "best medicine for pain",
+      "what to take for body pain"
+    ],
+    "answer": "For pain, we recommend: **BRUFEN, PONSTAN, CATAFLAM**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "BRUFEN",
+      "PONSTAN",
+      "CATAFLAM"
+    ],
+    "tags": [
+      "pain",
+      "body pain",
+      "muscle ache",
+      "joint pain",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1026",
+    "question": "I have body pain, what should I do?",
+    "variations": [
+      "body pain treatment",
+      "medicine for body pain",
+      "I'm experiencing body pain",
+      "how to cure body pain"
+    ],
+    "answer": "Body pain is commonly associated with pain. We recommend: **BRUFEN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BRUFEN"
+    ],
+    "tags": [
+      "body pain",
+      "pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1027",
+    "question": "I have muscle ache, what should I do?",
+    "variations": [
+      "muscle ache treatment",
+      "medicine for muscle ache",
+      "I'm experiencing muscle ache",
+      "how to cure muscle ache"
+    ],
+    "answer": "Muscle ache is commonly associated with pain. We recommend: **BRUFEN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BRUFEN"
+    ],
+    "tags": [
+      "muscle ache",
+      "pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1028",
+    "question": "I have joint pain, what should I do?",
+    "variations": [
+      "joint pain treatment",
+      "medicine for joint pain",
+      "I'm experiencing joint pain",
+      "how to cure joint pain"
+    ],
+    "answer": "Joint pain is commonly associated with pain. We recommend: **BRUFEN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BRUFEN"
+    ],
+    "tags": [
+      "joint pain",
+      "pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1029",
+    "question": "What medicine should I take for back pain?",
+    "variations": [
+      "medicine for back pain",
+      "treatment for back pain",
+      "I have back pain, what should I take?",
+      "best medicine for back pain",
+      "what to take for lower back pain"
+    ],
+    "answer": "For back pain, we recommend: **VOLTRAL, MYOFLEX, CATAFLAM**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "VOLTRAL",
+      "MYOFLEX",
+      "CATAFLAM"
+    ],
+    "tags": [
+      "back pain",
+      "lower back pain",
+      "spine pain",
+      "backache",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1030",
+    "question": "I have lower back pain, what should I do?",
+    "variations": [
+      "lower back pain treatment",
+      "medicine for lower back pain",
+      "I'm experiencing lower back pain",
+      "how to cure lower back pain"
+    ],
+    "answer": "Lower back pain is commonly associated with back pain. We recommend: **VOLTRAL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "VOLTRAL"
+    ],
+    "tags": [
+      "lower back pain",
+      "back pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1031",
+    "question": "I have spine pain, what should I do?",
+    "variations": [
+      "spine pain treatment",
+      "medicine for spine pain",
+      "I'm experiencing spine pain",
+      "how to cure spine pain"
+    ],
+    "answer": "Spine pain is commonly associated with back pain. We recommend: **VOLTRAL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "VOLTRAL"
+    ],
+    "tags": [
+      "spine pain",
+      "back pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1032",
+    "question": "I have backache, what should I do?",
+    "variations": [
+      "backache treatment",
+      "medicine for backache",
+      "I'm experiencing backache",
+      "how to cure backache"
+    ],
+    "answer": "Backache is commonly associated with back pain. We recommend: **VOLTRAL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "VOLTRAL"
+    ],
+    "tags": [
+      "backache",
+      "back pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1033",
+    "question": "What medicine should I take for stomach pain?",
+    "variations": [
+      "medicine for stomach pain",
+      "treatment for stomach pain",
+      "I have stomach pain, what should I take?",
+      "best medicine for stomach pain",
+      "what to take for abdominal pain"
+    ],
+    "answer": "For stomach pain, we recommend: **BUSCOPAN, COLIMEX, MYTAB**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "BUSCOPAN",
+      "COLIMEX",
+      "MYTAB"
+    ],
+    "tags": [
+      "stomach pain",
+      "abdominal pain",
+      "belly ache",
+      "cramps",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1034",
+    "question": "I have abdominal pain, what should I do?",
+    "variations": [
+      "abdominal pain treatment",
+      "medicine for abdominal pain",
+      "I'm experiencing abdominal pain",
+      "how to cure abdominal pain"
+    ],
+    "answer": "Abdominal pain is commonly associated with stomach pain. We recommend: **BUSCOPAN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BUSCOPAN"
+    ],
+    "tags": [
+      "abdominal pain",
+      "stomach pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1035",
+    "question": "I have belly ache, what should I do?",
+    "variations": [
+      "belly ache treatment",
+      "medicine for belly ache",
+      "I'm experiencing belly ache",
+      "how to cure belly ache"
+    ],
+    "answer": "Belly ache is commonly associated with stomach pain. We recommend: **BUSCOPAN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BUSCOPAN"
+    ],
+    "tags": [
+      "belly ache",
+      "stomach pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1036",
+    "question": "I have cramps, what should I do?",
+    "variations": [
+      "cramps treatment",
+      "medicine for cramps",
+      "I'm experiencing cramps",
+      "how to cure cramps"
+    ],
+    "answer": "Cramps is commonly associated with stomach pain. We recommend: **BUSCOPAN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "BUSCOPAN"
+    ],
+    "tags": [
+      "cramps",
+      "stomach pain",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1037",
+    "question": "What medicine should I take for acidity?",
+    "variations": [
+      "medicine for acidity",
+      "treatment for acidity",
+      "I have acidity, what should I take?",
+      "best medicine for acidity",
+      "what to take for heartburn"
+    ],
+    "answer": "For acidity, we recommend: **RISEK, NEXIUM, MYLANTA**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "RISEK",
+      "NEXIUM",
+      "MYLANTA"
+    ],
+    "tags": [
+      "acidity",
+      "heartburn",
+      "acid reflux",
+      "sour taste",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1038",
+    "question": "I have heartburn, what should I do?",
+    "variations": [
+      "heartburn treatment",
+      "medicine for heartburn",
+      "I'm experiencing heartburn",
+      "how to cure heartburn"
+    ],
+    "answer": "Heartburn is commonly associated with acidity. We recommend: **RISEK** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "RISEK"
+    ],
+    "tags": [
+      "heartburn",
+      "acidity",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1039",
+    "question": "I have acid reflux, what should I do?",
+    "variations": [
+      "acid reflux treatment",
+      "medicine for acid reflux",
+      "I'm experiencing acid reflux",
+      "how to cure acid reflux"
+    ],
+    "answer": "Acid reflux is commonly associated with acidity. We recommend: **RISEK** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "RISEK"
+    ],
+    "tags": [
+      "acid reflux",
+      "acidity",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1040",
+    "question": "I have sour taste, what should I do?",
+    "variations": [
+      "sour taste treatment",
+      "medicine for sour taste",
+      "I'm experiencing sour taste",
+      "how to cure sour taste"
+    ],
+    "answer": "Sour taste is commonly associated with acidity. We recommend: **RISEK** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "RISEK"
+    ],
+    "tags": [
+      "sour taste",
+      "acidity",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1041",
+    "question": "What medicine should I take for constipation?",
+    "variations": [
+      "medicine for constipation",
+      "treatment for constipation",
+      "I have constipation, what should I take?",
+      "best medicine for constipation",
+      "what to take for difficulty passing stool"
+    ],
+    "answer": "For constipation, we recommend: **DULCOLAX, LACTULOSE, ISABGOL**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "DULCOLAX",
+      "LACTULOSE",
+      "ISABGOL"
+    ],
+    "tags": [
+      "constipation",
+      "difficulty passing stool",
+      "hard stool",
+      "bloating",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1042",
+    "question": "I have difficulty passing stool, what should I do?",
+    "variations": [
+      "difficulty passing stool treatment",
+      "medicine for difficulty passing stool",
+      "I'm experiencing difficulty passing stool",
+      "how to cure difficulty passing stool"
+    ],
+    "answer": "Difficulty passing stool is commonly associated with constipation. We recommend: **DULCOLAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "DULCOLAX"
+    ],
+    "tags": [
+      "difficulty passing stool",
+      "constipation",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1043",
+    "question": "I have hard stool, what should I do?",
+    "variations": [
+      "hard stool treatment",
+      "medicine for hard stool",
+      "I'm experiencing hard stool",
+      "how to cure hard stool"
+    ],
+    "answer": "Hard stool is commonly associated with constipation. We recommend: **DULCOLAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "DULCOLAX"
+    ],
+    "tags": [
+      "hard stool",
+      "constipation",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1044",
+    "question": "I have bloating, what should I do?",
+    "variations": [
+      "bloating treatment",
+      "medicine for bloating",
+      "I'm experiencing bloating",
+      "how to cure bloating"
+    ],
+    "answer": "Bloating is commonly associated with constipation. We recommend: **DULCOLAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "DULCOLAX"
+    ],
+    "tags": [
+      "bloating",
+      "constipation",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1045",
+    "question": "What medicine should I take for diarrhea?",
+    "variations": [
+      "medicine for diarrhea",
+      "treatment for diarrhea",
+      "I have diarrhea, what should I take?",
+      "best medicine for diarrhea",
+      "what to take for loose stool"
+    ],
+    "answer": "For diarrhea, we recommend: **IMODIUM, FLAGYL, FUROXONE**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "IMODIUM",
+      "FLAGYL",
+      "FUROXONE"
+    ],
+    "tags": [
+      "diarrhea",
+      "loose stool",
+      "frequent bowel movements",
+      "watery stool",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1046",
+    "question": "I have loose stool, what should I do?",
+    "variations": [
+      "loose stool treatment",
+      "medicine for loose stool",
+      "I'm experiencing loose stool",
+      "how to cure loose stool"
+    ],
+    "answer": "Loose stool is commonly associated with diarrhea. We recommend: **IMODIUM** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "IMODIUM"
+    ],
+    "tags": [
+      "loose stool",
+      "diarrhea",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1047",
+    "question": "I have frequent bowel movements, what should I do?",
+    "variations": [
+      "frequent bowel movements treatment",
+      "medicine for frequent bowel movements",
+      "I'm experiencing frequent bowel movements",
+      "how to cure frequent bowel movements"
+    ],
+    "answer": "Frequent bowel movements is commonly associated with diarrhea. We recommend: **IMODIUM** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "IMODIUM"
+    ],
+    "tags": [
+      "frequent bowel movements",
+      "diarrhea",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1048",
+    "question": "I have watery stool, what should I do?",
+    "variations": [
+      "watery stool treatment",
+      "medicine for watery stool",
+      "I'm experiencing watery stool",
+      "how to cure watery stool"
+    ],
+    "answer": "Watery stool is commonly associated with diarrhea. We recommend: **IMODIUM** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "IMODIUM"
+    ],
+    "tags": [
+      "watery stool",
+      "diarrhea",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1049",
+    "question": "What medicine should I take for diabetes?",
+    "variations": [
+      "medicine for diabetes",
+      "treatment for diabetes",
+      "I have diabetes, what should I take?",
+      "best medicine for diabetes",
+      "what to take for high blood sugar"
+    ],
+    "answer": "For diabetes, we recommend: **GLUCOPHAGE, DIAMICRON, JANUVIA**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "GLUCOPHAGE",
+      "DIAMICRON",
+      "JANUVIA"
+    ],
+    "tags": [
+      "diabetes",
+      "high blood sugar",
+      "increased thirst",
+      "frequent urination",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1050",
+    "question": "I have high blood sugar, what should I do?",
+    "variations": [
+      "high blood sugar treatment",
+      "medicine for high blood sugar",
+      "I'm experiencing high blood sugar",
+      "how to cure high blood sugar"
+    ],
+    "answer": "High blood sugar is commonly associated with diabetes. We recommend: **GLUCOPHAGE** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "GLUCOPHAGE"
+    ],
+    "tags": [
+      "high blood sugar",
+      "diabetes",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1051",
+    "question": "I have increased thirst, what should I do?",
+    "variations": [
+      "increased thirst treatment",
+      "medicine for increased thirst",
+      "I'm experiencing increased thirst",
+      "how to cure increased thirst"
+    ],
+    "answer": "Increased thirst is commonly associated with diabetes. We recommend: **GLUCOPHAGE** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "GLUCOPHAGE"
+    ],
+    "tags": [
+      "increased thirst",
+      "diabetes",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1052",
+    "question": "I have frequent urination, what should I do?",
+    "variations": [
+      "frequent urination treatment",
+      "medicine for frequent urination",
+      "I'm experiencing frequent urination",
+      "how to cure frequent urination"
+    ],
+    "answer": "Frequent urination is commonly associated with diabetes. We recommend: **GLUCOPHAGE** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "GLUCOPHAGE"
+    ],
+    "tags": [
+      "frequent urination",
+      "diabetes",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1053",
+    "question": "What medicine should I take for high blood pressure?",
+    "variations": [
+      "medicine for high blood pressure",
+      "treatment for high blood pressure",
+      "I have high blood pressure, what should I take?",
+      "best medicine for high blood pressure",
+      "what to take for hypertension"
+    ],
+    "answer": "For high blood pressure, we recommend: **CONCOR, NORVASC, DILATREND**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "CONCOR",
+      "NORVASC",
+      "DILATREND"
+    ],
+    "tags": [
+      "high blood pressure",
+      "hypertension",
+      "elevated BP",
+      "high BP",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1054",
+    "question": "I have hypertension, what should I do?",
+    "variations": [
+      "hypertension treatment",
+      "medicine for hypertension",
+      "I'm experiencing hypertension",
+      "how to cure hypertension"
+    ],
+    "answer": "Hypertension is commonly associated with high blood pressure. We recommend: **CONCOR** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CONCOR"
+    ],
+    "tags": [
+      "hypertension",
+      "high blood pressure",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1055",
+    "question": "I have elevated BP, what should I do?",
+    "variations": [
+      "elevated BP treatment",
+      "medicine for elevated BP",
+      "I'm experiencing elevated BP",
+      "how to cure elevated BP"
+    ],
+    "answer": "Elevated BP is commonly associated with high blood pressure. We recommend: **CONCOR** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CONCOR"
+    ],
+    "tags": [
+      "elevated BP",
+      "high blood pressure",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1056",
+    "question": "I have high BP, what should I do?",
+    "variations": [
+      "high BP treatment",
+      "medicine for high BP",
+      "I'm experiencing high BP",
+      "how to cure high BP"
+    ],
+    "answer": "High BP is commonly associated with high blood pressure. We recommend: **CONCOR** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CONCOR"
+    ],
+    "tags": [
+      "high BP",
+      "high blood pressure",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1057",
+    "question": "What medicine should I take for insomnia?",
+    "variations": [
+      "medicine for insomnia",
+      "treatment for insomnia",
+      "I have insomnia, what should I take?",
+      "best medicine for insomnia",
+      "what to take for sleeplessness"
+    ],
+    "answer": "For insomnia, we recommend: **STILNOX, ATIVAN, MELATONIN**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "STILNOX",
+      "ATIVAN",
+      "MELATONIN"
+    ],
+    "tags": [
+      "insomnia",
+      "sleeplessness",
+      "difficulty sleeping",
+      "sleep problems",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1058",
+    "question": "I have sleeplessness, what should I do?",
+    "variations": [
+      "sleeplessness treatment",
+      "medicine for sleeplessness",
+      "I'm experiencing sleeplessness",
+      "how to cure sleeplessness"
+    ],
+    "answer": "Sleeplessness is commonly associated with insomnia. We recommend: **STILNOX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "STILNOX"
+    ],
+    "tags": [
+      "sleeplessness",
+      "insomnia",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1059",
+    "question": "I have difficulty sleeping, what should I do?",
+    "variations": [
+      "difficulty sleeping treatment",
+      "medicine for difficulty sleeping",
+      "I'm experiencing difficulty sleeping",
+      "how to cure difficulty sleeping"
+    ],
+    "answer": "Difficulty sleeping is commonly associated with insomnia. We recommend: **STILNOX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "STILNOX"
+    ],
+    "tags": [
+      "difficulty sleeping",
+      "insomnia",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1060",
+    "question": "I have sleep problems, what should I do?",
+    "variations": [
+      "sleep problems treatment",
+      "medicine for sleep problems",
+      "I'm experiencing sleep problems",
+      "how to cure sleep problems"
+    ],
+    "answer": "Sleep problems is commonly associated with insomnia. We recommend: **STILNOX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "STILNOX"
+    ],
+    "tags": [
+      "sleep problems",
+      "insomnia",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1061",
+    "question": "What medicine should I take for anxiety?",
+    "variations": [
+      "medicine for anxiety",
+      "treatment for anxiety",
+      "I have anxiety, what should I take?",
+      "best medicine for anxiety",
+      "what to take for nervousness"
+    ],
+    "answer": "For anxiety, we recommend: **XANAX, LEXAPRO, PROZAC**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "XANAX",
+      "LEXAPRO",
+      "PROZAC"
+    ],
+    "tags": [
+      "anxiety",
+      "nervousness",
+      "worry",
+      "panic",
+      "stress",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1062",
+    "question": "I have nervousness, what should I do?",
+    "variations": [
+      "nervousness treatment",
+      "medicine for nervousness",
+      "I'm experiencing nervousness",
+      "how to cure nervousness"
+    ],
+    "answer": "Nervousness is commonly associated with anxiety. We recommend: **XANAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "XANAX"
+    ],
+    "tags": [
+      "nervousness",
+      "anxiety",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1063",
+    "question": "I have worry, what should I do?",
+    "variations": [
+      "worry treatment",
+      "medicine for worry",
+      "I'm experiencing worry",
+      "how to cure worry"
+    ],
+    "answer": "Worry is commonly associated with anxiety. We recommend: **XANAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "XANAX"
+    ],
+    "tags": [
+      "worry",
+      "anxiety",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1064",
+    "question": "I have panic, what should I do?",
+    "variations": [
+      "panic treatment",
+      "medicine for panic",
+      "I'm experiencing panic",
+      "how to cure panic"
+    ],
+    "answer": "Panic is commonly associated with anxiety. We recommend: **XANAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "XANAX"
+    ],
+    "tags": [
+      "panic",
+      "anxiety",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1065",
+    "question": "I have stress, what should I do?",
+    "variations": [
+      "stress treatment",
+      "medicine for stress",
+      "I'm experiencing stress",
+      "how to cure stress"
+    ],
+    "answer": "Stress is commonly associated with anxiety. We recommend: **XANAX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "XANAX"
+    ],
+    "tags": [
+      "stress",
+      "anxiety",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1066",
+    "question": "What medicine should I take for depression?",
+    "variations": [
+      "medicine for depression",
+      "treatment for depression",
+      "I have depression, what should I take?",
+      "best medicine for depression",
+      "what to take for sadness"
+    ],
+    "answer": "For depression, we recommend: **PROZAC, ZOLOFT, CYMBALTA**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "PROZAC",
+      "ZOLOFT",
+      "CYMBALTA"
+    ],
+    "tags": [
+      "depression",
+      "sadness",
+      "low mood",
+      "hopelessness",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1067",
+    "question": "I have sadness, what should I do?",
+    "variations": [
+      "sadness treatment",
+      "medicine for sadness",
+      "I'm experiencing sadness",
+      "how to cure sadness"
+    ],
+    "answer": "Sadness is commonly associated with depression. We recommend: **PROZAC** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PROZAC"
+    ],
+    "tags": [
+      "sadness",
+      "depression",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1068",
+    "question": "I have low mood, what should I do?",
+    "variations": [
+      "low mood treatment",
+      "medicine for low mood",
+      "I'm experiencing low mood",
+      "how to cure low mood"
+    ],
+    "answer": "Low mood is commonly associated with depression. We recommend: **PROZAC** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PROZAC"
+    ],
+    "tags": [
+      "low mood",
+      "depression",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1069",
+    "question": "I have hopelessness, what should I do?",
+    "variations": [
+      "hopelessness treatment",
+      "medicine for hopelessness",
+      "I'm experiencing hopelessness",
+      "how to cure hopelessness"
+    ],
+    "answer": "Hopelessness is commonly associated with depression. We recommend: **PROZAC** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PROZAC"
+    ],
+    "tags": [
+      "hopelessness",
+      "depression",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1070",
+    "question": "What medicine should I take for asthma?",
+    "variations": [
+      "medicine for asthma",
+      "treatment for asthma",
+      "I have asthma, what should I take?",
+      "best medicine for asthma",
+      "what to take for wheezing"
+    ],
+    "answer": "For asthma, we recommend: **VENTOLIN, SERETIDE, PULMICORT**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "VENTOLIN",
+      "SERETIDE",
+      "PULMICORT"
+    ],
+    "tags": [
+      "asthma",
+      "wheezing",
+      "shortness of breath",
+      "chest tightness",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1071",
+    "question": "I have wheezing, what should I do?",
+    "variations": [
+      "wheezing treatment",
+      "medicine for wheezing",
+      "I'm experiencing wheezing",
+      "how to cure wheezing"
+    ],
+    "answer": "Wheezing is commonly associated with asthma. We recommend: **VENTOLIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "VENTOLIN"
+    ],
+    "tags": [
+      "wheezing",
+      "asthma",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1072",
+    "question": "I have shortness of breath, what should I do?",
+    "variations": [
+      "shortness of breath treatment",
+      "medicine for shortness of breath",
+      "I'm experiencing shortness of breath",
+      "how to cure shortness of breath"
+    ],
+    "answer": "Shortness of breath is commonly associated with asthma. We recommend: **VENTOLIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "VENTOLIN"
+    ],
+    "tags": [
+      "shortness of breath",
+      "asthma",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1073",
+    "question": "I have chest tightness, what should I do?",
+    "variations": [
+      "chest tightness treatment",
+      "medicine for chest tightness",
+      "I'm experiencing chest tightness",
+      "how to cure chest tightness"
+    ],
+    "answer": "Chest tightness is commonly associated with asthma. We recommend: **VENTOLIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "VENTOLIN"
+    ],
+    "tags": [
+      "chest tightness",
+      "asthma",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1074",
+    "question": "What medicine should I take for skin infection?",
+    "variations": [
+      "medicine for skin infection",
+      "treatment for skin infection",
+      "I have skin infection, what should I take?",
+      "best medicine for skin infection",
+      "what to take for rash"
+    ],
+    "answer": "For skin infection, we recommend: **FUCIDIN, BETNOVATE, CANDID**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "FUCIDIN",
+      "BETNOVATE",
+      "CANDID"
+    ],
+    "tags": [
+      "skin infection",
+      "rash",
+      "redness",
+      "itching",
+      "pus",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1075",
+    "question": "I have rash, what should I do?",
+    "variations": [
+      "rash treatment",
+      "medicine for rash",
+      "I'm experiencing rash",
+      "how to cure rash"
+    ],
+    "answer": "Rash is commonly associated with skin infection. We recommend: **FUCIDIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "FUCIDIN"
+    ],
+    "tags": [
+      "rash",
+      "skin infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1076",
+    "question": "I have redness, what should I do?",
+    "variations": [
+      "redness treatment",
+      "medicine for redness",
+      "I'm experiencing redness",
+      "how to cure redness"
+    ],
+    "answer": "Redness is commonly associated with skin infection. We recommend: **FUCIDIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "FUCIDIN"
+    ],
+    "tags": [
+      "redness",
+      "skin infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1077",
+    "question": "I have itching, what should I do?",
+    "variations": [
+      "itching treatment",
+      "medicine for itching",
+      "I'm experiencing itching",
+      "how to cure itching"
+    ],
+    "answer": "Itching is commonly associated with skin infection. We recommend: **FUCIDIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "FUCIDIN"
+    ],
+    "tags": [
+      "itching",
+      "skin infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1078",
+    "question": "I have pus, what should I do?",
+    "variations": [
+      "pus treatment",
+      "medicine for pus",
+      "I'm experiencing pus",
+      "how to cure pus"
+    ],
+    "answer": "Pus is commonly associated with skin infection. We recommend: **FUCIDIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "FUCIDIN"
+    ],
+    "tags": [
+      "pus",
+      "skin infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1079",
+    "question": "What medicine should I take for fungal infection?",
+    "variations": [
+      "medicine for fungal infection",
+      "treatment for fungal infection",
+      "I have fungal infection, what should I take?",
+      "best medicine for fungal infection",
+      "what to take for itching"
+    ],
+    "answer": "For fungal infection, we recommend: **CANESTEN, NIZORAL, LAMISIL**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "CANESTEN",
+      "NIZORAL",
+      "LAMISIL"
+    ],
+    "tags": [
+      "fungal infection",
+      "itching",
+      "burning",
+      "white discharge",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1080",
+    "question": "I have itching, what should I do?",
+    "variations": [
+      "itching treatment",
+      "medicine for itching",
+      "I'm experiencing itching",
+      "how to cure itching"
+    ],
+    "answer": "Itching is commonly associated with fungal infection. We recommend: **CANESTEN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CANESTEN"
+    ],
+    "tags": [
+      "itching",
+      "fungal infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1081",
+    "question": "I have burning, what should I do?",
+    "variations": [
+      "burning treatment",
+      "medicine for burning",
+      "I'm experiencing burning",
+      "how to cure burning"
+    ],
+    "answer": "Burning is commonly associated with fungal infection. We recommend: **CANESTEN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CANESTEN"
+    ],
+    "tags": [
+      "burning",
+      "fungal infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1082",
+    "question": "I have white discharge, what should I do?",
+    "variations": [
+      "white discharge treatment",
+      "medicine for white discharge",
+      "I'm experiencing white discharge",
+      "how to cure white discharge"
+    ],
+    "answer": "White discharge is commonly associated with fungal infection. We recommend: **CANESTEN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CANESTEN"
+    ],
+    "tags": [
+      "white discharge",
+      "fungal infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1083",
+    "question": "What medicine should I take for bacterial infection?",
+    "variations": [
+      "medicine for bacterial infection",
+      "treatment for bacterial infection",
+      "I have bacterial infection, what should I take?",
+      "best medicine for bacterial infection",
+      "what to take for fever"
+    ],
+    "answer": "For bacterial infection, we recommend: **AUGMENTIN, CIPROXIN, ZITHROMAX**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "AUGMENTIN",
+      "CIPROXIN",
+      "ZITHROMAX"
+    ],
+    "tags": [
+      "bacterial infection",
+      "fever",
+      "pus",
+      "inflammation",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1084",
+    "question": "I have fever, what should I do?",
+    "variations": [
+      "fever treatment",
+      "medicine for fever",
+      "I'm experiencing fever",
+      "how to cure fever"
+    ],
+    "answer": "Fever is commonly associated with bacterial infection. We recommend: **AUGMENTIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AUGMENTIN"
+    ],
+    "tags": [
+      "fever",
+      "bacterial infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1085",
+    "question": "I have pus, what should I do?",
+    "variations": [
+      "pus treatment",
+      "medicine for pus",
+      "I'm experiencing pus",
+      "how to cure pus"
+    ],
+    "answer": "Pus is commonly associated with bacterial infection. We recommend: **AUGMENTIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AUGMENTIN"
+    ],
+    "tags": [
+      "pus",
+      "bacterial infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1086",
+    "question": "I have inflammation, what should I do?",
+    "variations": [
+      "inflammation treatment",
+      "medicine for inflammation",
+      "I'm experiencing inflammation",
+      "how to cure inflammation"
+    ],
+    "answer": "Inflammation is commonly associated with bacterial infection. We recommend: **AUGMENTIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "AUGMENTIN"
+    ],
+    "tags": [
+      "inflammation",
+      "bacterial infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1087",
+    "question": "What medicine should I take for viral infection?",
+    "variations": [
+      "medicine for viral infection",
+      "treatment for viral infection",
+      "I have viral infection, what should I take?",
+      "best medicine for viral infection",
+      "what to take for fever"
+    ],
+    "answer": "For viral infection, we recommend: **PANADOL, BRUFEN, REST**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "PANADOL",
+      "BRUFEN",
+      "REST"
+    ],
+    "tags": [
+      "viral infection",
+      "fever",
+      "fatigue",
+      "body aches",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1088",
+    "question": "I have fever, what should I do?",
+    "variations": [
+      "fever treatment",
+      "medicine for fever",
+      "I'm experiencing fever",
+      "how to cure fever"
+    ],
+    "answer": "Fever is commonly associated with viral infection. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "fever",
+      "viral infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1089",
+    "question": "I have fatigue, what should I do?",
+    "variations": [
+      "fatigue treatment",
+      "medicine for fatigue",
+      "I'm experiencing fatigue",
+      "how to cure fatigue"
+    ],
+    "answer": "Fatigue is commonly associated with viral infection. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "fatigue",
+      "viral infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1090",
+    "question": "I have body aches, what should I do?",
+    "variations": [
+      "body aches treatment",
+      "medicine for body aches",
+      "I'm experiencing body aches",
+      "how to cure body aches"
+    ],
+    "answer": "Body aches is commonly associated with viral infection. We recommend: **PANADOL** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "PANADOL"
+    ],
+    "tags": [
+      "body aches",
+      "viral infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1091",
+    "question": "What medicine should I take for urinary tract infection?",
+    "variations": [
+      "medicine for urinary tract infection",
+      "treatment for urinary tract infection",
+      "I have urinary tract infection, what should I take?",
+      "best medicine for urinary tract infection",
+      "what to take for burning urination"
+    ],
+    "answer": "For urinary tract infection, we recommend: **CIPROXIN, NORFLOX, URISPAS**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "CIPROXIN",
+      "NORFLOX",
+      "URISPAS"
+    ],
+    "tags": [
+      "urinary tract infection",
+      "burning urination",
+      "frequent urination",
+      "pelvic pain",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1092",
+    "question": "I have burning urination, what should I do?",
+    "variations": [
+      "burning urination treatment",
+      "medicine for burning urination",
+      "I'm experiencing burning urination",
+      "how to cure burning urination"
+    ],
+    "answer": "Burning urination is commonly associated with urinary tract infection. We recommend: **CIPROXIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CIPROXIN"
+    ],
+    "tags": [
+      "burning urination",
+      "urinary tract infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1093",
+    "question": "I have frequent urination, what should I do?",
+    "variations": [
+      "frequent urination treatment",
+      "medicine for frequent urination",
+      "I'm experiencing frequent urination",
+      "how to cure frequent urination"
+    ],
+    "answer": "Frequent urination is commonly associated with urinary tract infection. We recommend: **CIPROXIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CIPROXIN"
+    ],
+    "tags": [
+      "frequent urination",
+      "urinary tract infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1094",
+    "question": "I have pelvic pain, what should I do?",
+    "variations": [
+      "pelvic pain treatment",
+      "medicine for pelvic pain",
+      "I'm experiencing pelvic pain",
+      "how to cure pelvic pain"
+    ],
+    "answer": "Pelvic pain is commonly associated with urinary tract infection. We recommend: **CIPROXIN** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CIPROXIN"
+    ],
+    "tags": [
+      "pelvic pain",
+      "urinary tract infection",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1095",
+    "question": "What medicine should I take for arthritis?",
+    "variations": [
+      "medicine for arthritis",
+      "treatment for arthritis",
+      "I have arthritis, what should I take?",
+      "best medicine for arthritis",
+      "what to take for joint pain"
+    ],
+    "answer": "For arthritis, we recommend: **CELEBREX, BRUFEN, VOLTRAL**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "CELEBREX",
+      "BRUFEN",
+      "VOLTRAL"
+    ],
+    "tags": [
+      "arthritis",
+      "joint pain",
+      "stiffness",
+      "swelling",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1096",
+    "question": "I have joint pain, what should I do?",
+    "variations": [
+      "joint pain treatment",
+      "medicine for joint pain",
+      "I'm experiencing joint pain",
+      "how to cure joint pain"
+    ],
+    "answer": "Joint pain is commonly associated with arthritis. We recommend: **CELEBREX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CELEBREX"
+    ],
+    "tags": [
+      "joint pain",
+      "arthritis",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1097",
+    "question": "I have stiffness, what should I do?",
+    "variations": [
+      "stiffness treatment",
+      "medicine for stiffness",
+      "I'm experiencing stiffness",
+      "how to cure stiffness"
+    ],
+    "answer": "Stiffness is commonly associated with arthritis. We recommend: **CELEBREX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CELEBREX"
+    ],
+    "tags": [
+      "stiffness",
+      "arthritis",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1098",
+    "question": "I have swelling, what should I do?",
+    "variations": [
+      "swelling treatment",
+      "medicine for swelling",
+      "I'm experiencing swelling",
+      "how to cure swelling"
+    ],
+    "answer": "Swelling is commonly associated with arthritis. We recommend: **CELEBREX** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "CELEBREX"
+    ],
+    "tags": [
+      "swelling",
+      "arthritis",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "med_1099",
+    "question": "What medicine should I take for cholesterol?",
+    "variations": [
+      "medicine for cholesterol",
+      "treatment for cholesterol",
+      "I have cholesterol, what should I take?",
+      "best medicine for cholesterol",
+      "what to take for high cholesterol"
+    ],
+    "answer": "For cholesterol, we recommend: **ATORVA, CRESTOR, LIPITOR**. These are effective treatments available at Swift Sales Healthcare. Please consult with our pharmacist for proper dosage. For severe symptoms, consult a doctor.",
+    "category": "Medical Conditions",
+    "products": [
+      "ATORVA",
+      "CRESTOR",
+      "LIPITOR"
+    ],
+    "tags": [
+      "cholesterol",
+      "high cholesterol",
+      "high LDL",
+      "treatment",
+      "medicine"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1100",
+    "question": "I have high cholesterol, what should I do?",
+    "variations": [
+      "high cholesterol treatment",
+      "medicine for high cholesterol",
+      "I'm experiencing high cholesterol",
+      "how to cure high cholesterol"
+    ],
+    "answer": "High cholesterol is commonly associated with cholesterol. We recommend: **ATORVA** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "ATORVA"
+    ],
+    "tags": [
+      "high cholesterol",
+      "cholesterol",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  },
+  {
+    "id": "sym_1101",
+    "question": "I have high LDL, what should I do?",
+    "variations": [
+      "high LDL treatment",
+      "medicine for high LDL",
+      "I'm experiencing high LDL",
+      "how to cure high LDL"
+    ],
+    "answer": "High LDL is commonly associated with cholesterol. We recommend: **ATORVA** as a first-line treatment. If symptoms persist or worsen, please consult a healthcare provider. Available at Swift Sales Healthcare.",
+    "category": "Symptoms",
+    "products": [
+      "ATORVA"
+    ],
+    "tags": [
+      "high LDL",
+      "cholesterol",
+      "symptoms",
+      "treatment"
+    ],
+    "severity": "general"
+  }
+]

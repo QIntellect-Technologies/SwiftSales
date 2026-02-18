@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Activity, Phone, Mail, MapPin, ChevronRight, ArrowRight, User, LogOut, Facebook, ArrowUp } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { NAV_ITEMS } from '../constants';
+import { ChatBot } from './ChatBot';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoggedIn, logout } = useAuth();
@@ -289,11 +290,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {/* Scroll to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-8 right-8 z-50 p-4 bg-blue-600 text-white rounded-full shadow-lg shadow-blue-600/30 transition-all duration-300 hover:bg-blue-700 hover:scale-110 active:scale-95 flex items-center justify-center ${scrolled ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-10 invisible'
+        className={`fixed bottom-8 right-8 z-40 p-4 bg-white/80 backdrop-blur-md text-slate-400 border border-slate-200 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:text-blue-600 hover:scale-110 active:scale-95 flex items-center justify-center ${scrolled ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-10 invisible'
           }`}
       >
-        <ArrowUp size={24} strokeWidth={2.5} />
+        <ArrowUp size={20} />
       </button>
+
+      {/* Global ChatBot Ecosystem */}
+      <ChatBot />
     </div>
   );
 };

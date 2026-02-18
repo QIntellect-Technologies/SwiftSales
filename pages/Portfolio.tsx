@@ -150,7 +150,7 @@ const Portfolio: React.FC = () => {
     <>
       <SEO
         title="Our Portfolio"
-        description="See how Swift Sales delivers healthcare across the nation. Real work, real impact, and proven supply success."
+        description="See how Swift Sales delivers healthcare across the region. Real work, real impact, and proven supply success."
       />
 
       {/* --- 1. HERO SECTION (SEC-01) --- Matches Products/Services Style */}
@@ -470,7 +470,7 @@ const Portfolio: React.FC = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent)]" />
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">We Cover the Nation.</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">We Cover the Region.</h2>
                 <p className="text-blue-100 font-medium text-lg leading-relaxed mb-10">Starting from our main dispatch center, we have expanded to reach over 100+ districts, ensuring no clinic is left without medicine.</p>
                 <div className="flex items-center gap-6">
                   <div className="px-6 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
@@ -498,7 +498,7 @@ const Portfolio: React.FC = () => {
       <Section background="default" className="py-24 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <Trees className="text-emerald-500 mx-auto mb-8" size={40} />
-          <h2 className="text-3xl font-bold text-slate-900 mb-6 tracking-tight">National Service: Beyond Business.</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6 tracking-tight">Service Excellence: Beyond Business.</h2>
           <p className="text-slate-500 font-medium leading-relaxed text-lg">We believe medicine is a right for everyone. We support rural health camps and provide emergency supplies during outbreaks, fulfilling our duty to the people of Pakistan.</p>
         </div>
       </Section>
@@ -508,7 +508,7 @@ const Portfolio: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="bg-slate-50 rounded-[3rem] p-12 lg:p-16 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
             <div className="max-w-2xl">
-              <h3 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">34+ Strategic Partners Across the Nation.</h3>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">34+ Strategic Partners.</h3>
               <p className="text-slate-500 font-medium text-lg leading-relaxed">
                 We work with the most reliable manufacturers to ensure the people of Pakistan have 24/7 access to life-saving medicine. Our network is built on real trust and proven results, not just logos.
               </p>

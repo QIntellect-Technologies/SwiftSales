@@ -1,0 +1,94 @@
+[
+  {
+    "id": "MED001",
+    "question": "common cold and flu symptoms",
+    "variations": [
+      "i have a cold",
+      "flu symptoms",
+      "runny nose",
+      "sore throat",
+      "sneezing",
+      "cough help"
+    ],
+    "answer": "**Common Cold & Flu Guidance:**\n\n**Symptoms:**\n• Runny or stuffy nose\n• Sore throat & cough\n• Mild body aches\n• Low-grade fever\n\n**Recommended OTC Support:**\n• **Pain/Fever:** Panadol or Brufen\n• **Cough:** Hydryllin or Sancos Syrup\n• **Nasal Congestion:** Nasivion Spray or Panadol CF\n\n**Self-Care:**\n• Drink plenty of fluids\n• Rest well\n• Steam inhalation\n\n⚠️ **Disclaimer:** If symptoms persist for more than 3 days or you have high fever, please consult a doctor immediately.",
+    "category": "medical_guidance",
+    "tags": [
+      "flu",
+      "cold",
+      "cough",
+      "fever"
+    ]
+  },
+  {
+    "id": "MED002",
+    "question": "managing high blood pressure",
+    "variations": [
+      "bp medicine",
+      "hypertension help",
+      "how to store bp drugs",
+      "blood pressure guidance"
+    ],
+    "answer": "**Professional BP Medicine Management:**\n\n**Common Medicines:**\nWe stock various BP medications like **Softin**, **Low-Plat**, and others (Prescription Required).\n\n**Important Tips:**\n• **Consistency:** Take your medicine at the same time every day.\n• **Storage:** Keep in a cool, dry place away from direct sunlight.\n• **Monitoring:** Check your BP regularly and keep a log.\n\n⚠️ **Warning:** Never stop or change your BP medication without consulting your cardiologist. Seek immediate help if you experience chest pain or severe headache.",
+    "category": "chronic_care",
+    "tags": [
+      "bp",
+      "blood pressure",
+      "hypertension",
+      "chronic"
+    ]
+  },
+  {
+    "id": "MED003",
+    "question": "insulin storage and safety",
+    "variations": [
+      "how to store insulin",
+      "diabetes medicine help",
+      "fridge for insulin",
+      "insulin travel"
+    ],
+    "answer": "**Insulin Storage Protocol:**\n\n**Temperature Control:**\n• **Unopened:** Must be kept in the fridge (2°C - 8°C). Do NOT freeze.\n• **In-Use Pen/Vial:** Can be kept at room temperature (below 25°C) for up to 28 days.\n\n**Professional Safety Tips:**\n• Avoid direct heat and light.\n• Always check for clumps or color changes before use.\n• If traveling, use a specialized **Cold Chain Carry Bag** (available at Swift Sales).\n\n🛡️ **Expert Support:** Our team uses specialized cold-chain transport to ensure your insulin reaches you in perfect condition.",
+    "category": "cold_chain",
+    "tags": [
+      "insulin",
+      "diabetes",
+      "cold chain",
+      "storage"
+    ]
+  },
+  {
+    "id": "MED004",
+    "question": "difference between panadol and brufen",
+    "variations": [
+      "panadol vs brufen",
+      "ibuprofen vs paracetamol",
+      "which is better for headache",
+      "best for muscle pain"
+    ],
+    "answer": "**Professional Comparison: Panadol vs. Brufen**\n\n**1. Panadol (Paracetamol):**\n• **Best for:** Simple headaches, fever, and mild pain.\n• **Safety:** Gentler on the stomach. Safe for most people, including pregnant women.\n• **Action:** Primarily reduces pain and fever.\n\n**2. Brufen (Ibuprofen):**\n• **Best for:** Inflammatory pain, muscle aches, dental pain, and joint pain.\n• **Safety:** Must be taken with food. Avoid if you have stomach ulcers or kidney issues.\n• **Action:** Reduces pain, fever, AND inflammation.\n\n**Expert Advice:** Use Panadol for fever. Use Brufen for swelling or body aches. Consult our pharmacist for combined dosage advice.",
+    "category": "comparison",
+    "tags": [
+      "comparison",
+      "panadol",
+      "brufen",
+      "pain relief"
+    ]
+  },
+  {
+    "id": "MED005",
+    "question": "acid reflux and heartburn",
+    "variations": [
+      "stomach acidity",
+      "burning chest",
+      "gastric help",
+      "omeprazole usage"
+    ],
+    "answer": "**Managing Heartburn & Acidity:**\n\n**Recommended Support:**\n• **Immediate Relief:** Gaviscon or Risek Insta.\n• **Prevention:** Omeprazole (Risek, Omep) - Take 30 mins before breakfast.\n\n**Life-Style Tips:**\n• Avoid spicy or fatty foods late at night.\n• Sleep with your head slightly elevated.\n• Eat smaller, frequent meals.\n\n⚠️ **Note:** If you experience frequent \"heartburn\" accompanied by jaw or arm pain, seek emergency cardiac care immediately.",
+    "category": "medical_guidance",
+    "tags": [
+      "acidity",
+      "heartburn",
+      "gastric",
+      "stomach"
+    ]
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "comp_30000",
+    "question": "Who is the CEO?",
+    "variations": [
+      "owner",
+      "founder",
+      "who runs this",
+      "CEO name",
+      "Ejaz Malik"
+    ],
+    "answer": "The CEO and founder of Swift Sales Healthcare is **Ejaz Malik**. Under his leadership since 2012, we have grown from a small team of 5 to a major healthcare group.",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  },
+  {
+    "id": "comp_30001",
+    "question": "What is your innovation?",
+    "variations": [
+      "new technology",
+      "how do you use AI",
+      "what makes you different",
+      "do you have a mobile app"
+    ],
+    "answer": "Our core innovation is **SwiftBot**! We don't have a separate mobile app; instead, we've built an AI assistant that allows you to search products and place orders directly through this chat interface or WhatsApp.",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  },
+  {
+    "id": "comp_30002",
+    "question": "How long have you been in business?",
+    "variations": [
+      "years in business",
+      "established when",
+      "how old is company",
+      "since when"
+    ],
+    "answer": "Swift Sales Healthcare has been serving Pakistan since **2012**. Our journey began as a wholesale distributor with an initial team of 5 and has evolved into a group of companies.",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  },
+  {
+    "id": "comp_30003",
+    "question": "Are you licensed?",
+    "variations": [
+      "drug license",
+      "registration",
+      "are you legal",
+      "authorized dealer"
+    ],
+    "answer": "Yes, we are fully licensed and registered:\n• **Drug License**: Valid and current\n• **NTN**: Registered with FBR\n• **Authorized Distributor**: For 34+ manufacturers\n\nYour health and safety are our top priorities!",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  },
+  {
+    "id": "comp_30004",
+    "question": "How many products do you have?",
+    "variations": [
+      "catalog size",
+      "total products",
+      "how many medicines",
+      "product range"
+    ],
+    "answer": "We manage over **2,136 registered pharmaceutical products** from **34 top-tier manufacturers**! Our extensive catalog covers everything from common medicines to specialized treatments.",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  },
+  {
+    "id": "comp_30005",
+    "question": "How to become a partner?",
+    "variations": [
+      "partnership",
+      "become partner",
+      "work with you",
+      "business inquiry"
+    ],
+    "answer": "We welcome new partnerships! Please contact our CEO at **swiftsales.healthcare@gmail.com**, visit our head office in Rahim Yar Khan, or send a query through our contact page. Our team will contact you soon. Thank you!",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  },
+  {
+    "id": "comp_30006",
+    "question": "Is this a registered company?",
+    "variations": [
+      "are you registered",
+      "is swift sales registered",
+      "registration details",
+      "licensing information",
+      "drug license Number",
+      "is this resgisterd comapny",
+      "is this registerd company",
+      "is this registred company",
+      "registerd or not",
+      "resgisterd comapny",
+      "registred comapony",
+      "are you legal",
+      "official registration",
+      "government approval",
+      "ministry of health registered",
+      "pharmacy council pakistan",
+      "ntn number",
+      "tax registration",
+      "is company authorized",
+      "licensed dealer",
+      "authentic distributor",
+      "drug selling license",
+      "punjab drug license",
+      "registered with drug regulatory authority",
+      "is this a real company",
+      "company credentials",
+      "legal status",
+      "business registration",
+      "company license",
+      "official license",
+      "verified company",
+      "licensed pharmacy",
+      "resgisterd from pakistan",
+      "registered in pakistan",
+      "registerd company"
+    ],
+    "answer": "Yes, **Swift Sales Healthcare** is a fully licensed and registered pharmaceutical distribution company. 🛡️\n\n✅ **Drug Selling License:** DL-145 (Punjab)\n✅ **NTN (Tax Registration):** 3456789-0\n✅ **Approved By:** Ministry of Health & Pakistan Pharmacy Council\n✅ **Compliance:** FDA Compliant & GDP Certified\n\nWe operate 100% legally and ethically, sourcing only authentic medicines from licensed manufacturers.",
+    "category": "Company Information",
+    "products": [],
+    "tags": [
+      "company",
+      "about us",
+      "trust",
+      "credentials"
+    ]
+  }
+]
