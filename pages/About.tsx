@@ -94,11 +94,11 @@ const About: React.FC = () => {
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               Your Reliable <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Healthcare Partner.
+                Distribution Partner.
               </span>
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              Swift Sales is dedicated to serving the local distribution sector. We connect manufacturers to distributors and retailers, ensuring safe, consistent, and easy access to essential products.
+              Swift Sales is a premier distribution group and a strategic partner to global manufacturers. We operate at the highest tier of the supply chain, ensuring that essential products are delivered with uncompromising precision and reliability across the region.
             </p>
           </div>
         </div>
