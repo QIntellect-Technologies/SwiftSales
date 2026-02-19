@@ -530,7 +530,7 @@ export const LEADERSHIP = [
     quote: 'Committed to financial integrity and transparency.',
     bio: 'Ensuring all accounts are managed with precision and honesty for the growth of Swift Sales.',
     bioExtended: 'With a keen eye for detail, I strive to maintain the financial health and trust of our company.',
-    img: '/public/Team Images/naveed.jpg',
+    img: '/Team Images/Naveed Anjum - Manager.jpeg',
     signature: 'Naveed Anjum'
   },
   {
@@ -540,7 +540,7 @@ export const LEADERSHIP = [
     quote: 'Driving sales with passion and vision.',
     bio: 'Leading the sales team to achieve new milestones and expand our reach.',
     bioExtended: 'My focus is on building strong client relationships and delivering results.',
-    img: '/public/Team Images/wajhat.jpg',
+    img: '/Team Images/Malik Wajahat - Sales Head.jpeg',
     signature: 'Malik Wajhat'
   },
   {
@@ -550,7 +550,7 @@ export const LEADERSHIP = [
     quote: 'Empowering Swift Sales with technology.',
     bio: 'Managing IT infrastructure to ensure seamless operations.',
     bioExtended: 'I am dedicated to implementing innovative solutions for business efficiency.',
-    img: '/public/Team Images/asad.jpg',
+    img: '/Team Images/Asad Malik - Computer Exective.jpeg',
     signature: 'Asad Ullah'
   },
   {
@@ -560,7 +560,7 @@ export const LEADERSHIP = [
     quote: 'Accuracy is the key to reliable data.',
     bio: 'Responsible for precise and timely data entry for all operations.',
     bioExtended: 'I ensure that every record is up-to-date and error-free.',
-    img: '/public/Team Images/ahmad.jpg',
+    img: '/Team Images/M. Ahmed - Assistant Manager.jpeg',
     signature: 'M. Ahmad'
   },
   {
@@ -570,7 +570,7 @@ export const LEADERSHIP = [
     quote: 'Organization is the backbone of success.',
     bio: 'Overseeing administrative tasks to keep the company running smoothly.',
     bioExtended: 'I support all departments to ensure a productive work environment.',
-    img: '/public/Team Images/sadeem.jpg',
+    img: '/Team Images/Malika Sadeem - Faculty Manager.jpeg',
     signature: 'Malik Sadeem'
   },
   {
@@ -580,7 +580,7 @@ export const LEADERSHIP = [
     quote: 'Ensuring warehouse compliance and accuracy.',
     bio: 'Auditing warehouse operations for quality and efficiency.',
     bioExtended: 'My goal is to maintain the highest standards in inventory management.',
-    img: '/public/Team Images/hameed.jpg',
+    img: '/images/placeholder_user.jpg', // Placeholder as no specific image found
     signature: 'Abdul Hameed'
   },
   {
@@ -590,7 +590,7 @@ export const LEADERSHIP = [
     quote: 'Managing inventory with dedication.',
     bio: 'Responsible for the overall management of warehouse operations.',
     bioExtended: 'I ensure timely dispatch and safe storage of all products.',
-    img: '/public/Team Images/tahseen.jpg',
+    img: '/Team Images/Tahseen ahmad.jpeg',
     signature: 'Tahseen Ahmad'
   },
   {
@@ -600,27 +600,27 @@ export const LEADERSHIP = [
     quote: 'Supporting efficient warehouse operations.',
     bio: 'Assisting in all aspects of warehouse management.',
     bioExtended: 'I help coordinate logistics and maintain order in the warehouse.',
-    img: '/public/Team Images/ismail.jpg',
+    img: '/Team Images/M. Ismail - Story BOY.jpeg',
     signature: 'Ismail'
   },
   {
     id: 'zohaib',
     name: 'Zohaib',
-    role: 'Stock In/Out Officer',
+    role: 'Stock In/Out',
     quote: 'Managing stock with precision.',
     bio: 'Handling all stock in and out processes with care.',
     bioExtended: 'I ensure inventory records are always accurate and up-to-date.',
-    img: '/public/Team Images/zohaib.jpg',
+    img: '/Team Images/M. Zohaib - Cook.jpeg',
     signature: 'Zohaib'
   },
   {
     id: 'sageer',
     name: 'Sageer Ahmad',
-    role: 'Stock In/Out Officer',
+    role: 'Stock In/Out',
     quote: 'Every item counts.',
     bio: 'Responsible for tracking and managing stock movements.',
     bioExtended: 'I work to prevent discrepancies and maintain stock integrity.',
-    img: '/public/Team Images/sageer.jpg',
+    img: '/Team Images/Sagheer Ahmed.jpeg',
     signature: 'Sageer Ahmad'
   }
 ];
