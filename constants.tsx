@@ -524,53 +524,103 @@ export const SOLE_DISTRIBUTORS = [
 
 export const LEADERSHIP = [
   {
-    id: 'ejaz',
-    name: 'Ejaz Malik',
-    role: 'Chief Executive Officer',
-    quote: 'Systems always win.',
-    bio: "In my two decades of experience, from a sales representative to a founder, I've learned one absolute truth: people can falter, but robust systems never do. Swift Sales was built on this foundation of systemic excellence, ensuring that life saving medicine is never a matter of luck, but a result of a process.",
-    bioExtended: "Our evolution from a small team in 2012 to a group of companies today is a testament to the power of structured operations. We don't just distribute medicine. We deploy a reliable, technology driven framework that guarantees availability and integrity for every patient, every single time. Systems are the backbone of trust.",
-    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
-    signature: 'Ejaz Malik'
+    id: 'naveed',
+    name: 'Naveed Anjum',
+    role: 'Accounts Manager',
+    quote: 'Committed to financial integrity and transparency.',
+    bio: 'Ensuring all accounts are managed with precision and honesty for the growth of Swift Sales.',
+    bioExtended: 'With a keen eye for detail, I strive to maintain the financial health and trust of our company.',
+    img: '/public/Team Images/naveed.jpg',
+    signature: 'Naveed Anjum'
   },
   {
-    id: 'amina',
-    name: 'Ms. Amina Khan',
-    role: 'Chief Operating Officer',
-    quote: 'Efficiency in logistics saves lives in clinics.',
-    bio: 'Operational excellence is the heartbeat of our distribution network. We pride ourselves on the precision of our cold chain and the speed of our local delivery fleet.',
-    bioExtended: 'By optimizing every route and every warehouse protocol, we ensure that medicines remain effective and accessible, especially in the most remote districts of our territory.',
-    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
-    signature: 'Amina Khan'
+    id: 'wajhat',
+    name: 'Malik Wajhat',
+    role: 'Director Sales',
+    quote: 'Driving sales with passion and vision.',
+    bio: 'Leading the sales team to achieve new milestones and expand our reach.',
+    bioExtended: 'My focus is on building strong client relationships and delivering results.',
+    img: '/public/Team Images/wajhat.jpg',
+    signature: 'Malik Wajhat'
   },
   {
-    id: 'faisal',
-    name: 'Mr. Faisal Qureshi',
-    role: 'Chief Technology Officer',
-    quote: 'Technology bridges the gap between demand and supply.',
-    bio: 'At Swift Sales, we believe in a data driven future. Our SwiftBot AI and smart inventory management are key to eliminating human error in healthcare logistics.',
-    bioExtended: 'Innovation isn\'t just a buzzword for us. It is a tool to ensure transparency, traceability, and 100% stock accuracy for our partners at all times.',
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop',
-    signature: 'Faisal Q.'
+    id: 'asad',
+    name: 'Asad Ullah',
+    role: 'Manager IT',
+    quote: 'Empowering Swift Sales with technology.',
+    bio: 'Managing IT infrastructure to ensure seamless operations.',
+    bioExtended: 'I am dedicated to implementing innovative solutions for business efficiency.',
+    img: '/public/Team Images/asad.jpg',
+    signature: 'Asad Ullah'
   },
   {
-    id: 'saira',
-    name: 'Dr. Saira Ahmed',
-    role: 'Medical Director',
-    quote: 'Integrity is the most essential ingredient in medicine.',
-    bio: 'Ensuring that every product we distribute is authentic and properly handled is my primary mission. We adhere to the strictest international quality standards.',
-    bioExtended: 'Patient safety is non-negotiable. Our rigorous screening of manufacturers and batch-level verification provide the security that hospitals and pharmacies deserve.',
-    img: 'https://images.unsplash.com/photo-1559839734-2b71f153673e?q=80&w=800&auto=format&fit=crop',
-    signature: 'Dr. Saira A.'
+    id: 'ahmad',
+    name: 'M. Ahmad',
+    role: 'Data Entry Operator',
+    quote: 'Accuracy is the key to reliable data.',
+    bio: 'Responsible for precise and timely data entry for all operations.',
+    bioExtended: 'I ensure that every record is up-to-date and error-free.',
+    img: '/public/Team Images/ahmad.jpg',
+    signature: 'M. Ahmad'
   },
   {
-    id: 'rohail',
-    name: 'Mr. Rohail Sheikh',
-    role: 'Head of Supply Chain',
-    quote: 'Logistics is about the promise, not just the package.',
-    bio: 'My team works around the clock to ensure that our network hub in Rahim Yar Khan is always stocked and ready for immediate deployment.',
-    bioExtended: 'We don\'t just manage inventory. We manage a promise made to our partners that the healthcare vital link will never be broken, no matter the challenges.',
-    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
-    signature: 'Rohail S.'
+    id: 'sadeem',
+    name: 'Malik Sadeem',
+    role: 'Admin',
+    quote: 'Organization is the backbone of success.',
+    bio: 'Overseeing administrative tasks to keep the company running smoothly.',
+    bioExtended: 'I support all departments to ensure a productive work environment.',
+    img: '/public/Team Images/sadeem.jpg',
+    signature: 'Malik Sadeem'
+  },
+  {
+    id: 'hameed',
+    name: 'Abdul Hameed',
+    role: 'Ware House Audit Manager',
+    quote: 'Ensuring warehouse compliance and accuracy.',
+    bio: 'Auditing warehouse operations for quality and efficiency.',
+    bioExtended: 'My goal is to maintain the highest standards in inventory management.',
+    img: '/public/Team Images/hameed.jpg',
+    signature: 'Abdul Hameed'
+  },
+  {
+    id: 'tahseen',
+    name: 'Tahseen Ahmad',
+    role: 'Ware House Manager',
+    quote: 'Managing inventory with dedication.',
+    bio: 'Responsible for the overall management of warehouse operations.',
+    bioExtended: 'I ensure timely dispatch and safe storage of all products.',
+    img: '/public/Team Images/tahseen.jpg',
+    signature: 'Tahseen Ahmad'
+  },
+  {
+    id: 'ismail',
+    name: 'Ismail',
+    role: 'Assistant Manager Ware House',
+    quote: 'Supporting efficient warehouse operations.',
+    bio: 'Assisting in all aspects of warehouse management.',
+    bioExtended: 'I help coordinate logistics and maintain order in the warehouse.',
+    img: '/public/Team Images/ismail.jpg',
+    signature: 'Ismail'
+  },
+  {
+    id: 'zohaib',
+    name: 'Zohaib',
+    role: 'Stock In/Out Officer',
+    quote: 'Managing stock with precision.',
+    bio: 'Handling all stock in and out processes with care.',
+    bioExtended: 'I ensure inventory records are always accurate and up-to-date.',
+    img: '/public/Team Images/zohaib.jpg',
+    signature: 'Zohaib'
+  },
+  {
+    id: 'sageer',
+    name: 'Sageer Ahmad',
+    role: 'Stock In/Out Officer',
+    quote: 'Every item counts.',
+    bio: 'Responsible for tracking and managing stock movements.',
+    bioExtended: 'I work to prevent discrepancies and maintain stock integrity.',
+    img: '/public/Team Images/sageer.jpg',
+    signature: 'Sageer Ahmad'
   }
 ];
