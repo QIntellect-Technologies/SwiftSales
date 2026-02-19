@@ -564,16 +564,6 @@ export const LEADERSHIP = [
     signature: 'Asad Ullah'
   },
   {
-    id: 'yaseen',
-    name: 'Dr. Ghulam Yaseen',
-    role: 'Qualified Person',
-    quote: 'Quality assurance is our commitment to partner safety.',
-    bio: 'Overseeing regulatory compliance and medicinal standards.',
-    bioExtended: 'Ensuring that every product distributed meets the highest safety certifications.',
-    img: 'https://ui-avatars.com/api/?name=Dr+Ghulam+Yaseen&background=0D8ABC&color=fff',
-    signature: 'Dr Ghulam Yaseen'
-  },
-  {
     id: 'tahseen',
     name: 'Tahseen Ahmad',
     role: 'Warehouse Manager',
