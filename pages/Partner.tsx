@@ -62,7 +62,7 @@ const Partners: React.FC = () => {
                      </span>
                   </h1>
                   <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                     We collaborate with the best manufacturers and tech leaders to keep our city's healthcare reliable. Every partner is chosen for their high standards in medicine and safety.
+                     We collaborate with the best manufacturers and tech leaders to keep our city's supply chain reliable. Every partner is chosen for their high standards in distribution and safety.
                   </p>
                </div>
             </div>
@@ -346,7 +346,7 @@ const Partners: React.FC = () => {
 
                      <h2 className="text-5xl lg:text-6xl font-black text-white leading-tight">
                         Powering <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">City Healthcare.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">City Distribution.</span>
                      </h2>
 
                      <p className="text-slate-300 text-xl leading-relaxed font-light border-l-4 border-blue-500 pl-6">

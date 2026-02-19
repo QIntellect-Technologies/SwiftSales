@@ -98,7 +98,7 @@ const About: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              Swift Sales is dedicated to serving the local healthcare sector. We connect manufacturers to pharmacies and clinics, ensuring safe, consistent, and easy access to essential medicines.
+              Swift Sales is dedicated to serving the local distribution sector. We connect manufacturers to distributors and retailers, ensuring safe, consistent, and easy access to essential products.
             </p>
           </div>
         </div>
@@ -133,7 +133,7 @@ const About: React.FC = () => {
               We started as a simple delivery service and grew into the city's most trusted partner for medicine. Today, we handle supplies for the biggest manufacturers, making sure life saving drugs reach every neighborhood.
             </p>
             <p className="text-slate-600 text-lg leading-relaxed">
-              We believe that healthcare depends on safety and speed. That is why we focus on getting the right medicine to your local pharmacy, clinic, or hospital exactly when it is needed.
+              We believe that distribution depends on safety and speed. That is why we focus on getting the right products to your local hub or facility exactly when it is needed.
             </p>
 
             <div className="grid grid-cols-2 gap-6 pt-4">

@@ -18,11 +18,11 @@ class RAGService {
         this.faqVectors = null;
 
         this.companyInfo = {
-            name: "Swift Sales Healthcare",
+            name: "Swift Sales Distributer",
             shortName: "Swift Sales",
             owner: "Malik Ejaz",
             ceo: "Malik Ejaz",
-            ceoMessage: "Providing quality healthcare products with integrity and speed.",
+            ceoMessage: "Providing quality distribution services with integrity and speed.",
             established: "2012",
             history: {
                 2012: "Swift Sales Launch - Started Swift Sales in Feb 2012 as a wholesale distributor with an initial team of 5.",
@@ -548,7 +548,7 @@ class RAGService {
             }
 
             // Create professional pharmaceutical assistant prompt
-            const systemPrompt = `You are SwiftBot, a professional AI pharmaceutical assistant for Swift Sales Healthcare.
+            const systemPrompt = `You are SwiftBot, a professional AI distribution assistant for Swift Sales Distributer.
 
 COMMUNICATION STYLE:
 - FIRST: Acknowledge what the customer said (show you heard them)
