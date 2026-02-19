@@ -24,7 +24,7 @@ export const MILESTONES = [
   { year: '2015', title: 'Scaling Operations', description: 'Expanded operations significantly and secured key distribution partnerships with leading companies.' },
   { year: '2018', title: 'Resilience through COVID', description: 'Navigated global market challenges and economic shifts, focusing on resilience and adaptation.' },
   { year: '2021', title: 'The Comeback', description: 'Regained strong momentum, strengthening our foundation and expanding our dedicated workforce.' },
-  { year: '2024', title: 'Group Expansion', description: 'Successfully evolved into a group of companies, broadening our impact across the healthcare sector.' },
+  { year: '2024', title: 'Group Expansion', description: 'Successfully evolved into a group of companies, broadening our impact across the distribution sector.' },
   { year: '2026', title: 'Future Vision', description: 'Projected significant organizational growth, driven by modern systems and operational excellence.' },
   { year: 'Beyond', title: 'Continuous Evolution', description: 'Our journey never ends. We remain committed to refining our systems and expanding our reach for decades to come.' },
 ];
@@ -527,21 +527,11 @@ export const LEADERSHIP = [
     id: 'ejaz',
     name: 'Malik Muhammad Ejaz',
     role: 'CEO & Founder',
-    quote: 'Honesty and timely delivery are the two pillars of my business.',
-    bio: 'Leading SWIFT SALES DISTRIBUTER with a vision to create a distribution network that everyone can trust.',
-    bioExtended: 'With over 20 years of experience in sales and logistics, I am dedicated to delivering quality and speed to our partners.',
+    quote: 'Integrity and timely delivery are the cornerstones of our success.',
+    bio: 'The visionary leader behind Swift Sales, dedicated to transforming distribution through excellence.',
+    bioExtended: 'With over two decades of experience, I have led the company from a simple delivery service to the city\'s most trusted partner.',
     img: '/Team Images/Malik Muhammad Ejaz.jpeg',
     signature: 'Malik Muhammad Ejaz'
-  },
-  {
-    id: 'naveed',
-    name: 'Naveed Anjum',
-    role: 'Manager',
-    quote: 'Committed to financial integrity and transparency.',
-    bio: 'Ensuring all operations are managed with precision and honesty for the growth of Swift Sales.',
-    bioExtended: 'With a keen eye for detail, I strive to maintain the financial health and trust of our company.',
-    img: '/Team Images/Naveed Anjum - Manager.jpeg',
-    signature: 'Naveed Anjum'
   },
   {
     id: 'wajhat',
@@ -554,22 +544,52 @@ export const LEADERSHIP = [
     signature: 'Malik Wajahat'
   },
   {
+    id: 'naveed',
+    name: 'Naveed Anjum',
+    role: 'Manager',
+    quote: 'Efficiency and organization are key to operational success.',
+    bio: 'Ensuring all operations are managed with precision and transparency.',
+    bioExtended: 'Maintaining high standards in management to foster company growth and trust.',
+    img: '/Team Images/Naveed Anjum - Manager.jpeg',
+    signature: 'Naveed Anjum'
+  },
+  {
     id: 'asad',
     name: 'Asad Malik',
     role: 'Computer Executive',
-    quote: 'Empowering Swift Sales with technology.',
-    bio: 'Managing IT infrastructure to ensure seamless operations.',
-    bioExtended: 'I am dedicated to implementing innovative solutions for business efficiency.',
+    quote: 'Empowering operations through technological efficiency.',
+    bio: 'Managing IT systems to ensure seamless business workflow.',
+    bioExtended: 'Dedicated to implementing tech solutions that drive productivity.',
     img: '/Team Images/Asad Malik - Computer Exective.jpeg',
     signature: 'Asad Malik'
   },
   {
-    id: 'ahmad',
+    id: 'yaseen',
+    name: 'Dr. Ghulam Yaseen',
+    role: 'Qualified Person',
+    quote: 'Quality assurance is our commitment to patient safety.',
+    bio: 'Overseeing regulatory compliance and medicinal standards.',
+    bioExtended: 'Ensuring that every product distributed meets the highest safety certifications.',
+    img: '/Team Images/Dr Ghulam Yaseen.jpeg',
+    signature: 'Dr Ghulam Yaseen'
+  },
+  {
+    id: 'tahseen',
+    name: 'Tahseen Ahmad',
+    role: 'Ware House Manager',
+    quote: 'Managing inventory with meticulous dedication.',
+    bio: 'Responsible for the overall management of warehouse operations.',
+    bioExtended: 'Ensuring timely dispatch and safest storage of all pharmaceutical products.',
+    img: '/Team Images/Tahseen ahmad.jpeg',
+    signature: 'Tahseen Ahmad'
+  },
+  {
+    id: 'ahmed',
     name: 'M. Ahmed',
     role: 'Assistant Manager',
-    quote: 'Accuracy is the key to reliable data.',
-    bio: 'Responsible for precise and timely management support for all operations.',
-    bioExtended: 'I ensure that every record is up-to-date and operations run smoothly.',
+    quote: 'Supporting the foundation of reliable supply chains.',
+    bio: 'Responsible for internal operations assistance and data integrity.',
+    bioExtended: 'Working to ensure that every record and operation is handled with care.',
     img: '/Team Images/M. Ahmed - Assistant Manager.jpeg',
     signature: 'M. Ahmed'
   },
@@ -577,29 +597,19 @@ export const LEADERSHIP = [
     id: 'sadeem',
     name: 'Malika Sadeem',
     role: 'Faculty Manager',
-    quote: 'Organization is the backbone of success.',
-    bio: 'Overseeing administrative tasks to keep the company running smoothly.',
-    bioExtended: 'I support all departments to ensure a productive work environment.',
+    quote: 'A productive environment is built on strong management.',
+    bio: 'Overseeing administrative and faculty coordination.',
+    bioExtended: 'Supporting every department to maintain a seamless office workflow.',
     img: '/Team Images/Malika Sadeem - Faculty Manager.jpeg',
     signature: 'Malika Sadeem'
-  },
-  {
-    id: 'tahseen',
-    name: 'Tahseen Ahmad',
-    role: 'Warehouse Manager',
-    quote: 'Managing inventory with dedication.',
-    bio: 'Responsible for the overall management of warehouse operations.',
-    bioExtended: 'I ensure timely dispatch and safe storage of all products.',
-    img: '/Team Images/Tahseen ahmad.jpeg',
-    signature: 'Tahseen Ahmad'
   },
   {
     id: 'ismail',
     name: 'M. Ismail',
     role: 'Store Boy',
-    quote: 'Supporting efficient warehouse operations.',
-    bio: 'Assisting in all aspects of warehouse management.',
-    bioExtended: 'I help coordinate logistics and maintain order in the warehouse.',
+    quote: 'Every box handled with professional care.',
+    bio: 'Assisting in warehouse logistics and stock organization.',
+    bioExtended: 'Maintaining order and efficiency within our distribution hub.',
     img: '/Team Images/M. Ismail - Story BOY.jpeg',
     signature: 'M. Ismail'
   },
@@ -607,20 +617,81 @@ export const LEADERSHIP = [
     id: 'zohaib',
     name: 'M. Zohaib',
     role: 'Cook',
-    quote: 'Managing nutrition and wellness with care.',
-    bio: 'Responsible for the well-being and fuel of our hardworking team.',
-    bioExtended: 'I ensure our team is energized and ready to serve our partners.',
+    quote: 'Nourishing the team that serves our partners.',
+    bio: 'Ensuring the well-being of our staff through hospitality.',
+    bioExtended: 'A healthy team is a strong team, dedicated to our common mission.',
     img: '/Team Images/M. Zohaib - Cook.jpeg',
     signature: 'M. Zohaib'
   },
   {
     id: 'sageer',
     name: 'Sagheer Ahmed',
-    role: 'Stock In/Out',
-    quote: 'Every item counts.',
-    bio: 'Responsible for tracking and managing stock movements.',
-    bioExtended: 'I work to prevent discrepancies and maintain stock integrity.',
+    role: 'Stock Management',
+    quote: 'Precision in every stock movement.',
+    bio: 'Responsible for tracking and managing stock inventory.',
+    bioExtended: 'Ensuring records are accurate to prevent any supply chain delays.',
     img: '/Team Images/Sagheer Ahmed.jpeg',
     signature: 'Sagheer Ahmed'
+  },
+  {
+    id: 'yasir',
+    name: 'Muhammad Yasir',
+    role: 'Sales Man',
+    quote: 'Connecting pharmacies with essential health solutions.',
+    bio: 'Bringing our services and products to the local market sector.',
+    bioExtended: 'Building trust with our partners in the field through reliable service.',
+    img: '/Team Images/Muhammad Yasir Sales Man.jpeg',
+    signature: 'Muhammad Yasir'
+  },
+  {
+    id: 'rizwan',
+    name: 'Rizwan Hussain',
+    role: 'Sales Man',
+    quote: 'Reliability in every client interaction.',
+    bio: 'Directly engaging with our partner network to fulfill their needs.',
+    bioExtended: 'Ensuring that life-saving drugs are always available at the point of sale.',
+    img: '/Team Images/Rizwan Hussain - Sales Man.jpeg',
+    signature: 'Rizwan Hussain'
+  },
+  {
+    id: 'azam',
+    name: 'Azam Khan',
+    role: 'Driver',
+    quote: 'Swift delivery, safe handling.',
+    bio: 'Ensuring medicines reach their destination on time, every time.',
+    bioExtended: 'Specialized in handling temperature-sensitive cargo during transit.',
+    img: '/Team Images/Azam Khan - Driver.jpeg',
+    signature: 'Azam Khan'
+  },
+  {
+    id: 'irfan',
+    name: 'Irfan Ullah',
+    role: 'Driver',
+    quote: 'Committed to the safest possible distribution.',
+    bio: 'Navigating city routes to ensure timely market access.',
+    bioExtended: 'Critical part of our logistics fleet ensuring wide city coverage.',
+    img: '/Team Images/Irfan Ullah - dRIVER.jpeg',
+    signature: 'Irfan Ullah'
+  },
+  {
+    id: 'danish',
+    name: 'Danish Ali',
+    role: 'Store Boy',
+    quote: 'Accuracy and speed in every order.',
+    bio: 'Vital link in our warehouse organization and picking process.',
+    bioExtended: 'Handling thousands of products with precision to ensure correct dispatch.',
+    img: '/Team Images/Danish Ali - Store Boy.jpeg',
+    signature: 'Danish Ali'
+  },
+  {
+    id: 'faisal',
+    name: 'M. Faisal',
+    role: 'Sweeper',
+    quote: 'Cleanliness is critical in distribution logistics.',
+    bio: 'Ensuring our warehouse and facilities meet peak sanitation standards.',
+    bioExtended: 'Creating a safe and sterile environment for medicinal storage.',
+    img: '/Team Images/M. Faisal - Sweeper.jpeg',
+    signature: 'M. Faisal'
   }
 ];
+

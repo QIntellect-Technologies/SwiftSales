@@ -9,15 +9,15 @@ interface SEOProps {
 
 export const SEO: React.FC<SEOProps> = ({
     title,
-    description = "Swift Sales Healthcare - Premier Medicine Distributor in Rahim Yar Khan & Pakistan. Reliable cold chain supply, genuine medicines, and 100% compliant distribution.",
-    keywords = "Medicine Distributor, Rahim Yar Khan, Pharma Pakistan, Cold Chain, Swift Sales Healthcare, Medicine Supply, Pharma Distribution RYK, Authentic Medicine",
+    description = "Swift Sales Distributer - Premier Distributer in Rahim Yar Khan & Pakistan. Reliable cold chain supply, genuine products, and 100% compliant distribution.",
+    keywords = "Medicine Distributor, Rahim Yar Khan, Distribution Pakistan, Cold Chain, Swift Sales Distributer, Product Supply, Distribution RYK, Authentic Products",
 }) => {
     return (
         <Helmet>
-            <title>{title} | Swift Sales Healthcare</title>
+            <title>{title} | Swift Sales Distributer</title>
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
-            <meta property="og:title" content={`${title} | Swift Sales Healthcare`} />
+            <meta property="og:title" content={`${title} | Swift Sales Distributer`} />
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
         </Helmet>

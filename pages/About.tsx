@@ -75,7 +75,7 @@ const About: React.FC = () => {
       <SEO
         title="About Us"
         description="Learn about Swift Sales Healthcare's journey from Rahim Yar Khan to becoming Pakistan's most trusted medicine distributor. Our mission, leadership, and values."
-        keywords="About Swift Sales, Healthcare Mission, Malik Muhammad Ejaz, Rahim Yar Khan Distributor, Pharma History"
+        keywords="About Swift Sales, Healthcare Mission, Ejaz Malik, Rahim Yar Khan Distributor, Pharma History"
       />
       {/* --- 1. HERO SECTION --- */}
       <section className="relative pt-40 pb-20 bg-slate-50 overflow-hidden">
@@ -126,7 +126,7 @@ const About: React.FC = () => {
 
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Bridging the Gap Between Science and Community.</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Bridging the Gap Between Manufacturers and the Market.</h2>
               <div className="w-20 h-1.5 bg-blue-600 rounded-full mb-6"></div>
             </div>
             <p className="text-slate-600 text-lg leading-relaxed">
@@ -476,7 +476,7 @@ const About: React.FC = () => {
             </p>
             <div className="space-y-3 mb-8">
               <div className="flex items-center gap-3 text-sm text-slate-500 font-bold">
-                <Users size={16} className="text-teal-500" /> Community First
+                <Users size={16} className="text-teal-500" /> Market First
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-500 font-bold">
                 <Activity size={16} className="text-teal-500" /> Life-Saving Focus
@@ -551,7 +551,7 @@ const About: React.FC = () => {
 
                   <div>
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Proprietor</div>
-                    <div className="font-bold text-slate-900">Malik Muhammad Ejaz</div>
+                    <div className="font-bold text-slate-900">Ejaz Malik</div>
                     <div className="text-xs font-mono text-slate-500 mt-1">CNIC: 31303-5361272-9</div>
                   </div>
                   <div>

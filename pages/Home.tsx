@@ -14,8 +14,8 @@ const Home: React.FC = () => {
       <>
          <SEO
             title="Home"
-            description="Swift Sales Healthcare - Ideally located in Rahim Yar Khan, serving as the premier medicine distributor for pharmacies across Pakistan. Cold Chain Experts."
-            keywords="Medicine Distributor, Rahim Yar Khan, Pharmacy Supply, Cold Chain Logistics, Swift Sales, Pakistan Healthcare"
+            description="Swift Sales Distributer - Ideally located in Rahim Yar Khan, serving as the premier distribution partner for pharmacies across Pakistan. Cold Chain Experts."
+            keywords="Medicine Distributor, Rahim Yar Khan, Pharmacy Supply, Cold Chain Logistics, Swift Sales, Pakistan Distribution"
          />
          {/* --- 1. HERO SECTION: THE VITAL LINK --- */}
          <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10 pt-20">
                <div className="max-w-4xl">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in-up">
-                     <MapPin size={14} /> Sole Pharmaceutical Distributor
+                     <MapPin size={14} /> Sole Distributer
                   </div>
 
                   <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10">
                <SectionHeader
                   title="Our Core Mission"
-                  subtitle="Empowering Healthcare through precision distribution, ensuring that every patient, in every district, has access to life saving medication exactly when they need it."
+                  subtitle="Empowering distribution through precision, ensuring that every client, in every district, has access to essential products exactly when they need them."
                />
 
                <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -112,7 +112,7 @@ const Home: React.FC = () => {
                      <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                         <img
                            src="/images/wearhouse_person.jpg"
-                           alt="Healthcare Mission"
+                           alt="Distribution Mission"
                            className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent flex items-end p-10">
@@ -290,7 +290,7 @@ const Home: React.FC = () => {
          <Section className="py-32 bg-slate-50">
             <SectionHeader
                title="Your Trusted Medicine Distributor"
-               subtitle="Service grounded in trust, consistency, and a deep respect for the local healthcare network."
+               subtitle="Service grounded in trust, consistency, and a deep respect for the local distribution network."
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -458,7 +458,7 @@ const Home: React.FC = () => {
 
             <SectionHeader
                title="Trusted by Professionals"
-               subtitle="Direct feedback from the healthcare leaders who rely on our city distribution network."
+               subtitle="Direct feedback from the industry leaders who rely on our city distribution network."
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 relative z-10">

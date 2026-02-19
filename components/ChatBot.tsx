@@ -77,12 +77,12 @@ interface ConditionMapping {
 
 // ==================== COMPANY INFO ====================
 const COMPANY_INFO = {
-    name: "Swift Sales Healthcare",
+    name: "Swift Sales Distributer",
     shortName: "Swift Sales",
     established: "2010",
     owner: "Ejaz Malik",
     ceo: "Ejaz Malik",
-    ceoMessage: "Providing quality healthcare products with integrity and speed.",
+    ceoMessage: "Providing quality products with integrity and speed.",
     headOffice: "Sardar Colony, Rahim Yar Khan, Punjab, Pakistan",
     location: "C8GM+HFF, Sardar Colony, Rahim Yar Khan",
     googleMaps: "https://maps.app.goo.gl/YourLinkHere",
@@ -103,7 +103,7 @@ const COMPANY_INFO = {
     manufacturerCount: "34",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM",
     sunday: "Closed (Emergency Support Available via Phone)",
-    mission: "To provide accessible, quality pharmaceutical care with professional guidance and exceptional customer service, ensuring every patient has access to life-saving medication exactly when they need it.",
+    mission: "To provide accessible, quality distribution with professional guidance and exceptional customer service, ensuring every client has access to essential products exactly when they need them.",
     deliveryInfo: {
         available: true,
         sameDayDelivery: "Orders before 5:00 PM",
@@ -115,136 +115,136 @@ const COMPANY_INFO = {
 // ==================== EXTRAORDINARY GREETING SYSTEM (100+ Variations) ====================
 const GREETING_MESSAGES = {
     morning: [
-        "Good morning! ☀️ Ready to help you find the perfect medicine to start your day right!",
-        "Rise and shine! 🌅 SwiftBot here to assist with all your healthcare needs!",
-        "Morning! Hope you're feeling great today! How can I help with your health? 🌞",
-        "Good morning! Let's make today healthier together! What do you need? 💊",
-        "Hello! Beautiful morning to take care of your health! I'm here to help! 🏥",
-        "Morning! Your pharmaceutical assistant is ready! What can I do for you? ☕",
-        "Good morning! Starting the day with quality healthcare support! 🌄",
+        "Good morning! ☀️ Ready to help you find the perfect products to start your day right!",
+        "Rise and shine! 🌅 SwiftBot here to assist with all your distribution needs!",
+        "Morning! Hope you're feeling great today! How can I help with your order? 🌞",
+        "Good morning! Let's make today more efficient together! What do you need? 📦",
+        "Hello! Beautiful morning to take care of your business! I'm here to help! 🏢",
+        "Morning! Your distribution assistant is ready! What can I do for you? ☕",
+        "Good morning! Starting the day with quality supply chain support! 🌄",
         "Hey there! Morning energy activated! Let's find what you need! ⚡",
-        "Good morning! Fresh start, fresh health! How may I assist? 🌻",
-        "Morning sunshine! SwiftBot ready to brighten your health journey! ✨"
+        "Good morning! Fresh start, fresh business! How may I assist? 🌻",
+        "Morning sunshine! SwiftBot ready to brighten your business journey! ✨"
     ],
     afternoon: [
         "Good afternoon! 🌤️ How can I assist with your pharmaceutical needs?",
-        "Afternoon! Hope your day is going well! What medicine are you looking for? 🏥",
-        "Hello! Midday check-in! How can SwiftBot help you today? 💊",
-        "Good afternoon! Let's take care of your health needs right now! 🌞",
-        "Afternoon! Your trusted pharmaceutical partner is here! What do you need? 💼",
-        "Hey! Afternoon vibes! Ready to help you feel better! 🌺",
-        "Good afternoon! Swift service for your swift recovery! How can I help? ⚡",
-        "Afternoon! Let's find the perfect solution for your health! 🎯",
-        "Hello there! Afternoon wellness check! What brings you here today? 🌿",
-        "Good afternoon! Quality healthcare, quality service! What can I do? 💚"
+        "Afternoon! Hope your day is going well! What products are you looking for? 🏢",
+        "Hello! Midday check-in! How can SwiftBot help you today? 📦",
+        "Good afternoon! Let's take care of your distribution needs right now! 🌞",
+        "Afternoon! Your trusted distribution partner is here! What do you need? 💼",
+        "Hey! Afternoon vibes! Ready to help you grow! 🌺",
+        "Good afternoon! Swift service for your swift growth! How can I help? ⚡",
+        "Afternoon! Let's find the perfect solution for your business! 🎯",
+        "Hello there! Afternoon business check! What brings you here today? 🌿",
+        "Good afternoon! Quality products, quality service! What can I do? 💚"
     ],
     evening: [
         "Good evening! 🌆 How can I help you tonight?",
-        "Evening! Winding down? Let me help with your health needs! 🌙",
-        "Good evening! SwiftBot here for your pharmaceutical questions! 💊",
+        "Evening! Winding down? Let me help with your distribution needs! 🌙",
+        "Good evening! SwiftBot here for your pharmaceutical questions! 📦",
         "Hello! Evening care is just as important! What do you need? 🌃",
-        "Evening! Let's ensure you have everything for a healthy night! 🏥",
-        "Good evening! Your health doesn't sleep, and neither do we! How can I help? 🌟",
-        "Hey! Evening wellness support activated! What brings you here? 🌇",
-        "Good evening! Quality care at any hour! What can I assist with? 💙",
-        "Evening! Let me help you rest easy with the right medicine! 🌜",
-        "Good evening! Swift Sales Healthcare, always here for you! What do you need? ✨"
+        "Evening! Let's ensure you have everything for a successful tomorrow! 🏢",
+        "Good evening! Your business doesn't sleep, and neither do we! How can I help? 🌟",
+        "Hey! Evening distribution support activated! What brings you here? 🌇",
+        "Good evening! Quality products at any hour! What can I assist with? 💙",
+        "Evening! Let me help you rest easy with the right products! 🌜",
+        "Good evening! Swift Sales Distributer, always here for you! What do you need? ✨"
     ],
     night: [
         "Hello! 🌙 Even at night, we're here to help! What do you need?",
-        "Good night! Need something urgent? I'm here 24/7! 💊",
+        "Good night! Need something urgent? I'm here 24/7! 📦",
         "Late night? No problem! SwiftBot is always ready! What can I do? 🌟",
         "Hello! Night owl? Let me help you find what you need! 🦉",
-        "Good evening! Healthcare doesn't wait! How can I assist? 🌃",
-        "Night time wellness check! What brings you here? 💙",
-        "Hello! Burning the midnight oil? Let me help with your health! 🕯️",
-        "Good night! Your health is our priority, anytime! What do you need? 🌙",
-        "Late night care! SwiftBot ready to assist! How can I help? ⭐",
+        "Good evening! Distribution doesn't wait! How can I assist? 🌃",
+        "Night time business check! What brings you here? 💙",
+        "Hello! Burning the midnight oil? Let me help with your stock! 🕯️",
+        "Good night! Your success is our priority, anytime! What do you need? 🌙",
+        "Late night support! SwiftBot ready to assist! How can I help? ⭐",
         "Hello! Even in the quiet hours, we're here for you! What can I do? 🌌"
     ],
     energetic: [
         "Hey there! 🚀 Super excited to help you today! What do you need?",
         "Hello! ⚡ Let's find exactly what you're looking for! Ready when you are!",
         "Hi! 🎯 SwiftBot powered up and ready to assist! What's on your mind?",
-        "Welcome! 💪 Let's tackle your health needs together! How can I help?",
-        "Hey! 🌟 Energized and ready to find the perfect medicine for you!",
-        "Hello! 🔥 Fired up to provide the best pharmaceutical guidance! What do you need?",
+        "Welcome! 💪 Let's tackle your business needs together! How can I help?",
+        "Hey! 🌟 Energized and ready to find the perfect products for you!",
+        "Hello! 🔥 Fired up to provide the best distribution guidance! What do you need?",
         "Hi there! ⚡ Lightning-fast service, caring support! What brings you here?",
-        "Welcome! 🎊 Thrilled to help you on your health journey! What can I do?",
-        "Hey! 💫 Dynamic healthcare support at your service! How may I assist?",
-        "Hello! 🌈 Bringing positive energy to your pharmaceutical needs! What's up?"
+        "Welcome! 🎊 Thrilled to help you on your business journey! What can I do?",
+        "Hey! 💫 Dynamic distribution support at your service! How may I assist?",
+        "Hello! 🌈 Bringing positive energy to your distribution needs! What's up?"
     ],
     professional: [
-        "Welcome to Swift Sales Healthcare. How may I assist you today? 🏥",
-        "Good day. I'm SwiftBot, your pharmaceutical advisor. What do you need? 💊",
-        "Hello. Professional healthcare guidance at your service. How can I help? 📋",
-        "Welcome. Expert pharmaceutical assistance ready. What brings you here? 💼",
-        "Good day. Swift Sales Healthcare - Quality care, every time. What do you need? ✅",
-        "Hello. Your trusted pharmaceutical partner. How may I assist? 🎯",
+        "Welcome to Swift Sales Distributer. How may I assist you today? 🏢",
+        "Good day. I'm SwiftBot, your pharmaceutical advisor. What do you need? 📦",
+        "Hello. Professional distribution guidance at your service. How can I help? 📋",
+        "Welcome. Expert distribution assistance ready. What brings you here? 💼",
+        "Good day. Swift Sales Distributer - Quality care, every time. What do you need? ✅",
+        "Hello. Your trusted distribution partner. How may I assist? 🎯",
         "Welcome. Professional, reliable, caring service. What can I do for you? 💚",
-        "Good day. Expert guidance for your health needs. How can I help? 📊",
-        "Hello. Swift Sales Healthcare - Excellence in pharmaceutical care. What do you need? 🏆",
-        "Welcome. Dedicated to your health and wellness. How may I assist? 💙"
+        "Good day. Expert guidance for your business needs. How can I help? 📊",
+        "Hello. Swift Sales Distributer - Excellence in distribution. What do you need? 🏆",
+        "Welcome. Dedicated to your growth and success. How may I assist? 💙"
     ],
     caring: [
-        "Hello dear! 💚 How are you feeling today? What can I help you with?",
-        "Hi there! 🤗 I'm here to take care of your health needs. What do you need?",
-        "Welcome! 💙 Your wellbeing matters to us. How can I help you feel better?",
-        "Hello! 🌸 Let me help you find the right care. What brings you here?",
-        "Hi! 💛 We care about your health journey. What do you need today?",
-        "Welcome! 🌺 Compassionate care, expert guidance. How can I assist?",
-        "Hello! 💕 Your health is precious to us. What can I do for you?",
-        "Hi there! 🌼 Gentle, caring, professional support. What do you need?",
-        "Welcome! 💖 We're here to support your wellness. How may I help?",
-        "Hello! 🌻 Caring for your health with dedication. What brings you here?"
+        "Hello! 💚 How is your business doing today? What can I help you with?",
+        "Hi there! 🤗 I'm here to take care of your distribution needs. What do you need?",
+        "Welcome! 💙 Your success matters to us. How can I help you grow today?",
+        "Hello! 🌸 Let me help you find the right solution. What brings you here?",
+        "Hi! 💛 We care about your business journey. What do you need today?",
+        "Welcome! 🌺 Dedicated care, expert guidance. How can I assist?",
+        "Hello! 💕 Your success is precious to us. What can I do for you?",
+        "Hi there! 🌼 Gentle, proactive, professional support. What do you need?",
+        "Welcome! 💖 We're here to support your growth. How may I help?",
+        "Hello! 🌻 Caring for your business with dedication. What brings you here?"
     ],
     wellness: [
-        "Hello! 🌿 Let's work towards better health together! What do you need?",
-        "Hi! 💪 Wellness is a journey, and we're here to guide you! How can I help?",
-        "Welcome! 🥗 Your health, our priority! What brings you here today?",
-        "Hello! 🧘 Holistic care, expert advice! What can I assist with?",
-        "Hi there! 🏃 Active health, active life! How may I help you?",
-        "Welcome! 🌱 Growing healthier every day! What do you need?",
-        "Hello! 💚 Wellness starts here! How can I support your health?",
-        "Hi! 🌟 Vibrant health, vibrant life! What brings you to us?",
-        "Welcome! 🍃 Natural care, professional guidance! What can I do?",
-        "Hello! 🌈 Health and happiness go hand in hand! How can I help?"
+        "Hello! 🌿 Let's work towards better business together! What do you need?",
+        "Hi! 💪 Business growth is a journey, and we're here to guide you! How can I help?",
+        "Welcome! 🥗 Your success, our priority! What brings you here today?",
+        "Hello! 🧘 Holistic support, expert advice! What can I assist with?",
+        "Hi there! 🏃 Active distribution, active business! How may I help you?",
+        "Welcome! 🌱 Growing stronger every day! What do you need?",
+        "Hello! 💚 Progress starts here! How can I support your business?",
+        "Hi! 🌟 Vibrant business, vibrant life! What brings you to us?",
+        "Welcome! 🍃 Natural growth, professional guidance! What can I do?",
+        "Hello! 🌈 Efficiency and success go hand in hand! How can I help?"
     ],
     motivational: [
-        "Hello! 💪 You're taking charge of your health - that's amazing! What do you need?",
-        "Hi! 🌟 Every step towards health is a victory! How can I help?",
-        "Welcome! 🎯 You've got this! Let me support your health journey! What do you need?",
-        "Hello! 🚀 Investing in your health is the best decision! How can I assist?",
-        "Hi there! ⭐ Your health matters! Let's find what you need together!",
-        "Welcome! 💫 Taking care of yourself is powerful! What brings you here?",
-        "Hello! 🏆 You're prioritizing your wellbeing - excellent! How can I help?",
-        "Hi! 🌈 Health is wealth, and you're on the right path! What do you need?",
-        "Welcome! ✨ Your commitment to health inspires us! How may I assist?",
-        "Hello! 🎊 Celebrating your health journey! What can I do for you?"
+        "Hello! 💪 You're taking charge of your business - that's amazing! What do you need?",
+        "Hi! 🌟 Every step towards growth is a victory! How can I help?",
+        "Welcome! 🎯 You've got this! Let me support your distribution journey! What do you need?",
+        "Hello! 🚀 Investing in your growth is the best decision! How can I assist?",
+        "Hi there! ⭐ Your success matters! Let's find what you need together!",
+        "Welcome! 💫 Taking care of your supply chain is powerful! What brings you here?",
+        "Hello! 🏆 You're prioritizing your efficiency - excellent! How can I help?",
+        "Hi! 🌈 Stock is wealth, and you're on the right path! What do you need?",
+        "Welcome! ✨ Your commitment to excellence inspires us! How may I assist?",
+        "Hello! 🎊 Celebrating your business journey! What can I do for you?"
     ],
     friendly: [
         "Hey friend! 👋 What can I help you find today?",
         "Hi there! 😊 So glad you're here! What do you need?",
-        "Hello! 🙂 Your friendly pharmaceutical assistant ready! How can I help?",
+        "Hello! 🙂 Your friendly distribution assistant ready! How can I help?",
         "Hey! 👍 Let's find exactly what you're looking for! What's up?",
         "Hi! 😄 Always happy to help! What brings you here?",
-        "Hello there! 🤝 Your health buddy at your service! What do you need?",
-        "Hey! 💬 Let's chat about your health needs! How can I assist?",
-        "Hi friend! 🌟 Ready to help you feel your best! What can I do?",
+        "Hello there! 🤝 Your business partner at your service! What do you need?",
+        "Hey! 💬 Let's chat about your distribution needs! How can I assist?",
+        "Hi friend! 🌟 Ready to help you succeed! What can I do?",
         "Hello! 😊 Friendly service, expert care! What brings you here?",
-        "Hey there! 👋 Let's make your health journey easier! What do you need?"
+        "Hey there! 👋 Let's make your business journey easier! What do you need?"
     ],
     seasonal: [
-        "Hello! 🌸 Spring into better health! How can I help?",
-        "Hi! ☀️ Summer wellness vibes! What do you need today?",
-        "Welcome! 🍂 Fall into good health! How may I assist?",
-        "Hello! ❄️ Winter care essentials! What brings you here?",
-        "Hi! 🌺 Seasonal health support ready! What can I do?",
-        "Welcome! 🌞 Sunshine and health! How can I help you?",
-        "Hello! 🍁 Autumn wellness check! What do you need?",
-        "Hi! ⛄ Cozy health care! How may I assist you?",
-        "Welcome! 🌼 Blooming with health! What brings you here?",
-        "Hello! 🌤️ Weather the season with good health! What can I do?"
+        "Hello! 🌸 Spring into better business! How can I help?",
+        "Hi! ☀️ Summer growth vibes! What do you need today?",
+        "Welcome! 🍂 Fall into good business! How may I assist?",
+        "Hello! ❄️ Winter essentials! What brings you here?",
+        "Hi! 🌺 Seasonal support ready! What can I do?",
+        "Welcome! 🌞 Efficiency and growth! How can I help you?",
+        "Hello! 🍁 Autumn business check! What do you need?",
+        "Hi! ⛄ Proactive distribution care! How may I assist you?",
+        "Welcome! 🌼 Blooming with success! What brings you here?",
+        "Hello! 🌤️ Weather the season with good stock! What can I do?"
     ]
 };
 
@@ -716,10 +716,10 @@ export const ChatBot: React.FC = () => {
                     `👔 **Leadership at ${COMPANY_INFO.name}**\n\n` +
                     `**Founder & CEO:** ${COMPANY_INFO.ceo}\n` +
                     `💬 "${COMPANY_INFO.ceoMessage}"\n\n` +
-                    `Under ${COMPANY_INFO.ceo}'s leadership since ${COMPANY_INFO.established}, Swift Sales Healthcare has grown to:\n` +
-                    `• **${COMPANY_INFO.totalProducts}** pharmaceutical products\n` +
+                    `Under ${COMPANY_INFO.ceo}'s leadership since ${COMPANY_INFO.established}, Swift Sales Distributer has grown to:\n` +
+                    `• **${COMPANY_INFO.totalProducts}** products\n` +
                     `• **${COMPANY_INFO.manufacturerCount}** manufacturing partners\n` +
-                    `• **${COMPANY_INFO.yearsOfExcellence}** years of excellence in healthcare\n\n` +
+                    `• **${COMPANY_INFO.yearsOfExcellence}** years of excellence in distribution\n\n` +
                     `📞 **Contact:** ${COMPANY_INFO.phone}\n` +
                     `📧 **Email:** ${COMPANY_INFO.email}\n\n` +
                     `How else can I help you? 😊`
