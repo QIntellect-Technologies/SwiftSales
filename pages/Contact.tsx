@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
       <div className="bg-white">
          <SEO
             title="Contact Us"
-            description="Get in touch with Swift Sales Healthcare in Rahim Yar Khan. Phone: 0301 8670511, Email: customercare.swiftsales@gmail.com. Visit our HQ."
+            description="Get in touch with Swift Sales Healthcare in Rahim Yar Khan. Phone: 03008607811, Email: customercare.swiftsales@gmail.com. Visit our HQ."
             keywords="Contact Swift Sales, Medicine Distributor Phone, Rahim Yar Khan Pharma Contact, Supply Inquiry"
          />
          {/* --- 1. HERO SECTION --- */}
@@ -252,7 +252,7 @@ const Contact: React.FC = () => {
                                     value={formData.phone}
                                     onChange={handleChange}
                                     className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-50 rounded-2xl text-slate-900 font-medium focus:border-blue-500 focus:bg-white outline-none transition-all placeholder:text-slate-300"
-                                    placeholder="e.g. 0301 8670511"
+                                    placeholder="e.g. 03008607811"
                                  />
                               </div>
                            </div>

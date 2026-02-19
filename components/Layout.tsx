@@ -253,7 +253,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </li>
                 <li className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
                   <Phone size={20} className="text-blue-500 shrink-0" />
-                  <span className="text-sm">0301 8670511</span>
+                  <span className="text-sm font-bold text-blue-600">03008607811</span>
                 </li>
                 <li className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
                   <Mail size={20} className="text-blue-500 shrink-0" />
@@ -277,7 +277,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
             <div className="flex flex-col md:flex-row items-center gap-4 text-xs opacity-70">
-              <p>&copy; {new Date().getFullYear()} QIntellect Technologies. All rights reserved. | <a href="mailto:customercare.swiftsales@gmail.com" className="hover:text-blue-400 transition-colors">customercare.swiftsales@gmail.com</a></p>
+              <p>&copy; 2026 QIntellect Technologies. All rights reserved. | <a href="mailto:colab@qintellecttechnologies.com" className="hover:text-blue-400 transition-colors">colab@qintellecttechnologies.com</a></p>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0 font-medium">
               <NavLink to="/privacy" className="hover:text-white transition">Privacy Policy</NavLink>
