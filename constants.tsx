@@ -536,7 +536,7 @@ export const LEADERSHIP = [
   {
     id: 'wajhat',
     name: 'Malik Wajahat',
-    role: 'Sales Head',
+    role: 'Director Sales',
     quote: 'Driving sales with passion and vision.',
     bio: 'Leading the sales team to achieve new milestones and expand our reach.',
     bioExtended: 'My focus is on building strong client relationships and delivering results.',
@@ -546,7 +546,7 @@ export const LEADERSHIP = [
   {
     id: 'naveed',
     name: 'Naveed Anjum',
-    role: 'Manager',
+    role: 'Accounts Manager',
     quote: 'Efficiency and organization are key to operational success.',
     bio: 'Ensuring all operations are managed with precision and transparency.',
     bioExtended: 'Maintaining high standards in management to foster company growth and trust.',
@@ -555,13 +555,13 @@ export const LEADERSHIP = [
   },
   {
     id: 'asad',
-    name: 'Asad Malik',
-    role: 'Computer Executive',
+    name: 'Asad Ullah',
+    role: 'Manager IT',
     quote: 'Empowering operations through technological efficiency.',
     bio: 'Managing IT systems to ensure seamless business workflow.',
     bioExtended: 'Dedicated to implementing tech solutions that drive productivity.',
     img: '/Team Images/Asad Malik - Computer Exective.jpeg',
-    signature: 'Asad Malik'
+    signature: 'Asad Ullah'
   },
   {
     id: 'yaseen',
@@ -576,17 +576,17 @@ export const LEADERSHIP = [
   {
     id: 'tahseen',
     name: 'Tahseen Ahmad',
-    role: 'Ware House Manager',
+    role: 'Warehouse Manager',
     quote: 'Managing inventory with meticulous dedication.',
     bio: 'Responsible for the overall management of warehouse operations.',
-    bioExtended: 'Ensuring timely dispatch and safest storage of all pharmaceutical products.',
+    bioExtended: 'Ensuring timely dispatch and safest storage of all products.',
     img: '/Team Images/Tahseen ahmad.jpeg',
     signature: 'Tahseen Ahmad'
   },
   {
     id: 'ahmed',
     name: 'M. Ahmed',
-    role: 'Assistant Manager',
+    role: 'Data Entry Operator',
     quote: 'Supporting the foundation of reliable supply chains.',
     bio: 'Responsible for internal operations assistance and data integrity.',
     bioExtended: 'Working to ensure that every record and operation is handled with care.',
@@ -595,18 +595,18 @@ export const LEADERSHIP = [
   },
   {
     id: 'sadeem',
-    name: 'Malika Sadeem',
-    role: 'Faculty Manager',
+    name: 'Malik Sadeem',
+    role: 'Admin',
     quote: 'A productive environment is built on strong management.',
-    bio: 'Overseeing administrative and faculty coordination.',
+    bio: 'Overseeing administrative and operational coordination.',
     bioExtended: 'Supporting every department to maintain a seamless office workflow.',
     img: '/Team Images/Malika Sadeem - Faculty Manager.jpeg',
-    signature: 'Malika Sadeem'
+    signature: 'Malik Sadeem'
   },
   {
     id: 'ismail',
     name: 'M. Ismail',
-    role: 'Store Boy',
+    role: 'Assistant Manager Warehouse',
     quote: 'Every box handled with professional care.',
     bio: 'Assisting in warehouse logistics and stock organization.',
     bioExtended: 'Maintaining order and efficiency within our distribution hub.',
@@ -616,17 +616,17 @@ export const LEADERSHIP = [
   {
     id: 'zohaib',
     name: 'M. Zohaib',
-    role: 'Cook',
-    quote: 'Nourishing the team that serves our partners.',
-    bio: 'Ensuring the well-being of our staff through hospitality.',
-    bioExtended: 'A healthy team is a strong team, dedicated to our common mission.',
+    role: 'Stock & Inventory Lead',
+    quote: 'Efficiency in every stock movement.',
+    bio: 'Managing stock visibility and inventory accuracy.',
+    bioExtended: 'A healthy flow of stock ensures a strong team and a successful mission.',
     img: '/Team Images/M. Zohaib - Cook.jpeg',
     signature: 'M. Zohaib'
   },
   {
     id: 'sageer',
     name: 'Sagheer Ahmed',
-    role: 'Stock Management',
+    role: 'Operations Associate',
     quote: 'Precision in every stock movement.',
     bio: 'Responsible for tracking and managing stock inventory.',
     bioExtended: 'Ensuring records are accurate to prevent any supply chain delays.',
@@ -696,7 +696,7 @@ export const LEADERSHIP = [
   {
     id: 'abdul',
     name: 'Abdul Hameed',
-    role: 'Team Member',
+    role: 'Warehouse Audit Manager',
     quote: 'Dedication to service is our priority.',
     bio: 'A vital part of our operational excellence and client support.',
     bioExtended: 'Contributing to the seamless workflow and growth of Swift Sales.',
