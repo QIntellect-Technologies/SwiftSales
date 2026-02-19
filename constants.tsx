@@ -524,69 +524,69 @@ export const SOLE_DISTRIBUTORS = [
 
 export const LEADERSHIP = [
   {
+    id: 'ejaz',
+    name: 'Malik Muhammad Ejaz',
+    role: 'CEO & Founder',
+    quote: 'Honesty and timely delivery are the two pillars of my business.',
+    bio: 'Leading SWIFT SALES DISTRIBUTER with a vision to create a distribution network that everyone can trust.',
+    bioExtended: 'With over 20 years of experience in sales and logistics, I am dedicated to delivering quality and speed to our partners.',
+    img: '/Team Images/Malik Muhammad Ejaz.jpeg',
+    signature: 'Malik Muhammad Ejaz'
+  },
+  {
     id: 'naveed',
     name: 'Naveed Anjum',
-    role: 'Accounts Manager',
+    role: 'Manager',
     quote: 'Committed to financial integrity and transparency.',
-    bio: 'Ensuring all accounts are managed with precision and honesty for the growth of Swift Sales.',
+    bio: 'Ensuring all operations are managed with precision and honesty for the growth of Swift Sales.',
     bioExtended: 'With a keen eye for detail, I strive to maintain the financial health and trust of our company.',
     img: '/Team Images/Naveed Anjum - Manager.jpeg',
     signature: 'Naveed Anjum'
   },
   {
     id: 'wajhat',
-    name: 'Malik Wajhat',
-    role: 'Director Sales',
+    name: 'Malik Wajahat',
+    role: 'Sales Head',
     quote: 'Driving sales with passion and vision.',
     bio: 'Leading the sales team to achieve new milestones and expand our reach.',
     bioExtended: 'My focus is on building strong client relationships and delivering results.',
     img: '/Team Images/Malik Wajahat - Sales Head.jpeg',
-    signature: 'Malik Wajhat'
+    signature: 'Malik Wajahat'
   },
   {
     id: 'asad',
-    name: 'Asad Ullah',
-    role: 'Manager IT',
+    name: 'Asad Malik',
+    role: 'Computer Executive',
     quote: 'Empowering Swift Sales with technology.',
     bio: 'Managing IT infrastructure to ensure seamless operations.',
     bioExtended: 'I am dedicated to implementing innovative solutions for business efficiency.',
     img: '/Team Images/Asad Malik - Computer Exective.jpeg',
-    signature: 'Asad Ullah'
+    signature: 'Asad Malik'
   },
   {
     id: 'ahmad',
-    name: 'M. Ahmad',
-    role: 'Data Entry Operator',
+    name: 'M. Ahmed',
+    role: 'Assistant Manager',
     quote: 'Accuracy is the key to reliable data.',
-    bio: 'Responsible for precise and timely data entry for all operations.',
-    bioExtended: 'I ensure that every record is up-to-date and error-free.',
+    bio: 'Responsible for precise and timely management support for all operations.',
+    bioExtended: 'I ensure that every record is up-to-date and operations run smoothly.',
     img: '/Team Images/M. Ahmed - Assistant Manager.jpeg',
-    signature: 'M. Ahmad'
+    signature: 'M. Ahmed'
   },
   {
     id: 'sadeem',
-    name: 'Malik Sadeem',
-    role: 'Admin',
+    name: 'Malika Sadeem',
+    role: 'Faculty Manager',
     quote: 'Organization is the backbone of success.',
     bio: 'Overseeing administrative tasks to keep the company running smoothly.',
     bioExtended: 'I support all departments to ensure a productive work environment.',
     img: '/Team Images/Malika Sadeem - Faculty Manager.jpeg',
-    signature: 'Malik Sadeem'
-  },
-  {
-    id: 'hameed',
-    name: 'Abdul Hameed',
-    role: 'Ware House Audit Manager',
-    quote: 'Ensuring warehouse compliance and accuracy.',
-    bio: 'Auditing warehouse operations for quality and efficiency.',
-    bioExtended: 'My goal is to maintain the highest standards in inventory management.',
-    img: '/images/placeholder_user.jpg', // Placeholder as no specific image found
-    signature: 'Abdul Hameed'
+    signature: 'Malika Sadeem'
   },
   {
     id: 'tahseen',
     name: 'Tahseen Ahmad',
-    role: 'Ware House Manager',
+    role: 'Warehouse Manager',
     quote: 'Managing inventory with dedication.',
     bio: 'Responsible for the overall management of warehouse operations.',
     bioExtended: 'I ensure timely dispatch and safe storage of all products.',
@@ -595,32 +595,32 @@ export const LEADERSHIP = [
   },
   {
     id: 'ismail',
-    name: 'Ismail',
-    role: 'Assistant Manager Ware House',
+    name: 'M. Ismail',
+    role: 'Store Boy',
     quote: 'Supporting efficient warehouse operations.',
     bio: 'Assisting in all aspects of warehouse management.',
     bioExtended: 'I help coordinate logistics and maintain order in the warehouse.',
     img: '/Team Images/M. Ismail - Story BOY.jpeg',
-    signature: 'Ismail'
+    signature: 'M. Ismail'
   },
   {
     id: 'zohaib',
-    name: 'Zohaib',
-    role: 'Stock In/Out',
-    quote: 'Managing stock with precision.',
-    bio: 'Handling all stock in and out processes with care.',
-    bioExtended: 'I ensure inventory records are always accurate and up-to-date.',
+    name: 'M. Zohaib',
+    role: 'Cook',
+    quote: 'Managing nutrition and wellness with care.',
+    bio: 'Responsible for the well-being and fuel of our hardworking team.',
+    bioExtended: 'I ensure our team is energized and ready to serve our partners.',
     img: '/Team Images/M. Zohaib - Cook.jpeg',
-    signature: 'Zohaib'
+    signature: 'M. Zohaib'
   },
   {
     id: 'sageer',
-    name: 'Sageer Ahmad',
+    name: 'Sagheer Ahmed',
     role: 'Stock In/Out',
     quote: 'Every item counts.',
     bio: 'Responsible for tracking and managing stock movements.',
     bioExtended: 'I work to prevent discrepancies and maintain stock integrity.',
     img: '/Team Images/Sagheer Ahmed.jpeg',
-    signature: 'Sageer Ahmad'
+    signature: 'Sagheer Ahmed'
   }
 ];

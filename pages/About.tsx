@@ -75,7 +75,7 @@ const About: React.FC = () => {
       <SEO
         title="About Us"
         description="Learn about Swift Sales Healthcare's journey from Rahim Yar Khan to becoming Pakistan's most trusted medicine distributor. Our mission, leadership, and values."
-        keywords="About Swift Sales, Healthcare Mission, Ejaz Malik, Rahim Yar Khan Distributor, Pharma History"
+        keywords="About Swift Sales, Healthcare Mission, Malik Muhammad Ejaz, Rahim Yar Khan Distributor, Pharma History"
       />
       {/* --- 1. HERO SECTION --- */}
       <section className="relative pt-40 pb-20 bg-slate-50 overflow-hidden">
@@ -551,7 +551,7 @@ const About: React.FC = () => {
 
                   <div>
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Proprietor</div>
-                    <div className="font-bold text-slate-900">Ejaz Malik</div>
+                    <div className="font-bold text-slate-900">Malik Muhammad Ejaz</div>
                     <div className="text-xs font-mono text-slate-500 mt-1">CNIC: 31303-5361272-9</div>
                   </div>
                   <div>
