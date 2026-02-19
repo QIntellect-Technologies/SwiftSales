@@ -20,8 +20,8 @@ class RAGService {
         this.companyInfo = {
             name: "Swift Sales Healthcare",
             shortName: "Swift Sales",
-            owner: "Ejaz Malik",
-            ceo: "Ejaz Malik",
+            owner: "Malik Ejaz",
+            ceo: "Malik Ejaz",
             ceoMessage: "Providing quality healthcare products with integrity and speed.",
             established: "2012",
             history: {
