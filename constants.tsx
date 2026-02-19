@@ -692,6 +692,16 @@ export const LEADERSHIP = [
     bioExtended: 'Creating a safe and sterile environment for medicinal storage.',
     img: '/Team Images/M. Faisal - Sweeper.jpeg',
     signature: 'M. Faisal'
+  },
+  {
+    id: 'abdul',
+    name: 'Abdul Hameed',
+    role: 'Team Member',
+    quote: 'Dedication to service is our priority.',
+    bio: 'A vital part of our operational excellence and client support.',
+    bioExtended: 'Contributing to the seamless workflow and growth of Swift Sales.',
+    img: '/Team Images/Abdul Hameed.jpeg',
+    signature: 'Abdul Hameed'
   }
 ];
 
