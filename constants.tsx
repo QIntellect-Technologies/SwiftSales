@@ -567,10 +567,10 @@ export const LEADERSHIP = [
     id: 'yaseen',
     name: 'Dr. Ghulam Yaseen',
     role: 'Qualified Person',
-    quote: 'Quality assurance is our commitment to patient safety.',
+    quote: 'Quality assurance is our commitment to partner safety.',
     bio: 'Overseeing regulatory compliance and medicinal standards.',
     bioExtended: 'Ensuring that every product distributed meets the highest safety certifications.',
-    img: '/Team Images/Dr Ghulam Yaseen.jpeg',
+    img: 'https://ui-avatars.com/api/?name=Dr+Ghulam+Yaseen&background=0D8ABC&color=fff',
     signature: 'Dr Ghulam Yaseen'
   },
   {
@@ -585,7 +585,7 @@ export const LEADERSHIP = [
   },
   {
     id: 'ahmed',
-    name: 'M. Ahmed',
+    name: 'M. Ahmad',
     role: 'Data Entry Operator',
     quote: 'Supporting the foundation of reliable supply chains.',
     bio: 'Responsible for internal operations assistance and data integrity.',
@@ -616,7 +616,7 @@ export const LEADERSHIP = [
   {
     id: 'zohaib',
     name: 'M. Zohaib',
-    role: 'Stock & Inventory Lead',
+    role: 'Stock In,Out',
     quote: 'Efficiency in every stock movement.',
     bio: 'Managing stock visibility and inventory accuracy.',
     bioExtended: 'A healthy flow of stock ensures a strong team and a successful mission.',
@@ -626,72 +626,12 @@ export const LEADERSHIP = [
   {
     id: 'sageer',
     name: 'Sagheer Ahmed',
-    role: 'Operations Associate',
+    role: 'Stock In,Out',
     quote: 'Precision in every stock movement.',
     bio: 'Responsible for tracking and managing stock inventory.',
     bioExtended: 'Ensuring records are accurate to prevent any supply chain delays.',
     img: '/Team Images/Sagheer Ahmed.jpeg',
     signature: 'Sagheer Ahmed'
-  },
-  {
-    id: 'yasir',
-    name: 'Muhammad Yasir',
-    role: 'Sales Man',
-    quote: 'Connecting pharmacies with essential health solutions.',
-    bio: 'Bringing our services and products to the local market sector.',
-    bioExtended: 'Building trust with our partners in the field through reliable service.',
-    img: '/Team Images/Muhammad Yasir Sales Man.jpeg',
-    signature: 'Muhammad Yasir'
-  },
-  {
-    id: 'rizwan',
-    name: 'Rizwan Hussain',
-    role: 'Sales Man',
-    quote: 'Reliability in every client interaction.',
-    bio: 'Directly engaging with our partner network to fulfill their needs.',
-    bioExtended: 'Ensuring that life-saving drugs are always available at the point of sale.',
-    img: '/Team Images/Rizwan Hussain - Sales Man.jpeg',
-    signature: 'Rizwan Hussain'
-  },
-  {
-    id: 'azam',
-    name: 'Azam Khan',
-    role: 'Driver',
-    quote: 'Swift delivery, safe handling.',
-    bio: 'Ensuring medicines reach their destination on time, every time.',
-    bioExtended: 'Specialized in handling temperature-sensitive cargo during transit.',
-    img: '/Team Images/Azam Khan - Driver.jpeg',
-    signature: 'Azam Khan'
-  },
-  {
-    id: 'irfan',
-    name: 'Irfan Ullah',
-    role: 'Driver',
-    quote: 'Committed to the safest possible distribution.',
-    bio: 'Navigating city routes to ensure timely market access.',
-    bioExtended: 'Critical part of our logistics fleet ensuring wide city coverage.',
-    img: '/Team Images/Irfan Ullah - dRIVER.jpeg',
-    signature: 'Irfan Ullah'
-  },
-  {
-    id: 'danish',
-    name: 'Danish Ali',
-    role: 'Store Boy',
-    quote: 'Accuracy and speed in every order.',
-    bio: 'Vital link in our warehouse organization and picking process.',
-    bioExtended: 'Handling thousands of products with precision to ensure correct dispatch.',
-    img: '/Team Images/Danish Ali - Store Boy.jpeg',
-    signature: 'Danish Ali'
-  },
-  {
-    id: 'faisal',
-    name: 'M. Faisal',
-    role: 'Sweeper',
-    quote: 'Cleanliness is critical in distribution logistics.',
-    bio: 'Ensuring our warehouse and facilities meet peak sanitation standards.',
-    bioExtended: 'Creating a safe and sterile environment for medicinal storage.',
-    img: '/Team Images/M. Faisal - Sweeper.jpeg',
-    signature: 'M. Faisal'
   },
   {
     id: 'abdul',
