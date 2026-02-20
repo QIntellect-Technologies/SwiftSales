@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SEO } from '../components/SEO';
 import { Section } from '../components/ui/Section';
 import {
    Search, Filter, ArrowUpRight, Thermometer, Box,
    Activity, ShieldCheck, CheckCircle, AlertCircle,
    Droplet, Pill, FileText, Microscope, Clock, Snowflake,
-   Award, BarChart3, ChevronRight, MapPin, Building2
+   Award, BarChart3, ChevronRight, ChevronLeft, MapPin, Building2
 } from 'lucide-react';
 import { DISTRIBUTORS } from '../constants';
 import { EssentialsTable } from '../components/EssentialsTable';
@@ -14,6 +14,21 @@ import { Link } from 'react-router-dom';
 const Products: React.FC = () => {
    const [searchTerm, setSearchTerm] = useState('');
    const [selectedDistributorId, setSelectedDistributorId] = useState(DISTRIBUTORS[0].id);
+   const distributorsRef = useRef<HTMLDivElement>(null);
+
+   const scrollDistributors = (direction: 'left' | 'right') => {
+      if (distributorsRef.current) {
+         const { scrollLeft, clientWidth } = distributorsRef.current;
+         const scrollTo = direction === 'left'
+            ? scrollLeft - clientWidth * 0.6
+            : scrollLeft + clientWidth * 0.6;
+
+         distributorsRef.current.scrollTo({
+            left: scrollTo,
+            behavior: 'smooth'
+         });
+      }
+   };
 
    // Safely find the selected distributor or default to the first one
    const activeDistributor = DISTRIBUTORS.find(d => d.id === selectedDistributorId) || DISTRIBUTORS[0];
@@ -83,24 +98,47 @@ const Products: React.FC = () => {
                <div className="flex flex-col gap-6">
 
                   {/* Distributor Tabs (Scrollable) */}
-                  <div className="w-full overflow-x-auto no-scrollbar">
-                     <div className="flex items-center gap-3 pb-2">
-                        <div className="flex items-center gap-2 text-slate-400 mr-2 text-sm font-bold uppercase tracking-wider shrink-0">
-                           <Building2 size={14} /> Distributors:
+                  <div className="relative group/tabs">
+                     {/* Left Scroll Button */}
+                     <button
+                        onClick={() => scrollDistributors('left')}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 bg-white/90 backdrop-blur-md border border-slate-200 rounded-full flex items-center justify-center shadow-lg text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all opacity-0 group-hover/tabs:opacity-100 hidden md:flex"
+                        aria-label="Scroll Left"
+                     >
+                        <ChevronLeft size={20} />
+                     </button>
+
+                     <div
+                        ref={distributorsRef}
+                        className="w-full overflow-x-auto no-scrollbar scroll-smooth"
+                     >
+                        <div className="flex items-center gap-3 pb-2 px-1">
+                           <div className="flex items-center gap-2 text-slate-400 mr-2 text-sm font-bold uppercase tracking-wider shrink-0">
+                              <Building2 size={14} /> Distributors:
+                           </div>
+                           {DISTRIBUTORS.map(dist => (
+                              <button
+                                 key={dist.id}
+                                 onClick={() => setSelectedDistributorId(dist.id)}
+                                 className={`px-5 py-2.5 rounded-full text-sm font-black uppercase tracking-wide whitespace-nowrap transition-all duration-300 border ${selectedDistributorId === dist.id
+                                    ? 'bg-slate-900 text-white border-slate-900 shadow-lg scale-105'
+                                    : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50'
+                                    }`}
+                              >
+                                 {dist.name}
+                              </button>
+                           ))}
                         </div>
-                        {DISTRIBUTORS.map(dist => (
-                           <button
-                              key={dist.id}
-                              onClick={() => setSelectedDistributorId(dist.id)}
-                              className={`px-5 py-2.5 rounded-full text-sm font-black uppercase tracking-wide whitespace-nowrap transition-all duration-300 border ${selectedDistributorId === dist.id
-                                 ? 'bg-slate-900 text-white border-slate-900 shadow-lg scale-105'
-                                 : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50'
-                                 }`}
-                           >
-                              {dist.name}
-                           </button>
-                        ))}
                      </div>
+
+                     {/* Right Scroll Button */}
+                     <button
+                        onClick={() => scrollDistributors('right')}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 bg-white/90 backdrop-blur-md border border-slate-200 rounded-full flex items-center justify-center shadow-lg text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all opacity-0 group-hover/tabs:opacity-100 hidden md:flex"
+                        aria-label="Scroll Right"
+                     >
+                        <ChevronRight size={20} />
+                     </button>
                   </div>
 
                   {/* Search Interaction */}
