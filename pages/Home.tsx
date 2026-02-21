@@ -113,7 +113,7 @@ const Home: React.FC = () => {
                         <img
                            src="/Team Images/Malik Muhammad Ejaz.png"
                            alt="Distribution Mission"
-                           className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700"
+                           className="w-full h-[800px] object-cover object-top hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent flex items-end p-10">
                            <div className="text-white">
