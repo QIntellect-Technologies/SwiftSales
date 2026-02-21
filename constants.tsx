@@ -570,7 +570,7 @@ export const LEADERSHIP = [
     quote: 'Empowering operations through technological efficiency.',
     bio: 'Managing IT systems to ensure seamless business workflow.',
     bioExtended: 'Dedicated to implementing tech solutions that drive productivity.',
-    img: '/Team Images/Asad Malik - Computer Exective.jpeg',
+    img: '/Team Images/Asad Ullah.jpeg',
     signature: 'Asad Ullah'
   },
   {
@@ -580,7 +580,7 @@ export const LEADERSHIP = [
     quote: 'Managing inventory with meticulous dedication.',
     bio: 'Responsible for the overall management of warehouse operations.',
     bioExtended: 'Ensuring timely dispatch and safest storage of all products.',
-    img: '/Team Images/Tahseen ahmad.jpeg',
+    img: '/Team Images/Tahseen Ahmad.png',
     signature: 'Tahseen Ahmad'
   },
   {

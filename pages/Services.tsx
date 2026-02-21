@@ -451,7 +451,7 @@ const Services: React.FC = () => {
                      <div className="absolute inset-0 bg-blue-600 rounded-[2.5rem] rotate-2 group-hover:rotate-4 transition-transform duration-500 opacity-20"></div>
                      <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
                         <img
-                           src="/images/pakistani_quality_check.png"
+                           src="/company-images/Medicine_Checking.png"
                            alt="Professional Quality Check in Pakistan"
                            className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
                         />

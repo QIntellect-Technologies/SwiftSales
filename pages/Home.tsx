@@ -22,7 +22,7 @@ const Home: React.FC = () => {
             {/* Background: City-Wide Logistics Network */}
             <div className="absolute inset-0 z-0">
                <img
-                  src="/images/hero_pakistan_distributor.png"
+                  src="/company-images/SwiftSalesHome.png"
                   alt="City Pharmaceutical Distribution Hub"
                   className="w-full h-full object-cover opacity-50 scale-105 animate-slow-pan"
                />
