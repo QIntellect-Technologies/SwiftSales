@@ -111,7 +111,7 @@ const Home: React.FC = () => {
                   <div className="lg:w-1/2 relative">
                      <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                         <img
-                           src="/images/wearhouse_person.jpg"
+                           src="/Team Images/Malik Muhammad Ejaz.png"
                            alt="Distribution Mission"
                            className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700"
                         />
