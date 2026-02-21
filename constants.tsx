@@ -540,7 +540,7 @@ export const LEADERSHIP = [
     quote: 'Dedication to service is our priority.',
     bio: 'A vital part of our operational excellence and client support.',
     bioExtended: 'Contributing to the seamless workflow and growth of Swift Sales.',
-    img: '/Team Images/Abdul Hameed.jpeg',
+    img: '/Team Images/Abdul_Hameed_Final.jpeg',
     signature: 'Abdul Hameed'
   },
   {
