@@ -112,7 +112,7 @@ const About: React.FC = () => {
             {/* Our Story Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/images/about_entrance.jpg"
+                src="/company-images/SwiftSalesHome.png"
                 alt="Swift Sales Distribution Center"
                 className="w-full h-[500px] object-cover border-8 border-white transform group-hover:scale-105 transition-transform duration-700"
               />
