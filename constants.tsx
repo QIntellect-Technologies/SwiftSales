@@ -530,7 +530,7 @@ export const LEADERSHIP = [
     quote: 'Integrity and timely delivery are the cornerstones of our success.',
     bio: 'The visionary leader behind Swift Sales, dedicated to transforming distribution through excellence.',
     bioExtended: 'With over two decades of experience, I have led the company from a simple delivery service to the city\'s most trusted partner.',
-    img: '/Team Images/Malik Muhammad Ejaz.jpeg',
+    img: '/Team Images/Malik Muhammad Ejaz.png',
     signature: 'Malik Muhammad Ejaz'
   },
   {
