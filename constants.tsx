@@ -534,6 +534,16 @@ export const LEADERSHIP = [
     signature: 'Malik Muhammad Ejaz'
   },
   {
+    id: 'abdul',
+    name: 'Abdul Hameed',
+    role: 'Warehouse Audit Manager',
+    quote: 'Dedication to service is our priority.',
+    bio: 'A vital part of our operational excellence and client support.',
+    bioExtended: 'Contributing to the seamless workflow and growth of Swift Sales.',
+    img: '/Team Images/Abdul Hameed.jpeg',
+    signature: 'Abdul Hameed'
+  },
+  {
     id: 'wajhat',
     name: 'Malik Wajahat',
     role: 'Director Sales',
@@ -581,7 +591,7 @@ export const LEADERSHIP = [
     bio: 'Responsible for internal operations assistance and data integrity.',
     bioExtended: 'Working to ensure that every record and operation is handled with care.',
     img: '/Team Images/M. Ahmed - Assistant Manager.jpeg',
-    signature: 'M. Ahmed'
+    signature: 'M. Ahmad'
   },
   {
     id: 'sadeem',
@@ -622,16 +632,6 @@ export const LEADERSHIP = [
     bioExtended: 'Ensuring records are accurate to prevent any supply chain delays.',
     img: '/Team Images/Sagheer Ahmed.jpeg',
     signature: 'Sagheer Ahmed'
-  },
-  {
-    id: 'abdul',
-    name: 'Abdul Hameed',
-    role: 'Warehouse Audit Manager',
-    quote: 'Dedication to service is our priority.',
-    bio: 'A vital part of our operational excellence and client support.',
-    bioExtended: 'Contributing to the seamless workflow and growth of Swift Sales.',
-    img: '/Team Images/Abdul Hameed.jpeg',
-    signature: 'Abdul Hameed'
   }
 ];
 
