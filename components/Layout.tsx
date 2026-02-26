@@ -3,7 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Activity, Phone, Mail, MapPin, ChevronRight, ArrowRight, User, LogOut, Facebook, ArrowUp } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { NAV_ITEMS } from '../constants';
-import { ChatBot } from './ChatBot';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoggedIn, logout } = useAuth();
@@ -297,7 +296,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </button>
 
       {/* Global ChatBot Ecosystem */}
-      <ChatBot />
     </div>
   );
 };
