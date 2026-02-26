@@ -464,22 +464,19 @@ const Home: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 relative z-10">
                {[
                   {
-                     name: "Dr. Sarah Chen",
+                     name: "Dr. Sarah Malik",
                      role: "Hospital Director",
                      text: "Swift Sales has revolutionized our clinical supply chain. Their cold chain reliability for biologics is simply unmatched in the city.",
-                     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=800&auto=format&fit=crop"
                   },
                   {
-                     name: "Marcus Thorne, PharmD",
+                     name: "Muhammad Usman, PharmD",
                      role: "Head of Pharmacy",
                      text: "The transition to their city-based express delivery has cut our routine restocking times by 60%. A truly professional distributor.",
-                     image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop"
                   },
                   {
-                     name: "Elena Rodriguez",
+                     name: "Zainab Ahmed",
                      role: "NGO Supply Coordinator",
                      text: "Professional, precise, and 100% focused on medicine integrity. They are the benchmark for technical distribution in the region.",
-                     image: "https://images.unsplash.com/photo-1559839734-2b71f153673e?q=80&w=800&auto=format&fit=crop"
                   }
                ].map((review, i) => (
                   <Card key={i} className="p-8 hover:shadow-2xl transition-all duration-500 border-slate-100 group">
@@ -491,11 +488,9 @@ const Home: React.FC = () => {
                         "{review.text}"
                      </p>
                      <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                        <img
-                           src={review.image}
-                           alt={review.name}
-                           className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md transition-all duration-500"
-                        />
+                        <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold border-2 border-white shadow-md transition-all duration-500 group-hover:scale-110">
+                           {review.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
+                        </div>
                         <div>
                            <h4 className="font-bold text-slate-900 text-sm">{review.name}</h4>
                            <p className="text-blue-600 text-[10px] font-bold uppercase tracking-widest">{review.role}</p>
