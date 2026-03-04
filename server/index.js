@@ -54,15 +54,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Verify SMTP at startup
-transporter.verify((error) => {
-    if (error) {
-        console.error('❌ SMTP Connection Failed:', error.message);
-    } else {
-        console.log('✅ SMTP Ready - Gmail connected');
-    }
-});
-
 // Verification endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'Backend is active and synced.' });
