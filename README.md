@@ -8,6 +8,11 @@ This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1XZQ2KumbPq0wrf6SNgCugq5-3XBXFQdE
 
+## 📚 Documentation
+- [**The Master Feature List**](SWIFTSALES_MASTER_CAPABILITIES.md) - **The complete, definitive guide to everything SwiftSales Bot can do.** (Includes AI brain, WhatsApp features, and safety protocols).
+- [**WhatsApp-First Features**](WHATSAPP_FIRST_FEATURES.md) - Targeted guide on accessibility and formatting.
+- [**SwiftSales Bot Capabilities**](SWIFTSALES_BOT_CAPABILITIES.md) - Detailed itemized technical features.
+
 ## Run Locally
 
 **Prerequisites:**  Node.js

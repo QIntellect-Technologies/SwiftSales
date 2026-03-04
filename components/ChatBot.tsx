@@ -420,6 +420,7 @@ const getProductDetails = (productName: string) => {
 
 // ==================== MAIN COMPONENT ====================
 export const ChatBot: React.FC = () => {
+    const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     const [isOpen, setIsOpen] = useState(false);
     const [sessionId, setSessionId] = useState<string>('');
     const [context, setContext] = useState<ConversationContext>({
@@ -453,7 +454,7 @@ export const ChatBot: React.FC = () => {
             setSessionId(newSessionId);
 
             try {
-                await fetch('http://localhost:5000/api/chat/session', {
+                await fetch(`${apiBaseUrl}/api/chat/session`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -475,7 +476,7 @@ export const ChatBot: React.FC = () => {
         if (!sessionId) return;
 
         try {
-            await fetch('http://localhost:5000/api/chat/message', {
+            await fetch(`${apiBaseUrl}/api/chat/message`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -497,7 +498,7 @@ export const ChatBot: React.FC = () => {
         if (!sessionId) return;
 
         try {
-            await fetch('http://localhost:5000/api/chat/product-inquiry', {
+            await fetch(`${apiBaseUrl}/api/chat/product-inquiry`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -519,7 +520,7 @@ export const ChatBot: React.FC = () => {
         if (!sessionId) return;
 
         try {
-            await fetch('http://localhost:5000/api/chat/condition', {
+            await fetch(`${apiBaseUrl}/api/chat/condition`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -539,7 +540,7 @@ export const ChatBot: React.FC = () => {
             // End current session in database
             if (sessionId) {
                 try {
-                    await fetch(`http://localhost:5000/api/chat/session/${sessionId}`, {
+                    await fetch(`${apiBaseUrl}/api/chat/session/${sessionId}`, {
                         method: 'DELETE'
                     });
                 } catch (error) {
@@ -563,7 +564,7 @@ export const ChatBot: React.FC = () => {
             setSessionId(newSessionId);
 
             try {
-                await fetch('http://localhost:5000/api/chat/session', {
+                await fetch(`${apiBaseUrl}/api/chat/session`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -640,7 +641,7 @@ export const ChatBot: React.FC = () => {
                     // Intelligent follow-up: send to RAG with the full context of the last mentioned product
                     addBotMessage(`🤔 Checking details for ${context.lastMentionedProduct || 'our products'}...`);
 
-                    fetch('http://localhost:5000/api/rag/query', {
+                    fetch(`${apiBaseUrl}/api/rag/query`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -912,7 +913,7 @@ export const ChatBot: React.FC = () => {
                     addBotMessage(`🔍 Comparing ${product1.toUpperCase()} and ${product2.toUpperCase()}...`);
 
                     // Use RAG for intelligent comparison
-                    fetch('http://localhost:5000/api/rag/query', {
+                    fetch(`${apiBaseUrl}/api/rag/query`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -949,7 +950,7 @@ export const ChatBot: React.FC = () => {
                     addBotMessage(`🔍 Searching for ${category} products...`);
 
                     // Use RAG to find and categorize products
-                    fetch('http://localhost:5000/api/rag/search', {
+                    fetch(`${apiBaseUrl}/api/rag/search`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -990,7 +991,7 @@ export const ChatBot: React.FC = () => {
             case 'price_query':
                 addBotMessage(`💰 Analyzing pricing and availability...`);
 
-                fetch('http://localhost:5000/api/rag/query', {
+                fetch(`${apiBaseUrl}/api/rag/query`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1017,7 +1018,7 @@ export const ChatBot: React.FC = () => {
                 // Handle complex natural language queries
                 addBotMessage(`🤔 Understanding your needs...`);
 
-                fetch('http://localhost:5000/api/rag/query', {
+                fetch(`${apiBaseUrl}/api/rag/query`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1061,7 +1062,7 @@ export const ChatBot: React.FC = () => {
                 setTimeout(() => {
                     setIsLoading(true);
 
-                    fetch('http://localhost:5000/api/rag/query', {
+                    fetch(`${apiBaseUrl}/api/rag/query`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -1268,7 +1269,7 @@ export const ChatBot: React.FC = () => {
             // Instead of showing "not found", use RAG to search
             addBotMessage(`🔍 Searching for "${query}" in our catalog...`);
 
-            fetch('http://localhost:5000/api/rag/query', {
+            fetch(`${apiBaseUrl}/api/rag/query`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1553,7 +1554,7 @@ export const ChatBot: React.FC = () => {
         try {
             addBotMessage('📦 Processing your order... Please wait.');
 
-            const response = await fetch('http://localhost:5000/api/orders/create', {
+            const response = await fetch(`${apiBaseUrl}/api/orders/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
