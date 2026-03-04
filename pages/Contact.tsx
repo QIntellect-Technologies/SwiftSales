@@ -53,14 +53,39 @@ const Contact: React.FC = () => {
       try {
          // Use Web3Forms for reliable email delivery (bypasses SMTP)
          const web3Data = new FormData();
-         web3Data.append('access_key', 'f1f5f47b-c650-4e0e-8443-d16fae9d6b38');
-         web3Data.append('subject', `[Swift Sales] ${formData.subject} | ${formData.firstName} ${formData.lastName}`);
+         web3Data.append('access_key', '565c21bc-a6d0-4e2e-8420-d835186e5264');
+         web3Data.append('subject', `⚡ New Inquiry [${formData.subject}] — ${formData.firstName} ${formData.lastName}`);
          web3Data.append('name', `${formData.firstName} ${formData.lastName}`);
          web3Data.append('email', formData.email);
-         web3Data.append('phone', formData.phone);
-         web3Data.append('inquiry_type', formData.subject);
-         web3Data.append('message', formData.message);
-         web3Data.append('from_name', 'Swift Sales Website');
+         web3Data.append('from_name', 'Swift Sales Partner Portal');
+         web3Data.append('message',
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        SWIFT SALES DISTRIBUTION HUB
+     Internal Transmission — New Inquiry
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐  Portal: https://www.swiftsalesdistributors.com
+
+INQUIRY DETAILS
+───────────────
+• Type          : ${formData.subject}
+• Full Name     : ${formData.firstName} ${formData.lastName}
+• Business Email: ${formData.email}
+• Phone Number  : ${formData.phone || 'Not provided'}
+• Timestamp     : ${new Date().toLocaleString('en-PK', { timeZone: 'Asia/Karachi' })} (PKT)
+
+MESSAGE
+───────
+${formData.message}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ACTION REQUIRED: Reply to ${formData.email} within 24 hours.
+
+Swift Sales Healthcare Distribution
+📍 C8GM+HFF, Sardar Colony, Rahim Yar Khan
+📞 03008607811  |  🌐 swiftsalesdistributors.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+         );
 
          const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
