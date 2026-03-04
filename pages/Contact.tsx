@@ -51,13 +51,20 @@ const Contact: React.FC = () => {
       setFormStatus('submitting');
 
       try {
-         const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-         const response = await fetch(`${apiBaseUrl}/api/contact`, {
+         // Use Web3Forms for reliable email delivery (bypasses SMTP)
+         const web3Data = new FormData();
+         web3Data.append('access_key', 'f1f5f47b-c650-4e0e-8443-d16fae9d6b38');
+         web3Data.append('subject', `[Swift Sales] ${formData.subject} | ${formData.firstName} ${formData.lastName}`);
+         web3Data.append('name', `${formData.firstName} ${formData.lastName}`);
+         web3Data.append('email', formData.email);
+         web3Data.append('phone', formData.phone);
+         web3Data.append('inquiry_type', formData.subject);
+         web3Data.append('message', formData.message);
+         web3Data.append('from_name', 'Swift Sales Website');
+
+         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
-            headers: {
-               'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+            body: web3Data,
          });
 
          const result = await response.json();
@@ -74,12 +81,12 @@ const Contact: React.FC = () => {
                message: ''
             });
          } else {
-            alert('Failed to establish sync. Please check connection.');
+            alert('Failed to send message. Please try again.');
             setFormStatus('idle');
          }
       } catch (error) {
-         console.error('Frontend Sync Error:', error);
-         alert('Network error. Please ensure the backend console is active.');
+         console.error('Form submission error:', error);
+         alert('Network error. Please try again.');
          setFormStatus('idle');
       }
    };
