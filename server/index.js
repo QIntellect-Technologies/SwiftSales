@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Serve downloads
+app.use(express.static(path.join(__dirname, '..', 'dist'))); // Serve frontend dist
 
 
 // Initialize database
@@ -301,6 +302,11 @@ app.post('/api/contact', async (req, res) => {
         console.error('SMTP Sync Error:', error);
         res.status(500).json({ success: false, message: 'Failed to establish inquiry sync.' });
     }
+});
+
+// Serve index.html for all other routes (SPA routing)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
