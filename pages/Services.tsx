@@ -133,7 +133,7 @@ const Services: React.FC = () => {
                   {
                      title: 'Pharmacy Supply',
                      icon: Warehouse,
-                     desc: 'As the Sole Distributor, we keep hospitals and pharmacies fully stocked so they never run out of medicine.',
+                     desc: 'As a trusted distributor, we keep hospitals and pharmacies fully stocked so they never run out of medicine.',
                      features: ['Full Stock', 'Always On Time'],
                      color: 'indigo'
                   },

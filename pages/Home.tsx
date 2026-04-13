@@ -32,7 +32,7 @@ const Home: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10 pt-20">
                <div className="max-w-4xl">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in-up">
-                     <MapPin size={14} /> Sole Distributer
+                     <MapPin size={14} /> Distributor
                   </div>
 
                   <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -323,14 +323,14 @@ const Home: React.FC = () => {
                </Card>
             </div>
 
-            {/* --- 7. SOLE DISTRIBUTOR SECTION --- */}
+            {/* --- 7. DISTRIBUTION PARTNERS SECTION --- */}
             <Section className="py-24 bg-slate-50 relative overflow-hidden">
                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
 
                <div className="container mx-auto px-6 relative z-10">
                   <SectionHeader
-                     title="Sole Distributor Partnerships"
-                     subtitle="We are honored to be the exclusive Sole Distributors for leading global pharmaceutical innovators."
+                     title="Distribution Company Partnerships"
+                     subtitle="We are honored to work with leading pharmaceutical distribution companies across the country."
                   />
 
                   <div className="mt-16 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100 relative overflow-hidden">
@@ -346,7 +346,7 @@ const Home: React.FC = () => {
                            </div>
                            <h3 className="text-3xl font-bold text-slate-900 mb-6 font-serif italic">"Integrity is the Foundation of Exclusivity."</h3>
                            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                              Being a sole distributor isn't just a contract; it's a pledge of integrity. We manage the entire lifecycle of these brands within the country, ensuring brand protection and market penetration.
+                              Being a trusted distributor isn't just a contract; it's a pledge of integrity. We manage the entire lifecycle of these brands within the country, ensuring brand protection and market penetration.
                            </p>
 
                            <div className="flex items-center gap-6">

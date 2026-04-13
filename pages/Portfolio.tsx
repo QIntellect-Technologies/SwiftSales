@@ -7,7 +7,7 @@ import {
   CloudLightning, Landmark, Trees, Building2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SOLE_DISTRIBUTORS } from '../constants';
+
 import { motion } from 'framer-motion';
 import { SEO } from '../components/SEO';
 

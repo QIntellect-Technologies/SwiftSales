@@ -494,33 +494,6 @@ export const PARTNERS: Partner[] = [
   }
 ];
 
-export const SOLE_DISTRIBUTORS = [
-  {
-    id: 'sd1',
-    name: 'Shrooq Pharma',
-    logoUrl: '/images/products/shrooq_isocef.png'
-  },
-  {
-    id: 'sd2',
-    name: 'Avant Pharma',
-    logoUrl: '/images/products/avant_navis.png'
-  },
-  {
-    id: 'sd3',
-    name: 'Swiss IQ Bioceutics',
-    logoUrl: '/images/products/POLYTAX.png'
-  },
-  {
-    id: 'sd4',
-    name: 'Star Laboratories',
-    logoUrl: '/images/products/star_rocetrex_real_1769926290067.png'
-  },
-  {
-    id: 'sd5',
-    name: 'Ospheric Pharma',
-    logoUrl: '/images/products/ospheric_gemtonix_real_1769926834881.png'
-  }
-];
 
 export const LEADERSHIP = [
   {

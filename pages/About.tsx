@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Section, SectionHeader } from '../components/ui/Section';
 import { Card } from '../components/ui/Card';
-import { MILESTONES, STATS, PARTNERS, SOLE_DISTRIBUTORS, LEADERSHIP } from '../constants';
+import { MILESTONES, STATS, PARTNERS, LEADERSHIP } from '../constants';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import {
@@ -176,45 +176,55 @@ const About: React.FC = () => {
       </Section>
 
 
-      {/* --- 3.2 EXCLUSIVE SOLE DISTRIBUTORS --- */}
+      {/* --- 3.2 DISTRIBUTION PARTNERS --- */}
       <Section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
 
         <div className="container mx-auto px-6 relative z-10">
           <SectionHeader
-            title="Sole Distributor Partnerships"
-            subtitle="We are honored to be the exclusive Sole Distributors for leading global pharmaceutical innovators."
+            title="Distribution Company Partnerships"
+            subtitle="We are honored to work with leading pharmaceutical distribution companies across the country."
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Featured Large Card */}
-            <div className="lg:col-span-1 bg-blue-600 rounded-3xl p-8 text-white relative overflow-hidden flex flex-col justify-center min-h-[400px] shadow-2xl shadow-blue-900/20">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2"></div>
-              <Award size={48} className="text-blue-200 mb-6" />
-              <h3 className="text-3xl font-bold mb-4">Trusted Exclusivity</h3>
-              <p className="text-blue-100 text-lg leading-relaxed mb-8">
-                Being a sole distributor isn't just a contract. It's a pledge of integrity. We manage the entire lifecycle of these brands within the country, ensuring brand protection and market penetration.
-              </p>
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="text-4xl font-black">34</div>
-                <div className="text-sm font-bold uppercase tracking-widest text-blue-200">Global Partners <br /> Exclusively Managed</div>
-              </div>
-            </div>
-
-            {/* Grid of Partners */}
-            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {SOLE_DISTRIBUTORS.map((dist, i) => (
-                <div key={i} className="group bg-white p-8 rounded-3xl border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                  <div className="w-20 h-20 rounded-full bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-slate-100 group-hover:border-blue-100">
-                    <Building2 size={32} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">{dist.name}</h4>
-                  <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest">
-                    Exclusive Partner
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-16 overflow-x-auto">
+            <table className="min-w-full bg-white rounded-2xl shadow-xl border border-slate-200">
+              <thead>
+                <tr className="bg-blue-50 text-blue-700 text-xs uppercase tracking-widest">
+                  <th className="py-3 px-4 text-left">#</th>
+                  <th className="py-3 px-4 text-left">Distribution Co. Name</th>
+                  <th className="py-3 px-4 text-left">Address</th>
+                  <th className="py-3 px-4 text-left">Email</th>
+                </tr>
+              </thead>
+              <tbody className="text-slate-700 text-sm">
+                {[
+                  { name: 'Star Laboratories PVT Limited', address: '23 KM Multan road Chung Lahore', email: 'homs@starlabs.com.pk' },
+                  { name: 'Avant Pharmaceuticals PVT Limited', address: '4/104, Sector 21 Korangi Industrial Area Karachi', email: 'distribution.avant@gmail.com' },
+                  { name: 'Shrooq Pharmaceuticals PVT Limited', address: '21 KM Ferozpur road behind masjid e ibrahim, Lahore', email: 'info@shrooqpharma.com' },
+                  { name: 'Acumen  Pharma', address: 'Hazrat Umar Farooq Road, Saggian Bypass, Lahore', email: 'sales@acumenpharma.com.pk' },
+                  { name: 'Paul Brooks', address: 'K-197 Phase II, Site 2, Industrial Area, Karachi, Pakistan', email: 'Bmpaulbrooks@gmail.com' },
+                  { name: 'Siza International PVT Limited', address: '18.1 KM, Main Ferozpur Road, Lahore', email: 'mis@sizainternational.com' },
+                  { name: 'Araf Pharma', address: '173-P Gulberg III, Lahore', email: 'sale.order@araf.pk' },
+                  { name: 'Swiss Pharmaceuticals PVT Limited', address: 'A/159, S.I.T.E , Super Highway, Karachi, Pakistan', email: 'care@swisspharma.biz' },
+                  { name: 'Rifa Life Sciences', address: '0/1000-A,Joharabad Murree Road Satellite Town Rawalpindi', email: 'mkmrifalifesciences@gmail.com' },
+                  { name: 'Triafa Pharma', address: 'Block D, Mezzanine Floor, Shahbaz Arcade, Opp Asim Clinic, Phase I, Main Road, Qasimabad, Hyderabad', email: 'rbspharmaz@gmail.com' },
+                  { name: 'Glitz Pharma', address: 'Plot 265, Industrial Triangle, Kahuta Road, Islamabad', email: 'info@glitzpharma.net' },
+                  { name: 'Quorum Pharma', address: 'Suit# 141 J, Block 2, P.E.C.H.S, Karachi', email: 'quorumpharma@gmail.com' },
+                  { name: 'Popular Chemical Works PVT Limited', address: '9KM, Sheikhupora Road Lahore', email: 'osarim2@gmail.com' },
+                  { name: 'Serving Health Pakistan', address: 'P#403/B, Block C, Near Meezan Bank, Amin Town, West Canal Road, Faisalabad', email: 'servinghealth@gmail.com' },
+                  { name: 'Goldsheff Nutraceuticals PVT Limited', address: '537-F Sundar Industrial Estate, (PIE) Raiwind Road, Lahore Pakistan', email: 'sale.goldsheff@gmail.com' },
+                  { name: 'Curatech Pharma PVT Limited', address: '35 KM Multan Road, Lahore, Pakistan', email: 'saleemadnan2009@yahoo.com' },
+                  { name: 'MR Traders', address: 'Al Haseeb House, Veha Banglows, Near Special Education, RYK', email: 'rafiquehq@yahoo.com' }
+                ].map((c, i) => (
+                  <tr key={i} className="border-b border-slate-100 hover:bg-blue-50/20">
+                    <td className="py-2 px-4 font-bold">{i + 1}</td>
+                    <td className="py-2 px-4">{c.name}</td>
+                    <td className="py-2 px-4">{c.address}</td>
+                    <td className="py-2 px-4"><a href={`mailto:${c.email}`} className="text-blue-600 underline">{c.email}</a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </Section>
