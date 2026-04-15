@@ -719,44 +719,43 @@ const About: React.FC = () => {
       {/* --- 6. LEADERSHIP TEAM --- */}
       <Section className="py-24" id="team">
         <SectionHeader
-          title="Leadership Team"
-          subtitle="Guided by local industry veterans with decades of experience."
+          title="Our Amazing Team"
+          subtitle="Meet the professionals powering Swift Sales Healthcare."
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {LEADERSHIP.map((leader, i) => (
-            <div key={i} id={leader.id} className="group scroll-mt-32">
-              <div className="relative overflow-hidden rounded-[2.5rem] mb-8 shadow-xl border-4 border-white transition-all duration-700 group-hover:shadow-blue-200/50">
-                <img
-                  src={leader.img}
-                  alt={leader.name}
-                  className="w-full h-[450px] object-cover object-top transform group-hover:scale-110 transition-transform duration-[1.5s] grayscale group-hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <div className="flex gap-3 justify-center">
-                    <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-blue-600 transition-all border border-white/20"><Briefcase size={18} /></button>
-                    <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-blue-600 transition-all border border-white/20"><MapPin size={18} /></button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-center px-4">
-                <h3 className="text-2xl font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{leader.name}</h3>
-                <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 bg-blue-50 inline-block px-3 py-1 rounded-full">{leader.role}</p>
-                <p className="text-slate-500 text-sm leading-relaxed font-medium italic mb-6">
-                  "{leader.quote}"
-                </p>
-
-                <div className="pt-6 border-t border-slate-100 text-slate-600 text-sm leading-relaxed">
-                  <p className="mb-4">{leader.bio}</p>
-                  <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-700">{leader.bioExtended}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="overflow-x-auto rounded-3xl shadow-2xl bg-white/80 backdrop-blur-lg border border-slate-100">
+          <table className="min-w-full divide-y divide-blue-100">
+            <thead className="bg-gradient-to-r from-blue-600 to-blue-400">
+              <tr>
+                <th className="px-6 py-4 text-left text-xs font-extrabold text-white uppercase tracking-widest">Photo</th>
+                <th className="px-6 py-4 text-left text-xs font-extrabold text-white uppercase tracking-widest">Name</th>
+                <th className="px-6 py-4 text-left text-xs font-extrabold text-white uppercase tracking-widest">Role</th>
+                <th className="px-6 py-4 text-left text-xs font-extrabold text-white uppercase tracking-widest">Quote</th>
+                <th className="px-6 py-4 text-left text-xs font-extrabold text-white uppercase tracking-widest">About</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-blue-50">
+              {LEADERSHIP.map((leader, i) => (
+                <tr key={i} className="hover:bg-blue-50/60 transition-all group">
+                  <td className="px-6 py-4">
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg border-2 border-blue-100 group-hover:scale-105 group-hover:border-blue-400 transition-all duration-300">
+                      <img src={leader.img} alt={leader.name} className="w-full h-full object-cover" />
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 font-bold text-slate-900 text-lg group-hover:text-blue-700 transition-colors">{leader.name}</td>
+                  <td className="px-6 py-4">
+                    <span className="inline-block bg-blue-100 text-blue-700 font-semibold px-3 py-1 rounded-full text-xs uppercase tracking-wider shadow-sm">{leader.role}</span>
+                  </td>
+                  <td className="px-6 py-4 italic text-slate-500 max-w-xs">“{leader.quote}”</td>
+                  <td className="px-6 py-4 max-w-md">
+                    <div className="text-slate-700 text-sm font-medium mb-1">{leader.bio}</div>
+                    <div className="text-slate-400 text-xs hidden group-hover:block transition-opacity duration-500">{leader.bioExtended}</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </Section >
+      </Section>
 
       {/* --- 7. CTA / NETWORK --- */}
       < section className="py-24 bg-blue-600 relative overflow-hidden" >
