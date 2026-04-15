@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import {
   Activity, Target, Heart, TrendingUp, Users, ShieldCheck,
-  Award, Briefcase, ChevronRight, Truck, Microscope, Building2, MapPin,
-  Zap, Search, Package, Clock, CheckCircle2, Eye, Star, Thermometer, ArrowRight, Image as ImageIcon
+  Award, Briefcase, ChevronRight, Truck, Microscope, Building2, MapPin, Mail as MailIcon,
+  Zap, Search, Package, Clock, CheckCircle2, Eye, Star, Thermometer, ArrowRight, Image as ImageIcon,
+  Check, Copy, ArrowUpDown, ArrowUp, ArrowDown, SearchX, ChevronDown
 } from 'lucide-react';
 
 const GALLERY_IMAGES = [
@@ -69,7 +70,67 @@ const AnimatedNumber: React.FC<{ value: string; label: string }> = ({ value, lab
   );
 };
 
+const PARTNER_LIST = [
+  { name: 'Star Laboratories PVT Limited', address: '23 KM Multan road Chung Lahore', email: 'homs@starlabs.com.pk' },
+  { name: 'Avant Pharmaceuticals PVT Limited', address: '4/104, Sector 21 Korangi Industrial Area Karachi', email: 'distribution.avant@gmail.com' },
+  { name: 'Shrooq Pharmaceuticals PVT Limited', address: '21 KM Ferozpur road behind masjid e ibrahim, Lahore', email: 'info@shrooqpharma.com' },
+  { name: 'Acumen  Pharma', address: 'Hazrat Umar Farooq Road, Saggian Bypass, Lahore', email: 'sales@acumenpharma.com.pk' },
+  { name: 'Paul Brooks', address: 'K-197 Phase II, Site 2, Industrial Area, Karachi, Pakistan', email: 'Bmpaulbrooks@gmail.com' },
+  { name: 'Siza International PVT Limited', address: '18.1 KM, Main Ferozpur Road, Lahore', email: 'mis@sizainternational.com' },
+  { name: 'Araf Pharma', address: '173-P Gulberg III, Lahore', email: 'sale.order@araf.pk' },
+  { name: 'Swiss Pharmaceuticals PVT Limited', address: 'A/159, S.I.T.E , Super Highway, Karachi, Pakistan', email: 'care@swisspharma.biz' },
+  { name: 'Rifa Life Sciences', address: '0/1000-A,Joharabad Murree Road Satellite Town Rawalpindi', email: 'mkmrifalifesciences@gmail.com' },
+  { name: 'Triafa Pharma', address: 'Block D, Mezzanine Floor, Shahbaz Arcade, Opp Asim Clinic, Phase I, Main Road, Qasimabad, Hyderabad', email: 'rbspharmaz@gmail.com' },
+  { name: 'Glitz Pharma', address: 'Plot 265, Industrial Triangle, Kahuta Road, Islamabad', email: 'info@glitzpharma.net' },
+  { name: 'Quorum Pharma', address: 'Suit# 141 J, Block 2, P.E.C.H.S, Karachi', email: 'quorumpharma@gmail.com' },
+  { name: 'Popular Chemical Works PVT Limited', address: '9KM, Sheikhupora Road Lahore', email: 'osarim2@gmail.com' },
+  { name: 'Serving Health Pakistan', address: 'P#403/B, Block C, Near Meezan Bank, Amin Town, West Canal Road, Faisalabad', email: 'servinghealth@gmail.com' },
+  { name: 'Goldsheff Nutraceuticals PVT Limited', address: '537-F Sundar Industrial Estate, (PIE) Raiwind Road, Lahore Pakistan', email: 'sale.goldsheff@gmail.com' },
+  { name: 'Curatech Pharma PVT Limited', address: '35 KM Multan Road, Lahore, Pakistan', email: 'saleemadnan2009@yahoo.com' },
+  { name: 'MR Traders', address: 'Al Haseeb House, Veha Banglows, Near Special Education, RYK', email: 'rafiquehq@yahoo.com' }
+];
+
 const About: React.FC = () => {
+  const [search, setSearch] = useState('');
+  const [sortConfig, setSortConfig] = useState<{ key: 'name' | 'address', direction: 'asc' | 'desc' } | null>(null);
+  const [visibleCount, setVisibleCount] = useState(8);
+  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    setVisibleCount(8);
+  }, [search]);
+
+  const handleSort = (key: 'name' | 'address') => {
+    let direction: 'asc' | 'desc' = 'asc';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') direction = 'desc';
+    setSortConfig({ key, direction });
+  };
+
+  const handleCopyEmail = (e: React.MouseEvent, email: string) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(email);
+    setCopiedEmail(email);
+    setTimeout(() => setCopiedEmail(null), 2000);
+  };
+
+  const filteredPartners = PARTNER_LIST.filter(
+    c =>
+      c.name.toLowerCase().includes(search.toLowerCase()) ||
+      c.address.toLowerCase().includes(search.toLowerCase()) ||
+      c.email.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const sortedPartners = [...filteredPartners].sort((a, b) => {
+    if (!sortConfig) return 0;
+    const aVal = a[sortConfig.key].toLowerCase();
+    const bVal = b[sortConfig.key].toLowerCase();
+    if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  const displayedPartners = sortedPartners.slice(0, visibleCount);
+
   return (
     <>
       <SEO
@@ -186,45 +247,196 @@ const About: React.FC = () => {
             subtitle="We are honored to work with leading pharmaceutical distribution companies across the country."
           />
 
-          <div className="mt-16 overflow-x-auto">
-            <table className="min-w-full bg-white rounded-2xl shadow-xl border border-slate-200">
-              <thead>
-                <tr className="bg-blue-50 text-blue-700 text-xs uppercase tracking-widest">
-                  <th className="py-3 px-4 text-left">#</th>
-                  <th className="py-3 px-4 text-left">Distribution Co. Name</th>
-                  <th className="py-3 px-4 text-left">Address</th>
-                  <th className="py-3 px-4 text-left">Email</th>
-                </tr>
-              </thead>
-              <tbody className="text-slate-700 text-sm">
-                {[
-                  { name: 'Star Laboratories PVT Limited', address: '23 KM Multan road Chung Lahore', email: 'homs@starlabs.com.pk' },
-                  { name: 'Avant Pharmaceuticals PVT Limited', address: '4/104, Sector 21 Korangi Industrial Area Karachi', email: 'distribution.avant@gmail.com' },
-                  { name: 'Shrooq Pharmaceuticals PVT Limited', address: '21 KM Ferozpur road behind masjid e ibrahim, Lahore', email: 'info@shrooqpharma.com' },
-                  { name: 'Acumen  Pharma', address: 'Hazrat Umar Farooq Road, Saggian Bypass, Lahore', email: 'sales@acumenpharma.com.pk' },
-                  { name: 'Paul Brooks', address: 'K-197 Phase II, Site 2, Industrial Area, Karachi, Pakistan', email: 'Bmpaulbrooks@gmail.com' },
-                  { name: 'Siza International PVT Limited', address: '18.1 KM, Main Ferozpur Road, Lahore', email: 'mis@sizainternational.com' },
-                  { name: 'Araf Pharma', address: '173-P Gulberg III, Lahore', email: 'sale.order@araf.pk' },
-                  { name: 'Swiss Pharmaceuticals PVT Limited', address: 'A/159, S.I.T.E , Super Highway, Karachi, Pakistan', email: 'care@swisspharma.biz' },
-                  { name: 'Rifa Life Sciences', address: '0/1000-A,Joharabad Murree Road Satellite Town Rawalpindi', email: 'mkmrifalifesciences@gmail.com' },
-                  { name: 'Triafa Pharma', address: 'Block D, Mezzanine Floor, Shahbaz Arcade, Opp Asim Clinic, Phase I, Main Road, Qasimabad, Hyderabad', email: 'rbspharmaz@gmail.com' },
-                  { name: 'Glitz Pharma', address: 'Plot 265, Industrial Triangle, Kahuta Road, Islamabad', email: 'info@glitzpharma.net' },
-                  { name: 'Quorum Pharma', address: 'Suit# 141 J, Block 2, P.E.C.H.S, Karachi', email: 'quorumpharma@gmail.com' },
-                  { name: 'Popular Chemical Works PVT Limited', address: '9KM, Sheikhupora Road Lahore', email: 'osarim2@gmail.com' },
-                  { name: 'Serving Health Pakistan', address: 'P#403/B, Block C, Near Meezan Bank, Amin Town, West Canal Road, Faisalabad', email: 'servinghealth@gmail.com' },
-                  { name: 'Goldsheff Nutraceuticals PVT Limited', address: '537-F Sundar Industrial Estate, (PIE) Raiwind Road, Lahore Pakistan', email: 'sale.goldsheff@gmail.com' },
-                  { name: 'Curatech Pharma PVT Limited', address: '35 KM Multan Road, Lahore, Pakistan', email: 'saleemadnan2009@yahoo.com' },
-                  { name: 'MR Traders', address: 'Al Haseeb House, Veha Banglows, Near Special Education, RYK', email: 'rafiquehq@yahoo.com' }
-                ].map((c, i) => (
-                  <tr key={i} className="border-b border-slate-100 hover:bg-blue-50/20">
-                    <td className="py-2 px-4 font-bold">{i + 1}</td>
-                    <td className="py-2 px-4">{c.name}</td>
-                    <td className="py-2 px-4">{c.address}</td>
-                    <td className="py-2 px-4"><a href={`mailto:${c.email}`} className="text-blue-600 underline">{c.email}</a></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mt-16">
+            {/* Search/filter bar */}
+            <div className="mb-6 flex flex-col md:flex-row gap-4 md:items-center">
+              <input
+                type="text"
+                placeholder="Search company, address, or email..."
+                className="w-full md:w-1/3 px-4 py-2 rounded-xl border border-slate-200 shadow-sm focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+            </div>
+
+            {/* Responsive Table/Card Layout */}
+            <div className="glass-card p-0 md:p-4 rounded-3xl shadow-2xl overflow-x-auto min-h-[400px] flex flex-col relative">
+              {displayedPartners.length > 0 ? (
+                <>
+                  <table className="hidden md:table min-w-full">
+                    <thead className="sticky top-0 z-10">
+                      <tr className="bg-gradient-to-r from-blue-100/80 to-indigo-100/80 text-blue-900 text-xs uppercase tracking-widest shadow-md">
+                        <th className="py-4 px-4 text-left rounded-tl-2xl">#</th>
+                        <th 
+                          className="py-4 px-4 text-left cursor-pointer hover:bg-blue-200/50 transition-colors group select-none"
+                          onClick={() => handleSort('name')}
+                        >
+                          <div className="flex items-center gap-2">
+                            <Building2 size={16} className="text-blue-500" aria-label="Company" /> 
+                            Distribution Co.
+                            <div className="flex flex-col text-slate-400 group-hover:text-blue-600 transition-colors">
+                              {sortConfig?.key === 'name' ? (
+                                sortConfig.direction === 'asc' ? <ArrowUp size={14} className="text-blue-600" /> : <ArrowDown size={14} className="text-blue-600" />
+                              ) : (
+                                <ArrowUpDown size={14} className="opacity-50" />
+                              )}
+                            </div>
+                          </div>
+                        </th>
+                        <th 
+                          className="py-4 px-4 text-left cursor-pointer hover:bg-blue-200/50 transition-colors group select-none"
+                          onClick={() => handleSort('address')}
+                        >
+                          <div className="flex items-center gap-2">
+                            <MapPin size={16} className="text-indigo-500" aria-label="Address" /> 
+                            Address
+                            <div className="flex flex-col text-slate-400 group-hover:text-blue-600 transition-colors">
+                              {sortConfig?.key === 'address' ? (
+                                sortConfig.direction === 'asc' ? <ArrowUp size={14} className="text-blue-600" /> : <ArrowDown size={14} className="text-blue-600" />
+                              ) : (
+                                <ArrowUpDown size={14} className="opacity-50" />
+                              )}
+                            </div>
+                          </div>
+                        </th>
+                        <th className="py-4 px-4 text-left rounded-tr-2xl">
+                          <div className="flex items-center gap-2">
+                            <MailIcon size={16} className="text-green-500" aria-label="Email" /> Email
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-slate-800 text-sm">
+                      {displayedPartners.map((c, i) => (
+                        <tr
+                          key={c.name}
+                          className={
+                            `transition-all duration-300 ${i % 2 === 0 ? 'bg-white/80' : 'bg-slate-50/80'} hover:scale-[1.01] hover:shadow-lg hover:bg-blue-50/60 animate-fade-in-up opacity-0`
+                          }
+                          style={{ animationDelay: `${i * 0.05}s`, animationFillMode: 'forwards' }}
+                        >
+                          <td className="py-4 px-4 font-bold text-blue-700 text-center align-middle">{i + 1}</td>
+                          <td className="py-4 px-4">
+                            <span className="inline-flex items-center gap-2">
+                              <span className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md flex-shrink-0">
+                                {c.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
+                              </span>
+                              <span className="font-semibold text-blue-900" title={c.name}>{c.name}</span>
+                            </span>
+                          </td>
+                          <td className="py-4 px-4 min-w-[250px]">
+                            <div className="flex items-start gap-2">
+                              <MapPin size={14} className="text-indigo-400 flex-shrink-0 mt-1" />
+                              <span className="leading-snug break-words">
+                                {c.address}
+                                <span className="inline-block px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider ml-2 flex-shrink-0 align-middle">
+                                  {c.address.split(',').pop()?.trim().split(' ')[0] || 'PK'}
+                                </span>
+                              </span>
+                            </div>
+                          </td>
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-3">
+                              <a
+                                href={`mailto:${c.email}`}
+                                className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-medium underline max-w-[250px] lg:max-w-none break-all"
+                                title={`Email ${c.name}`}
+                              >
+                                <MailIcon size={14} className="inline-block flex-shrink-0" /> <span>{c.email}</span>
+                              </a>
+                              <button 
+                                onClick={(e) => handleCopyEmail(e, c.email)} 
+                                className={`p-1.5 rounded-md transition-colors relative flex-shrink-0 ${copiedEmail === c.email ? 'bg-green-100 text-green-600' : 'bg-slate-100 text-slate-400 hover:bg-blue-100 hover:text-blue-600'}`}
+                                title="Copy Email"
+                              >
+                                {copiedEmail === c.email ? <Check size={14} /> : <Copy size={14} />}
+                                {copiedEmail === c.email && (
+                                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded shadow-lg whitespace-nowrap z-50">
+                                    Copied!
+                                  </span>
+                                )}
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                  {/* Mobile Card Layout */}
+                  <div className="md:hidden flex flex-col gap-4 p-4">
+                    {displayedPartners.map((c, i) => (
+                      <div 
+                        key={c.name} 
+                        className="glass-card rounded-2xl shadow-sm hover:shadow-xl p-4 flex flex-col gap-3 border border-slate-100 transition-all duration-300 animate-fade-in-up opacity-0"
+                        style={{ animationDelay: `${i * 0.05}s`, animationFillMode: 'forwards' }}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-lg bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md flex-shrink-0 mt-1">
+                            {c.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase()}
+                          </span>
+                          <div className="flex flex-col">
+                            <span className="font-bold text-blue-900 text-base leading-tight" title={c.name}>{c.name}</span>
+                            <span className="text-xs text-slate-500 font-medium uppercase tracking-widest mt-1">Partner #{i + 1}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-slate-50 rounded-xl p-3 flex flex-col gap-2 mt-2">
+                          <div className="flex items-start gap-2 text-slate-700 text-sm">
+                            <MapPin size={14} className="inline-block text-indigo-400 mt-0.5 flex-shrink-0" />
+                            <span className="leading-tight">{c.address}</span>
+                          </div>
+                          
+                          <div className="w-full h-px bg-slate-200/50 my-1"></div>
+                          
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2 text-green-700 text-sm max-w-[85%]" title={c.email}>
+                              <MailIcon size={14} className="inline-block flex-shrink-0" />
+                              <a href={`mailto:${c.email}`} className="underline font-medium break-all">{c.email}</a>
+                            </div>
+                            <button 
+                              onClick={(e) => handleCopyEmail(e, c.email)} 
+                              className={`p-1.5 rounded-md transition-colors relative flex-shrink-0 ${copiedEmail === c.email ? 'bg-green-100 text-green-600' : 'bg-slate-200 text-slate-500'}`}
+                            >
+                              {copiedEmail === c.email ? <Check size={14} /> : <Copy size={14} />}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* View More Button */}
+                  {sortedPartners.length > visibleCount && (
+                    <div className="w-full flex justify-center py-6 mt-4 border-t border-slate-100">
+                      <button 
+                        onClick={() => setVisibleCount(prev => prev + 8)}
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white border border-slate-200 text-slate-700 font-bold shadow-sm hover:shadow-md hover:border-blue-300 hover:text-blue-600 transition-all transform hover:-translate-y-1"
+                      >
+                        Load More Partners <ChevronDown size={18} />
+                      </button>
+                    </div>
+                  )}
+                </>
+              ) : (
+                /* Empty State */
+                <div className="flex-grow flex flex-col items-center justify-center py-16 px-4 text-center animate-fade-in-up">
+                  <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-6 text-slate-400 shadow-inner">
+                    <SearchX size={40} className="text-blue-300" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">No partners found</h3>
+                  <p className="text-slate-500 max-w-md mx-auto mb-8 leading-relaxed">
+                    We couldn't find any distribution partners matching <strong className="text-slate-800">"{search}"</strong>. Please try a different search term or clear the filter.
+                  </p>
+                  <button 
+                    onClick={() => setSearch('')} 
+                    className="px-8 py-3 bg-blue-50 text-blue-600 border border-blue-100 rounded-full font-bold hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm"
+                  >
+                    Clear Search
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Section>
