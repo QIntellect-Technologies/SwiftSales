@@ -34,6 +34,10 @@ app.use('/api/rag', ragRoutes);
 const orderRoutes = require('./routes/orders');
 app.use('/api/orders', orderRoutes);
 
+// Product routes
+const productRoutes = require('./routes/products');
+app.use('/api/products', productRoutes);
+
 
 
 // Configure Nodemailer with Gmail SMTP (explicit port 587 for Railway compatibility)

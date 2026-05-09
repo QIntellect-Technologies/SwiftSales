@@ -296,9 +296,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <ArrowUp size={20} />
       </button>
 
-      {/* DEBUG INDICATOR */}
-      <div style={{ position: 'fixed', bottom: '20px', left: '20px', width: '20px', height: '20px', backgroundColor: 'red', borderRadius: '50%', zIndex: 9999 }}></div>
-
       {/* Global ChatBot Ecosystem */}
       <ChatBot />
     </div>
