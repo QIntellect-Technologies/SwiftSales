@@ -16,13 +16,13 @@ async function initializeServices() {
     if (servicesInitialized) return;
 
     try {
-        console.log('🔄 Initializing RAG services (Supabase Integrated)...');
+        console.log('🔄 Initializing RAG services (Database Mode)...');
 
         // 1. Fetch Products from Supabase
         const products = await productService.getAllProducts();
 
         if (products.length > 0) {
-            console.log(`📦 Loaded ${products.length} products from Supabase.`);
+            console.log(`📦 Loaded ${products.length} products into RAG system.`);
 
             // Load Supabase-compatible embeddings path
             const vectorDbPath = path.join(__dirname, '../data/embeddings');
@@ -69,10 +69,10 @@ async function initializeServices() {
                 }
             }
 
-            console.log('✅ RAG services initialized (Supabase/ProductService)');
+            console.log('✅ RAG services initialized (ProductService)');
             servicesInitialized = true;
         } else {
-            console.warn('⚠️ No products found in Supabase.');
+            console.warn('⚠️ No products found in Database.');
         }
 
     } catch (error) {

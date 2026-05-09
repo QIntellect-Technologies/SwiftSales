@@ -1,107 +1,115 @@
 
+const fs = require('fs-extra');
+const path = require('path');
 const { supabase } = require('./supabase');
 
 class ProductService {
     constructor() {
         this.products = [];
         this.lastSync = null;
+        this.localDataPath = path.join(__dirname, '../data/medicines.json');
     }
 
     /**
-     * Fetch all active medicines from Supabase
-     * Used for initializing the Vector Index
+     * Fetch all active medicines
+     * Defaults to LOCAL JSON if Supabase is unavailable
      */
     async getAllProducts() {
         try {
-            console.log('🔄 Fetching all products from Supabase...');
+            // Try Supabase first if available
+            if (supabase && process.env.VITE_SUPABASE_URL) {
+                console.log('🔄 Attempting to fetch products from Supabase...');
+                const { data, error } = await supabase
+                    .from('medicines')
+                    .select('*')
+                    .eq('status', 'Available');
 
-            const { data, error } = await supabase
-                .from('medicines')
-                .select('*')
-                .eq('status', 'Available');
+                if (!error && data && data.length > 0) {
+                    console.log(`✅ Fetched ${data.length} medicines from Supabase.`);
+                    return this.normalizeSupabaseData(data);
+                }
+            }
 
-            if (error) throw error;
+            // Fallback to Local JSON
+            console.log('📦 Loading products from local JSON database...');
+            if (await fs.pathExists(this.localDataPath)) {
+                const localData = await fs.readJson(this.localDataPath);
+                console.log(`✅ Loaded ${localData.length} medicines from local storage.`);
+                
+                this.products = localData.map(item => ({
+                    id: item.id || item.item_id,
+                    name: item.name || item.description,
+                    company: item.company || 'Unknown',
+                    pack_size: item.pack_size || 'Standard',
+                    price: item.price || 0,
+                    stock: item.stock || 100,
+                    status: 'Available',
+                    generic_name: item.generic_name || '',
+                    description: item.description || item.name || '',
+                    original_data: item
+                }));
 
-            console.log(`✅ Fetched ${data.length} active medicines from DB.`);
-
-            // Normalize data to match chatbot's expected format
-            this.products = data.map(item => ({
-                id: item.id,
-                name: item.name,
-                company: item.manufacturer || 'Unknown', // Map manufacturer -> company
-                pack_size: !isNaN(parseFloat(item.package_size))
-                    ? parseFloat(item.package_size).toFixed(0) + (item.package_size_unit || '') // round number + unit if exists
-                    : item.package_size || 'Standard',
-                price: item.price,
-                stock: item.stock,
-                generic_name: item.generic_name,
-                description: item.description,
-                original_data: item
-            }));
-
-            this.lastSync = new Date();
-            return this.products;
+                this.lastSync = new Date();
+                return this.products;
+            } else {
+                console.warn('⚠️ Local medicines.json not found!');
+                return [];
+            }
         } catch (error) {
-            console.error('❌ Error fetching products from Supabase:', error.message);
+            console.error('❌ Error in getAllProducts:', error.message);
             return [];
         }
     }
 
+    normalizeSupabaseData(data) {
+        this.products = data.map(item => ({
+            id: item.id,
+            name: item.name,
+            company: item.manufacturer || 'Unknown',
+            pack_size: item.package_size || 'Standard',
+            price: item.price,
+            stock: item.stock,
+            status: item.status,
+            generic_name: item.generic_name,
+            description: item.description,
+            original_data: item
+        }));
+        this.lastSync = new Date();
+        return this.products;
+    }
+
     /**
-     * Get real-time details for specific products
-     * Used during RAG generation to get latest Price/Stock
-     * @param {Array<string>} productIds - List of UUIDs or Names
+     * Get real-time details
      */
     async getRealTimeDetails(productIds) {
         if (!productIds || productIds.length === 0) return [];
 
-        try {
-            // If IDs are UUIDs, query by ID. If names, query by name.
-            // Our vector search returns 'metadata' which has the specific ID from the index.
-            // So we should expect UUIDs if the index was built from DB data.
-
-            const { data, error } = await supabase
-                .from('medicines')
-                .select('id, name, price, stock, status, manufacturer, package_size')
-                .in('id', productIds);
-
-            if (error) throw error;
-
-            // Map to friendly format
-            return data.map(item => ({
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                stock: item.stock,
-                status: item.status,
-                company: item.manufacturer,
-                pack_size: item.package_size
-            }));
-
-        } catch (error) {
-            console.error('❌ Error fetching real-time details:', error.message);
-            return [];
+        // If we have products in memory, use them (Simulating real-time for local)
+        if (this.products.length > 0) {
+            return this.products
+                .filter(p => productIds.includes(p.id))
+                .map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    price: p.price,
+                    stock: p.stock,
+                    status: p.status,
+                    company: p.company,
+                    pack_size: p.pack_size
+                }));
         }
+
+        return [];
     }
-    /**
-     * Get all unique categories from products
-     */
+
     getAllCategories() {
         if (this.products.length === 0) return { categories: [], companies: [] };
-
-        // Extract unique categories (e.g. from 'category' field in metadata, or derive from existing data)
-        // Note: Our current normalized product object has: id, name, company, pack_size, price, stock, generic_name, description
-        // It seems 'category' might be missing in normalization, let's check original_data or infer.
-        // The user mentioned "Fetch all available categories dynamically from the dashboard".
-        // Let's assume 'category' exists in DB or we use 'manufacturer' as a proxy if category is missing/sparse.
-        // Actually, let's look at the raw data again.
-
-        // For now, let's return unique manufacturers as "Companies" and unique categories if available.
+        
         const categories = new Set();
         const companies = new Set();
 
         this.products.forEach(p => {
-            if (p.original_data.category) categories.add(p.original_data.category); // Assuming column exists
+            if (p.original_data.category) categories.add(p.original_data.category);
             if (p.company && p.company !== 'Unknown') companies.add(p.company);
         });
 
@@ -111,9 +119,6 @@ class ProductService {
         };
     }
 
-    /**
-     * Get products filtered by category or company
-     */
     getProductsByFilter(filterType, filterValue) {
         if (!filterValue) return [];
         const lowerValue = filterValue.toLowerCase();
@@ -128,9 +133,6 @@ class ProductService {
         });
     }
 
-    /**
-     * Helper: Calculate Levenshtein Distance for fuzzy matching
-     */
     levenshteinDistance(a, b) {
         if (a.length === 0) return b.length;
         if (b.length === 0) return a.length;
@@ -152,63 +154,43 @@ class ProductService {
         return matrix[b.length][a.length];
     }
 
-    /**
-     * Search products by name (Local Memory Search with Fuzzy Fallback)
-     * @param {string} query - The search term
-     * @param {boolean} forceReload - Whether to refresh from Supabase first
-     */
     async searchProducts(query, forceReload = false) {
-        // AUTO-REFRESH: If cache is empty or older than 30 seconds, reload.
-        const CACHE_TTL = 30 * 1000; // 30 seconds
+        const CACHE_TTL = 300 * 1000; // Increase to 5 mins for local
         const isStale = this.lastSync && (new Date() - this.lastSync > CACHE_TTL);
 
         if (!this.products.length || forceReload || isStale) {
-            if (isStale) console.log(`[SYNC] Cache is stale (${Math.floor((new Date() - this.lastSync) / 1000)}s old). Refreshing...`);
             await this.getAllProducts();
         }
 
         if (!query) return { products: [] };
-        console.log(`[SEARCH] Query: "${query}", Products in memory: ${this.products.length}`);
         const lowerQuery = query.toLowerCase().trim();
 
-        // 1. PRIMRY SEARCH: Exact or Contains
         let matches = this.products.filter(p => {
             const name = p.name.toLowerCase();
             return name.includes(lowerQuery) || lowerQuery.includes(name);
         });
 
-        // 2. SECONDARY SEARCH: Fuzzy matching if no primary matches found
         if (matches.length === 0 && lowerQuery.length >= 3) {
-            console.log(`[FUZZY SEARCH] No exact match for "${lowerQuery}", trying fuzzy...`);
             matches = this.products.filter(p => {
                 const pName = p.name.toLowerCase();
                 const distance = this.levenshteinDistance(lowerQuery, pName);
-
-                // Threshold: If query is long, allow more distance. 
-                // Approx 30% error allowed
                 const threshold = Math.max(2, Math.floor(lowerQuery.length * 0.3));
                 return distance <= threshold;
             });
-
-            if (matches.length > 0) {
-                console.log(`[FUZZY SEARCH] Found ${matches.length} potential matches.`);
-            }
         }
 
-        // Sort: Exact matches first, then starts with, then includes
         matches.sort((a, b) => {
             const aName = a.name.toLowerCase();
             const bName = b.name.toLowerCase();
             if (aName === lowerQuery) return -1;
             if (bName === lowerQuery) return 1;
-            if (aName.startsWith(lowerQuery) && !bName.startsWith(lowerQuery)) return -1;
-            if (bName.startsWith(lowerQuery) && !aName.startsWith(lowerQuery)) return 1;
+            if (aName.startsWith(lowerQuery)) return -1;
+            if (bName.startsWith(lowerQuery)) return 1;
             return 0;
         });
 
-        // Wrap in metadata structure
         return {
-            products: matches.map(p => ({
+            products: matches.slice(0, 10).map(p => ({
                 metadata: {
                     id: p.id,
                     name: p.name,
