@@ -41,7 +41,7 @@
       "delivery price",
       "how much is delivery"
     ],
-    "answer": "Delivery charges vary by location:\n• **Local (Rahim Yar Khan)**: FREE for orders above Rs. 2000\n• **Major Cities**: Rs. 150-250\n• **Remote Areas**: Rs. 300-500\n\nExact charges confirmed at checkout!",
+    "answer": "Delivery charges vary by location:\n **Local (Rahim Yar Khan)**: FREE for orders above Rs. 2000\n **Major Cities**: Rs. 150-250\n **Remote Areas**: Rs. 300-500\n\nExact charges confirmed at checkout!",
     "category": "Ordering & Delivery",
     "products": [],
     "tags": [
@@ -61,7 +61,7 @@
       "how fast",
       "when will I receive"
     ],
-    "answer": "Delivery timeframes:\n• **Same City**: 1-2 days\n• **Major Cities**: 2-3 days\n• **Remote Areas**: 3-5 days\n\nWe provide tracking for all orders!",
+    "answer": "Delivery timeframes:\n **Same City**: 1-2 days\n **Major Cities**: 2-3 days\n **Remote Areas**: 3-5 days\n\nWe provide tracking for all orders!",
     "category": "Ordering & Delivery",
     "products": [],
     "tags": [
@@ -81,7 +81,7 @@
       "payment methods",
       "can I pay cash"
     ],
-    "answer": "We accept:\n• **Cash on Delivery (COD)**\n• **Bank Transfer**\n• **Easypaisa/JazzCash**\n• **Credit/Debit Card**\n\nMost customers prefer COD for convenience!",
+    "answer": "We accept:\n **Cash on Delivery (COD)**\n **Bank Transfer**\n **Easypaisa/JazzCash**\n **Credit/Debit Card**\n\nMost customers prefer COD for convenience!",
     "category": "Ordering & Delivery",
     "products": [],
     "tags": [
@@ -101,7 +101,7 @@
       "can I return",
       "refund policy"
     ],
-    "answer": "Yes, we accept returns within **7 days** if:\n• Product is unopened and unused\n• Original packaging intact\n• Valid reason provided\n\n**Prescription medicines** cannot be returned once opened. Contact us for assistance!",
+    "answer": "Yes, we accept returns within **7 days** if:\n Product is unopened and unused\n Original packaging intact\n Valid reason provided\n\n**Prescription medicines** cannot be returned once opened. Contact us for assistance!",
     "category": "Ordering & Delivery",
     "products": [],
     "tags": [
@@ -121,7 +121,7 @@
       "where is my order",
       "order status"
     ],
-    "answer": "We provide tracking via:\n• **WhatsApp updates**: +92 321 7780623\n• **Email confirmations**\n• **Phone support**\n\nYou'll receive updates at each stage of delivery!",
+    "answer": "We provide tracking via:\n **WhatsApp updates**: +92 321 7780623\n **Email confirmations**\n **Phone support**\n\nYou'll receive updates at each stage of delivery!",
     "category": "Ordering & Delivery",
     "products": [],
     "tags": [

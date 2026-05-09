@@ -10,7 +10,7 @@
       "good afternoon",
       "salam"
     ],
-    "answer": "Hello! 👋 Welcome to Swift Sales Healthcare! I'm here to help you find medicines, place orders, or answer any health-related questions. What can I do for you today?",
+    "answer": "Hello!  Welcome to Swift Sales Healthcare! I'm here to help you find medicines, place orders, or answer any health-related questions. What can I do for you today?",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -30,7 +30,7 @@
       "grateful",
       "blessed"
     ],
-    "answer": "You're very welcome! 😊 If you need anything else, I'm always here to help. Stay healthy!",
+    "answer": "You're very welcome!  If you need anything else, I'm always here to help. Stay healthy!",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -50,7 +50,7 @@
       "take care",
       "Allah Hafiz"
     ],
-    "answer": "Goodbye! Take care and stay healthy! 🌟 Feel free to reach out anytime you need assistance. Allah Hafiz!",
+    "answer": "Goodbye! Take care and stay healthy!  Feel free to reach out anytime you need assistance. Allah Hafiz!",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -69,7 +69,7 @@
       "can you help",
       "I'm confused"
     ],
-    "answer": "Of course! I'm here to help. You can:\n• Ask about medicines\n• Place an order\n• Check stock availability\n• Get health advice\n• Contact our team\n\nWhat would you like to know?",
+    "answer": "Of course! I'm here to help. You can:\n Ask about medicines\n Place an order\n Check stock availability\n Get health advice\n Contact our team\n\nWhat would you like to know?",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -89,7 +89,7 @@
       "your name",
       "tell me about yourself"
     ],
-    "answer": "Thank you for asking! I'm **SwiftBot**, your intelligent pharmaceutical assistant powered by Swift Sales Healthcare! 😊 I'm here to guide you, help you find medicines, and make ordering easy and direct. How can I assist you today?",
+    "answer": "Thank you for asking! I'm **SwiftBot**, your intelligent pharmaceutical assistant powered by Swift Sales Healthcare!  I'm here to guide you, help you find medicines, and make ordering easy and direct. How can I assist you today?",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -108,7 +108,7 @@
       "when are you open",
       "what time do you close"
     ],
-    "answer": "**Swift Sales Healthcare Operating Hours:**\n\n• Monday - Saturday: 9:00 AM - 6:00 PM\n• Sunday: Closed (Emergency support via phone)\n\n📞 24/7 Emergency: +92 321 7780623",
+    "answer": "**Swift Sales Healthcare Operating Hours:**\n\n Monday - Saturday: 9:00 AM - 6:00 PM\n Sunday: Closed (Emergency support via phone)\n\n 24/7 Emergency: +92 321 7780623",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -127,7 +127,7 @@
       "critical situation",
       "serious problem"
     ],
-    "answer": "🚨 **For medical emergencies:**\n\n1. Call emergency services: 1122\n2. Contact us: +92 321 7780623\n3. Visit nearest hospital\n\nWe're here to support you, but please seek immediate medical attention for emergencies!",
+    "answer": " **For medical emergencies:**\n\n1. Call emergency services: 1122\n2. Contact us: +92 321 7780623\n3. Visit nearest hospital\n\nWe're here to support you, but please seek immediate medical attention for emergencies!",
     "category": "Conversational",
     "products": [],
     "tags": [
@@ -146,7 +146,7 @@
       "where is your shop",
       "office location"
     ],
-    "answer": "📍 **Swift Sales Healthcare**\n\nAddress: C8GM+HFF, Sardar Colony, Rahim Yar Khan, Pakistan\n\nYou can visit us during business hours or contact us:\n• Phone: +92 321 7780623\n• Email: swiftsales.healthcare@gmail.com",
+    "answer": " **Swift Sales Healthcare**\n\nAddress: C8GM+HFF, Sardar Colony, Rahim Yar Khan, Pakistan\n\nYou can visit us during business hours or contact us:\n Phone: +92 321 7780623\n Email: swiftsales.healthcare@gmail.com",
     "category": "Conversational",
     "products": [],
     "tags": [

@@ -7,7 +7,6 @@ const { dbHelpers } = require('./database');
 const { productService } = require('./services/productService');
 const { getEmbeddingService } = require('./services/embeddings');
 const { getVectorSearch } = require('./services/vectorSearch');
-const { getRAGService } = require('./services/rag');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
@@ -21,9 +20,6 @@ app.use(express.static(path.join(__dirname, '..', 'dist'))); // Serve frontend d
 
 // Initialize database
 require('./database');
-
-
-// Routes registration
 
 
 // Chat routes (session, message, etc.)
@@ -59,172 +55,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'Backend is active and synced.' });
 });
 
-// --- CHATBOT ECOSYSTEM ENDPOINT ---
-const medicinesPath = path.join(__dirname, 'data', 'medicines.json');
-const vectorDbPath = path.join(__dirname, 'data', 'embeddings');
-const faqIndexPath = path.join(vectorDbPath, 'faq_embeddings_comprehensive.json');
-const metadataPath = path.join(vectorDbPath, 'faq_metadata_comprehensive.json');
-const productDetailsPath = path.join(__dirname, '..', 'src', 'data', 'productDetails.json');
+// RAG Initialization now happens inside the rag.js route for better encapsulation.
 
-const { getReRankingService } = require('./services/reRanker');
-
-let ragServicesInitialized = false;
-
-const initializeRagServices = async () => {
-    if (ragServicesInitialized) return;
-
-    try {
-        console.log('🔄 Initializing RAG System (Supabase Integrated)...');
-
-        // 1. Fetch Products from Supabase
-        const products = await productService.getAllProducts();
-
-        if (products.length > 0) {
-            console.log(`📦 Loaded ${products.length} products from Supabase.`);
-
-            const embeddingService = getEmbeddingService();
-            const vectorSearch = getVectorSearch();
-            const reRanker = getReRankingService();
-
-            // 2. Check if we need to rebuild embeddings
-            // For now, we'll try to load from disk, if fail or mismatch, we rebuild.
-            // Simplified: Just rebuild in-memory if small, or check file existence.
-            const vectorPath = path.join(vectorDbPath, 'supabase_vectors.json');
-
-            let embeddings = [];
-
-            if (await fs.pathExists(vectorPath)) {
-                console.log('📂 Loading cached embeddings...');
-                embeddings = await fs.readJson(vectorPath);
-
-                if (embeddings.length !== products.length) {
-                    console.log('⚠️ Count mismatch. Rebuilding embeddings...');
-                    embeddings = await embeddingService.embedBatch(products.map(p =>
-                        `${p.name} ${p.generic_name || ''} ${p.description || ''} ${p.company || ''}`
-                    ));
-                    await fs.writeJson(vectorPath, embeddings);
-                }
-            } else {
-                console.log('⚡ Generating new embeddings (this may take a moment)...');
-                embeddings = await embeddingService.embedBatch(products.map(p =>
-                    `${p.name} ${p.generic_name || ''} ${p.description || ''} ${p.company || ''}`
-                ));
-                await fs.writeJson(vectorPath, embeddings);
-            }
-
-            // 3. Initialize Vector Search
-            // We pass the PRODUCTS as metadata
-            await vectorSearch.initialize(vectorPath, products);
-
-            // 4. Initialize Re-Ranker
-            await reRanker.initialize();
-
-            // Load Global Product Details (Static for now, but could be DB too)
-            if (await fs.pathExists(productDetailsPath)) {
-                try {
-                    global.productDetails = await fs.readJson(productDetailsPath);
-                } catch (err) { console.warn('⚠️ Could not load product details:', err.message); }
-            }
-
-            ragServicesInitialized = true;
-            console.log(`✅ RAG Services Ready!`);
-        } else {
-            console.warn('⚠️ No products found in Supabase. Chatbot will have limited knowledge.');
-        }
-    } catch (err) {
-        console.error('❌ Failed to initialize RAG services:', err);
-    }
-};
-
-// Pure RAG chat endpoint (LLM-free) - MUST be defined BEFORE router registration
-app.post('/api/chat', async (req, res) => {
-    const { message, context = {}, sessionId } = req.body;
-
-    if (!message) {
-        return res.status(400).json({ success: false, error: 'Message is required' });
-    }
-
-    await initializeRagServices();
-
-    try {
-        // Pull limited history for better continuity if available
-        if (sessionId && dbHelpers?.getChatHistory) {
-            try {
-                const history = await dbHelpers.getChatHistory(sessionId);
-                context.chatHistory = history.slice(-10);
-            } catch (err) {
-                console.warn('⚠️ Could not fetch chat history for context:', err.message);
-            }
-        }
-
-        const embeddingService = getEmbeddingService();
-        const vectorSearch = getVectorSearch();
-        const reRanker = getReRankingService();
-        const ragService = getRAGService();
-
-        // 1. Retrieval (HNSW) - Get top 20 candidates
-        const candidates = await vectorSearch.searchByText(embeddingService, message, 20);
-
-        // --- DYNAMIC DATA ENRICHMENT ---
-        // Fetch latest Price and Stock from Supabase for these candidates
-        const candidateIds = candidates.map(c => c.metadata.id).filter(id => id);
-        const latestDetails = await productService.getRealTimeDetails(candidateIds);
-
-        // Merge latest details into candidates
-        candidates.forEach(c => {
-            const fresh = latestDetails.find(d => d.id === c.metadata.id);
-            if (fresh) {
-                c.metadata.price = fresh.price;
-                c.metadata.stock = fresh.stock;
-                c.metadata.status = fresh.status;
-                // c.metadata.name = fresh.name; // Keep original name or update? Keep original for matching stability.
-            }
-        });
-        // -------------------------------
-
-        // 2. Re-Ranking (Cross-Encoder) - Filter top 5 high-quality matches
-        let rankedResults = await reRanker.rerank(message, candidates, 5);
-
-        // 3. Quality Filter - Different thresholds for different query types
-        const hasCartIntent = /(add|order|buy|want|need|remove|update|change|modify|cart|\d+\s+[a-z])/i.test(message);
-        const hasProfanity = /(fuck|shit|stupid|get out|go away)/i.test(message);
-
-        if (hasProfanity) {
-            // Very strict for profanity
-            const MIN_RERANK_SCORE = 0.5;
-            rankedResults = rankedResults.filter(r => (r.rerankScore || r.similarity || 0) >= MIN_RERANK_SCORE);
-        } else if (!hasCartIntent) {
-            // Moderate filtering
-            const MIN_RERANK_SCORE = 0.25;
-            rankedResults = rankedResults.filter(r => (r.rerankScore || r.similarity || 0) >= MIN_RERANK_SCORE);
-        }
-
-        // 4. Generation
-        const response = await ragService.generateResponse(message, rankedResults, context);
-
-        res.json({
-            success: true,
-            response,
-            updatedContext: context,
-            relevantProducts: rankedResults.map(r => ({
-                name: r.metadata.name,
-                company: r.metadata.company,
-                pack_size: r.metadata.pack_size,
-                price: r.metadata.price, // Include price in response
-                stock: r.metadata.stock, // Include stock in response
-                similarity: r.similarity,
-                rerankScore: r.rerankScore
-            }))
-        });
-    } catch (error) {
-        console.error('Chat Error:', error);
-        res.status(500).json({
-            success: false,
-            error: error.message,
-            fallback: "I'm here to help! Could you please rephrase your question? 😊"
-        });
-    }
-});
+// Legacy /api/chat removed. Use /api/rag/query.
 
 
 // Helper: Load Medicines - DEPRECATED (Now fetching from Supabase)

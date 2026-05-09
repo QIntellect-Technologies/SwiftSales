@@ -12,7 +12,7 @@
       "product catalog",
       "what's in stock"
     ],
-    "answer": "We have **2,136+ pharmaceutical products** from 34+ manufacturers! 🏥\n\n**Popular Categories:**\n• Pain Relief (PANADOL, BRUFEN, DISPRIN)\n• Antibiotics (AUGMENTIN, CIPROXIN, ZITHROMAX)\n• Cold & Flu (ACTIFED, COFEX, SINEX)\n• Digestive Health (RISEK, NEXIUM, MYLANTA)\n• Diabetes Care (GLUCOPHAGE, DIAMICRON)\n• Heart & BP (CONCOR, NORVASC, DILATREND)\n\n**How can I help you?**\n• Tell me your condition\n• Ask for specific medicine\n• Browse by category",
+    "answer": "We have 2,136+ pharmaceutical products from 34+ manufacturers.\n\nPopular Categories:\nPain Relief - PANADOL, BRUFEN, DISPRIN\nAntibiotics - AUGMENTIN, CIPROXIN, ZITHROMAX\nCold & Flu - ACTIFED, COFEX, SINEX\nDigestive Health - RISEK, NEXIUM, MYLANTA\nDiabetes Care - GLUCOPHAGE, DIAMICRON\nHeart & BP - CONCOR, NORVASC, DILATREND\n\nHow can I help you? Tell me:\n- Your condition or symptom\n- Specific medicine name\n- Product category",
     "category": "Product Catalog",
     "products": [],
     "tags": ["catalog", "browse", "products", "medicines", "list", "show"]
@@ -28,7 +28,7 @@
       "commonly used medicines",
       "what do people buy most"
     ],
-    "answer": "**🌟 Our Top Medicines:**\n\n**Pain & Fever:**\n• PANADOL 500mg - Pain relief & fever\n• BRUFEN 400mg - Anti-inflammatory\n• DISPRIN - Fast pain relief\n\n**Antibiotics:**\n• AUGMENTIN - Bacterial infections\n• CIPROXIN - Broad spectrum\n• ZITHROMAX - Respiratory infections\n\n**Digestive Health:**\n• RISEK - Acidity & reflux\n• NEXIUM - Stomach protection\n• MYLANTA - Quick antacid relief\n\n**Cold & Flu:**\n• ACTIFED - Sinus & congestion\n• COFEX - Cough syrup\n• PANADOL CF - Cold & flu relief\n\nWhat would you like to order? 😊",
+    "answer": "Our Top Medicines:\n\nPain & Fever:\nPANADOL 500mg - Pain relief & fever\nBRUFEN 400mg - Anti-inflammatory\nDISPRIN - Fast pain relief\n\nAntibiotics:\nAUGMENTIN - Bacterial infections\nCIPROXIN - Broad spectrum\nZITHROMAX - Respiratory infections\n\nDigestive Health:\nRISEK - Acidity & reflux\nNEXIUM - Stomach protection\nMYLANTA - Quick antacid relief\n\nCold & Flu:\nACTIFED - Sinus & congestion\nCOFEX - Cough syrup\nPANADOL CF - Cold & flu relief\n\nWhat would you like to order?",
     "category": "Product Catalog",
     "products": ["PANADOL", "BRUFEN", "DISPRIN", "AUGMENTIN", "RISEK", "NEXIUM"],
     "tags": ["top", "popular", "best", "medicines", "products"]
@@ -43,7 +43,7 @@
       "what do you have for pain",
       "show me pain medicines"
     ],
-    "answer": "**💊 Pain Relief Medicines:**\n\n**Mild to Moderate Pain:**\n• PANADOL 500mg (Paracetamol)\n• DISPRIN (Aspirin)\n\n**Moderate to Severe Pain:**\n• BRUFEN 400mg (Ibuprofen)\n• PONSTAN (Mefenamic Acid)\n• CATAFLAM (Diclofenac)\n\n**Muscle & Joint Pain:**\n• VOLTRAL Gel\n• MYOFLEX Spray\n• MOVEX Tablets\n\nWhich type of pain are you experiencing? I can help you choose! 😊",
+    "answer": "Pain Relief Medicines:\n\nMild to Moderate Pain:\nPANADOL 500mg (Paracetamol)\nDISPRIN (Aspirin)\n\nModerate to Severe Pain:\nBRUFEN 400mg (Ibuprofen)\nPONSTAN (Mefenamic Acid)\nCATAFLAM (Diclofenac)\n\nMuscle & Joint Pain:\nVOLTRAL Gel\nMYOFLEX Spray\nMOVEX Tablets\n\nWhich type of pain are you experiencing? I can help you choose the right medicine.",
     "category": "Product Categories",
     "products": ["PANADOL", "BRUFEN", "PONSTAN", "CATAFLAM", "DISPRIN"],
     "tags": ["pain", "painkillers", "relief", "analgesic"]
@@ -57,7 +57,7 @@
       "do you have antibiotics",
       "list of antibiotics"
     ],
-    "answer": "**💊 Antibiotics Available:**\n\n**Common Antibiotics:**\n• AUGMENTIN (Amoxicillin + Clavulanic Acid)\n• CIPROXIN (Ciprofloxacin)\n• ZITHROMAX (Azithromycin)\n• KLACID (Clarithromycin)\n\n**For Specific Infections:**\n• FLAGYL (Metronidazole) - GI infections\n• BACTRIM - UTI infections\n• CEFSPAN - Respiratory infections\n\n⚠️ **Important:** Antibiotics require prescription. Please consult your doctor before use.\n\nDo you have a prescription? I can help you find the right antibiotic! 📋",
+    "answer": "** Antibiotics Available:**\n\n**Common Antibiotics:**\n AUGMENTIN (Amoxicillin + Clavulanic Acid)\n CIPROXIN (Ciprofloxacin)\n ZITHROMAX (Azithromycin)\n KLACID (Clarithromycin)\n\n**For Specific Infections:**\n FLAGYL (Metronidazole) - GI infections\n BACTRIM - UTI infections\n CEFSPAN - Respiratory infections\n\n **Important:** Antibiotics require prescription. Please consult your doctor before use.\n\nDo you have a prescription? I can help you find the right antibiotic! ",
     "category": "Product Categories",
     "products": ["AUGMENTIN", "CIPROXIN", "ZITHROMAX", "FLAGYL"],
     "tags": ["antibiotics", "infection", "bacterial"]
@@ -71,7 +71,7 @@
       "product categories",
       "what types do you sell"
     ],
-    "answer": "**📂 Our Medicine Categories:**\n\n1️⃣ **Pain Relief** - Analgesics, NSAIDs\n2️⃣ **Antibiotics** - Bacterial infection treatment\n3️⃣ **Cold & Flu** - Cough, congestion, sinus\n4️⃣ **Digestive Health** - Antacids, anti-ulcer\n5️⃣ **Diabetes Care** - Insulin, oral medications\n6️⃣ **Heart & BP** - Cardiovascular medicines\n7️⃣ **Allergy Relief** - Antihistamines\n8️⃣ **Vitamins & Supplements**\n9️⃣ **Skin Care** - Creams, ointments\n🔟 **Women's Health** - Prenatal, hormones\n\n**Which category interests you?** Tell me your condition and I'll recommend the best options! 😊",
+    "answer": "** Our Medicine Categories:**\n\n1 **Pain Relief** - Analgesics, NSAIDs\n2 **Antibiotics** - Bacterial infection treatment\n3 **Cold & Flu** - Cough, congestion, sinus\n4 **Digestive Health** - Antacids, anti-ulcer\n5 **Diabetes Care** - Insulin, oral medications\n6 **Heart & BP** - Cardiovascular medicines\n7 **Allergy Relief** - Antihistamines\n8 **Vitamins & Supplements**\n9 **Skin Care** - Creams, ointments\n **Women's Health** - Prenatal, hormones\n\n**Which category interests you?** Tell me your condition and I'll recommend the best options! ",
     "category": "Product Catalog",
     "products": [],
     "tags": ["categories", "types", "classification", "browse"]
@@ -86,7 +86,7 @@
       "entire inventory",
       "show everything"
     ],
-    "answer": "We have **2,136+ medicines** from **34+ manufacturers**! 📚\n\n**Instead of browsing all, let me help you faster:**\n\n**Option 1:** Tell me what you need\n• \"Medicine for headache\"\n• \"Diabetes medication\"\n• \"Antibiotic for infection\"\n\n**Option 2:** Browse by category\n• Pain Relief\n• Antibiotics\n• Cold & Flu\n• Digestive Health\n• And more!\n\n**Option 3:** Search by name\n• \"Do you have PANADOL?\"\n• \"Is AUGMENTIN available?\"\n\nWhat works best for you? 😊",
+    "answer": "We have **2,136+ medicines** from **34+ manufacturers**! \n\n**Instead of browsing all, let me help you faster:**\n\n**Option 1:** Tell me what you need\n \"Medicine for headache\"\n \"Diabetes medication\"\n \"Antibiotic for infection\"\n\n**Option 2:** Browse by category\n Pain Relief\n Antibiotics\n Cold & Flu\n Digestive Health\n And more!\n\n**Option 3:** Search by name\n \"Do you have PANADOL?\"\n \"Is AUGMENTIN available?\"\n\nWhat works best for you? ",
     "category": "Product Catalog",
     "products": [],
     "tags": ["catalog", "full", "complete", "all", "browse"]

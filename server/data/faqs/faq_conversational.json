@@ -3,7 +3,7 @@
     "id": "CONV001",
     "question": "hello",
     "variations": ["hi", "hey", "greetings", "good morning", "good afternoon", "good evening", "salam", "assalam o alaikum"],
-    "answer": "Assalam-o-Alaikum! 👋 Welcome to Swift Sales Healthcare!\n\nHow can I assist you today?\n• Need medicine information?\n• Want to place an order?\n• Have health questions?\n\nI'm here to help! 😊",
+    "answer": "Assalam-o-Alaikum!  Welcome to Swift Sales Healthcare!\n\nHow can I assist you today?\n Need medicine information?\n Want to place an order?\n Have health questions?\n\nI'm here to help! ",
     "category": "greetings",
     "tags": ["hello", "hi", "greetings", "welcome"]
   },
@@ -11,7 +11,7 @@
     "id": "CONV002",
     "question": "thank you",
     "variations": ["thanks", "thank you so much", "appreciate it", "grateful", "shukriya", "jazakallah"],
-    "answer": "You're most welcome! 💖\n\nHappy to help! If you need anything else, I'm always here.\n\nStay healthy and blessed! 🌟",
+    "answer": "You're most welcome! \n\nHappy to help! If you need anything else, I'm always here.\n\nStay healthy and blessed! ",
     "category": "gratitude",
     "tags": ["thank you", "thanks", "gratitude"]
   },
@@ -19,7 +19,7 @@
     "id": "CONV003",
     "question": "you're not helping",
     "variations": ["not understanding", "you don't get it", "this is not what i asked", "wrong answer"],
-    "answer": "I sincerely apologize! 😔\n\nLet me help you better. Can you please:\n• Rephrase your question?\n• Be more specific?\n• Or speak to our pharmacist?\n\n📞 Call us: +92 321 7780623\n\nWe're here to serve you properly! 🙏",
+    "answer": "I sincerely apologize! \n\nLet me help you better. Can you please:\n Rephrase your question?\n Be more specific?\n Or speak to our pharmacist?\n\n Call us: +92 321 7780623\n\nWe're here to serve you properly! ",
     "category": "clarification",
     "tags": ["not helping", "wrong", "misunderstand"]
   },
@@ -27,7 +27,7 @@
     "id": "CONV004",
     "question": "i don't understand",
     "variations": ["confused", "can you explain", "what do you mean", "clarify please"],
-    "answer": "No problem! Let me explain clearly. 📝\n\nWhat would you like to know about?\n• Medicine information?\n• Ordering process?\n• Delivery details?\n• Pricing?\n\nOr would you prefer to speak with our team?\n📞 +92 321 7780623\n\nI'm here to make things clear! 💡",
+    "answer": "No problem! Let me explain clearly. \n\nWhat would you like to know about?\n Medicine information?\n Ordering process?\n Delivery details?\n Pricing?\n\nOr would you prefer to speak with our team?\n +92 321 7780623\n\nI'm here to make things clear! ",
     "category": "clarification",
     "tags": ["confused", "don't understand", "explain"]
   },
@@ -35,7 +35,7 @@
     "id": "CONV005",
     "question": "who are you",
     "variations": ["what are you", "are you human", "are you robot", "are you bot"],
-    "answer": "I'm **SwiftBot** 🤖, your AI health assistant!\n\nI'm here to:\n✅ Answer health questions\n✅ Provide medicine information\n✅ Help you order medicines\n✅ Guide you through our services\n\nWhile I'm AI, I'm backed by real pharmacists at Swift Sales Healthcare!\n\nFor complex queries, I connect you to our human team. 👨‍⚕️",
+    "answer": "I'm **SwiftBot** , your AI health assistant!\n\nI'm here to:\n Answer health questions\n Provide medicine information\n Help you order medicines\n Guide you through our services\n\nWhile I'm AI, I'm backed by real pharmacists at Swift Sales Healthcare!\n\nFor complex queries, I connect you to our human team. ",
     "category": "identity",
     "tags": ["who are you", "bot", "ai", "robot"]
   },
@@ -43,7 +43,7 @@
     "id": "CONV006",
     "question": "can you speak urdu",
     "variations": ["urdu bot", "speak in urdu", "urdu mein baat karo", "tum urdu bol sakte ho"],
-    "answer": "جی ہاں، میں اردو سمجھ سکتا ہوں! 🇵🇰\n\nBut I respond better in English or Roman Urdu.\n\nYou can ask in:\n• English\n• Roman Urdu (e.g., \"mujhe bukhar ki dawa chahiye\")\n\nI'll do my best to understand and help! 😊\n\nFor Urdu support, call: +92 321 7780623",
+    "answer": "      ! \n\nBut I respond better in English or Roman Urdu.\n\nYou can ask in:\n English\n Roman Urdu (e.g., \"mujhe bukhar ki dawa chahiye\")\n\nI'll do my best to understand and help! \n\nFor Urdu support, call: +92 321 7780623",
     "category": "language",
     "tags": ["urdu", "language", "pakistani"]
   },
@@ -51,7 +51,7 @@
     "id": "CONV007",
     "question": "you are wrong",
     "variations": ["that's incorrect", "you're mistaken", "this is wrong info", "false information"],
-    "answer": "I apologize if I provided incorrect information! 🙏\n\nYour safety is our priority. Please:\n\n**For Medical Info:**\n📞 Call our pharmacist: +92 321 7780623\nThey'll give you accurate, verified information.\n\n**Report the Issue:**\nHelp us improve! What was incorrect?\n\nThank you for pointing it out! 🎯",
+    "answer": "I apologize if I provided incorrect information! \n\nYour safety is our priority. Please:\n\n**For Medical Info:**\n Call our pharmacist: +92 321 7780623\nThey'll give you accurate, verified information.\n\n**Report the Issue:**\nHelp us improve! What was incorrect?\n\nThank you for pointing it out! ",
     "category": "error_handling",
     "tags": ["wrong", "incorrect", "mistake", "error"]
   },
@@ -59,7 +59,7 @@
     "id": "CONV008",
     "question": "this is expensive",
     "variations": ["too costly", "price is high", "very expensive", "can't afford", "discount please"],
-    "answer": "I understand your concern about pricing. 💰\n\n**We offer:**\n• Competitive prices\n• Bulk discounts (10+ items)\n• FREE delivery on Rs. 5,000+\n• Generic alternatives (cheaper)\n\n**Need better price?**\n• Ask about generic versions\n• Buy in bulk\n• Monthly customer discounts\n\n📞 Call for special pricing: +92 321 7780623\n\nWe want to make healthcare affordable! ❤️",
+    "answer": "I understand your concern about pricing. \n\n**We offer:**\n Competitive prices\n Bulk discounts (10+ items)\n FREE delivery on Rs. 5,000+\n Generic alternatives (cheaper)\n\n**Need better price?**\n Ask about generic versions\n Buy in bulk\n Monthly customer discounts\n\n Call for special pricing: +92 321 7780623\n\nWe want to make healthcare affordable! ",
     "category": "pricing_concern",
     "tags": ["expensive", "costly", "price", "discount"]
   },
@@ -67,7 +67,7 @@
     "id": "CONV009",
     "question": "talk to human",
     "variations": ["speak to person", "real person", "human support", "customer service agent"],
-    "answer": "Absolutely! Let me connect you to our team. 👨‍⚕️\n\n**Contact Options:**\n\n📞 **Call/WhatsApp:**\n+92 321 7780623\n\n📧 **Email:**\nswiftsales.healthcare@gmail.com\n\n🏪 **Visit Us:**\nC8GM+HFF, Sardar Colony, Rahim Yar Khan\n\n**Timing:**\nMon-Sat: 9 AM - 8 PM\nSunday: By appointment\n\nOur pharmacist will assist you personally! 🌟",
+    "answer": "Absolutely! Let me connect you to our team. \n\n**Contact Options:**\n\n **Call/WhatsApp:**\n+92 321 7780623\n\n **Email:**\nswiftsales.healthcare@gmail.com\n\n **Visit Us:**\nC8GM+HFF, Sardar Colony, Rahim Yar Khan\n\n**Timing:**\nMon-Sat: 9 AM - 8 PM\nSunday: By appointment\n\nOur pharmacist will assist you personally! ",
     "category": "human_handoff",
     "tags": ["human", "person", "agent", "support"]
   },
@@ -75,7 +75,7 @@
     "id": "CONV010",
     "question": "goodbye",
     "variations": ["bye", "see you", "take care", "allah hafiz", "khuda hafiz"],
-    "answer": "Allah Hafiz! 🌙\n\nTake care and stay healthy! 💚\n\nRemember, I'm always here if you need:\n• Medicine information\n• Health advice\n• Order assistance\n\nFeel free to come back anytime! 😊\n\n**Swift Sales Healthcare** - Your Health Partner 🏥",
+    "answer": "Allah Hafiz! \n\nTake care and stay healthy! \n\nRemember, I'm always here if you need:\n Medicine information\n Health advice\n Order assistance\n\nFeel free to come back anytime! \n\n**Swift Sales Healthcare** - Your Health Partner ",
     "category": "farewell",
     "tags": ["goodbye", "bye", "farewell", "allah hafiz"]
   },
@@ -83,7 +83,7 @@
     "id": "CONV011",
     "question": "are you sure",
     "variations": ["is this correct", "are you certain", "confirm this", "double check"],
-    "answer": "I provide information based on medical knowledge, but for 100% certainty:\n\n**✅ Always Consult:**\n• Doctor for prescriptions\n• Pharmacist for dosing\n• Specialist for serious conditions\n\n**My Role:**\n• General information\n• Product details\n• Ordering assistance\n\n**For Medical Certainty:**\n📞 Call our pharmacist: +92 321 7780623\n\nYour safety comes first! 🛡️",
+    "answer": "I provide information based on medical knowledge, but for 100% certainty:\n\n** Always Consult:**\n Doctor for prescriptions\n Pharmacist for dosing\n Specialist for serious conditions\n\n**My Role:**\n General information\n Product details\n Ordering assistance\n\n**For Medical Certainty:**\n Call our pharmacist: +92 321 7780623\n\nYour safety comes first! ",
     "category": "verification",
     "tags": ["are you sure", "certain", "confirm", "verify"]
   },
@@ -91,7 +91,7 @@
     "id": "CONV012",
     "question": "i'm sick",
     "variations": ["not feeling well", "i'm ill", "feeling unwell", "i'm not okay"],
-    "answer": "I'm sorry you're not feeling well! 😔\n\n**Please tell me:**\n• What symptoms do you have?\n• How long have you been feeling this way?\n• Any fever, pain, or other issues?\n\nI'll suggest appropriate medicines.\n\n**⚠️ If Serious:**\n• High fever (>103°F)\n• Severe pain\n• Difficulty breathing\n• Chest pain\n\n**Seek medical emergency immediately!** 🚑\n\nOtherwise, describe your symptoms and I'll help! 💊",
+    "answer": "I'm sorry you're not feeling well! \n\n**Please tell me:**\n What symptoms do you have?\n How long have you been feeling this way?\n Any fever, pain, or other issues?\n\nI'll suggest appropriate medicines.\n\n** If Serious:**\n High fever (>103F)\n Severe pain\n Difficulty breathing\n Chest pain\n\n**Seek medical emergency immediately!** \n\nOtherwise, describe your symptoms and I'll help! ",
     "category": "sympathy",
     "tags": ["sick", "ill", "unwell", "not feeling well"]
   },
@@ -99,7 +99,7 @@
     "id": "CONV013",
     "question": "you are smart",
     "variations": ["you're intelligent", "good bot", "helpful", "you're great", "amazing"],
-    "answer": "Aww, thank you so much! 🥰\n\nI'm just trying to help make healthcare easier for you!\n\nRemember, I'm powered by:\n• Advanced AI\n• Medical knowledge base\n• Real pharmacist support\n\nBut YOU are smart for taking care of your health! 🌟\n\nHow else can I assist you today? 😊",
+    "answer": "Aww, thank you so much! \n\nI'm just trying to help make healthcare easier for you!\n\nRemember, I'm powered by:\n Advanced AI\n Medical knowledge base\n Real pharmacist support\n\nBut YOU are smart for taking care of your health! \n\nHow else can I assist you today? ",
     "category": "compliment",
     "tags": ["smart", "good", "helpful", "great", "compliment"]
   },
@@ -107,7 +107,7 @@
     "id": "CONV014",
     "question": "i'm scared",
     "variations": ["worried", "anxious", "nervous", "afraid", "concerned"],
-    "answer": "It's completely natural to feel concerned about health! 🤗\n\n**I'm here to help ease your worries.**\n\nPlease share:\n• What are you worried about?\n• Any specific symptoms?\n• What's making you anxious?\n\n**Remember:**\n• Most conditions are treatable\n• Early care helps\n• You're taking the right step by seeking help\n\n**For Immediate Support:**\n📞 +92 321 7780623 (Our pharmacist)\n\nYou're going to be okay! ❤️",
+    "answer": "It's completely natural to feel concerned about health! \n\n**I'm here to help ease your worries.**\n\nPlease share:\n What are you worried about?\n Any specific symptoms?\n What's making you anxious?\n\n**Remember:**\n Most conditions are treatable\n Early care helps\n You're taking the right step by seeking help\n\n**For Immediate Support:**\n +92 321 7780623 (Our pharmacist)\n\nYou're going to be okay! ",
     "category": "emotional_support",
     "tags": ["scared", "worried", "anxious", "afraid"]
   },
@@ -115,7 +115,7 @@
     "id": "CONV015",
     "question": "emergency",
     "variations": ["urgent help", "emergency situation", "critical", "serious problem", "need help now"],
-    "answer": "🚨 **EMERGENCY ASSISTANCE** 🚨\n\n**For Medical Emergencies:**\n1. Call 1122 (Emergency Services)\n2. Go to nearest hospital IMMEDIATELY\n\n**Our Support:**\n📞 +92 321 7780623 (24/7 for medicine urgency)\n\n**If Medicine Emergency:**\n• Tell us what you need\n• We'll arrange ASAP delivery\n\n**Common Emergencies:**\n• Chest pain → Hospital NOW\n• Severe bleeding → Hospital NOW\n• Difficulty breathing → Hospital NOW\n• Unconsciousness → Call 1122\n\nHow can I help? 🆘",
+    "answer": " **EMERGENCY ASSISTANCE** \n\n**For Medical Emergencies:**\n1. Call 1122 (Emergency Services)\n2. Go to nearest hospital IMMEDIATELY\n\n**Our Support:**\n +92 321 7780623 (24/7 for medicine urgency)\n\n**If Medicine Emergency:**\n Tell us what you need\n We'll arrange ASAP delivery\n\n**Common Emergencies:**\n Chest pain  Hospital NOW\n Severe bleeding  Hospital NOW\n Difficulty breathing  Hospital NOW\n Unconsciousness  Call 1122\n\nHow can I help? ",
     "category": "emergency",
     "tags": ["emergency", "urgent", "critical", "help", "serious"]
   }

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { getEmbeddingService } = require('../services/embeddings');
 const { getVectorSearch } = require('../services/vectorSearch');
-const { getRAGService } = require('../services/rag');
 const { getReRankingService } = require('../services/reRanker'); // Import ReRanker
 const fs = require('fs-extra');
 const path = require('path');
@@ -121,7 +120,6 @@ router.post('/query', async (req, res) => {
         const embeddingService = getEmbeddingService();
         const vectorSearch = getVectorSearch();
         const reRanker = getReRankingService();
-        const ragService = getRAGService();
 
         // 1. Vector Search (Top-25 broad retrieval)
         const initialResults = await vectorSearch.searchByText(embeddingService, query, 25);
@@ -168,74 +166,80 @@ router.post('/query', async (req, res) => {
             });
         }
 
-        // Generate response using RAG
-        const response = await ragService.generateResponse(query, results, context);
+        // --- MESSAGE LOGGING ---
+        if (sessionId) {
+            try {
+                await dbHelpers.saveMessage(sessionId, `user_${Date.now()}`, 'user', query, 'text', 'unclear');
+            } catch (logErr) {
+                console.warn('⚠️ Log error (user):', logErr.message);
+            }
+        }
+
+        // Website uses Groq API directly (Executive v10.0)
+        const { generateAIResponse } = require('../services/groqService');
+        const aiResponse = await generateAIResponse(query, results, context);
+        const responseText = aiResponse.content;
+        const actions = aiResponse.actions;
+
+        // --- ACTION PROCESSING (Backend State Sync) ---
+        if (actions && actions.length > 0) {
+            console.log(`[ACTIONS] Processing ${actions.length} actions from AI...`);
+            for (const action of actions) {
+                if (action.type === 'ADD_TO_CART') {
+                    // Update context cart
+                    if (!context.cart) context.cart = [];
+                    const existingIndex = context.cart.findIndex(item => item.product_id === action.product_id);
+                    if (existingIndex > -1) {
+                        context.cart[existingIndex].quantity += action.quantity;
+                    } else {
+                        context.cart.push({
+                            product_id: action.product_id,
+                            product_name: action.product_name,
+                            quantity: action.quantity,
+                            price: action.price,
+                            unit_price: action.price / action.quantity
+                        });
+                    }
+                    context.cart_total = context.cart.reduce((sum, item) => sum + (item.price || 0), 0);
+                } else if (action.type === 'PLACE_ORDER') {
+                    // Store order details in context for frontend to trigger final submission
+                    context.pendingOrder = action;
+                }
+            }
+        }
 
         // PERSISTENCE LAYER: Save full context if sessionId is present
         if (sessionId) {
             try {
                 console.log(`[PERSISTENCE] Saving context for ${sessionId}. Keys:`, Object.keys(context).join(', '));
                 await dbHelpers.saveCart(sessionId, context);
+                await dbHelpers.saveMessage(sessionId, `bot_${Date.now()}`, 'bot', responseText, 'text', 'executive_response');
                 console.log(`[PERSISTENCE] Save successful`);
             } catch (saveErr) {
-                console.warn('⚠️ Could not persist context:', saveErr.message);
+                console.warn('⚠️ Could not persist context/message:', saveErr.message);
             }
         }
 
-        // Handle order submission (when order state is confirmed)
-        if (typeof response === 'object' && response.type === 'order_ready') {
-            const orderData = response.orderData;
-
-            res.json({
-                success: true,
-                type: 'order_ready',
-                response: response.message,
-                orderData: {
-                    sessionId,
-                    customerName: orderData.customerName,
-                    customerPhone: orderData.customerPhone,
-                    customerEmail: orderData.customerEmail,
-                    deliveryAddress: orderData.deliveryAddress,
-                    deliveryCity: orderData.deliveryCity,
-                    deliveryArea: orderData.deliveryArea,
-                    orderItems: orderData.items,
-                    orderNotes: orderData.orderNotes || null
-                },
-                relevantProducts: results.map(r => ({
-                    name: r.metadata.name,
-                    company: r.metadata.company,
-                    pack_size: r.metadata.pack_size,
-                    similarity: r.similarity
-                })),
-                // Pass back updated context for frontend to maintain state
-                updatedContext: {
-                    ...context,
-                    orderState: context.orderState,
-                    orderData: context.orderData,
-                    cart: context.cart || [],
-                    pendingOrder: context.pendingOrder
-                }
-            });
-        } else {
-            res.json({
-                success: true,
-                response,
-                relevantProducts: results.map(r => ({
-                    name: r.metadata.name,
-                    company: r.metadata.company,
-                    pack_size: r.metadata.pack_size,
-                    similarity: r.similarity
-                })),
-                // Pass back updated context for frontend to maintain state
-                updatedContext: {
-                    ...context,
-                    orderState: context.orderState,
-                    orderData: context.orderData,
-                    cart: context.cart || [],
-                    pendingOrder: context.pendingOrder
-                }
-            });
-        }
+        res.json({
+            success: true,
+            response: responseText,
+            actions: actions || [],
+            relevantProducts: results.map(r => ({
+                name: r.metadata.name,
+                company: r.metadata.company,
+                pack_size: r.metadata.pack_size,
+                price: r.metadata.price,
+                stock: r.metadata.stock,
+                similarity: r.similarity
+            })),
+            // Pass back updated context for frontend to maintain state
+            updatedContext: {
+                ...context,
+                cart: context.cart || [],
+                cart_total: context.cart_total || 0,
+                pendingOrder: context.pendingOrder
+            }
+        });
 
     } catch (error) {
         console.error('Error in RAG query:', error);
@@ -267,12 +271,34 @@ router.post('/general', async (req, res) => {
             }
         }
 
-        const ragService = getRAGService();
-        const response = await ragService.handleGeneralQuery(query, context);
+        // For general queries, we still want RAG but maybe less strict?
+        // Actually, let's just use the same pipeline for consistency.
+        const embeddingService = getEmbeddingService();
+        const vectorSearch = getVectorSearch();
+        const candidates = await vectorSearch.searchByText(embeddingService, query, 5);
+        
+        // --- MESSAGE LOGGING ---
+        if (sessionId) {
+            try {
+                await dbHelpers.saveMessage(sessionId, `user_${Date.now()}`, 'user', query, 'text', 'general');
+            } catch (logErr) {
+                console.warn('⚠️ Log error (general):', logErr.message);
+            }
+        }
 
+        const { generateAIResponse } = require('../services/groqService');
+        const aiResponse = await generateAIResponse(query, candidates, context);
+
+        // Standardized response with state/actions
         res.json({
             success: true,
-            response
+            response: aiResponse.content,
+            actions: aiResponse.actions || [],
+            updatedContext: {
+                lastQuery: query,
+                cart: context.cart || [],
+                cart_total: context.cart_total || 0
+            }
         });
 
     } catch (error) {
