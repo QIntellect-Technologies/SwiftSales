@@ -159,4 +159,48 @@ router.get('/top-conditions', async (req, res) => {
     }
 });
 
+// AI Response Generation using Groq (EXACT DUPLICATE OF WHATSAPP BOT)
+const { generateAIResponse } = require('../services/groqService');
+
+router.post('/ai-response', async (req, res) => {
+    try {
+        const { userMessage, ragData = {}, session = {}, sessionId } = req.body;
+
+        console.log(`[CHAT-AI] Processing message from sessionId: ${sessionId}`);
+
+        // Generate AI response using Groq (same as WhatsApp bot)
+        const { content, actions } = await generateAIResponse(userMessage, ragData, session);
+
+        // Save AI response to database
+        if (sessionId) {
+            try {
+                await dbHelpers.saveMessage(
+                    sessionId,
+                    Date.now().toString(),
+                    'bot',
+                    content,
+                    'ai_generated',
+                    'conversational'
+                );
+            } catch (dbError) {
+                console.warn('Warning: Could not save AI response to DB:', dbError.message);
+            }
+        }
+
+        res.json({
+            success: true,
+            response: content,
+            actions: actions,
+            type: actions.length > 0 ? 'action_required' : 'conversational'
+        });
+    } catch (error) {
+        console.error('Error generating AI response:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message,
+            response: "I'm having trouble processing your request. Please try again."
+        });
+    }
+});
+
 module.exports = router;

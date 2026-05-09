@@ -41,6 +41,13 @@ CONTEXT:
             return response.message.content;
 
         } catch (error) {
+            console.error('Error generating response with Ollama API:', error);
+            return "I am currently experiencing technical difficulties. Please contact us via phone or WhatsApp.";
+        }
+    }
+}
+
+module.exports = { LLMService };
             console.error('❌ LLM Generation Error:', error);
             return "I apologize, but I'm having trouble connecting to my AI brain right now. 🧠\nPlease ensure the 'Ollama' app is running on the PC.";
         }

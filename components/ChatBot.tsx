@@ -76,7 +76,7 @@ export const ChatBot: React.FC = () => {
         }
     `;
 
-    const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
     const [isOpen, setIsOpen] = useState(false);
     const [sessionId, setSessionId] = useState<string>('');
     const [context, setContext] = useState<ConversationContext>({
@@ -303,23 +303,17 @@ export const ChatBot: React.FC = () => {
             <div className={`fixed z-50 transition-all duration-300 ${isOpen ? 'inset-0 sm:inset-auto sm:bottom-8 sm:right-8' : 'bottom-4 right-4 sm:bottom-8 sm:right-8'}`}>
             <AnimatePresence>
                 {!isOpen && (
-                    <motion.button
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0, opacity: 0 }}
+                    <button
                         onClick={() => setIsOpen(true)}
-                        className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-2xl hover:bg-blue-700 transition-colors group"
+                        className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-2xl hover:bg-blue-700 transition-colors group relative"
                     >
                         <MessageSquare size={30} className="group-hover:scale-110 transition-transform" />
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full border-4 border-white animate-pulse"></div>
-                    </motion.button>
+                    </button>
                 )}
 
                 {isOpen && (
-                    <motion.div
-                        initial={{ scale: 0.8, opacity: 0, y: 20 }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.8, opacity: 0, y: 20 }}
+                    <div
                         className="w-full h-[100dvh] sm:w-[420px] sm:h-[650px] bg-white sm:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden sm:border sm:border-slate-100"
                     >
                         {/* Header */}
@@ -466,7 +460,7 @@ export const ChatBot: React.FC = () => {
                                 Professional pharmaceutical guidance • Not a substitute for medical advice
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 )}
             </AnimatePresence>
         </div>
