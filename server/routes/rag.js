@@ -175,6 +175,14 @@ router.post('/query', async (req, res) => {
             }
         }
 
+        // Map chatHistory to history for groqService compatibility
+        if (context.chatHistory && !context.history) {
+            context.history = context.chatHistory.map(msg => ({
+                role: msg.sender === 'user' ? 'user' : 'assistant',
+                content: msg.message_text
+            }));
+        }
+
         // Website uses Groq API directly (Executive v10.0)
         const { generateAIResponse } = require('../services/groqService');
         const aiResponse = await generateAIResponse(query, results, context);
@@ -182,15 +190,19 @@ router.post('/query', async (req, res) => {
         const actions = aiResponse.actions;
 
         // --- ACTION PROCESSING (Backend State Sync) ---
-        if (actions && actions.length > 0) {
-            console.log(`[ACTIONS] Processing ${actions.length} actions from AI...`);
-            for (const action of actions) {
+        // Ensure actions is an array to avoid "not iterable" errors
+        const normalizedActions = Array.isArray(actions) ? actions : (actions ? [actions] : []);
+
+        if (normalizedActions.length > 0) {
+            console.log(`[ACTIONS] Processing ${normalizedActions.length} actions from AI...`);
+            for (const action of normalizedActions) {
                 if (action.type === 'ADD_TO_CART') {
                     // Update context cart
                     if (!context.cart) context.cart = [];
                     const existingIndex = context.cart.findIndex(item => item.product_id === action.product_id);
                     if (existingIndex > -1) {
                         context.cart[existingIndex].quantity += action.quantity;
+                        context.cart[existingIndex].price = (context.cart[existingIndex].quantity * context.cart[existingIndex].unit_price);
                     } else {
                         context.cart.push({
                             product_id: action.product_id,

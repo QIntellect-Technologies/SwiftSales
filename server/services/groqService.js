@@ -29,7 +29,7 @@ STRICT BEHAVIORAL RULES:
 3. **CART SUMMARIES**: Every time you add an item, show a clear *Your current cart:* summary with items and totals.
 4. **ADDRESS COLLECTION**: Ask for Name, Phone, and a *complete* address (Street, City, Postal Code). Confirm if their current phone number is correct.
 5. **ZERO HALLUCINATION**: Only suggest or add products that exist in the RAG_CONTEXT. If not found, say: "I couldn't find *[Product]* in our inventory."
-6. **ACTION EMISSION**: Always emit JSON in <ACTIONS> at the very end if an action (ADD_TO_CART, PLACE_ORDER) is performed.
+6. **ACTION EMISSION**: Always emit JSON in <ACTIONS> at the very end if an action (ADD_TO_CART, PLACE_ORDER) is performed. The JSON MUST be an array, e.g., <ACTIONS>[{"type": "ADD_TO_CART", ...}]</ACTIONS>.
 
 EXAMPLE FLOW (MATCH THIS):
 User: hi
@@ -99,7 +99,8 @@ RAG_CONTEXT: ${JSON.stringify(ragData, null, 2)}
             const actionMatch = content.match(/<(ACTIONS|actions)>(.*?)<\/(ACTIONS|actions)>/s);
             if (actionMatch) {
                 try {
-                    actions = JSON.parse(actionMatch[2].trim());
+                    let parsedActions = JSON.parse(actionMatch[2].trim());
+                    actions = Array.isArray(parsedActions) ? parsedActions : [parsedActions];
                     // Keep the content clean
                     content = content.replace(/<(ACTIONS|actions)>.*?<\/(ACTIONS|actions)>/si, '').trim();
                 } catch (e) {
