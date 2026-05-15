@@ -8,6 +8,7 @@ import { Section, SectionHeader } from '../components/ui/Section';
 import { Link } from 'react-router-dom';
 import { LEADERSHIP } from '../constants';
 import { SEO } from '../components/SEO';
+import PartnersLogoSlider from '../components/PartnersLogoSlider';
 
 const Home: React.FC = () => {
    return (
@@ -372,12 +373,10 @@ const Home: React.FC = () => {
                                     <div className="font-bold text-slate-800 text-sm group-hover:text-blue-600">{brand}</div>
                                  </div>
                               </div>
-                           ))}
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </Section>
+            </div>
+
+            {/* --- 7. PARTNERS LOGO SLIDER --- */}
+            <PartnersLogoSlider />
          </Section>
 
          {/* --- 8. CEO MESSAGE: MODERN EDITORIAL SLIDER --- */}
