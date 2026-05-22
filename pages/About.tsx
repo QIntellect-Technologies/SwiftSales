@@ -97,7 +97,7 @@ const PARTNER_LIST = [
   { name: 'Paul Brooks', logo: '/updated-company-images/logos/paul_brooks.png' },
   { name: 'Pinnacle Biotech', logo: '/updated-company-images/logos/pinnacle.jfif' },
   { name: 'Dermashine', logo: '/updated-company-images/logos/dermashine.png' },
-  { name: 'Green Crust', logo: null }
+  { name: 'Green Crust', logo: '/updated-company-images/logos/green_crust.png' }
 ];
 
 const About: React.FC = () => {
@@ -268,11 +268,11 @@ const About: React.FC = () => {
                     style={{ animationDelay: `${i * 0.05}s`, animationFillMode: 'forwards' }}
                   >
                     {partner.logo ? (
-                      <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 bg-white p-2 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
-                        <img src={partner.logo} alt={partner.name} className="max-w-full max-h-full object-contain" />
+                      <div className="w-28 h-28 rounded-2xl flex items-center justify-center mb-4 bg-white p-3 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
+                        <img src={partner.logo} alt={partner.name} className="max-w-full max-h-full object-contain drop-shadow-sm" />
                       </div>
                     ) : (
-                      <div className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md mb-4 group-hover:scale-110 transition-transform">
+                      <div className="w-20 h-20 rounded-full flex items-center justify-center font-bold text-white text-2xl bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md mb-4 group-hover:scale-110 transition-transform">
                         {partner.name.split(' ').map((w: string) => w[0]).join('').slice(0, 2).toUpperCase()}
                       </div>
                     )}
