@@ -748,22 +748,30 @@ const About: React.FC = () => {
                 muted
                 playsInline
               />
+            </div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-blue-900/20 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            {/* VIDEO CARD 1 */}
+            <div className="group relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer h-[300px]">
+              <video
+                src="/updated-company-images/WhatsApp Video 2026-05-19 at 3.16.24 PM (1).mp4"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
 
-              {/* Title: Operational Excellence */}
-              <div className="absolute bottom-6 left-6 z-20 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <h4 className="text-white font-bold text-lg tracking-tight">Operational Excellence</h4>
-                <div className="h-1 w-12 bg-blue-500 rounded-full mt-2"></div>
-              </div>
-
-              {/* Tag: Swift Sales */}
-              <div className="absolute top-6 right-6 z-20 transform -translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="text-[10px] font-black text-white/60 uppercase tracking-[0.2em]">
-                  Swift Sales
-                </div>
-              </div>
+            {/* VIDEO CARD 2 */}
+            <div className="group relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer h-[300px]">
+              <video
+                src="/updated-company-images/WhatsApp Video 2026-05-19 at 3.16.24 PM.mp4"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
             </div>
           </div>
         </div>
