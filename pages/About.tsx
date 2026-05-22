@@ -78,26 +78,26 @@ const AnimatedNumber: React.FC<{ value: string; label: string }> = ({ value, lab
 };
 
 const PARTNER_LIST = [
-  'Popular Chemical Works (PCW)',
-  'Glitz Pharma',
-  'Araf Pharma',
-  'Trifa Pharmaceutical',
-  'Star Laboratories PVT Limited',
-  'Acumen Pharma',
-  'Siza International PVT Limited',
-  'Swiss Pharmaceuticals PVT Limited',
-  'Rifa Life Sciences',
-  'Quorum Pharma',
-  'Serving Health Pakistan',
-  'Shrooq Pharmaceuticals PVT Limited',
-  'Avant Pharmaceuticals PVT Limited',
-  'Goldsheff Nutraceuticals PVT Limited',
-  'Curatech Pharma PVT Limited',
-  'Ospheric Pharma',
-  'Paul Brooks',
-  'Pinnacle Biotech',
-  'Dermashine',
-  'Green Crust'
+  { name: 'Popular Chemical Works (PCW)', logo: '/updated-company-images/logos/pcw.jpg' },
+  { name: 'Glitz Pharma', logo: '/updated-company-images/logos/glitz_pharma.png' },
+  { name: 'Araf Pharma', logo: '/updated-company-images/logos/araf.jfif' },
+  { name: 'Trifa Pharmaceutical', logo: '/updated-company-images/logos/trifa.jpg' },
+  { name: 'Star Laboratories PVT Limited', logo: '/updated-company-images/logos/star_labs.png' },
+  { name: 'Acumen Pharma', logo: '/updated-company-images/logos/acumen.jfif' },
+  { name: 'Siza International PVT Limited', logo: '/updated-company-images/logos/siza.png' },
+  { name: 'Swiss Pharmaceuticals PVT Limited', logo: '/updated-company-images/logos/swiss.jfif' },
+  { name: 'Rifa Life Sciences', logo: '/updated-company-images/logos/rifa.jfif' },
+  { name: 'Quorum Pharma', logo: '/updated-company-images/logos/quorum.jpg' },
+  { name: 'Serving Health Pakistan', logo: '/updated-company-images/logos/serving_health.png' },
+  { name: 'Shrooq Pharmaceuticals PVT Limited', logo: '/updated-company-images/logos/shrooq.png' },
+  { name: 'Avant Pharmaceuticals PVT Limited', logo: '/updated-company-images/logos/avant.jfif' },
+  { name: 'Goldsheff Nutraceuticals PVT Limited', logo: '/updated-company-images/logos/goldsheff.png' },
+  { name: 'Curatech Pharma PVT Limited', logo: '/updated-company-images/logos/curatech.png' },
+  { name: 'Ospheric Pharma', logo: '/updated-company-images/logos/ospheric.png' },
+  { name: 'Paul Brooks', logo: '/updated-company-images/logos/paul_brooks.png' },
+  { name: 'Pinnacle Biotech', logo: '/updated-company-images/logos/pinnacle.jfif' },
+  { name: 'Dermashine', logo: '/updated-company-images/logos/dermashine.png' },
+  { name: 'Green Crust', logo: null }
 ];
 
 const About: React.FC = () => {
@@ -111,13 +111,13 @@ const About: React.FC = () => {
   };
 
   const filteredPartners = PARTNER_LIST.filter(
-    partner => partner.toLowerCase().includes(search.toLowerCase())
+    partner => partner.name.toLowerCase().includes(search.toLowerCase())
   );
 
   const sortedPartners = [...filteredPartners].sort((a, b) => {
     if (!sortConfig) return 0;
-    const aVal = a.toLowerCase();
-    const bVal = b.toLowerCase();
+    const aVal = a.name.toLowerCase();
+    const bVal = b.name.toLowerCase();
     if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
     if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
     return 0;
@@ -263,15 +263,21 @@ const About: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {sortedPartners.map((partner, i) => (
                   <div
-                    key={partner}
+                    key={partner.name}
                     className="glass-card rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up opacity-0 flex flex-col items-center text-center group"
                     style={{ animationDelay: `${i * 0.05}s`, animationFillMode: 'forwards' }}
                   >
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md mb-4 group-hover:scale-110 transition-transform">
-                      {partner.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
-                    </div>
+                    {partner.logo ? (
+                      <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 bg-white p-2 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
+                        <img src={partner.logo} alt={partner.name} className="max-w-full max-h-full object-contain" />
+                      </div>
+                    ) : (
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md mb-4 group-hover:scale-110 transition-transform">
+                        {partner.name.split(' ').map((w: string) => w[0]).join('').slice(0, 2).toUpperCase()}
+                      </div>
+                    )}
                     <h3 className="font-bold text-slate-900 text-sm leading-tight mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                      {partner}
+                      {partner.name}
                     </h3>
                     <div className="w-8 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mt-auto"></div>
                   </div>
