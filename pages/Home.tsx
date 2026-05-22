@@ -323,6 +323,7 @@ const Home: React.FC = () => {
                   </p>
                </Card>
             </div>
+         </Section>
 
             {/* --- 7. DISTRIBUTION PARTNERS SECTION --- */}
             <Section className="py-24 bg-slate-50 relative overflow-hidden">
@@ -361,9 +362,7 @@ const Home: React.FC = () => {
                               </Link>
                            </div>
                         </div>
-
-                        {/* Right Content - Partner Logos Grid */}
-                        <div className="lg:w-1/2 bg-slate-50/50 rounded-3xl p-8 border border-slate-100 grid grid-cols-2 gap-4">
+                     <div className="lg:w-1/2 bg-slate-50/50 rounded-3xl p-8 border border-slate-100 grid grid-cols-2 gap-4">
                            {[
                               'Shrooq Pharma', 'Avant Pharma', 'Swiss IQ', 'Star Labs', 'Ospheric', 'Pinnacle'
                            ].map((brand, i) => (
@@ -373,11 +372,15 @@ const Home: React.FC = () => {
                                     <div className="font-bold text-slate-800 text-sm group-hover:text-blue-600">{brand}</div>
                                  </div>
                               </div>
-            </div>
+                           ))}
+                        </div>
+                     </div>
+                  </div>
 
-            {/* --- 7. PARTNERS LOGO SLIDER --- */}
-            <PartnersLogoSlider />
-         </Section>
+                  {/* --- 7. PARTNERS LOGO SLIDER --- */}
+                  <PartnersLogoSlider />
+               </div>
+            </Section>
 
          {/* --- 8. CEO MESSAGE: MODERN EDITORIAL SLIDER --- */}
          <Section className="py-32 relative overflow-hidden bg-white">

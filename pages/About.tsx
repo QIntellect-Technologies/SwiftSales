@@ -12,17 +12,24 @@ import {
 } from 'lucide-react';
 
 const GALLERY_IMAGES = [
-  { url: '/company-images/1.jpeg', title: 'Operational Excellence' },
-  { url: '/company-images/4.jpeg', title: 'Quality Control' },
-  { url: '/company-images/5.jpeg', title: 'Distribution Hub' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.0.jpeg', title: 'Inventory Management' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.30 PM.jpeg', title: 'Supply Chain' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.31 PM.jpeg', title: 'Warehouse Operations' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.32 PM.jpeg', title: 'Safe Storage' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.32.jpeg', title: 'Logistics Network' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.33 PM.jpeg', title: 'Modern Facilities' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.34 PM.jpeg', title: 'Precision Handling' },
-  { url: '/company-images/WhatsApp Image 2026-02-03 at 4.04.34 PM3.jpeg', title: 'Healthcare Logistics' }
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 2.51.19 PM.jpeg', title: 'Cold Chain Storage' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 2.51.20 PM (1).jpeg', title: 'Logistics Infrastructure' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 2.51.20 PM.jpeg', title: 'Smart Warehousing' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 2.51.21 PM (1).jpeg', title: 'Inventory Hub' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 2.51.21 PM (2).jpeg', title: 'Precision Distribution' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 2.51.22 PM (2).jpeg', title: 'Secure Handling' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 3.16.21 PM.jpeg', title: 'Pharmaceutical Storage' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 3.16.22 PM (1).jpeg', title: 'Temperature Monitored' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 3.16.22 PM (2).jpeg', title: 'Dispatched Cargo' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 3.16.22 PM.jpeg', title: 'Operational Safety' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 3.16.23 PM (1).jpeg', title: 'Distribution Hub' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-19 at 3.16.23 PM.jpeg', title: 'Quality Standards' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-21 at 11.19.18 AM (1).jpeg', title: 'Supply Management' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-21 at 11.19.18 AM.jpeg', title: 'Advanced Network' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-21 at 11.19.19 AM (1).jpeg', title: 'Healthcare Logistics' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-21 at 11.19.19 AM (2).jpeg', title: 'Delivery Fleet' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-21 at 11.19.19 AM.jpeg', title: 'Optimized Workflow' },
+  { url: '/updated-company-images/WhatsApp Image 2026-05-21 at 11.19.20 AM (1).jpeg', title: 'Quality Assurance' }
 ];
 
 // --- ANIMATED NUMBER COMPONENT ---
@@ -728,9 +735,12 @@ const About: React.FC = () => {
                 />
 
                 {/* Minimal Overlay */}
-                <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                  {/* Sideways Accent Line */}
-                  <div className="absolute bottom-10 left-0 w-24 h-[2px] bg-blue-500 -translate-x-full group-hover:translate-x-10 transition-transform duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                  {/* Title */}
+                  <div className="absolute bottom-6 left-6 z-20 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <h4 className="text-white font-bold text-lg tracking-tight">{img.title}</h4>
+                    <div className="h-1 w-12 bg-blue-500 rounded-full mt-2"></div>
+                  </div>
 
                   {/* Plus Icon instead of search/text */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-500">
