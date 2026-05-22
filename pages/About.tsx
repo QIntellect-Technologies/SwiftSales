@@ -753,7 +753,7 @@ const About: React.FC = () => {
             {/* VIDEO CARD 1 */}
             <div className="group relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer h-[300px]">
               <video
-                src="/updated-company-images/WhatsApp Video 2026-05-19 at 3.16.24 PM (1).mp4"
+                src="/updated-company-images/video_1.mp4"
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                 autoPlay
                 loop
@@ -765,7 +765,7 @@ const About: React.FC = () => {
             {/* VIDEO CARD 2 */}
             <div className="group relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer h-[300px]">
               <video
-                src="/updated-company-images/WhatsApp Video 2026-05-19 at 3.16.24 PM.mp4"
+                src="/updated-company-images/video_2.mp4"
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                 autoPlay
                 loop
