@@ -306,37 +306,36 @@ const About: React.FC = () => {
       </Section>
 
       {/* --- 3.3 SOLE PARTNER --- */}
-      <Section className="py-24 bg-slate-900 relative overflow-hidden border-y border-slate-800">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none translate-x-1/2 translate-y-1/2"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      <Section className="py-24 relative overflow-hidden bg-white border-y border-slate-100">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full blur-[80px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-100/50 to-transparent rounded-full blur-[80px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
 
         <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2 text-left animate-fade-in-up">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-blue-400 border border-slate-700 text-xs font-black uppercase tracking-widest mb-6 shadow-lg">
-              <Star size={14} className="text-yellow-500" /> Exclusive Sole Distributor
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-sm font-black uppercase tracking-widest mb-6 shadow-sm">
+              <Star size={16} className="text-yellow-500" /> Exclusive Sole Distributor
             </span>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
-              Proud Partners <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-                with SQI
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight">
+              Our Premier <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                Partnership with SQI
               </span>
             </h2>
-            <p className="text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
-              We are honored to be the exclusive sole distributor for SQI. We manage their entire supply chain network, ensuring their premium healthcare products are delivered with uncompromising efficiency across the region.
+            <p className="text-slate-600 text-xl leading-relaxed mb-10 max-w-xl font-medium">
+              We hold the prestigious role of being the <strong className="text-slate-900">exclusive sole distributor for SQI</strong>. We take immense pride in managing their entire supply chain, ensuring premium healthcare products reach our community with absolute reliability and speed.
             </p>
             
             <div className="grid grid-cols-2 gap-8">
-              <div className="flex flex-col">
-                <span className="text-4xl font-black text-white mb-1">100%</span>
-                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold flex items-center gap-2">
-                  <ShieldCheck size={14} className="text-blue-500" /> Exclusive Rights
+              <div className="flex flex-col bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <span className="text-4xl font-black text-blue-600 mb-2">100%</span>
+                <span className="text-sm text-slate-700 uppercase tracking-widest font-bold flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-blue-500" /> Exclusive Rights
                 </span>
               </div>
-              <div className="flex flex-col">
-                <span className="text-4xl font-black text-white mb-1">#1</span>
-                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold flex items-center gap-2">
-                  <Award size={14} className="text-blue-500" /> Distribution Tier
+              <div className="flex flex-col bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <span className="text-4xl font-black text-blue-600 mb-2">#1</span>
+                <span className="text-sm text-slate-700 uppercase tracking-widest font-bold flex items-center gap-2">
+                  <Award size={16} className="text-blue-500" /> Distribution Tier
                 </span>
               </div>
             </div>
@@ -345,24 +344,24 @@ const About: React.FC = () => {
           <div className="md:w-1/2 w-full flex justify-center md:justify-end animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <div className="relative group">
               {/* Glowing Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-[3rem] rotate-6 opacity-30 blur-xl group-hover:rotate-12 group-hover:opacity-50 transition-all duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-[3rem] rotate-6 opacity-70 blur-xl group-hover:rotate-12 group-hover:opacity-100 transition-all duration-700"></div>
               
               {/* Main Card */}
-              <div className="relative bg-white p-10 md:p-14 rounded-[3rem] shadow-2xl transform group-hover:-translate-y-4 group-hover:rotate-2 transition-all duration-500 border-4 border-slate-50">
+              <div className="relative bg-white p-12 md:p-16 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transform group-hover:-translate-y-4 group-hover:rotate-2 transition-all duration-500 border border-slate-100">
                 <img 
                   src="/updated-company-images/logos/SQI-SOLE.jpeg" 
                   alt="SQI Sole Partner" 
-                  className="w-full max-w-[320px] h-auto object-contain mx-auto"
+                  className="w-full max-w-[320px] h-auto object-contain mx-auto mix-blend-multiply"
                 />
                 
                 {/* Floating Badge */}
-                <div className="absolute -bottom-6 -left-6 bg-slate-900 text-white p-4 rounded-2xl shadow-2xl flex items-center gap-4 border border-slate-800 transform group-hover:scale-110 transition-transform duration-500">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center">
+                <div className="absolute -bottom-6 -left-6 bg-white text-slate-900 p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-slate-100 transform group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-inner">
                     <Check size={24} className="text-white" />
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Certified</div>
-                    <div className="font-bold">Sole Partner</div>
+                    <div className="font-bold text-slate-800">Sole Partner</div>
                   </div>
                 </div>
               </div>

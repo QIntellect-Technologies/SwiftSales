@@ -589,7 +589,7 @@ export const LEADERSHIP = [
   {
     id: 'zohaib',
     name: 'M. Zohaib',
-    role: 'Stock In,Out',
+    role: 'Inventory Control Specialist',
     quote: 'Efficiency in every stock movement.',
     bio: 'Managing stock visibility and inventory accuracy.',
     bioExtended: 'A healthy flow of stock ensures a strong team and a successful mission.',
@@ -599,7 +599,7 @@ export const LEADERSHIP = [
   {
     id: 'sageer',
     name: 'Sagheer Ahmed',
-    role: 'Stock In,Out',
+    role: 'Inventory Control Specialist',
     quote: 'Precision in every stock movement.',
     bio: 'Responsible for tracking and managing stock inventory.',
     bioExtended: 'Ensuring records are accurate to prevent any supply chain delays.',
