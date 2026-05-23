@@ -318,11 +318,11 @@ const About: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight">
               Our Premier <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Partnership with SQI
+                Partnership with SIQ
               </span>
             </h2>
             <p className="text-slate-600 text-xl leading-relaxed mb-10 max-w-xl font-medium">
-              We hold the prestigious role of being the <strong className="text-slate-900">exclusive sole distributor for SQI</strong>. We take immense pride in managing their entire supply chain, ensuring premium healthcare products reach our community with absolute reliability and speed.
+              We hold the prestigious role of being the <strong className="text-slate-900">exclusive sole distributor for SIQ</strong>. We take immense pride in managing their entire supply chain, ensuring premium healthcare products reach our community with absolute reliability and speed.
             </p>
             
             <div className="grid grid-cols-2 gap-8">
@@ -350,7 +350,7 @@ const About: React.FC = () => {
               <div className="relative bg-white p-12 md:p-16 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transform group-hover:-translate-y-4 group-hover:rotate-2 transition-all duration-500 border border-slate-100">
                 <img 
                   src="/updated-company-images/logos/SQI-SOLE.jpeg" 
-                  alt="SQI Sole Partner" 
+                  alt="SIQ Sole Partner" 
                   className="w-full max-w-[320px] h-auto object-contain mx-auto mix-blend-multiply"
                 />
                 
