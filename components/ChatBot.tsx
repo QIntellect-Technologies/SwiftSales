@@ -85,7 +85,7 @@ export const ChatBot: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
-            text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine?`,
+            text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine or would you like to browse our inventory? You can get our full list here: [Download Inventory](/api/inventory/download)`,
             sender: 'bot',
             timestamp: new Date()
         }
@@ -220,12 +220,13 @@ export const ChatBot: React.FC = () => {
                     console.warn(`[ACTION] Unknown action type: ${action.type}`);
             }
         });
-    };    // Clear chat function (Simplified)
+    };
+    // Clear chat function (Simplified)
     const handleClearChat = () => {
         if (confirm('Are you sure you want to clear this conversation?')) {
             setMessages([{
                 id: Date.now().toString(),
-                text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine?`,
+                text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine or would you like to browse our inventory? You can get our full list here: [Download Inventory](/api/inventory/download)`,
                 sender: 'bot',
                 timestamp: new Date()
             }]);
@@ -359,6 +360,8 @@ export const ChatBot: React.FC = () => {
                                                     // Handles **bold**, *bold*, and [text](url)
                                                     const parts = m.text.split(/(\*\*.*?\*\*|\*.*?\*|\[.*?\]\(.*?\))/g);
                                                     return parts.map((part, index) => {
+                                                        const isInventoryDownloadLink = (url: string) => /\/api\/inventory\/download(?:\b|$)/.test(url);
+
                                                         // Handle Bold: **text** or *text*
                                                         if ((part.startsWith('**') && part.endsWith('**')) || (part.startsWith('*') && part.endsWith('*'))) {
                                                             const content = part.startsWith('**') ? part.slice(2, -2) : part.slice(1, -1);
