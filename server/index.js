@@ -38,6 +38,24 @@ app.use('/api/orders', orderRoutes);
 const productRoutes = require('./routes/products');
 app.use('/api/products', productRoutes);
 
+// Inventory Download Route
+app.get('/api/inventory/download', async (req, res) => {
+    try {
+        const { excelService } = require('./services/excelService');
+        const products = await productService.getAllProducts();
+        const fileUrl = await excelService.generateProductList(products, 'Complete_Inventory');
+        
+        if (fileUrl) {
+            const filePath = path.join(__dirname, 'public', fileUrl);
+            res.download(filePath, 'Swift_Sales_Complete_Inventory.xlsx');
+        } else {
+            res.status(500).send('Failed to generate inventory file.');
+        }
+    } catch (error) {
+        console.error('❌ Error generating download:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
 // Configure Nodemailer with Gmail SMTP (explicit port 587 for Railway compatibility)
