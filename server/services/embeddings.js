@@ -1,4 +1,10 @@
-const { pipeline } = require('@xenova/transformers');
+const { pipeline, env } = require('@xenova/transformers');
+const path = require('path');
+
+// Strictly configure Xenova to use local models only
+env.allowLocalModels = true;
+env.localModelPath = path.join(__dirname, '../models');
+env.allowRemoteModels = false;
 
 class EmbeddingService {
     constructor() {
