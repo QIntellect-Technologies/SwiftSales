@@ -34,27 +34,32 @@ async function initializeServices() {
 
             // 2. Check/Build Embeddings
             let embeddings = [];
-            if (await fs.pathExists(vectorPath)) {
-                console.log('📂 Loading cached embeddings...');
-                embeddings = await fs.readJson(vectorPath);
+            try {
+                if (await fs.pathExists(vectorPath)) {
+                    console.log('📂 Loading cached embeddings...');
+                    embeddings = await fs.readJson(vectorPath);
 
-                if (embeddings.length !== products.length) {
-                    console.log('⚠️ Count mismatch. Rebuilding embeddings...');
+                    if (embeddings.length !== products.length) {
+                        console.log('⚠️ Count mismatch. Rebuilding embeddings...');
+                        embeddings = await embeddingService.embedBatch(products.map(p =>
+                            `${p.name} ${p.generic_name || ''} ${p.description || ''} ${p.company || ''}`
+                        ));
+                        await fs.writeJson(vectorPath, embeddings);
+                    }
+                } else {
+                    console.log('⚡ Generating new embeddings...');
                     embeddings = await embeddingService.embedBatch(products.map(p =>
                         `${p.name} ${p.generic_name || ''} ${p.description || ''} ${p.company || ''}`
                     ));
                     await fs.writeJson(vectorPath, embeddings);
                 }
-            } else {
-                console.log('⚡ Generating new embeddings...');
-                embeddings = await embeddingService.embedBatch(products.map(p =>
-                    `${p.name} ${p.generic_name || ''} ${p.description || ''} ${p.company || ''}`
-                ));
-                await fs.writeJson(vectorPath, embeddings);
-            }
 
-            // 3. Initialize Vector Search with Supabase Products
-            await vectorSearch.initialize(vectorPath, products);
+                // 3. Initialize Vector Search with Supabase Products
+                await vectorSearch.initialize(vectorPath, products);
+            } catch (err) {
+                console.error('❌ Embedding generation/loading failed:', err.message);
+                console.warn('⚠️ Vector search will be disabled. System will fallback to keyword search.');
+            }
 
             // 4. Initialize Re-Ranker
             await reRanker.initialize();
