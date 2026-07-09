@@ -30,7 +30,7 @@ const Home: React.FC = () => {
                <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-blue-900/40"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 pt-20">
+            <div className="container mx-auto px-6 relative z-10 pt-32 md:pt-24 lg:pt-20">
                <div className="max-w-4xl">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in-up">
                      <MapPin size={14} /> Distributor
@@ -342,34 +342,34 @@ const Home: React.FC = () => {
 
                      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
                         {/* Left Content */}
-                        <div className="lg:w-1/2">
-                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-black uppercase tracking-widest mb-6">
+                        <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+                           <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-black uppercase tracking-widest mb-6 mt-8 md:mt-0">
                               <Award size={14} /> Trusted Exclusivity
                            </div>
-                           <h3 className="text-3xl font-bold text-slate-900 mb-6 font-serif italic">"Integrity is the Foundation of Exclusivity."</h3>
-                           <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 font-serif italic leading-tight">"Integrity is the Foundation of Exclusivity."</h3>
+                           <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed max-w-sm lg:max-w-none">
                               Being a trusted distributor isn't just a contract; it's a pledge of integrity. We manage the entire lifecycle of these brands within the country, ensuring brand protection and market penetration.
                            </p>
 
-                           <div className="flex items-center gap-6">
-                              <div className="flex flex-col">
-                                 <span className="text-5xl font-black text-blue-600 leading-none">34</span>
-                                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">Global Partners <br />Exclusively Managed</span>
+                           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 w-full">
+                              <div className="flex flex-col items-center lg:items-start">
+                                 <span className="text-4xl md:text-5xl font-black text-blue-600 leading-none">34</span>
+                                 <span className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mt-2 text-center lg:text-left">Global Partners <br className="hidden lg:block"/>Exclusively Managed</span>
                               </div>
-                              <div className="h-12 w-px bg-slate-200"></div>
+                              <div className="w-16 h-px sm:w-px sm:h-12 bg-slate-200"></div>
                               <Link to="/contact" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all">
                                  Partner With Us <ArrowRight size={18} />
                               </Link>
                            </div>
                         </div>
-                     <div className="lg:w-1/2 bg-slate-50/50 rounded-3xl p-8 border border-slate-100 grid grid-cols-2 gap-4">
+                     <div className="w-full lg:w-1/2 bg-slate-50/50 rounded-3xl p-4 sm:p-8 border border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 lg:mt-0">
                            {[
                               'Shrooq Pharma', 'Avant Pharma', 'Swiss IQ', 'Star Labs', 'Ospheric', 'Pinnacle'
                            ].map((brand, i) => (
-                              <div key={i} className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group hover:border-blue-300 transition-colors">
+                              <div key={i} className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group hover:border-blue-300 transition-colors w-full">
                                  <div className="text-center">
                                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-1 opacity-50 group-hover:opacity-100">Exclusive Partner</div>
-                                    <div className="font-bold text-slate-800 text-sm group-hover:text-blue-600">{brand}</div>
+                                    <div className="font-bold text-slate-800 text-sm sm:text-base group-hover:text-blue-600 break-words">{brand}</div>
                                  </div>
                               </div>
                            ))}
@@ -430,7 +430,7 @@ const Home: React.FC = () => {
                         </p>
                      </div>
 
-                     <div className="mt-10 flex items-center gap-6">
+                     <div className="mt-10 flex flex-wrap items-center gap-6">
                         {/* Signature (Simulated with cursive font) */}
                         <div className="font-handwriting text-4xl text-blue-900 opacity-80 rotate-[-5deg]">
                            {LEADERSHIP[0].signature}

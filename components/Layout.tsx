@@ -257,7 +257,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </li>
                 <li className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
                   <Mail size={20} className="text-blue-500 shrink-0" />
-                  <span className="text-sm break-all">customercare.swiftsales@gmail.com</span>
+                  <span className="text-[13px] sm:text-sm whitespace-nowrap">customercare.swiftsales@gmail.com</span>
                 </li>
               </ul>
             </div>

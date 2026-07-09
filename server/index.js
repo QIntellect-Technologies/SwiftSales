@@ -7,7 +7,7 @@ const { dbHelpers } = require('./database');
 const { productService } = require('./services/productService');
 const { getEmbeddingService } = require('./services/embeddings');
 const { getVectorSearch } = require('./services/vectorSearch');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+require('dotenv').config({ path: path.join(__dirname, '..', '.env.local') });
 
 const app = express();
 const PORT = process.env.PORT || 5000;

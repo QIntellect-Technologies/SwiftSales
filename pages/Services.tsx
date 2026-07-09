@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Section, SectionHeader } from '../components/ui/Section';
 import { Card } from '../components/ui/Card';
 import { LICENSES } from '../constants';
@@ -15,6 +15,7 @@ import { SEO } from '../components/SEO';
 import { Link } from 'react-router-dom';
 
 const Services: React.FC = () => {
+   const [openFaq, setOpenFaq] = useState<number | null>(null);
    return (
       <div className="bg-white">
          <SEO
@@ -50,7 +51,7 @@ const Services: React.FC = () => {
          </section>
 
          {/* --- 2. OUR CORE PILLARS --- */}
-         <Section background="white" className="py-24 relative overflow-hidden">
+         <Section background="default" className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {[
@@ -246,7 +247,7 @@ const Services: React.FC = () => {
                         <div className="absolute inset-0 bg-blue-900/20 backdrop-blur-[2px]"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/40"></div>
 
-                        {/* Interactive Hub Data Overlays */}
+                        {/* Interactive Hub Data Overlays - hidden on mobile to avoid overlap */}
                         {[
                            { x: '25%', y: '30%', name: 'North Hub', status: 'Active', color: 'blue' },
                            { x: '75%', y: '20%', name: 'East Hub', status: 'Loading', color: 'cyan' },
@@ -254,7 +255,7 @@ const Services: React.FC = () => {
                         ].map((hub, i) => (
                            <div
                               key={i}
-                              className="absolute z-20 animate-pulse-soft"
+                              className="hidden lg:block absolute z-20 animate-pulse-soft"
                               style={{ left: hub.x, top: hub.y }}
                            >
                               <div className="relative group/hub cursor-pointer">
@@ -281,26 +282,26 @@ const Services: React.FC = () => {
                            </div>
                         ))}
 
-                        {/* Live Feed Badge */}
-                        <div className="absolute top-8 left-8 flex items-center gap-3 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-full text-white z-20">
+                        {/* Live Feed Badge - desktop only */}
+                        <div className="hidden lg:flex absolute top-8 left-8 items-center gap-3 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-full text-white z-20">
                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                            <span className="text-[10px] font-black uppercase tracking-widest">Hub Operations: Active</span>
                         </div>
 
                         {/* Center Visual (Dashboard Style) */}
-                        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full px-12 z-20">
-                           <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2rem] p-8 text-center shadow-2xl">
-                              <div className="text-4xl font-black text-white mb-1 tracking-tighter">99.8%</div>
-                              <div className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em]">Operational Precision</div>
+                        <div className="absolute bottom-0 left-0 right-0 z-20 p-4">
+                           <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl py-3 px-4 text-center shadow-xl">
+                              <div className="text-2xl lg:text-3xl font-black text-white tracking-tighter">99.8%</div>
+                              <div className="text-[9px] font-black text-blue-400 uppercase tracking-[0.2em]">Operational Precision</div>
                            </div>
                         </div>
                      </div>
 
                      {/* Floating Priority Badge */}
-                     <div className="absolute -bottom-6 -right-6 bg-emerald-500 text-white p-8 rounded-[2.5rem] shadow-2xl shadow-emerald-500/30 border-4 border-white z-30 transform group-hover:scale-105 transition-transform">
+                     <div className="mt-4 mx-auto w-fit lg:mt-0 lg:absolute lg:-bottom-6 lg:-right-6 bg-emerald-500 text-white px-6 py-4 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] shadow-2xl shadow-emerald-500/30 border-4 border-white z-30 transform group-hover:scale-105 transition-transform">
                         <div className="flex items-center gap-3 mb-1">
-                           <Truck size={24} />
-                           <div className="text-2xl font-black uppercase italic tracking-tighter">Same-Day</div>
+                           <Truck size={20} className="shrink-0 lg:w-6 lg:h-6" />
+                           <div className="text-xl lg:text-2xl font-black uppercase italic tracking-tighter leading-none">Same-Day</div>
                         </div>
                         <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">City-Wide Priority</div>
                      </div>
@@ -327,14 +328,14 @@ const Services: React.FC = () => {
                         Keeping medicines cool is very important. We use special technology and smart boxes to make sure every dose is safe and works perfectly.
                      </p>
 
-                     <div className="grid grid-cols-2 gap-4">
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {[
                            { label: 'Frozen Zone', range: '-80°C to -20°C', icon: Snowflake },
                            { label: 'Fridge Zone', range: '2°C to 8°C', icon: Box },
                            { label: 'Room Temp', range: '15°C to 25°C', icon: Thermometer },
                            { label: 'Always Safe', range: '24/7 Monitoring', icon: ShieldCheck }
                         ].map((item, i) => (
-                           <div key={i} className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex items-center gap-4 hover:border-blue-200 transition-all group">
+                           <div key={i} className="bg-slate-50 border border-slate-100 rounded-2xl p-4 sm:p-6 flex items-center gap-3 sm:gap-4 hover:border-blue-200 transition-all group">
                               <div className="p-3 bg-white rounded-xl text-blue-500 shadow-sm group-hover:bg-blue-500 group-hover:text-white transition-all">
                                  <item.icon size={24} />
                               </div>
@@ -360,7 +361,7 @@ const Services: React.FC = () => {
                                  </div>
                               </div>
 
-                              <div className="grid grid-cols-2 gap-10">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
                                  {[
                                     { label: 'Perfect Temp', val: '99.98%', sub: 'Digital check' },
                                     { label: 'Fast Shipping', val: '100%', sub: 'City districts' },
@@ -368,7 +369,7 @@ const Services: React.FC = () => {
                                     { label: 'Battery Life', val: '36H', sub: 'Box reserve' }
                                  ].map((metric, i) => (
                                     <div key={i} className="group">
-                                       <div className="text-4xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors tracking-tighter">
+                                       <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors tracking-tighter">
                                           {metric.val}
                                        </div>
                                        <div className="text-[10px] text-slate-400 uppercase font-black tracking-[0.1em] mb-1">
@@ -381,9 +382,9 @@ const Services: React.FC = () => {
                                  ))}
                               </div>
 
-                              <div className="mt-16 pt-10 border-t border-slate-100 flex items-center justify-between">
+                              <div className="mt-16 pt-10 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center text-white shadow-lg">
+                                    <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center text-white shadow-lg shrink-0">
                                        <BarChart3 size={20} />
                                     </div>
                                     <div>
@@ -391,7 +392,7 @@ const Services: React.FC = () => {
                                        <div className="text-[10px] text-slate-400 font-bold">General Status</div>
                                     </div>
                                  </div>
-                                 <Link to="/contact" className="p-4 bg-slate-50 hover:bg-blue-50 text-slate-400 hover:text-blue-600 rounded-2xl transition-all">
+                                 <Link to="/contact" className="shrink-0 p-4 bg-slate-50 hover:bg-blue-50 text-slate-400 hover:text-blue-600 rounded-2xl transition-all border border-slate-100">
                                     <ArrowRight size={20} />
                                  </Link>
                               </div>
@@ -442,7 +443,7 @@ const Services: React.FC = () => {
          </Section>
 
          {/* --- 6. THE SAFETY SHIELD (QUALITY & LICENSES) - NEW SPLIT LAYOUT --- */}
-         <Section background="white" className="py-24 border-t border-slate-100">
+         <Section background="default" className="py-24 border-t border-slate-100">
             <div className="container mx-auto px-6">
                <div className="flex flex-col lg:flex-row items-center gap-16">
 
@@ -521,21 +522,27 @@ const Services: React.FC = () => {
                      { q: 'Do you check the temperature?', a: 'Yes. Every shipment is tracked to sure the temperature is perfect from our door to yours.' },
                      { q: 'Are the correct documents included?', a: 'Yes. All necessary papers, certificates, and safety forms are included with every order.' },
                      { q: 'Is there a minimum order size?', a: 'We work with pharmacies of all sizes. Talk to us to find a schedule that fits your needs.' }
-                  ].map((faq, i) => (
-                     <div key={i} className="group overflow-hidden rounded-[2rem] bg-white border border-slate-100 hover:border-blue-200 transition-all">
-                        <div className="w-full p-8 text-left flex items-center justify-between cursor-pointer">
-                           <span className="text-lg font-black text-slate-900 pr-8">{faq.q}</span>
-                           <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
-                              <ChevronDown size={20} />
+                  ].map((faq, i) => {
+                     const isOpen = openFaq === i;
+                     return (
+                        <div key={i} className={`overflow-hidden rounded-[2rem] bg-white border transition-all duration-300 ${isOpen ? 'border-blue-200 shadow-lg' : 'border-slate-100 hover:border-blue-100'}`}>
+                           <button
+                              onClick={() => setOpenFaq(isOpen ? null : i)}
+                              className="w-full p-5 sm:p-8 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
+                           >
+                              <span className="text-base sm:text-lg font-black text-slate-900 flex-1">{faq.q}</span>
+                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all shrink-0 ${isOpen ? 'bg-blue-600 text-white rotate-180' : 'bg-slate-50 text-slate-400'}`}>
+                                 <ChevronDown size={20} />
+                              </div>
+                           </button>
+                           <div className={`px-5 sm:px-8 text-slate-500 font-medium leading-relaxed overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[300px] pb-5 sm:pb-8' : 'max-h-0'}`}>
+                              <div className="pt-2 border-t border-slate-100">
+                                 {faq.a}
+                              </div>
                            </div>
                         </div>
-                        <div className="px-8 pb-8 text-slate-500 font-medium leading-relaxed max-h-0 group-hover:max-h-[300px] transition-all duration-500 overflow-hidden">
-                           <div className="pt-2 border-t border-slate-50">
-                              {faq.a}
-                           </div>
-                        </div>
-                     </div>
-                  ))}
+                     );
+                  })}
                </div>
             </div>
          </Section>
@@ -548,8 +555,8 @@ const Services: React.FC = () => {
                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-white text-xs font-black uppercase tracking-widest mb-10">
                   partner with us
                </div>
-               <h2 className="text-5xl md:text-6xl font-black mb-8 tracking-tighter">
-                  Simple Handling. <br />
+               <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-8 tracking-tighter leading-tight">
+                  Simple Handling. <br className="hidden sm:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Total Safety.</span>
                </h2>
                <p className="mb-12 text-slate-400 max-w-2xl mx-auto text-xl font-medium leading-relaxed">

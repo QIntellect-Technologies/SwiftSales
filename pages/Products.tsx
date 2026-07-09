@@ -63,13 +63,13 @@ const Products: React.FC = () => {
                   <span className="inline-block py-1 px-3 rounded-full bg-white border border-blue-200 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm animate-fade-in-up">
                      Product Portfolio
                   </span>
-                  <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                  <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                      Pharmaceutical <br />
                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Excellence & Safety.
                      </span>
                   </h1>
-                  <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                  <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                      A comprehensive, GDP-compliant catalog of high-quality medicines.
                      From essential generics to specialized biologics, we ensure integrity in every dose.
                   </p>
@@ -93,52 +93,54 @@ const Products: React.FC = () => {
          </section>
 
          {/* --- 2. DISTRIBUTOR TABS & SEARCH BAR --- */}
-         <div className="sticky top-20 z-40 py-4 bg-white/90 backdrop-blur-md border-y border-slate-200 shadow-sm transition-all">
+         <div className="py-4 bg-white/90 backdrop-blur-md border-y border-slate-200 shadow-sm transition-all">
             <div className="container mx-auto px-6">
                <div className="flex flex-col gap-6">
 
                   {/* Distributor Tabs (Scrollable) */}
-                  <div className="relative group/tabs">
-                     {/* Left Scroll Button */}
-                     <button
-                        onClick={() => scrollDistributors('left')}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 bg-white/90 backdrop-blur-md border border-slate-200 rounded-full flex items-center justify-center shadow-lg text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all opacity-0 group-hover/tabs:opacity-100 hidden md:flex"
-                        aria-label="Scroll Left"
-                     >
-                        <ChevronLeft size={20} />
-                     </button>
-
-                     <div
-                        ref={distributorsRef}
-                        className="w-full overflow-x-auto no-scrollbar scroll-smooth"
-                     >
-                        <div className="flex items-center gap-3 pb-2 px-1">
-                           <div className="flex items-center gap-2 text-slate-400 mr-2 text-sm font-bold uppercase tracking-wider shrink-0">
-                              <Building2 size={14} /> Distributors:
-                           </div>
-                           {DISTRIBUTORS.map(dist => (
-                              <button
-                                 key={dist.id}
-                                 onClick={() => setSelectedDistributorId(dist.id)}
-                                 className={`px-5 py-2.5 rounded-full text-sm font-black uppercase tracking-wide whitespace-nowrap transition-all duration-300 border ${selectedDistributorId === dist.id
-                                    ? 'bg-slate-900 text-white border-slate-900 shadow-lg scale-105'
-                                    : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50'
-                                    }`}
-                              >
-                                 {dist.name}
-                              </button>
-                           ))}
-                        </div>
+                  <div className="flex flex-col gap-3">
+                     <div className="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-wider ml-1">
+                        <Building2 size={14} /> Distributors:
                      </div>
+                     <div className="flex items-center gap-2 w-full">
+                        {/* Left Scroll Button */}
+                        <button
+                           onClick={() => scrollDistributors('left')}
+                           className="shrink-0 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-md text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all"
+                           aria-label="Scroll Left"
+                        >
+                           <ChevronLeft size={16} />
+                        </button>
 
-                     {/* Right Scroll Button */}
-                     <button
-                        onClick={() => scrollDistributors('right')}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 bg-white/90 backdrop-blur-md border border-slate-200 rounded-full flex items-center justify-center shadow-lg text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all opacity-0 group-hover/tabs:opacity-100 hidden md:flex"
-                        aria-label="Scroll Right"
-                     >
-                        <ChevronRight size={20} />
-                     </button>
+                        <div
+                           ref={distributorsRef}
+                           className="flex-1 overflow-x-auto no-scrollbar scroll-smooth"
+                        >
+                           <div className="flex items-center gap-3 px-1 py-1">
+                              {DISTRIBUTORS.map(dist => (
+                                 <button
+                                    key={dist.id}
+                                    onClick={() => setSelectedDistributorId(dist.id)}
+                                    className={`px-5 py-2.5 rounded-full text-sm font-black uppercase tracking-wide whitespace-nowrap transition-all duration-300 border ${selectedDistributorId === dist.id
+                                       ? 'bg-slate-900 text-white border-slate-900 shadow-lg scale-105'
+                                       : 'bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50'
+                                       }`}
+                                 >
+                                    {dist.name}
+                                 </button>
+                              ))}
+                           </div>
+                        </div>
+
+                        {/* Right Scroll Button */}
+                        <button
+                           onClick={() => scrollDistributors('right')}
+                           className="shrink-0 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-md text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:scale-110 transition-all"
+                           aria-label="Scroll Right"
+                        >
+                           <ChevronRight size={16} />
+                        </button>
+                     </div>
                   </div>
 
                   {/* Search Interaction */}
@@ -172,7 +174,7 @@ const Products: React.FC = () => {
                            />
 
                            {/* Badges */}
-                           <div className="absolute top-4 left-4">
+                           <div className="absolute top-4 right-4">
                               <span className={`px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-widest border shadow-sm backdrop-blur-md ${product.temp === 'Ambient' ? 'bg-white/80 text-slate-600 border-slate-200' : 'bg-blue-500/90 text-white border-blue-400'}`}>
                                  {product.temp}
                               </span>

@@ -286,10 +286,12 @@ const Portfolio: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex items-center gap-2 text-blue-500 text-[9px] font-black uppercase tracking-widest mb-3">
-                    {item.category === 'Cold Chain' && <Snowflake size={12} />}
-                    {item.category} • {item.location}
+                <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                  <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-blue-500 text-[9px] font-black uppercase tracking-widest mb-3">
+                    {item.category === 'Cold Chain' && <Snowflake size={12} className="shrink-0" />}
+                    <span>{item.category}</span>
+                    <span className="opacity-50">•</span>
+                    <span>{item.location}</span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed font-medium mb-8">
@@ -465,19 +467,19 @@ const Portfolio: React.FC = () => {
 
       {/* --- 7. GEOGRAPHIC Hub (SEC-07) --- Simplified Visualization */}
       <Section background="default" className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="bg-blue-600 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden shadow-2xl">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="bg-blue-600 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-12 lg:p-20 relative overflow-hidden shadow-2xl">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent)]" />
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">We Cover the Region.</h2>
-                <p className="text-blue-100 font-medium text-lg leading-relaxed mb-10">Starting from our main dispatch center, we have expanded to reach over 100+ districts, ensuring no clinic is left without medicine.</p>
-                <div className="flex items-center gap-6">
-                  <div className="px-6 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">We Cover the Region.</h2>
+                <p className="text-blue-100 font-medium text-base sm:text-lg leading-relaxed mb-8 sm:mb-10">Starting from our main dispatch center, we have expanded to reach over 100+ districts, ensuring no clinic is left without medicine.</p>
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                  <div className="px-6 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-center sm:text-left">
                     <div className="text-4xl font-black text-white leading-none mb-1">100+</div>
                     <div className="text-[10px] text-blue-200 font-bold uppercase tracking-widest">Active Districts</div>
                   </div>
-                  <div className="px-6 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                  <div className="px-6 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-center sm:text-left">
                     <div className="text-4xl font-black text-white leading-none mb-1">01</div>
                     <div className="text-[10px] text-blue-200 font-bold uppercase tracking-widest">Large Hub (RYK)</div>
                   </div>
@@ -525,15 +527,13 @@ const Portfolio: React.FC = () => {
 
       {/* --- 10. FINAL CTA (SEC-10) --- Clear & Concise */}
       <div className="container mx-auto px-6 mb-24">
-        <div className="bg-slate-900 rounded-[3rem] p-16 lg:p-24 text-center relative overflow-hidden group">
+        <div className="bg-slate-900 rounded-[3rem] px-6 py-12 sm:p-16 lg:p-24 text-center relative overflow-hidden group">
           <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out" />
           <div className="relative z-10">
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">Grow With Us.</h2>
             <p className="text-slate-400 group-hover:text-white transition-colors text-lg font-medium mb-12 max-w-xl mx-auto">Build a stronger medicine supply chain. Connect with Pakistan's healthcare vital link today.</p>
-            <Link to="/contact">
-              <button className="px-10 py-5 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-2xl">
-                Become a Partner
-              </button>
+            <Link to="/contact" className="inline-block whitespace-nowrap px-6 sm:px-10 py-4 sm:py-5 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-2xl">
+              Become a Partner
             </Link>
           </div>
         </div>

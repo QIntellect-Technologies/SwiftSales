@@ -137,8 +137,8 @@ Swift Sales Healthcare Distribution
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 text-blue-600 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm">
                      <MessageSquare size={14} /> Contact Our Team
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8">
-                     Let's Start a <br />
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8">
+                     Let's Start a <br className="hidden sm:block" />
                      <span className="text-blue-600">Conversation.</span>
                   </h1>
                   <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -171,9 +171,9 @@ Swift Sales Healthcare Distribution
                   </div>
 
                   {/* Simple Social Trace */}
-                  <div className="flex flex-wrap items-center gap-8 px-4 py-4 border-l-2 border-slate-100">
-                     <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Global Connect:</span>
-                     <div className="flex gap-6">
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-8 px-4 py-4 border-l-2 border-slate-100">
+                     <span className="text-xs font-bold text-slate-400 uppercase tracking-widest w-full sm:w-auto">Global Connect:</span>
+                     <div className="flex flex-wrap gap-4 sm:gap-6">
                         {[
                            { icon: Linkedin, label: 'LinkedIn' },
                            { icon: Twitter, label: 'Twitter' },

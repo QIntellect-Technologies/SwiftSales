@@ -85,7 +85,7 @@ export const ChatBot: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
-            text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine or would you like to browse our inventory? You can download our inventory list here: https://swiftsalesbot-production.up.railway.app/api/inventory/download`,
+            text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine?`,
             sender: 'bot',
             timestamp: new Date()
         }
@@ -225,7 +225,7 @@ export const ChatBot: React.FC = () => {
         if (confirm('Are you sure you want to clear this conversation?')) {
             setMessages([{
                 id: Date.now().toString(),
-                text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine or would you like to browse our inventory? You can download our inventory list here: https://swiftsalesbot-production.up.railway.app/api/inventory/download`,
+                text: `Welcome to our pharmacy! How can I assist you today? Are you looking for a specific medicine?`,
                 sender: 'bot',
                 timestamp: new Date()
             }]);
@@ -314,10 +314,10 @@ export const ChatBot: React.FC = () => {
 
                 {isOpen && (
                     <div
-                        className="w-full h-[100dvh] sm:w-[420px] sm:h-[650px] bg-white sm:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden sm:border sm:border-slate-100"
+                        className="w-full h-[100dvh] sm:w-[380px] sm:h-[550px] sm:max-h-[calc(100vh-6rem)] bg-white sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden sm:border sm:border-slate-100"
                     >
                         {/* Header */}
-                        <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white flex items-center justify-between">
+                        <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white flex items-center justify-between shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/30">
                                     <Heart size={24} className="text-white" />
@@ -345,7 +345,7 @@ export const ChatBot: React.FC = () => {
                         </div>
 
                         {/* Messages */}
-                        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 space-y-6 bg-slate-50/50 custom-scrollbar">
+                        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 space-y-6 bg-slate-50/50 custom-scrollbar min-h-0">
                             {messages.map((m) => (
                                 <div key={m.id} className={`flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                                     <div className={`max-w-[85%] flex gap-3 ${m.sender === 'user' ? 'flex-row-reverse' : ''}`}>
@@ -438,7 +438,7 @@ export const ChatBot: React.FC = () => {
                         </div>
 
                         {/* Input */}
-                        <div className="p-6 bg-white border-t border-slate-100">
+                        <div className="p-4 sm:p-6 bg-white border-t border-slate-100 shrink-0">
                             <div className="relative">
                                 <input
                                     type="text"

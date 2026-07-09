@@ -189,9 +189,9 @@ const About: React.FC = () => {
               We believe that distribution depends on safety and speed. That is why we focus on getting the right products to your local hub or facility exactly when it is needed.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-4">
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-blue-50 rounded-lg text-blue-600 mt-1">
+                <div className="p-2 bg-blue-50 rounded-lg text-blue-600 mt-1 shrink-0">
                   <MapPin size={20} />
                 </div>
                 <div>
@@ -200,7 +200,7 @@ const About: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-blue-50 rounded-lg text-blue-600 mt-1">
+                <div className="p-2 bg-blue-50 rounded-lg text-blue-600 mt-1 shrink-0">
                   <ShieldCheck size={20} />
                 </div>
                 <div>
@@ -325,17 +325,17 @@ const About: React.FC = () => {
               We hold the prestigious role of being the <strong className="text-slate-900">exclusive sole distributor for SIQ</strong>. We take immense pride in managing their entire supply chain, ensuring premium healthcare products reach our community with absolute reliability and speed.
             </p>
             
-            <div className="grid grid-cols-2 gap-8">
-              <div className="flex flex-col bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+              <div className="flex flex-col bg-slate-50 p-4 sm:p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <span className="text-4xl font-black text-blue-600 mb-2">100%</span>
-                <span className="text-sm text-slate-700 uppercase tracking-widest font-bold flex items-center gap-2">
-                  <ShieldCheck size={16} className="text-blue-500" /> Exclusive Rights
+                <span className="text-xs sm:text-sm text-slate-700 uppercase tracking-widest font-bold flex items-center gap-2 break-words leading-tight">
+                  <ShieldCheck size={16} className="text-blue-500 shrink-0" /> Exclusive Rights
                 </span>
               </div>
-              <div className="flex flex-col bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="flex flex-col bg-slate-50 p-4 sm:p-6 rounded-2xl border border-slate-100 shadow-sm">
                 <span className="text-4xl font-black text-blue-600 mb-2">#1</span>
-                <span className="text-sm text-slate-700 uppercase tracking-widest font-bold flex items-center gap-2">
-                  <Award size={16} className="text-blue-500" /> Distribution Tier
+                <span className="text-xs sm:text-sm text-slate-700 uppercase tracking-widest font-bold flex items-center gap-2 break-words leading-tight">
+                  <Award size={16} className="text-blue-500 shrink-0" /> Distribution Tier
                 </span>
               </div>
             </div>
@@ -650,7 +650,7 @@ const About: React.FC = () => {
           />
 
           <div className="mt-16 max-w-4xl mx-auto">
-            <div className="bg-white text-slate-900 rounded-[2rem] p-8 md:p-12 relative overflow-hidden shadow-2xl border-4 border-double border-slate-200">
+            <div className="bg-white text-slate-900 rounded-[2rem] p-6 md:p-12 relative overflow-hidden shadow-2xl border-4 border-double border-slate-200">
               {/* Watermark / Seal Effect */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border-[20px] border-slate-100 rounded-full opacity-50 pointer-events-none"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -662,7 +662,7 @@ const About: React.FC = () => {
                   <div>
                     <div className="text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-2">Government of Punjab</div>
                     <h3 className="text-3xl md:text-4xl font-black text-slate-900 font-serif">FORM NO. 11</h3>
-                    <p className="text-sm font-bold text-slate-500 mt-1 uppercase tracking-widest">[See Rule 16] License to Sell Drugs as a Distributor</p>
+                    <p className="text-sm font-bold text-slate-500 mt-1 uppercase tracking-widest leading-relaxed">[See Rule 16] License to Sell Drugs as a Distributor</p>
                   </div>
                   <div className="mt-4 md:mt-0 text-right">
                     <div className="inline-block px-4 py-2 bg-green-100 text-green-700 font-black text-xs uppercase tracking-widest rounded-lg border border-green-200">
@@ -671,10 +671,10 @@ const About: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-base md:text-lg">
                   <div>
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">License Number</div>
-                    <div className="font-bold text-slate-900 font-mono text-xl">03-313-0156-025377D</div>
+                    <div className="font-bold text-slate-900 font-mono text-lg md:text-xl">03-313-0156-025377D</div>
                   </div>
                   <div>
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Valid Upto</div>
@@ -682,18 +682,18 @@ const About: React.FC = () => {
                   </div>
                   <div className="md:col-span-2">
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Licensed Entity</div>
-                    <div className="font-black text-2xl text-blue-700 uppercase tracking-tight">Swift Sales Medicine Distributor</div>
+                    <div className="font-black text-xl md:text-2xl text-blue-700 uppercase tracking-tight">Swift Sales Medicine Distributor</div>
                     <p className="text-sm text-slate-500 mt-2 font-medium">
                       Authorized agent to distribute registered products on behalf of licensed pharmaceutical manufacturers.
                     </p>
                   </div>
-                  <div className="md:col-span-2 p-6 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="flex items-start gap-4">
-                      <MapPin size={24} className="text-blue-600 mt-1 shrink-0" />
+                  <div className="md:col-span-2 p-4 md:p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <MapPin size={24} className="text-blue-600 shrink-0" />
                       <div>
                         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Registered Premises</div>
-                        <div className="font-bold text-slate-800 leading-relaxed">
-                          C8GM+HFF, Sardar Colony,<br />
+                        <div className="font-bold text-slate-800 leading-relaxed text-sm md:text-base">
+                          C8GM+HFF, Sardar Colony,<br className="hidden md:block" />
                           Rahim Yar Khan, Pakistan.
                         </div>
                       </div>
