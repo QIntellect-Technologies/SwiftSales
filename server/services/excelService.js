@@ -25,7 +25,7 @@ class ExcelService {
                 'Pack Size': p.pack_size,
                 'Price (PKR)': p.price ? parseFloat(p.price).toFixed(2) : 'N/A',
                 'Stock': p.stock || 0,
-                'Status': p.stock > 0 ? 'Available' : 'Out of Stock'
+                'Status': p.status || (p.stock > 0 ? 'Available' : 'Out of Stock')
             }));
 
             // Create workbook and worksheet

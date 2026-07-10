@@ -13,7 +13,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(path.join(__dirname, 'public'))); // Serve downloads
 app.use(express.static(path.join(__dirname, '..', 'dist'))); // Serve frontend dist
 
@@ -21,6 +22,10 @@ app.use(express.static(path.join(__dirname, '..', 'dist'))); // Serve frontend d
 // Initialize database
 require('./database');
 
+
+// Auth routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 // Chat routes (session, message, etc.)
 const chatRoutes = require('./routes/chat');

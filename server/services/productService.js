@@ -1,13 +1,15 @@
 
-const fs = require('fs-extra');
+const fs   = require('fs-extra');
 const path = require('path');
 const { supabase } = require('./supabase');
+const { MEDICINES_FILE } = require('../paths');
 
 class ProductService {
     constructor() {
         this.products = [];
         this.lastSync = null;
-        this.localDataPath = path.join(__dirname, '../data/medicines.json');
+        // Use Railway-aware path from paths.js (respects DATA_PATH env var)
+        this.localDataPath = MEDICINES_FILE;
     }
 
     /**
@@ -43,7 +45,7 @@ class ProductService {
                     pack_size: item.pack_size || 'Standard',
                     price: item.price || 0,
                     stock: item.stock || 100,
-                    status: 'Available',
+                    status: item.status || 'Available', // Read actual status from file, not hardcoded
                     generic_name: item.generic_name || '',
                     description: item.description || item.name || '',
                     original_data: item
@@ -196,11 +198,59 @@ class ProductService {
                     name: p.name,
                     price: p.price,
                     stock: p.stock,
+                    status: p.status,  // Always include status so all callers can check it
                     company: p.company,
-                    pack_size: p.pack_size
+                    pack_size: p.pack_size,
+                    generic_name: p.generic_name
                 }
             }))
         };
+    }
+
+    async updateProductStock(productId, quantity, operation = 'subtract') {
+        try {
+            // Update in-memory
+            const product = this.products.find(p => p.id === productId);
+            if (product) {
+                if (operation === 'subtract') {
+                    product.stock = Math.max(0, product.stock - quantity);
+                } else if (operation === 'add') {
+                    product.stock += quantity;
+                }
+                if (product.stock === 0) {
+                    product.status = 'Out of Stock';
+                }
+                product.original_data.stock = product.stock;
+                product.original_data.status = product.status;
+            }
+
+            // Update JSON file
+            if (await fs.pathExists(this.localDataPath)) {
+                let localData = await fs.readJson(this.localDataPath);
+                let updated = false;
+                for (let item of localData) {
+                    const itemId = item.id || item.item_id;
+                    if (itemId === productId) {
+                        if (operation === 'subtract') {
+                            item.stock = Math.max(0, (item.stock || 0) - quantity);
+                        } else if (operation === 'add') {
+                            item.stock = (item.stock || 0) + quantity;
+                        }
+                        if (item.stock === 0) {
+                            item.status = 'Out of Stock';
+                        }
+                        updated = true;
+                        break;
+                    }
+                }
+                if (updated) {
+                    await fs.writeJson(this.localDataPath, localData, { spaces: 2 });
+                    console.log(`✅ Updated stock for product ${productId} in medicines.json`);
+                }
+            }
+        } catch (err) {
+            console.error('❌ Failed to update stock in medicines.json:', err.message);
+        }
     }
 }
 

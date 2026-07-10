@@ -6,6 +6,7 @@ const { getReRankingService } = require('../services/reRanker'); // Import ReRan
 const fs = require('fs-extra');
 const path = require('path');
 const { dbHelpers } = require('../database');
+const { EMBEDDINGS_DIR, VECTORS_FILE } = require('../paths');
 
 const { productService } = require('../services/productService');
 
@@ -24,9 +25,9 @@ async function initializeServices() {
         if (products.length > 0) {
             console.log(`📦 Loaded ${products.length} products into RAG system.`);
 
-            // Load Supabase-compatible embeddings path
-            const vectorDbPath = path.join(__dirname, '../data/embeddings');
-            const vectorPath = path.join(vectorDbPath, 'supabase_vectors.json');
+            // Load Supabase-compatible embeddings path from central config
+            const vectorDbPath = EMBEDDINGS_DIR;
+            const vectorPath = VECTORS_FILE;
 
             const embeddingService = getEmbeddingService();
             const vectorSearch = getVectorSearch();
@@ -100,22 +101,26 @@ router.post('/query', async (req, res) => {
             try {
                 const history = await dbHelpers.getChatHistory(sessionId);
                 // Keep last 10 messages for context
-                context.chatHistory = history.slice(-10);
+                context.chatHistory = history.slice(-30); // Keep last 30 messages for full order context
 
-                // Load persistent session data if context is empty/minimal
-                if (Object.keys(context).length <= 1) { // Only has chatHistory or is empty
-                    console.log(`[SESSION RECOVERY] Attempting recovery for: ${sessionId}`);
-                    const persistentContext = await dbHelpers.getCart(sessionId);
-                    console.log(`[SESSION RECOVERY] DB Returned:`, persistentContext ? 'DATA FOUND' : 'NOT FOUND');
-
-                    if (persistentContext && typeof persistentContext === 'object') {
-                        // Merge persistent data into current context
-                        Object.assign(context, persistentContext);
-                        console.log(`[SESSION RECOVERY] Final Context Keys:`, Object.keys(context).join(', '));
-                        if (context.pendingOrder) {
-                            console.log(`[SESSION RECOVERY] Found Pending Order Mode: ${context.pendingOrder.mode}`);
-                        }
-                    }
+                // ALWAYS load and merge persisted session data (customer details, cart etc.)
+                // regardless of how full the context already is
+                const persistentContext = await dbHelpers.getCart(sessionId);
+                if (persistentContext && typeof persistentContext === 'object') {
+                    // Only merge fields that aren't already set by the frontend
+                    if (!context.customer_name && persistentContext.customer_name)
+                        context.customer_name = persistentContext.customer_name;
+                    if (!context.customer_phone && persistentContext.customer_phone)
+                        context.customer_phone = persistentContext.customer_phone;
+                    if (!context.delivery_address && persistentContext.delivery_address)
+                        context.delivery_address = persistentContext.delivery_address;
+                    if (!context.cart || context.cart.length === 0)
+                        context.cart = persistentContext.cart || [];
+                    if (!context.cart_total)
+                        context.cart_total = persistentContext.cart_total || 0;
+                    if (persistentContext.orderPlaced)
+                        context.orderPlaced = persistentContext.orderPlaced;
+                    console.log(`[SESSION] Merged DB context. customer_name=${context.customer_name}, phone=${context.customer_phone}`);
                 }
             } catch (err) {
                 console.warn('⚠️ Could not fetch session data:', err.message);
@@ -188,6 +193,138 @@ router.post('/query', async (req, res) => {
             }));
         }
 
+        // Inject affiliated companies dynamically from the database
+        const { companies } = productService.getAllCategories();
+        context.affiliated_companies = companies;
+
+        // --- SERVER-SIDE CUSTOMER DETAIL EXTRACTION ---
+        // Try to extract customer details from their message automatically.
+        const q = query.trim();
+        // Detect phone number pattern in message
+        const phoneMatch = q.match(/(\+92|0)[\d\-\s]{9,14}/);
+        if (phoneMatch && !context.customer_phone) {
+            context.customer_phone = phoneMatch[0].replace(/\s/g, '');
+        }
+        // If message looks like it contains comma-separated contact info (name, phone, address)
+        const parts = q.split(',').map(p => p.trim()).filter(Boolean);
+        if (parts.length >= 3 && (!context.customer_name || !context.customer_phone || !context.delivery_address)) {
+            // First part is likely the name if it has no digits
+            if (parts[0] && !/\d{4,}/.test(parts[0])) {
+                context.customer_name = parts[0];
+            }
+            // Find phone-like part
+            const phonePart = parts.find(p => /[\d\-]{7,}/.test(p));
+            if (phonePart && !context.customer_phone) {
+                context.customer_phone = phonePart;
+            }
+            // Remaining parts form the address
+            const addrParts = parts.filter(p => p !== parts[0] && p !== phonePart);
+            if (addrParts.length > 0 && !context.delivery_address) {
+                context.delivery_address = addrParts.join(', ');
+            }
+        }
+
+        // --- SERVER-SIDE ORDER AUTO-TRIGGER (BEFORE AI) ---
+        // If user message is a confirmation keyword AND cart + details are all present,
+        // auto-fire the order creation without waiting for AI.
+        const confirmKeywords = /^(yes|confirm|proceed|place|go ahead|ok|okay|sure|yep|haan|haan ji|done|finalize|submit|checkout|order karo|order place|place order)/i;
+        const hasAllDetails = context.customer_name && context.customer_phone && context.delivery_address;
+        const hasCart = context.cart && context.cart.length > 0;
+        const alreadyOrdered = context.orderPlaced;
+
+        console.log(`[AUTO-ORDER CHECK] word_match=${confirmKeywords.test(query.trim())}, name=${context.customer_name}, phone=${context.customer_phone}, addr=${context.delivery_address}, hasCart=${hasCart}, alreadyOrdered=${alreadyOrdered}`);
+
+        if (confirmKeywords.test(query.trim()) && hasAllDetails && hasCart && !alreadyOrdered) {
+            try {
+                console.log(`[AUTO-ORDER] Triggering auto order for session ${sessionId}`);
+                const { dbHelpers: dbH } = require('../database');
+                const { sendOrderEmail } = require('../services/emailService');
+                const { productService: ps } = require('../services/productService');
+
+                const timestamp = Date.now().toString(36).toUpperCase();
+                const random = Math.random().toString(36).substr(2, 5).toUpperCase();
+                const orderId = `SS-${timestamp}-${random}`;
+
+                const orderItems = context.cart.map(item => ({
+                    productName: item.product_name,
+                    productId: item.product_id || null,
+                    productCompany: item.company || 'Unknown',
+                    packSize: item.pack_size || 'Standard',
+                    quantity: item.quantity,
+                    unitPrice: item.unit_price || 0,
+                    subtotal: (item.quantity || 0) * (item.unit_price || 0)
+                }));
+
+                const totalAmount = orderItems.reduce((s, i) => s + i.subtotal, 0);
+                const totalItems = orderItems.reduce((s, i) => s + i.quantity, 0);
+
+                await dbH.createOrder({
+                    orderId,
+                    sessionId,
+                    customerName: context.customer_name,
+                    customerPhone: context.customer_phone,
+                    customerEmail: null,
+                    deliveryAddress: context.delivery_address,
+                    deliveryCity: 'Not specified',
+                    deliveryArea: 'Not specified',
+                    orderItems,
+                    totalItems,
+                    totalAmount,
+                    orderNotes: null
+                });
+
+                for (const item of orderItems) {
+                    await dbH.addOrderItem({ orderId, ...item });
+                    if (item.productId) {
+                        await ps.updateProductStock(item.productId, item.quantity, 'subtract');
+                    }
+                }
+
+                await dbH.updateAnalytics('total_orders');
+
+                // Mark order as placed so this doesn't trigger again
+                context.orderPlaced = true;
+                context.lastOrderId = orderId;
+                context.cart = [];
+                context.cart_total = 0;
+                await dbH.saveCart(sessionId, context);
+
+                // Fire email
+                sendOrderEmail({
+                    orderId,
+                    customerName: context.customer_name,
+                    customerPhone: context.customer_phone,
+                    deliveryAddress: context.delivery_address,
+                    deliveryCity: '',
+                    orderItems,
+                    totalAmount
+                }).catch(e => console.warn('[AUTO-ORDER] Email error:', e.message));
+
+                console.log(`[AUTO-ORDER] ✅ Order ${orderId} placed successfully!`);
+
+                const successMessage = `✅ *Order Placed Successfully!*\n\nYour order ID is **${orderId}**. We have received your details and will process your delivery to **${context.delivery_address}** shortly.\n\nThank you for choosing Swift Sales!`;
+
+                // Persist the success message
+                await dbH.saveMessage(sessionId, `bot_${Date.now()}`, 'bot', successMessage, 'text', 'executive_response');
+
+                return res.json({
+                    success: true,
+                    response: successMessage,
+                    actions: [{ type: 'CLEAR_CART' }],
+                    relevantProducts: [],
+                    updatedContext: {
+                        ...context,
+                        cart: [],
+                        cart_total: 0,
+                        pendingOrder: null
+                    }
+                });
+
+            } catch (orderErr) {
+                console.error('[AUTO-ORDER] ❌ Failed to auto-place order:', orderErr.message);
+            }
+        }
+
         // Website uses Groq API directly (Executive v10.0)
         const { generateAIResponse } = require('../services/groqService');
         const aiResponse = await generateAIResponse(query, results, context);
@@ -221,6 +358,15 @@ router.post('/query', async (req, res) => {
                 } else if (action.type === 'PLACE_ORDER') {
                     // Store order details in context for frontend to trigger final submission
                     context.pendingOrder = action;
+                    // Persist customer details into structured session so bot never asks again
+                    if (action.customerName) context.customer_name = action.customerName;
+                    if (action.customerPhone) context.customer_phone = action.customerPhone;
+                    if (action.deliveryAddress) context.delivery_address = action.deliveryAddress;
+                } else if (action.type === 'COLLECT_CUSTOMER_INFO') {
+                    // AI can emit this action to persist partial customer details
+                    if (action.customerName) context.customer_name = action.customerName;
+                    if (action.customerPhone) context.customer_phone = action.customerPhone;
+                    if (action.deliveryAddress) context.delivery_address = action.deliveryAddress;
                 }
             }
         }
@@ -236,6 +382,8 @@ router.post('/query', async (req, res) => {
                 console.warn('⚠️ Could not persist context/message:', saveErr.message);
             }
         }
+
+        // (Auto order trigger was moved up before AI generation)
 
         res.json({
             success: true,

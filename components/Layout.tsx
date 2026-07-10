@@ -10,6 +10,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -28,6 +29,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     <div className="flex flex-col min-h-screen font-sans bg-slate-50 text-slate-800 selection:bg-blue-100 selection:text-blue-900">
 
       {/* Modern Floating Header */}
+      {!isAdminRoute && (
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) px-4 md:px-6 ${scrolled ? 'py-4' : 'py-6'
           }`}
@@ -54,7 +56,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </NavLink>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1 mr-auto ml-4">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.path}
@@ -72,7 +74,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mr-4 lg:mr-8">
             {/* {isLoggedIn ? (
               <div className="hidden md:flex items-center gap-4 pl-4 border-l border-slate-200 ml-2">
                 <div className="flex flex-col items-end">
@@ -184,6 +186,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </div>
         </div>
       </header>
+      )}
 
       {/* Main Content */}
       <main className="flex-grow relative z-10">
@@ -191,6 +194,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </main>
 
       {/* Footer - Professional Dark Contrast */}
+      {!isAdminRoute && (
       <footer className="bg-slate-900 border-t border-slate-800 text-slate-300 pt-20 pb-10 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -286,6 +290,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </div>
         </div>
       </footer>
+      )}
 
       {/* Scroll to Top Button */}
       <button
@@ -296,8 +301,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <ArrowUp size={20} />
       </button>
 
-      {/* Global ChatBot Ecosystem */}
-      <ChatBot />
+      {/* Global ChatBot Ecosystem — hidden on admin */}
+      {!isAdminRoute && <ChatBot />}
     </div>
   );
 };

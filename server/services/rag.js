@@ -407,7 +407,10 @@ class RAGService {
                 basicInfo += `🏭 **Manufacturer:** ${metadata.company || 'Unknown'}\n`;
                 if (metadata.pack_size) basicInfo += `📦 **Pack Size:** ${metadata.pack_size}\n`;
                 if (metadata.price) basicInfo += `💰 **Price:** PKR ${parseFloat(metadata.price).toFixed(2)}\n`;
-                if (metadata.stock !== undefined) basicInfo += `📈 **Stock:** ${metadata.stock > 0 ? '✅ Available' : '❌ Out of Stock'}\n`;
+                if (metadata.stock !== undefined) {
+                    const isOutOfStock = metadata.status === 'Out of Stock' || metadata.status === 'Unavailable' || metadata.stock <= 0;
+                    basicInfo += `📈 **Stock:** ${isOutOfStock ? '❌ Out of Stock' : '✅ Available'}\n`;
+                }
 
                 basicInfo += `\nFor clinical guidance (dosage/usage), please contact our pharmacist:\n`;
                 basicInfo += `📞 ${this.companyInfo.phone}\n`;
@@ -521,7 +524,8 @@ class RAGService {
                     if (meta.pack_size) contextText += `   Pack Size: ${meta.pack_size}\n`;
                     if (meta.price) contextText += `   Price: PKR ${parseFloat(meta.price).toFixed(2)}\n`;
                     if (meta.stock !== undefined) {
-                        contextText += `   Stock: ${meta.stock > 0 ? 'Available (' + meta.stock + ')' : 'Out of Stock'}\n`;
+                        const isOutOfStock = meta.status === 'Out of Stock' || meta.status === 'Unavailable' || meta.stock <= 0;
+                        contextText += `   Stock: ${isOutOfStock ? 'Out of Stock' : 'Available (' + meta.stock + ')'}\n`;
                     }
                     if (meta.category) contextText += `   Category: ${meta.category}\n`;
 
@@ -883,7 +887,8 @@ Remember: Acknowledge (Show empathy/understanding) → Understand → Respond (H
                 let response = `Here are the products from **${filterValue}**:\n\n`;
                 products.forEach((p, i) => {
                     const price = p.price ? parseFloat(p.price).toFixed(2) : 'N/A';
-                    response += `${i + 1}. **${p.name}**\n   • Company: ${p.company}\n   • Price: PKR ${price}\n   • Stock: ${p.stock > 0 ? `✅ ${p.stock} available` : '❌ Out of Stock'}\n\n`;
+                    const isOutOfStock = p.status === 'Out of Stock' || p.status === 'Unavailable' || p.stock <= 0;
+                    response += `${i + 1}. **${p.name}**\n   • Company: ${p.company}\n   • Price: PKR ${price}\n   • Stock: ${isOutOfStock ? '❌ Out of Stock' : `✅ ${p.stock} available`}\n\n`;
                 });
                 return response;
             } else {
@@ -1128,7 +1133,8 @@ Remember: Acknowledge (Show empathy/understanding) → Understand → Respond (H
             if (queryClean && (topName.includes(queryClean) || queryClean.includes(topName) || lowerQuery.includes(topName))) {
                 console.log(`[DYNAMIC INTENT] Handling price/stock query for: ${topMatch.name}`);
                 const priceStr = topMatch.price ? `PKR **${parseFloat(topMatch.price).toFixed(2)}**` : 'Market Rate';
-                const stockStr = topMatch.stock > 0 ? `**${topMatch.stock} units** currently in stock.` : 'currently **Out of Stock**.';
+                const isOutOfStock = topMatch.status === 'Out of Stock' || topMatch.status === 'Unavailable' || topMatch.stock <= 0;
+                const stockStr = isOutOfStock ? 'currently **Out of Stock**.' : `**${topMatch.stock} units** currently in stock.`;
 
                 return `📦 **${topMatch.name}**\n\n` +
                     `• **Unit Price:** ${priceStr}\n` +
@@ -1225,6 +1231,24 @@ Remember: Acknowledge (Show empathy/understanding) → Understand → Respond (H
             const displayNameFromQuery = brandFromQuery || chosen.name;
 
             console.log(`[ADD DEBUG] Adding item. Raw Price: ${chosen.price}, Parsed: ${parseFloat(chosen.price)}`);
+
+            const stock = chosen.stock || 0;
+            const status = chosen.status ? String(chosen.status).toLowerCase() : 'available';
+            
+            if (stock === 0 || status === 'out of stock' || status === 'unavailable' || (typeof chosen.status === 'string' && chosen.status.includes('Stock'))) {
+                userContext.pendingOrder = null;
+                return `❌ **${chosen.name}** is currently **Out of Stock** or unavailable and cannot be added to your cart. 🛑`;
+            }
+            if (stock < qty) {
+                userContext.pendingOrder = {
+                    product: { metadata: chosen },
+                    mode: 'stock_negotiation',
+                    available: stock,
+                    requested: qty
+                };
+                return `⚠️ **${chosen.name}**: Only **${stock}** available.\nWould you like to add **${stock}** instead?`;
+            }
+
             // Add to cart
             const existingIndex = userContext.cart.findIndex(item =>
                 item.productId === chosen.id || item.productName === chosen.name
@@ -1433,6 +1457,15 @@ Remember: Acknowledge (Show empathy/understanding) → Understand → Respond (H
                 const productName = query.replace(/(add|also|include|plus|put in)/gi, '').trim();
                 if (productName.length > 2) {
                     const chosen = (relevantProducts && relevantProducts.length > 0) ? relevantProducts[0].metadata : null;
+
+                    if (chosen) {
+                        const stock = chosen.stock || 0;
+                        const status = chosen.status ? String(chosen.status).toLowerCase() : 'available';
+                        if (stock === 0 || status === 'out of stock' || status === 'unavailable' || (typeof chosen.status === 'string' && chosen.status.includes('Stock'))) {
+                            return `❌ **${chosen.name}** is currently **Out of Stock** or unavailable and cannot be added to your cart. 🛑`;
+                        }
+                    }
+
                     const productToAdd = chosen || {
                         id: `temp_${Date.now()}`,
                         name: productName.toUpperCase(),
@@ -1876,6 +1909,22 @@ Remember: Acknowledge (Show empathy/understanding) → Understand → Respond (H
 
                 if (product) {
                     const meta = product.metadata;
+
+                    const stock = meta.stock || 0;
+                    const status = meta.status ? String(meta.status).toLowerCase() : 'available';
+
+                    if (status === 'out of stock' || status === 'unavailable' || (typeof meta.status === 'string' && meta.status.includes('Stock'))) {
+                        failedItems.push(`❌ **${meta.name}** is currently Out of Stock and cannot be added. 🛑`);
+                        continue;
+                    }
+                    if (stock === 0) {
+                        failedItems.push(`❌ **${meta.name}** is currently Out of Stock and cannot be added. 🛑`);
+                        continue;
+                    }
+                    if (stock > 0 && stock < qty) {
+                        failedItems.push(`⚠️ **${meta.name}**: Only **${stock}** available. Please request a smaller quantity.`);
+                        continue;
+                    }
 
                     // Check if already in cart
                     const existingIndex = userContext.cart.findIndex(item =>

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { dbHelpers } = require('../database');
+const { productService } = require('../services/productService');
+const { sendOrderEmail } = require('../services/emailService');
 
 // Generate unique order ID
 const generateOrderId = () => {
@@ -76,6 +78,7 @@ router.post('/create', async (req, res) => {
             for (const item of orderItems) {
                 if (item.productId) {
                     await dbHelpers.updateProductStock(item.productId, item.quantity || 0, 'subtract');
+                    await productService.updateProductStock(item.productId, item.quantity || 0, 'subtract');
                 }
             }
         } catch (err) {
@@ -85,6 +88,17 @@ router.post('/create', async (req, res) => {
         // Update analytics
         await dbHelpers.updateAnalytics('total_orders');
         await dbHelpers.updateAnalytics('total_order_items', { count: totalItems });
+
+        // Fire order notification email (non-blocking)
+        sendOrderEmail({
+            orderId,
+            customerName: orderData.customerName,
+            customerPhone,
+            deliveryAddress,
+            deliveryCity: orderData.deliveryCity,
+            orderItems,
+            totalAmount
+        }).catch(err => console.warn('Email error (non-fatal):', err.message));
 
         res.json({
             success: true,
