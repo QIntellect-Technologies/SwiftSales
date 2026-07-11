@@ -69,7 +69,65 @@ router.post('/upload', authMiddleware, async (req, res) => {
             status: get(item, 'status', 'Status') || 'Available',
         }));
 
-        const finalData = [...currentData, ...newItems];
+        let finalData;
+        let updatedCount = 0;
+        let addedCount = 0;
+
+        if (clearExisting) {
+            // Replace mode: wipe and use new items
+            finalData = newItems;
+            addedCount = newItems.length;
+        } else {
+            // Merge mode: upsert by ID first, then fallback to name + company + pack_size
+            const existingMap = new Map(
+                currentData.map((p, idx) => {
+                    const id = p.id || p.item_id;
+                    if (id && !id.toString().startsWith('PROD_')) {
+                        return [id.toString().toLowerCase().trim(), idx];
+                    }
+                    const n = p.name?.toLowerCase().trim() || '';
+                    const c = p.company?.toLowerCase().trim() || 'unknown';
+                    const ps = p.pack_size?.toLowerCase().trim() || '';
+                    return [`${n}_|_${c}_|_${ps}`, idx];
+                })
+            );
+            finalData = [...currentData];
+            for (const incoming of newItems) {
+                let uniqueKey = null;
+                const incomingId = incoming.id || incoming.item_id;
+                
+                if (incomingId && !incomingId.toString().startsWith('PROD_')) {
+                    uniqueKey = incomingId.toString().toLowerCase().trim();
+                } else {
+                    const n = incoming.name?.toLowerCase().trim() || '';
+                    const c = incoming.company?.toLowerCase().trim() || 'unknown';
+                    const ps = incoming.pack_size?.toLowerCase().trim() || '';
+                    if (n) uniqueKey = `${n}_|_${c}_|_${ps}`;
+                }
+
+                if (uniqueKey && existingMap.has(uniqueKey)) {
+                    // Duplicate — update in place, keep original id
+                    // Stock ADDS UP instead of being replaced
+                    const idx = existingMap.get(uniqueKey);
+                    finalData[idx] = {
+                        ...finalData[idx],
+                        stock: (finalData[idx].stock || 0) + (incoming.stock || 0),
+                        price: incoming.price,
+                        company: incoming.company || finalData[idx].company,
+                        category: incoming.category || finalData[idx].category,
+                        pack_size: incoming.pack_size || finalData[idx].pack_size,
+                        generic_name: incoming.generic_name || finalData[idx].generic_name,
+                        status: incoming.status || finalData[idx].status,
+                    };
+                    updatedCount++;
+                } else {
+                    // New product — append
+                    finalData.push(incoming);
+                    if (uniqueKey) existingMap.set(uniqueKey, finalData.length - 1);
+                    addedCount++;
+                }
+            }
+        }
         await fs.writeJson(dataPath, finalData, { spaces: 2 });
         
         // Delete embeddings cache to force RAG rebuild
@@ -82,10 +140,16 @@ router.post('/upload', authMiddleware, async (req, res) => {
         // Reload products in service
         await productService.getAllProducts();
 
+        const message = clearExisting
+            ? `Replaced entire catalog with ${finalData.length} products.`
+            : `Sync complete: ${addedCount} new, ${updatedCount} updated. Total: ${finalData.length}.`;
+
         res.json({
             success: true,
-            message: `Successfully uploaded ${newItems.length} products.`,
-            count: finalData.length
+            message,
+            count: finalData.length,
+            added: addedCount,
+            updated: updatedCount,
         });
     } catch (error) {
         console.error('Error uploading products:', error);
@@ -158,6 +222,49 @@ router.patch('/:id/status', authMiddleware, async (req, res) => {
         res.json({ success: true, product: currentData[idx] });
     } catch (error) {
         console.error('Error updating product status:', error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * PUT /api/products/:id
+ * Edit all fields of a product
+ */
+router.put('/:id', authMiddleware, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+        const dataPath = MEDICINES_FILE;
+
+        if (!(await fs.pathExists(dataPath))) {
+            return res.status(404).json({ success: false, message: 'Data file not found.' });
+        }
+
+        const currentData = await fs.readJson(dataPath);
+        const idx = currentData.findIndex(p => (p.id === id || p.item_id === id));
+
+        if (idx === -1) {
+            return res.status(404).json({ success: false, message: 'Product not found.' });
+        }
+
+        currentData[idx] = {
+            ...currentData[idx],
+            ...updates,
+            id: currentData[idx].id, // never overwrite the id
+        };
+
+        await fs.writeJson(dataPath, currentData, { spaces: 2 });
+        await productService.getAllProducts();
+
+        // Invalidate embeddings so RAG rebuilds with new data
+        const { VECTORS_FILE: vf } = require('../paths');
+        if (await fs.pathExists(vf)) {
+            await fs.remove(vf);
+        }
+
+        res.json({ success: true, product: currentData[idx] });
+    } catch (error) {
+        console.error('Error updating product:', error);
         res.status(500).json({ success: false, message: error.message });
     }
 });

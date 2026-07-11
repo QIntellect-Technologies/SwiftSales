@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Upload, FileSpreadsheet, CheckCircle, AlertCircle, Package, LayoutDashboard, Search, RefreshCw, Tag, Building2, Loader2 } from 'lucide-react';
+import { Upload, FileSpreadsheet, CheckCircle, AlertCircle, Package, LayoutDashboard, Search, RefreshCw, Tag, Building2, Loader2, Plus, Edit2, Trash2, X } from 'lucide-react';
 import * as XLSX from 'xlsx';
 
 interface Product {
@@ -25,8 +25,11 @@ const S: Record<string, React.CSSProperties> = {
   selectFileBtn: { padding: '10px 24px', background: 'rgba(99,102,241,0.2)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.4)', borderRadius: 10, cursor: 'pointer', fontSize: 14, fontWeight: 600 },
   statusBanner: { display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', borderRadius: 10, border: '1px solid', fontSize: 14, marginBottom: 8 },
   primaryBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '11px 24px', background: '#6366f1', color: '#fff', border: 'none', borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: 'pointer' },
+  dangerBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '11px 24px', background: 'rgba(239,68,68,0.2)', color: '#f87171', border: '1px solid rgba(239,68,68,0.4)', borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: 'pointer' },
+  secondaryBtn: { display: 'flex', alignItems: 'center', gap: 8, padding: '11px 24px', background: 'rgba(255,255,255,0.05)', color: '#f1f5f9', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: 'pointer' },
   helpBox: { marginTop: 24, padding: '18px 20px', background: 'rgba(99,102,241,0.07)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 12 },
   iconBtn: { display: 'flex', alignItems: 'center', padding: '8px 10px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, color: '#94a3b8', cursor: 'pointer' },
+  actionBtn: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, background: 'rgba(255,255,255,0.06)', border: 'none', borderRadius: 6, color: '#94a3b8', cursor: 'pointer' },
   statPill: { display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 20px', background: '#1a1e2a', border: '1px solid', borderRadius: 12, minWidth: 110, gap: 2 },
   toolbar: { display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap', alignItems: 'center' },
   searchWrap: { display: 'flex', alignItems: 'center', gap: 8, background: '#1a1e2a', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: '0 14px', flex: 1, minWidth: 220 },
@@ -42,73 +45,104 @@ const S: Record<string, React.CSSProperties> = {
   toggleBtn: { display: 'inline-flex', alignItems: 'center', gap: 5, padding: '6px 12px', borderRadius: 8, border: '1px solid', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' },
   centerMsg: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', textAlign: 'center' },
   toast: { position: 'fixed', bottom: 28, right: 28, display: 'flex', alignItems: 'center', gap: 10, padding: '14px 20px', borderRadius: 12, border: '1px solid', fontSize: 14, fontWeight: 500, zIndex: 9999, backdropFilter: 'blur(12px)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' },
+  modalOverlay: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 },
+  modalContent: { background: '#13161f', borderRadius: 16, border: '1px solid rgba(255,255,255,0.1)', padding: 32, width: '100%', maxWidth: 500, maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' },
+  input: { width: '100%', padding: '10px 14px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, color: '#f1f5f9', outline: 'none', fontSize: 14, transition: 'border 0.2s' },
+  label: { display: 'block', fontSize: 13, fontWeight: 600, color: '#94a3b8', marginBottom: 6 },
+  formGroup: { marginBottom: 16 }
 };
 
 // ─── Upload Panel ─────────────────────────────────────────────────────────────
 
 const UploadPanel: React.FC<{ token: string }> = ({ token }) => {
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
-  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({
-    type: null,
-    message: ''
-  });
+  const [uploadMode, setUploadMode] = useState<'merge' | 'replace'>('merge');
+  const [fileStatuses, setFileStatuses] = useState<Record<string, { type: 'pending' | 'success' | 'error' | 'uploading'; message: string }>>({});
+  const [overallStatus, setOverallStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-      setStatus({ type: null, message: '' });
+    if (e.target.files && e.target.files.length > 0) {
+      const picked = Array.from(e.target.files);
+      setFiles(prev => {
+        const existingNames = new Set(prev.map(f => f.name));
+        const deduped = picked.filter(f => !existingNames.has(f.name));
+        return [...prev, ...deduped];
+      });
+      setOverallStatus({ type: null, message: '' });
+      // reset input so same file can be re-added if removed
+      e.target.value = '';
     }
   };
 
-  const handleUpload = async () => {
-    if (!file) { setStatus({ type: 'error', message: 'Please select a file first.' }); return; }
-    setIsUploading(true);
-    setStatus({ type: null, message: '' });
-    try {
+  const removeFile = (name: string) => {
+    setFiles(prev => prev.filter(f => f.name !== name));
+    setFileStatuses(prev => { const n = { ...prev }; delete n[name]; return n; });
+  };
+
+  const readFileAsItems = (file: File): Promise<any[]> =>
+    new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = async (e) => {
+      reader.onload = (e) => {
         try {
           const data = new Uint8Array(e.target?.result as ArrayBuffer);
           const workbook = XLSX.read(data, { type: 'array' });
           const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-          const jsonData = XLSX.utils.sheet_to_json(worksheet);
-          if (!jsonData || jsonData.length === 0) {
-            setStatus({ type: 'error', message: 'The Excel file is empty or invalid.' });
-            setIsUploading(false);
-            return;
-          }
-          const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-          const response = await fetch(`${apiBase}/api/products/upload`, {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ items: jsonData, clearExisting: true }),
-          });
-          const contentType = response.headers.get('content-type') || '';
-          if (!contentType.includes('application/json')) {
-            throw new Error(`Server error (${response.status}): Make sure you are logged in and the server is running.`);
-          }
-          const result = await response.json();
-          if (response.ok && result.success) {
-            setStatus({ type: 'success', message: `Successfully synced ${result.count} products!` });
-            setFile(null);
-          } else {
-            throw new Error(result.message || 'Failed to upload inventory');
-          }
-        } catch (error: any) {
-          setStatus({ type: 'error', message: error.message || 'Failed to process Excel file' });
-        } finally {
-          setIsUploading(false);
-        }
+          resolve(XLSX.utils.sheet_to_json(worksheet));
+        } catch (err) { reject(err); }
       };
-      reader.onerror = () => { setStatus({ type: 'error', message: 'Failed to read the file' }); setIsUploading(false); };
+      reader.onerror = () => reject(new Error('Failed to read file'));
       reader.readAsArrayBuffer(file);
-    } catch (error: any) {
-      setStatus({ type: 'error', message: error.message || 'An unexpected error occurred' });
-      setIsUploading(false);
+    });
+
+  const handleUpload = async () => {
+    if (files.length === 0) { setOverallStatus({ type: 'error', message: 'Please select at least one file.' }); return; }
+    setIsUploading(true);
+    setOverallStatus({ type: null, message: '' });
+
+    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    let totalAdded = 0;
+    let totalUpdated = 0;
+    let errors = 0;
+    // First file in replace mode clears existing; subsequent files always merge
+    let isFirst = true;
+
+    for (const file of files) {
+      setFileStatuses(prev => ({ ...prev, [file.name]: { type: 'uploading', message: 'Processing…' } }));
+      try {
+        const items = await readFileAsItems(file);
+        if (!items || items.length === 0) {
+          setFileStatuses(prev => ({ ...prev, [file.name]: { type: 'error', message: 'File is empty or unreadable.' } }));
+          errors++;
+          isFirst = false;
+          continue;
+        }
+        const shouldClear = uploadMode === 'replace' && isFirst;
+        const response = await fetch(`${apiBase}/api/products/upload`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify({ items, clearExisting: shouldClear }),
+        });
+        const result = await response.json();
+        if (response.ok && result.success) {
+          totalAdded += result.added || 0;
+          totalUpdated += result.updated || 0;
+          setFileStatuses(prev => ({ ...prev, [file.name]: { type: 'success', message: result.message } }));
+        } else {
+          throw new Error(result.message || 'Upload failed');
+        }
+      } catch (err: any) {
+        setFileStatuses(prev => ({ ...prev, [file.name]: { type: 'error', message: err.message || 'Unknown error' } }));
+        errors++;
+      }
+      isFirst = false;
+    }
+
+    setIsUploading(false);
+    if (errors === 0) {
+      setOverallStatus({ type: 'success', message: `✅ All ${files.length} file(s) synced! ${totalAdded} new, ${totalUpdated} updated.` });
+    } else {
+      setOverallStatus({ type: 'error', message: `⚠️ Done with ${errors} error(s). Check file statuses above.` });
     }
   };
 
@@ -118,38 +152,81 @@ const UploadPanel: React.FC<{ token: string }> = ({ token }) => {
         <FileSpreadsheet size={22} style={{ color: '#6366f1' }} />
         <div>
           <h2 style={S.panelTitle}>Upload Inventory</h2>
-          <p style={S.panelSubtitle}>Upload an Excel file to completely replace the pharmacy inventory.</p>
+          <p style={S.panelSubtitle}>Upload one or multiple Excel files to update or replace the pharmacy inventory.</p>
         </div>
       </div>
 
+      {/* Mode Toggle */}
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
+        <div
+          onClick={() => setUploadMode('merge')}
+          style={{ flex: 1, padding: '16px', border: `2px solid ${uploadMode === 'merge' ? '#6366f1' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', background: uploadMode === 'merge' ? 'rgba(99,102,241,0.1)' : 'transparent', cursor: 'pointer', transition: 'all 0.2s' }}>
+          <h3 style={{ fontSize: '15px', color: uploadMode === 'merge' ? '#818cf8' : '#f1f5f9', margin: '0 0 4px', fontWeight: 600 }}>Merge with existing</h3>
+          <p style={{ margin: 0, fontSize: '13px', color: '#94a3b8' }}>Adds new products and accumulates stock for duplicates.</p>
+        </div>
+        <div
+          onClick={() => setUploadMode('replace')}
+          style={{ flex: 1, padding: '16px', border: `2px solid ${uploadMode === 'replace' ? '#ef4444' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', background: uploadMode === 'replace' ? 'rgba(239,68,68,0.1)' : 'transparent', cursor: 'pointer', transition: 'all 0.2s' }}>
+          <h3 style={{ fontSize: '15px', color: uploadMode === 'replace' ? '#f87171' : '#f1f5f9', margin: '0 0 4px', fontWeight: 600 }}>Replace all data</h3>
+          <p style={{ margin: 0, fontSize: '13px', color: '#94a3b8' }}>First file wipes the catalog; additional files merge in.</p>
+        </div>
+      </div>
+
+      {/* Drop Zone */}
       <div style={S.uploadBox}>
         <FileSpreadsheet size={48} style={{ color: '#6366f1', marginBottom: 12 }} />
         <p style={{ color: '#94a3b8', marginBottom: 16, fontSize: 14 }}>
-          Click to select an <strong>.xlsx / .xls</strong> file
+          Select one or more <strong>.xlsx / .xls</strong> files
         </p>
-        <input type="file" accept=".xlsx, .xls" onChange={handleFileChange} style={{ display: 'none' }} id="file-upload" />
-        <label htmlFor="file-upload" style={S.selectFileBtn}>Select Excel File</label>
-        {file && <p style={{ marginTop: 12, fontSize: 13, color: '#818cf8', fontWeight: 600 }}>{file.name}</p>}
+        <input type="file" accept=".xlsx, .xls" multiple onChange={handleFileChange} style={{ display: 'none' }} id="file-upload" />
+        <label htmlFor="file-upload" style={S.selectFileBtn}>Select Excel Files</label>
       </div>
 
-      {status.message && (
+      {/* File List */}
+      {files.length > 0 && (
+        <div style={{ marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {files.map(f => {
+            const st = fileStatuses[f.name];
+            const color = !st ? '#94a3b8' : st.type === 'success' ? '#4ade80' : st.type === 'error' ? '#f87171' : st.type === 'uploading' ? '#818cf8' : '#94a3b8';
+            return (
+              <div key={f.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: '#1a1e2a', borderRadius: 10, border: `1px solid ${color}33` }}>
+                <FileSpreadsheet size={16} style={{ color: '#6366f1', flexShrink: 0 }} />
+                <span style={{ flex: 1, fontSize: 13, color: '#f1f5f9', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.name}</span>
+                {st && (
+                  <span style={{ fontSize: 12, color, whiteSpace: 'nowrap', maxWidth: 240, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {st.type === 'uploading' ? <><Loader2 size={12} style={{ display: 'inline', animation: 'spin 1s linear infinite' }} /> {st.message}</> : st.message}
+                  </span>
+                )}
+                {!isUploading && (
+                  <button onClick={() => removeFile(f.name)} style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', padding: 2, display: 'flex' }}>
+                    <X size={14} />
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Overall Status */}
+      {overallStatus.message && (
         <div style={{
           ...S.statusBanner,
-          background: status.type === 'success' ? 'rgba(34,197,94,0.12)' : 'rgba(239,68,68,0.12)',
-          borderColor: status.type === 'success' ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)',
-          color: status.type === 'success' ? '#4ade80' : '#f87171',
+          background: overallStatus.type === 'success' ? 'rgba(34,197,94,0.12)' : 'rgba(239,68,68,0.12)',
+          borderColor: overallStatus.type === 'success' ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)',
+          color: overallStatus.type === 'success' ? '#4ade80' : '#f87171',
         }}>
-          {status.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
-          <span>{status.message}</span>
+          {overallStatus.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+          <span>{overallStatus.message}</span>
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 24 }}>
-        <button onClick={handleUpload} disabled={!file || isUploading}
-          style={{ ...S.primaryBtn, opacity: !file || isUploading ? 0.5 : 1, cursor: !file || isUploading ? 'not-allowed' : 'pointer' }}>
+        <button onClick={handleUpload} disabled={files.length === 0 || isUploading}
+          style={{ ...S.primaryBtn, opacity: files.length === 0 || isUploading ? 0.5 : 1, cursor: files.length === 0 || isUploading ? 'not-allowed' : 'pointer' }}>
           {isUploading
-            ? <><Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> Syncing…</>
-            : <><Upload size={18} /> Upload &amp; Sync</>}
+            ? <><Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> Uploading…</>
+            : <><Upload size={18} /> Upload &amp; Sync {files.length > 1 ? `(${files.length} files)` : ''}</>}
         </button>
       </div>
 
@@ -158,13 +235,14 @@ const UploadPanel: React.FC<{ token: string }> = ({ token }) => {
         <ul style={{ paddingLeft: 18, margin: 0, color: '#94a3b8', fontSize: 13, lineHeight: '1.8' }}>
           <li>First row must contain column headers.</li>
           <li>Required: <strong style={{ color: '#f1f5f9' }}>name</strong> (or name_en), <strong style={{ color: '#f1f5f9' }}>price</strong>, <strong style={{ color: '#f1f5f9' }}>stock</strong>.</li>
-          <li>Optional: category, generic_name, company, pack_size.</li>
-          <li>Uploading will completely overwrite existing inventory data.</li>
+          <li>Optional: generic_name, company, pack_size.</li>
+          <li>In <strong style={{ color: '#f1f5f9' }}>Replace</strong> mode, only the first file wipes existing data; the rest merge in.</li>
         </ul>
       </div>
     </div>
   );
 };
+
 
 // ─── Products Panel ────────────────────────────────────────────────────────────
 
@@ -176,6 +254,10 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
   const [filterStatus, setFilterStatus] = useState<'all' | 'Available' | 'Out of Stock'>('all');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [toast, setToast] = useState<{ msg: string; ok: boolean } | null>(null);
+  const [modalMode, setModalMode] = useState<'create' | 'edit' | null>(null);
+  const [activeProduct, setActiveProduct] = useState<Partial<Product>>({});
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [deletingBulk, setDeletingBulk] = useState(false);
   const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const fetchProducts = useCallback(async () => {
@@ -206,17 +288,9 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
     try {
       const res = await fetch(`${apiBase}/api/products/${encodeURIComponent(product.id)}/status`, {
         method: 'PATCH',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ status: newStatus }),
       });
-      const contentType = res.headers.get('content-type') || '';
-      if (!contentType.includes('application/json')) {
-        showToast(`Server error (${res.status}): Token may be expired. Please log out and log in again.`, false);
-        return;
-      }
       const data = await res.json();
       if (data.success) {
         setProducts(prev => prev.map(p => p.id === product.id ? { ...p, status: newStatus } : p));
@@ -228,6 +302,84 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
       showToast('Server error. Could not update status.', false);
     } finally {
       setUpdatingId(null);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm('Are you sure you want to delete this product?')) return;
+    setUpdatingId(id);
+    try {
+      const res = await fetch(`${apiBase}/api/products/${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setProducts(prev => prev.filter(p => p.id !== id));
+        setSelectedIds(prev => { const n = new Set(prev); n.delete(id); return n; });
+        showToast('Product deleted.', true);
+      } else {
+        showToast(data.message || 'Failed to delete product', false);
+      }
+    } catch {
+      showToast('Server error. Could not delete.', false);
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedIds.size === 0) return;
+    if (!window.confirm(`Delete ${selectedIds.size} selected product(s)? This cannot be undone.`)) return;
+    setDeletingBulk(true);
+    let deleted = 0;
+    for (const id of Array.from(selectedIds)) {
+      try {
+        const res = await fetch(`${apiBase}/api/products/${encodeURIComponent(id)}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.success) deleted++;
+      } catch { /* continue */ }
+    }
+    setProducts(prev => prev.filter(p => !selectedIds.has(p.id)));
+    setSelectedIds(new Set());
+    setDeletingBulk(false);
+    showToast(`Deleted ${deleted} product(s).`, true);
+  };
+
+  const saveProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!activeProduct.name || activeProduct.price === undefined) {
+      showToast('Name and Price are required', false);
+      return;
+    }
+
+    try {
+      const isEdit = modalMode === 'edit';
+      const endpoint = isEdit ? `/api/products/${encodeURIComponent(activeProduct.id!)}` : `/api/products/add`;
+      const method = isEdit ? 'PUT' : 'POST';
+
+      const res = await fetch(`${apiBase}${endpoint}`, {
+        method,
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(activeProduct)
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (isEdit) {
+          setProducts(prev => prev.map(p => p.id === activeProduct.id ? data.product : p));
+        } else {
+          setProducts(prev => [data.product, ...prev]);
+        }
+        showToast(isEdit ? 'Product updated successfully' : 'Product added successfully', true);
+        setModalMode(null);
+      } else {
+        showToast(data.message || 'Failed to save product', false);
+      }
+    } catch {
+      showToast('Server error. Could not save product.', false);
     }
   };
 
@@ -253,6 +405,9 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
           <h2 style={S.panelTitle}>Products</h2>
           <p style={S.panelSubtitle}>{products.length} total &middot; {inStock} in stock &middot; {outStock} out of stock</p>
         </div>
+        <button onClick={() => { setActiveProduct({ status: 'Available', price: 0, stock: 0 }); setModalMode('create'); }} style={{ ...S.primaryBtn, padding: '8px 16px' }}>
+          <Plus size={16} /> Add Product
+        </button>
         <button onClick={fetchProducts} style={S.iconBtn} title="Refresh"><RefreshCw size={16} /></button>
       </div>
 
@@ -281,7 +436,19 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
             style={S.searchInput}
           />
         </div>
-        <div style={{ display: 'flex', gap: 6 }}>
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          {selectedIds.size > 0 && (
+            <button
+              onClick={handleBulkDelete}
+              disabled={deletingBulk}
+              style={{ ...S.dangerBtn, padding: '8px 14px', fontSize: 13 }}
+            >
+              {deletingBulk
+                ? <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} />
+                : <Trash2 size={14} />}
+              Delete {selectedIds.size} selected
+            </button>
+          )}
           {(['all', 'Available', 'Out of Stock'] as const).map(f => (
             <button key={f} onClick={() => setFilterStatus(f)} style={{
               ...S.filterBtn,
@@ -318,14 +485,29 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
           <table style={S.table}>
             <thead>
               <tr style={{ background: 'rgba(255,255,255,0.03)' }}>
-                <th style={S.th}>#</th>
-                <th style={S.th}>Product Name</th>
+                <th style={S.th}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <input
+                      type="checkbox"
+                      title="Select all"
+                      style={{ cursor: 'pointer', accentColor: '#6366f1' }}
+                      checked={filtered.length > 0 && filtered.every(p => selectedIds.has(p.id))}
+                      onChange={e => {
+                        if (e.target.checked) {
+                          setSelectedIds(new Set(filtered.map(p => p.id)));
+                        } else {
+                          setSelectedIds(new Set());
+                        }
+                      }}
+                    />
+                    Product Name
+                  </div>
+                </th>
                 <th style={S.th}>Stock</th>
                 <th style={S.th}>Company</th>
                 <th style={S.th}>Price</th>
-                <th style={S.th}>Pack Size</th>
                 <th style={S.th}>Status</th>
-                <th style={{ ...S.th, textAlign: 'center' }}>Action</th>
+                <th style={{ ...S.th, textAlign: 'center' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -333,9 +515,29 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
                 const isInStock = product.status === 'Available';
                 const isUpdating = updatingId === product.id;
                 return (
-                  <tr key={product.id} style={{ background: idx % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-                    <td style={S.td}><span style={S.rowNum}>{idx + 1}</span></td>
-                    <td style={{ ...S.td, fontWeight: 600, color: '#f1f5f9', maxWidth: 220 }}>{product.name}</td>
+                  <tr key={product.id} style={{ background: selectedIds.has(product.id) ? 'rgba(99,102,241,0.08)' : idx % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                    <td style={{ ...S.td, fontWeight: 600, color: '#f1f5f9', maxWidth: 220 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        {selectedIds.size > 0 && (
+                          <input
+                            type="checkbox"
+                            style={{ cursor: 'pointer', accentColor: '#6366f1', flexShrink: 0 }}
+                            checked={selectedIds.has(product.id)}
+                            onChange={e => {
+                              setSelectedIds(prev => {
+                                const n = new Set(prev);
+                                e.target.checked ? n.add(product.id) : n.delete(product.id);
+                                return n;
+                              });
+                            }}
+                          />
+                        )}
+                        <div>
+                          {product.name}
+                          {product.generic_name && <div style={{ fontSize: 11, color: '#64748b', fontWeight: 400 }}>{product.generic_name}</div>}
+                        </div>
+                      </div>
+                    </td>
                     <td style={{ ...S.td, color: '#94a3b8', fontSize: 13, fontWeight: 600 }}>{product.stock != null ? product.stock : '—'}</td>
                     <td style={{ ...S.td, fontSize: 13 }}>
                       <span style={S.companyBadge}>
@@ -345,39 +547,100 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
                     <td style={{ ...S.td, fontWeight: 600, color: '#a5f3a5' }}>
                       {product.price != null ? `Rs. ${Number(product.price).toFixed(0)}` : '—'}
                     </td>
-                    <td style={{ ...S.td, fontSize: 13, color: '#94a3b8' }}>{product.pack_size || product.package_size || '—'}</td>
                     <td style={S.td}>
-                      <span style={{
+                      <span onClick={() => toggleStatus(product)} style={{
                         ...S.statusBadge,
                         background: isInStock ? 'rgba(74,222,128,0.15)' : 'rgba(248,113,113,0.15)',
                         color: isInStock ? '#4ade80' : '#f87171',
                         borderColor: isInStock ? 'rgba(74,222,128,0.3)' : 'rgba(248,113,113,0.3)',
+                        cursor: 'pointer',
+                        opacity: isUpdating ? 0.5 : 1
                       }}>
-                        {isInStock ? '● In Stock' : '● Out of Stock'}
+                        {isUpdating ? '...' : isInStock ? '● In Stock' : '● Out of Stock'}
                       </span>
                     </td>
                     <td style={{ ...S.td, textAlign: 'center' }}>
-                      <button
-                        disabled={isUpdating}
-                        onClick={() => toggleStatus(product)}
-                        style={{
-                          ...S.toggleBtn,
-                          background: isInStock ? 'rgba(248,113,113,0.15)' : 'rgba(74,222,128,0.15)',
-                          color: isInStock ? '#f87171' : '#4ade80',
-                          borderColor: isInStock ? 'rgba(248,113,113,0.4)' : 'rgba(74,222,128,0.4)',
-                          opacity: isUpdating ? 0.6 : 1,
-                        }}
-                      >
-                        {isUpdating
-                          ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} />
-                          : isInStock ? 'Mark Out of Stock' : 'Mark In Stock'}
-                      </button>
+                      <div style={{ display: 'flex', gap: 6, justifyContent: 'center' }}>
+                        <button onClick={() => { setActiveProduct(product); setModalMode('edit'); }} style={S.actionBtn} title="Edit">
+                          <Edit2 size={13} />
+                        </button>
+                        <button onClick={() => handleDelete(product.id)} style={{ ...S.actionBtn, color: '#f87171' }} title="Delete">
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* Product Modal */}
+      {modalMode && (
+        <div style={S.modalOverlay}>
+          <div style={S.modalContent}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+              <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#f1f5f9' }}>
+                {modalMode === 'edit' ? 'Edit Product' : 'Add New Product'}
+              </h3>
+              <button onClick={() => setModalMode(null)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+                <X size={20} />
+              </button>
+            </div>
+            
+            <form onSubmit={saveProduct}>
+              <div style={S.formGroup}>
+                <label style={S.label}>Product Name *</label>
+                <input required style={S.input} value={activeProduct.name || ''} onChange={e => setActiveProduct({...activeProduct, name: e.target.value})} placeholder="e.g., PANADOL 500MG" />
+              </div>
+              <div style={S.formGroup}>
+                <label style={S.label}>Generic Name</label>
+                <input style={S.input} value={activeProduct.generic_name || ''} onChange={e => setActiveProduct({...activeProduct, generic_name: e.target.value})} placeholder="e.g., Paracetamol" />
+              </div>
+              <div style={{ display: 'flex', gap: 16 }}>
+                <div style={{ ...S.formGroup, flex: 1 }}>
+                  <label style={S.label}>Price (Rs) *</label>
+                  <input required type="number" step="0.01" style={S.input} value={activeProduct.price || 0} onChange={e => setActiveProduct({...activeProduct, price: parseFloat(e.target.value)})} />
+                </div>
+                <div style={{ ...S.formGroup, flex: 1 }}>
+                  <label style={S.label}>Stock</label>
+                  <input type="number" style={S.input} value={activeProduct.stock || 0} onChange={e => setActiveProduct({...activeProduct, stock: parseInt(e.target.value)})} />
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: 16 }}>
+                <div style={{ ...S.formGroup, flex: 1 }}>
+                  <label style={S.label}>Company</label>
+                  <input style={S.input} value={activeProduct.company || ''} onChange={e => setActiveProduct({...activeProduct, company: e.target.value})} />
+                </div>
+                <div style={{ ...S.formGroup, flex: 1 }}>
+                  <label style={S.label}>Pack Size</label>
+                  <input style={S.input} value={activeProduct.pack_size || ''} onChange={e => setActiveProduct({...activeProduct, pack_size: e.target.value})} placeholder="e.g., 200 ml, 10x10" />
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: 16 }}>
+                <div style={{ ...S.formGroup, flex: 1 }}>
+                  <label style={S.label}>Pack Size</label>
+                  <input style={S.input} value={activeProduct.pack_size || ''} onChange={e => setActiveProduct({...activeProduct, pack_size: e.target.value})} placeholder="e.g., 200 ml, 10x10" />
+                </div>
+                <div style={{ ...S.formGroup, flex: 1 }}>
+                  <label style={S.label}>Status</label>
+                  <select style={S.input} value={activeProduct.status || 'Available'} onChange={e => setActiveProduct({...activeProduct, status: e.target.value as any})}>
+                    <option value="Available">Available</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12, marginTop: 24 }}>
+                <button type="button" onClick={() => setModalMode(null)} style={S.secondaryBtn}>Cancel</button>
+                <button type="submit" style={S.primaryBtn}>
+                  {modalMode === 'edit' ? 'Update Product' : 'Save Product'}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
 
