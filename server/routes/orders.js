@@ -89,16 +89,22 @@ router.post('/create', async (req, res) => {
         await dbHelpers.updateAnalytics('total_orders');
         await dbHelpers.updateAnalytics('total_order_items', { count: totalItems });
 
-        // Fire order notification email (non-blocking)
-        sendOrderEmail({
-            orderId,
-            customerName: orderData.customerName,
-            customerPhone,
-            deliveryAddress,
-            deliveryCity: orderData.deliveryCity,
-            orderItems,
-            totalAmount
-        }).catch(err => console.warn('Email error (non-fatal):', err.message));
+        // Fire order notification email - awaited so full errors appear in logs
+        try {
+            await sendOrderEmail({
+                orderId,
+                customerName: orderData.customerName,
+                customerPhone,
+                deliveryAddress,
+                deliveryCity: orderData.deliveryCity,
+                orderItems,
+                totalAmount
+            });
+            console.log(`✅ Order email sent for ${orderId}`);
+        } catch (emailErr) {
+            const brevoMsg = emailErr?.response?.data?.message || emailErr.message;
+            console.error(`❌ Order email failed for ${orderId}: ${brevoMsg}`);
+        }
 
         res.json({
             success: true,

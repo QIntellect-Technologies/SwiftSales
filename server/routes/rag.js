@@ -100,14 +100,12 @@ router.post('/query', async (req, res) => {
         if (sessionId) {
             try {
                 const history = await dbHelpers.getChatHistory(sessionId);
-                // Keep last 10 messages for context
-                context.chatHistory = history.slice(-30); // Keep last 30 messages for full order context
+                // Keep last 30 messages for full order context
+                context.chatHistory = history.slice(-30);
 
                 // ALWAYS load and merge persisted session data (customer details, cart etc.)
-                // regardless of how full the context already is
                 const persistentContext = await dbHelpers.getCart(sessionId);
                 if (persistentContext && typeof persistentContext === 'object') {
-                    // Only merge fields that aren't already set by the frontend
                     if (!context.customer_name && persistentContext.customer_name)
                         context.customer_name = persistentContext.customer_name;
                     if (!context.customer_phone && persistentContext.customer_phone)
@@ -120,19 +118,78 @@ router.post('/query', async (req, res) => {
                         context.cart_total = persistentContext.cart_total || 0;
                     if (persistentContext.orderPlaced)
                         context.orderPlaced = persistentContext.orderPlaced;
-                    console.log(`[SESSION] Merged DB context. customer_name=${context.customer_name}, phone=${context.customer_phone}`);
+                    console.log(`[SESSION] Merged DB context. customer_name=${context.customer_name}, phone=${context.customer_phone}, addr=${context.delivery_address}`);
+                }
+
+                // CUSTOMER DETAIL RECOVERY FROM CHAT HISTORY:
+                // If customer details are still missing, scan the last 20 user messages
+                // to extract name/phone/address. This handles the case where the LLM
+                // confirmed details conversationally but never emitted COLLECT_CUSTOMER_INFO.
+                if (!context.customer_name || !context.customer_phone || !context.delivery_address) {
+                    const recentUserMsgs = context.chatHistory
+                        .filter(m => m.sender === 'user')
+                        .slice(-20)
+                        .map(m => m.message_text || '');
+
+                    for (const msg of recentUserMsgs) {
+                        // Extract phone if still missing
+                        if (!context.customer_phone) {
+                            const ph = msg.match(/(\+92|0)[\d\-\s]{9,14}/);
+                            if (ph) context.customer_phone = ph[0].replace(/\s/g, '');
+                        }
+                        // Extract comma-separated: Name, Phone, Address
+                        const parts = msg.split(',').map(p => p.trim()).filter(Boolean);
+                        if (parts.length >= 2) {
+                            if (!context.customer_name && parts[0] && !/\d{4,}/.test(parts[0])) {
+                                context.customer_name = parts[0];
+                            }
+                            if (!context.customer_phone) {
+                                const phonePart = parts.find(p => /[\d\-]{7,}/.test(p));
+                                if (phonePart) context.customer_phone = phonePart;
+                            }
+                            if (!context.delivery_address) {
+                                const addrParts = parts.filter((p, i) => i > 0 && p !== context.customer_phone);
+                                if (addrParts.length > 0) context.delivery_address = addrParts.join(', ');
+                            }
+                        }
+                    }
+                    if (context.customer_name || context.customer_phone) {
+                        console.log(`[SESSION-RECOVERY] Extracted from history: name=${context.customer_name}, phone=${context.customer_phone}, addr=${context.delivery_address}`);
+                        // Persist recovered details so they're available next time
+                        try {
+                            const updatedContext = { ...persistentContext, customer_name: context.customer_name, customer_phone: context.customer_phone, delivery_address: context.delivery_address };
+                            await dbHelpers.saveCart(sessionId, updatedContext);
+                        } catch (_) {}
+                    }
                 }
             } catch (err) {
                 console.warn('⚠️ Could not fetch session data:', err.message);
             }
         }
 
+
         const embeddingService = getEmbeddingService();
         const vectorSearch = getVectorSearch();
         const reRanker = getReRankingService();
 
+        // QUANTITY-ONLY QUERY FIX:
+        // When a user replies with just a quantity (e.g., "2 box", "add 5", "10 units"),
+        // the semantic search finds nothing. We augment the query with the last bot
+        // message text which contains the product name, giving the vector search
+        // enough context to retrieve the right product.
+        const isQuantityOnlyQuery = /^(add\s+)?\d+\s*(box(es)?|units?|pcs?|pieces?|tabs?|tablets?|strips?|packs?|bottles?|vials?|capsules?|caps?|sachets?)?$/i.test(query.trim());
+        let effectiveQuery = query;
+        if (isQuantityOnlyQuery && context.chatHistory && context.chatHistory.length > 0) {
+            // Find the most recent bot message
+            const lastBotMsg = [...context.chatHistory].reverse().find(m => m.sender === 'bot');
+            if (lastBotMsg && lastBotMsg.message_text) {
+                effectiveQuery = `${query} ${lastBotMsg.message_text.substring(0, 150)}`;
+                console.log(`[QUANTITY-FIX] Augmented query with last bot message. Original: "${query}", Effective: "${effectiveQuery.substring(0, 80)}..."`);
+            }
+        }
+
         // 1. Vector Search (Top-25 broad retrieval)
-        const initialResults = await vectorSearch.searchByText(embeddingService, query, 25);
+        const initialResults = await vectorSearch.searchByText(embeddingService, effectiveQuery, 25);
 
         // HYBRID SEARCH: Explicitly look for product names in the query to handle real-time sync better
         const { productService } = require('../services/productService');
@@ -289,16 +346,22 @@ router.post('/query', async (req, res) => {
                 context.cart_total = 0;
                 await dbH.saveCart(sessionId, context);
 
-                // Fire email
-                sendOrderEmail({
-                    orderId,
-                    customerName: context.customer_name,
-                    customerPhone: context.customer_phone,
-                    deliveryAddress: context.delivery_address,
-                    deliveryCity: '',
-                    orderItems,
-                    totalAmount
-                }).catch(e => console.warn('[AUTO-ORDER] Email error:', e.message));
+                // Fire email - awaited so errors appear in logs
+                try {
+                    await sendOrderEmail({
+                        orderId,
+                        customerName: context.customer_name,
+                        customerPhone: context.customer_phone,
+                        deliveryAddress: context.delivery_address,
+                        deliveryCity: '',
+                        orderItems,
+                        totalAmount
+                    });
+                    console.log(`[AUTO-ORDER] ✅ Email sent for order ${orderId}`);
+                } catch (emailErr) {
+                    const brevoMsg = emailErr?.response?.data?.message || emailErr.message;
+                    console.error(`[AUTO-ORDER] ❌ Email failed for order ${orderId}: ${brevoMsg}`);
+                }
 
                 console.log(`[AUTO-ORDER] ✅ Order ${orderId} placed successfully!`);
 
@@ -328,8 +391,18 @@ router.post('/query', async (req, res) => {
         // Website uses Groq API directly (Executive v10.0)
         const { generateAIResponse } = require('../services/groqService');
         const aiResponse = await generateAIResponse(query, results, context);
-        const responseText = aiResponse.content;
+        let responseText = aiResponse.content;
         const actions = aiResponse.actions;
+
+        // PLACE_ORDER GLITCH FIX:
+        // When the LLM emits a PLACE_ORDER action, its conversational text may still
+        // say "Shall I confirm?" which causes a visual looping glitch since the
+        // frontend auto-shows "Processing your order..." on its own. Override it.
+        const normalizedActionsCheck = Array.isArray(actions) ? actions : (actions ? [actions] : []);
+        if (normalizedActionsCheck.some(a => a.type === 'PLACE_ORDER')) {
+            responseText = '📦 Confirmed! Processing your order now, please wait a moment...';
+            console.log('[PLACE_ORDER-FIX] Overrode LLM text to clean order confirmation message.');
+        }
 
         // --- ACTION PROCESSING (Backend State Sync) ---
         // Ensure actions is an array to avoid "not iterable" errors
