@@ -242,6 +242,64 @@ router.post('/query', async (req, res) => {
             }
         }
 
+        // =====================================================================
+        // SERVER-SIDE QUANTITY-ONLY HANDLER (bypasses LLM entirely)
+        // When the user replies with just a quantity after a product was shown,
+        // we deterministically add the product to cart without asking the LLM.
+        // This prevents the LLM from saying "which product did you mean?"
+        // =====================================================================
+        if (isQuantityOnlyQuery && results && results.length > 0) {
+            const qtyMatch = query.trim().match(/(\d+)/);
+            const qty = qtyMatch ? parseInt(qtyMatch[1]) : 1;
+            const product = results[0].metadata;
+
+            // Add to cart
+            if (!context.cart) context.cart = [];
+            const existingIdx = context.cart.findIndex(i => i.product_id === product.id);
+            if (existingIdx > -1) {
+                context.cart[existingIdx].quantity += qty;
+            } else {
+                context.cart.push({
+                    product_id: product.id,
+                    product_name: product.name,
+                    quantity: qty,
+                    unit_price: product.price || 0,
+                    price: (product.price || 0) * qty,
+                    company: product.company,
+                    pack_size: product.pack_size
+                });
+            }
+            context.cart_total = context.cart.reduce((s, i) => s + (i.price || 0), 0);
+
+            const priceDisplay = product.price > 0 ? `Rs. ${(product.price * qty).toLocaleString()}` : 'Pricing available upon request';
+            const cartLines = context.cart.map(i => {
+                const linePrice = i.price > 0 ? `Rs. ${(i.price).toLocaleString()}` : 'Price on request';
+                return `- ${i.product_name} (${i.quantity} units) - ${linePrice}`;
+            }).join('\n');
+
+            const responseText = `Excellent! I have added **${qty} units of ${product.name}** to your order. 🛒\n\n*Your current cart:*\n${cartLines}\n\nTo proceed, could you please provide your Name, Phone Number, and complete Delivery Address?`;
+
+            // Persist
+            if (sessionId) {
+                try {
+                    await dbHelpers.saveCart(sessionId, context);
+                    await dbHelpers.saveMessage(sessionId, `bot_${Date.now()}`, 'bot', responseText, 'text', 'executive_response');
+                } catch (saveErr) {
+                    console.warn('⚠️ Persist error (qty-handler):', saveErr.message);
+                }
+            }
+
+            console.log(`[QUANTITY-HANDLER] Directly added ${qty}x ${product.name} to cart, bypassed LLM.`);
+            return res.json({
+                success: true,
+                response: responseText,
+                actions: [{ type: 'ADD_TO_CART', product_id: product.id, product_name: product.name, quantity: qty, price: (product.price || 0) * qty }],
+                updatedContext: { ...context, cart: context.cart, cart_total: context.cart_total }
+            });
+        }
+        // =====================================================================
+
+
         // Map chatHistory to history for groqService compatibility
         if (context.chatHistory && !context.history) {
             context.history = context.chatHistory.map(msg => ({

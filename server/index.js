@@ -79,7 +79,17 @@ const transporter = nodemailer.createTransport({
 
 // Verification endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'Backend is active and synced.' });
+    res.json({
+        status: 'Backend is active and synced.',
+        env: {
+            BREVO_API_KEY: process.env.BREVO_API_KEY ? '✅ SET' : '❌ MISSING',
+            BREVO_SENDER_EMAIL: process.env.BREVO_SENDER_EMAIL || '❌ MISSING',
+            BREVO_RECEIVER_EMAIL: process.env.BREVO_RECEIVER_EMAIL || '❌ MISSING',
+            ADMIN_USERNAME: process.env.ADMIN_USERNAME ? '✅ SET' : '❌ MISSING',
+            JWT_SECRET: process.env.JWT_SECRET ? '✅ SET' : '❌ MISSING',
+            VITE_GEMINI_API_KEY: process.env.VITE_GEMINI_API_KEY ? '✅ SET' : '❌ MISSING',
+        }
+    });
 });
 
 // RAG Initialization now happens inside the rag.js route for better encapsulation.
