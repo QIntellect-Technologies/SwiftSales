@@ -118,7 +118,7 @@ class ProductService {
     }
 
     async searchProducts(query, forceReload = false) {
-        const CACHE_TTL = 300 * 1000; // Increase to 5 mins for local
+        const CACHE_TTL = 300 * 1000;
         const isStale = this.lastSync && (new Date() - this.lastSync > CACHE_TTL);
 
         if (!this.products.length || forceReload || isStale) {
@@ -128,27 +128,47 @@ class ProductService {
         if (!query) return { products: [] };
         const lowerQuery = query.toLowerCase().trim();
 
+        // ── Tier 1: Exact substring match ──────────────────────────────────
         let matches = this.products.filter(p => {
             const name = p.name.toLowerCase();
-            // Exact substring matches (e.g., query is "aeromax 10mg tab" or product is "acer 50mg" and query is "buy acer 50mg")
+            // Full match in either direction
             if (name.includes(lowerQuery) || lowerQuery.includes(name)) return true;
-            
-            // Allow matching if the primary product name (first word) is clearly requested in the query
-            // e.g. Product: "AEROMAX 10MG TAB", Query: "i want to buy aeromax"
+            // First-word (brand) present in query  e.g. 'AEROMAX' inside 'buy aeromax'
             const firstWord = name.split(/\s+/)[0];
             if (firstWord.length > 2 && lowerQuery.includes(firstWord)) return true;
-            
             return false;
         });
 
+        // ── Tier 2: Fuzzy on brand name only (Levenshtein) ─────────────────
+        // Only kicks in when nothing matched at all, avoiding false positives
+        // caused by numbers (e.g. '30' matching 'ISOCEF 30ML').
+        if (matches.length === 0 && lowerQuery.length >= 3) {
+            const queryFirstWord = lowerQuery.split(/\s+/)[0];
+            matches = this.products.filter(p => {
+                const pFirstWord = p.name.toLowerCase().split(/\s+/)[0];
+                if (pFirstWord.length < 3) return false;
+                const distance = this.levenshteinDistance(queryFirstWord, pFirstWord);
+                // Allow at most 2 edits (catches 'aeromex' → 'aeromax', 'mepcid' typos)
+                return distance <= 2;
+            });
+            if (matches.length > 0) {
+                console.log(`[FUZZY] Brand-name fuzzy fallback matched ${matches.length} product(s) for "${lowerQuery}"`);
+            }
+        }
+
+        // ── Scoring ────────────────────────────────────────────────────────
+        // Rank: exact name > exact start > full-name contains query > first-word match
         matches.sort((a, b) => {
             const aName = a.name.toLowerCase();
             const bName = b.name.toLowerCase();
-            if (aName === lowerQuery) return -1;
-            if (bName === lowerQuery) return 1;
-            if (aName.startsWith(lowerQuery)) return -1;
-            if (bName.startsWith(lowerQuery)) return 1;
-            return 0;
+            const score = (name) => {
+                if (name === lowerQuery) return 0;
+                if (name.startsWith(lowerQuery)) return 1;
+                if (lowerQuery.includes(name)) return 2;   // full product name inside query
+                if (name.includes(lowerQuery)) return 3;
+                return 4;                                   // first-word fuzzy match
+            };
+            return score(aName) - score(bName);
         });
 
         return {
@@ -158,7 +178,7 @@ class ProductService {
                     name: p.name,
                     price: p.price,
                     stock: p.stock,
-                    status: p.status,  // Always include status so all callers can check it
+                    status: p.status,
                     company: p.company,
                     pack_size: p.pack_size,
                     generic_name: p.generic_name

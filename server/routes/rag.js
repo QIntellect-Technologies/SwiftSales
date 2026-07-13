@@ -178,14 +178,21 @@ router.post('/query', async (req, res) => {
         // the semantic search finds nothing. We augment the query with the last bot
         // message text which contains the product name, giving the vector search
         // enough context to retrieve the right product.
+        // ── Follow-up query classifiers ────────────────────────────────────
+        // Quantity-only: "30", "50 units", "add 5 boxes"
         const isQuantityOnlyQuery = /^(add\s+)?\d+\s*(box(es)?|units?|pcs?|pieces?|tabs?|tablets?|strips?|packs?|bottles?|vials?|capsules?|caps?|sachets?)?$/i.test(query.trim());
+        // "All of it" style queries
         const isAllOfItQuery = /^(all\s+(of\s+)?(it|them|those|the\s+stock|stock|units?|everything)|everything|whole\s+stock|full\s+stock|take\s+all|buy\s+all)$/i.test(query.trim());
-        const isShortFollowUpQuery = query.split(/\s+/).length <= 8; // e.g. "what is the price"
-        
+        // "Add N more" / "change to N" / "another N" — updates existing cart item (English + Roman Urdu)
+        const isAddMoreQuery = /^(add\s+)?\d+\s*more|(another\s+\d+)|(change\s+(it\s+)?to\s+\d+)|(update\s+(it\s+)?to\s+\d+)|(\d+\s+aur)|\d+\s*(aur\s*)?(chahiye|de\s*do|dein|lena)|(sirf\s+\d+\s*rakho)|(aur\s+\d+\s*(de\s*do|chahiye|dein))/i.test(query.trim());
+        // Short follow-ups: price, availability, variant questions — English + Roman Urdu
+        const isShortFollowUpQuery = query.trim().split(/\s+/).length <= 8
+            || /\b(kitna|kitni|kitnay|kitne|kitna\s*ka|mil\s*jaye?ga?|milega|milegi|de\s*do|chahiye|hata\s*do|nikalo|rakho|available|price|rate|daim|kya\s*hai|kya\s*price|bata|bata\s*do|bata\s*dein|kitna\s*banega|available\s*hai|hai\s*kya|kya\s*available|kya\s*hai\s*price|hai|kab|kaise|kaisa|confirm|theek|theek\s*hai|sahi|haan|nahi|zaroor|bilkul|yaar|bhai|order\s*karo|aur\s*chahiye|aur\s*do|aur\s*lena)\b/i.test(query.trim());
+
         let effectiveQuery = query;
         let explicitProductMatch = null;
         
-        if ((isQuantityOnlyQuery || isAllOfItQuery || isShortFollowUpQuery) && context.chatHistory && context.chatHistory.length > 0) {
+        if ((isQuantityOnlyQuery || isAllOfItQuery || isAddMoreQuery || isShortFollowUpQuery) && context.chatHistory && context.chatHistory.length > 0) {
             // Find the most recent bot message
             const lastBotMsg = [...context.chatHistory].reverse().find(m => m.sender === 'bot');
             if (lastBotMsg && lastBotMsg.message_text) {
@@ -204,10 +211,8 @@ router.post('/query', async (req, res) => {
                 
                 if (explicitProductMatch) {
                     console.log(`[CONTEXT-FIX] Explicitly extracted product from previous message: ${explicitProductMatch.name}`);
-                    // Prepend it to the effective query so vector search always finds it if keyword matching fails
                     effectiveQuery = `${explicitProductMatch.name} ${query}`;
                 } else {
-                    // Fallback to vector search augmentation if strict name extraction fails
                     effectiveQuery = `${query} ${lastBotMsg.message_text.substring(0, 150)}`;
                 }
             }
@@ -361,6 +366,62 @@ router.post('/query', async (req, res) => {
         }
         // =====================================================================
 
+        // =====================================================================
+        // SERVER-SIDE ADD-MORE / CHANGE-QUANTITY HANDLER
+        // Handles: "add 20 more", "another 30", "change it to 50"
+        // Updates the last cart item's quantity deterministically.
+        // =====================================================================
+        if (isAddMoreQuery && context.cart && context.cart.length > 0) {
+            const product = explicitProductMatch || null;
+            // Find the quantity number in the query
+            const qtyMatch = query.match(/(\d+)/);
+            const qty = qtyMatch ? parseInt(qtyMatch[1]) : null;
+
+            if (qty && qty > 0) {
+                // Determine which cart item to update: prefer explicit product, else last added
+                let targetIdx = -1;
+                if (product) {
+                    targetIdx = context.cart.findIndex(i => i.product_id === product.id || i.product_name === product.name);
+                }
+                if (targetIdx === -1) targetIdx = context.cart.length - 1; // fallback: last item
+
+                const isChange = /change|update/i.test(query);
+                if (isChange) {
+                    context.cart[targetIdx].quantity = qty;
+                } else {
+                    context.cart[targetIdx].quantity += qty;
+                }
+                context.cart[targetIdx].price = context.cart[targetIdx].quantity * (context.cart[targetIdx].unit_price || 0);
+                context.cart_total = context.cart.reduce((s, i) => s + (i.price || 0), 0);
+
+                const updatedItem = context.cart[targetIdx];
+                const action = isChange ? 'Updated' : 'Added';
+                const cartLines = context.cart.map(i => {
+                    const lp = i.price > 0 ? `Rs. ${i.price.toLocaleString()}` : 'Price on request';
+                    return `- ${i.product_name} (${i.quantity} units) - ${lp}`;
+                }).join('\n');
+
+                const responseText = `${action}! *${updatedItem.product_name}* is now set to *${updatedItem.quantity} units* in your order. 🛒\n\n*Your current cart:*\n${cartLines}\n\nTo proceed, could you please provide your Name, Phone Number, and complete Delivery Address?`;
+
+                if (sessionId) {
+                    try {
+                        await dbHelpers.saveCart(sessionId, context);
+                        await dbHelpers.saveMessage(sessionId, `bot_${Date.now()}`, 'bot', responseText, 'text', 'executive_response');
+                    } catch (saveErr) {
+                        console.warn('⚠️ Persist error (add-more-handler):', saveErr.message);
+                    }
+                }
+
+                console.log(`[ADD-MORE-HANDLER] ${action} ${qty} units for ${updatedItem.product_name}. New qty: ${updatedItem.quantity}`);
+                return res.json({
+                    success: true,
+                    response: responseText,
+                    actions: [{ type: 'ADD_TO_CART', product_id: updatedItem.product_id, product_name: updatedItem.product_name, quantity: updatedItem.quantity, price: updatedItem.price }],
+                    updatedContext: { ...context, cart: context.cart, cart_total: context.cart_total }
+                });
+            }
+        }
+        // =====================================================================
 
         // Map chatHistory to history for groqService compatibility
         if (context.chatHistory && !context.history) {
