@@ -77,7 +77,6 @@ router.post('/create', async (req, res) => {
         try {
             for (const item of orderItems) {
                 if (item.productId) {
-                    await dbHelpers.updateProductStock(item.productId, item.quantity || 0, 'subtract');
                     await productService.updateProductStock(item.productId, item.quantity || 0, 'subtract');
                 }
             }

@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { productService } = require('../services/productService');
+const { db } = require('../database');
 const fs = require('fs-extra');
-const path = require('path');
-const { MEDICINES_FILE, VECTORS_FILE } = require('../paths');
+const { VECTORS_FILE } = require('../paths');
 const authMiddleware = require('../middleware/authMiddleware');
 
 /**
  * GET /api/products
- * Fetch all products from local JSON
+ * Fetch all products from SQLite
  */
 router.get('/', async (req, res) => {
     try {
@@ -38,17 +38,19 @@ router.post('/upload', authMiddleware, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Invalid items array.' });
         }
 
-        const dataPath = MEDICINES_FILE;
         let currentData = [];
-
-        if (!clearExisting && await fs.pathExists(dataPath)) {
-            currentData = await fs.readJson(dataPath);
+        if (!clearExisting) {
+            currentData = await new Promise((resolve, reject) => {
+                db.all('SELECT * FROM medicines', [], (err, rows) => {
+                    if (err) reject(err);
+                    else resolve(rows);
+                });
+            });
         }
 
         // Helper: case-insensitive field lookup on each Excel row
         const get = (item, ...keys) => {
             for (const key of keys) {
-                // Try exact match first, then case-insensitive scan
                 if (item[key] !== undefined && item[key] !== null && item[key] !== '') return item[key];
                 const found = Object.keys(item).find(k => k.toLowerCase() === key.toLowerCase());
                 if (found && item[found] !== undefined && item[found] !== null && item[found] !== '') return item[found];
@@ -67,6 +69,7 @@ router.post('/upload', authMiddleware, async (req, res) => {
             stock: parseInt(get(item, 'stock', 'Stock', 'quantity', 'Quantity') || 100),
             pack_size: get(item, 'pack_size', 'Pack Size', 'package_size', 'packaging', 'Pack') || '',
             status: get(item, 'status', 'Status') || 'Available',
+            description: get(item, 'description', 'Description', 'name') || ''
         }));
 
         let finalData;
@@ -107,7 +110,6 @@ router.post('/upload', authMiddleware, async (req, res) => {
 
                 if (uniqueKey && existingMap.has(uniqueKey)) {
                     // Duplicate — update in place, keep original id
-                    // Stock ADDS UP instead of being replaced
                     const idx = existingMap.get(uniqueKey);
                     finalData[idx] = {
                         ...finalData[idx],
@@ -128,7 +130,39 @@ router.post('/upload', authMiddleware, async (req, res) => {
                 }
             }
         }
-        await fs.writeJson(dataPath, finalData, { spaces: 2 });
+
+        // Write finalData to SQLite
+        await new Promise((resolve, reject) => {
+            db.serialize(() => {
+                db.run('BEGIN TRANSACTION');
+                db.run('DELETE FROM medicines'); // Clear current table
+                const stmt = db.prepare(`
+                    INSERT INTO medicines (id, name, generic_name, category, company, price, stock, pack_size, status, description)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                `);
+                for (const item of finalData) {
+                    stmt.run(
+                        item.id || item.item_id,
+                        item.name || '',
+                        item.generic_name || '',
+                        item.category || 'General',
+                        item.company || 'Unknown',
+                        item.price || 0,
+                        item.stock != null ? item.stock : 100,
+                        item.pack_size || '',
+                        item.status || 'Available',
+                        item.description || item.name || ''
+                    );
+                }
+                stmt.finalize();
+                db.run('COMMIT', (err) => {
+                    if (err) {
+                        db.run('ROLLBACK');
+                        reject(err);
+                    } else resolve();
+                });
+            });
+        });
         
         // Delete embeddings cache to force RAG rebuild
         const vectorPath = VECTORS_FILE;
@@ -161,26 +195,37 @@ router.post('/upload', authMiddleware, async (req, res) => {
  * POST /api/products/add
  * Add a single product
  */
-router.post('/add', async (req, res) => {
+router.post('/add', authMiddleware, async (req, res) => {
     try {
         const product = req.body;
-        const dataPath = MEDICINES_FILE;
-        
-        let currentData = [];
-        if (await fs.pathExists(dataPath)) {
-            currentData = await fs.readJson(dataPath);
-        }
-
         const newItem = {
             id: `PROD_${Date.now()}`,
             ...product,
             status: 'Available'
         };
 
-        currentData.unshift(newItem);
-        await fs.writeJson(dataPath, currentData, { spaces: 2 });
-        await productService.getAllProducts();
+        await new Promise((resolve, reject) => {
+            db.run(`
+                INSERT INTO medicines (id, name, generic_name, category, company, price, stock, pack_size, status, description)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `, [
+                newItem.id,
+                newItem.name || '',
+                newItem.generic_name || '',
+                newItem.category || 'General',
+                newItem.company || 'Unknown',
+                newItem.price || 0,
+                newItem.stock != null ? newItem.stock : 100,
+                newItem.pack_size || '',
+                newItem.status,
+                newItem.description || newItem.name || ''
+            ], function (err) {
+                if (err) reject(err);
+                else resolve();
+            });
+        });
 
+        await productService.getAllProducts();
         res.json({ success: true, product: newItem });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
@@ -194,40 +239,33 @@ router.post('/add', async (req, res) => {
 router.patch('/:id/status', authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
-        const { status } = req.body; // 'Available' or 'Out of Stock'
+        const { status } = req.body;
 
         if (!status || !['Available', 'Out of Stock'].includes(status)) {
-            return res.status(400).json({ success: false, message: 'Invalid status. Must be "Available" or "Out of Stock".' });
+            return res.status(400).json({ success: false, message: 'Invalid status.' });
         }
 
-        const dataPath = MEDICINES_FILE;
+        const stockUpdate = status === 'Out of Stock' ? 0 : null; // Only update stock to 0 if out of stock, else preserve
 
-        if (!(await fs.pathExists(dataPath))) {
-            return res.status(404).json({ success: false, message: 'Data file not found.' });
-        }
+        await new Promise((resolve, reject) => {
+            if (stockUpdate !== null) {
+                db.run('UPDATE medicines SET status = ?, stock = ? WHERE id = ?', [status, stockUpdate, id], function (err) {
+                    if (err) reject(err);
+                    else resolve();
+                });
+            } else {
+                db.run('UPDATE medicines SET status = ? WHERE id = ?', [status, id], function (err) {
+                    if (err) reject(err);
+                    else resolve();
+                });
+            }
+        });
 
-        const currentData = await fs.readJson(dataPath);
-        const idx = currentData.findIndex(p => (p.id === id || p.item_id === id));
-
-        if (idx === -1) {
-            return res.status(404).json({ success: false, message: 'Product not found.' });
-        }
-
-        currentData[idx].status = status;
-        // When manually marking Out of Stock, set stock to 0 so the display stays consistent.
-        // When marking Available, do NOT override stock — preserve the real post-order count.
-        // Only zero out if explicitly marking Out of Stock.
-        if (status === 'Out of Stock') {
-            currentData[idx].stock = 0;
-        }
-        // NOTE: We intentionally do NOT reset stock to 100 when toggling back to Available.
-        // The real stock figure (e.g. 0 after selling all units) must be preserved.
-        await fs.writeJson(dataPath, currentData, { spaces: 2 });
-
-        // Reload products in memory
         await productService.getAllProducts();
 
-        res.json({ success: true, product: currentData[idx] });
+        // Get updated product to return
+        const product = productService.products.find(p => String(p.id) === String(id));
+        res.json({ success: true, product: product || {} });
     } catch (error) {
         console.error('Error updating product status:', error);
         res.status(500).json({ success: false, message: error.message });
@@ -242,35 +280,38 @@ router.put('/:id', authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
         const updates = req.body;
-        const dataPath = MEDICINES_FILE;
+        
+        await new Promise((resolve, reject) => {
+            db.run(`
+                UPDATE medicines 
+                SET name = ?, generic_name = ?, category = ?, company = ?, price = ?, stock = ?, pack_size = ?, description = ?, status = CASE WHEN ? <= 0 THEN 'Out of Stock' ELSE 'Available' END
+                WHERE id = ?
+            `, [
+                updates.name || '',
+                updates.generic_name || '',
+                updates.category || 'General',
+                updates.company || 'Unknown',
+                updates.price || 0,
+                updates.stock != null ? updates.stock : 100,
+                updates.pack_size || '',
+                updates.description || updates.name || '',
+                updates.stock != null ? updates.stock : 100,
+                id
+            ], function (err) {
+                if (err) reject(err);
+                else resolve();
+            });
+        });
 
-        if (!(await fs.pathExists(dataPath))) {
-            return res.status(404).json({ success: false, message: 'Data file not found.' });
-        }
-
-        const currentData = await fs.readJson(dataPath);
-        const idx = currentData.findIndex(p => (p.id === id || p.item_id === id));
-
-        if (idx === -1) {
-            return res.status(404).json({ success: false, message: 'Product not found.' });
-        }
-
-        currentData[idx] = {
-            ...currentData[idx],
-            ...updates,
-            id: currentData[idx].id, // never overwrite the id
-        };
-
-        await fs.writeJson(dataPath, currentData, { spaces: 2 });
         await productService.getAllProducts();
 
-        // Invalidate embeddings so RAG rebuilds with new data
-        const { VECTORS_FILE: vf } = require('../paths');
-        if (await fs.pathExists(vf)) {
-            await fs.remove(vf);
+        // Invalidate embeddings
+        if (await fs.pathExists(VECTORS_FILE)) {
+            await fs.remove(VECTORS_FILE);
         }
 
-        res.json({ success: true, product: currentData[idx] });
+        const product = productService.products.find(p => String(p.id) === String(id));
+        res.json({ success: true, product: product || updates });
     } catch (error) {
         console.error('Error updating product:', error);
         res.status(500).json({ success: false, message: error.message });
@@ -280,20 +321,19 @@ router.put('/:id', authMiddleware, async (req, res) => {
 /**
  * DELETE /api/products/:id
  */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
-        const dataPath = MEDICINES_FILE;
         
-        if (await fs.pathExists(dataPath)) {
-            const currentData = await fs.readJson(dataPath);
-            const filteredData = currentData.filter(p => (p.id !== id && p.item_id !== id));
-            await fs.writeJson(dataPath, filteredData, { spaces: 2 });
-            await productService.getAllProducts();
-            res.json({ success: true });
-        } else {
-            res.status(404).json({ success: false, message: 'Data file not found.' });
-        }
+        await new Promise((resolve, reject) => {
+            db.run('DELETE FROM medicines WHERE id = ?', [id], function (err) {
+                if (err) reject(err);
+                else resolve();
+            });
+        });
+
+        await productService.getAllProducts();
+        res.json({ success: true });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }

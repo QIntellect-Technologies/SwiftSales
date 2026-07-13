@@ -247,7 +247,8 @@ export const ChatBot: React.FC = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     sessionId,
-                    ...orderData
+                    ...orderData,
+                    orderItems: context.cart && context.cart.length > 0 ? context.cart : orderData.orderItems
                 })
             });
 

@@ -1,85 +1,45 @@
 
 const fs   = require('fs-extra');
 const path = require('path');
-const { supabase } = require('./supabase');
-const { MEDICINES_FILE } = require('../paths');
+const { db } = require('../database');
 
 class ProductService {
     constructor() {
         this.products = [];
         this.lastSync = null;
-        // Use Railway-aware path from paths.js (respects DATA_PATH env var)
-        this.localDataPath = MEDICINES_FILE;
     }
 
     /**
-     * Fetch all active medicines
-     * Defaults to LOCAL JSON if Supabase is unavailable
+     * Fetch all active medicines from SQLite
      */
-    async getAllProducts() {
-        try {
-            // Try Supabase first if available
-            if (supabase && process.env.VITE_SUPABASE_URL) {
-                console.log('🔄 Attempting to fetch products from Supabase...');
-                const { data, error } = await supabase
-                    .from('medicines')
-                    .select('*')
-                    .eq('status', 'Available');
-
-                if (!error && data && data.length > 0) {
-                    console.log(`✅ Fetched ${data.length} medicines from Supabase.`);
-                    return this.normalizeSupabaseData(data);
+    getAllProducts() {
+        return new Promise((resolve, reject) => {
+            db.all('SELECT * FROM medicines', [], (err, rows) => {
+                if (err) {
+                    console.error('❌ Error in getAllProducts SQLite:', err.message);
+                    return resolve([]); // return empty to avoid crashes
                 }
-            }
 
-            // Fallback to Local JSON
-            console.log('📦 Loading products from local JSON database...');
-            if (await fs.pathExists(this.localDataPath)) {
-                const localData = await fs.readJson(this.localDataPath);
-                console.log(`✅ Loaded ${localData.length} medicines from local storage.`);
-                
-                this.products = localData.map(item => ({
-                    id: item.id || item.item_id,
-                    name: item.name || item.description,
+                this.products = rows.map(item => ({
+                    id: item.id,
+                    name: item.name,
                     company: item.company || 'Unknown',
                     pack_size: item.pack_size || 'Standard',
                     price: item.price || 0,
-                    // Use nullish fallback (not ||) so that stock=0 is preserved, not defaulted to 100
                     stock: (item.stock != null && item.stock !== '') ? Number(item.stock) : 100,
-                    status: item.status || 'Available', // Read actual status from file, not hardcoded
+                    status: item.status || 'Available',
                     generic_name: item.generic_name || '',
                     description: item.description || item.name || '',
                     original_data: item
                 }));
 
                 this.lastSync = new Date();
-                return this.products;
-            } else {
-                console.warn('⚠️ Local medicines.json not found!');
-                return [];
-            }
-        } catch (error) {
-            console.error('❌ Error in getAllProducts:', error.message);
-            return [];
-        }
+                resolve(this.products);
+            });
+        });
     }
 
-    normalizeSupabaseData(data) {
-        this.products = data.map(item => ({
-            id: item.id,
-            name: item.name,
-            company: item.manufacturer || 'Unknown',
-            pack_size: item.package_size || 'Standard',
-            price: item.price,
-            stock: item.stock,
-            status: item.status,
-            generic_name: item.generic_name,
-            description: item.description,
-            original_data: item
-        }));
-        this.lastSync = new Date();
-        return this.products;
-    }
+
 
     /**
      * Get real-time details
@@ -170,17 +130,16 @@ class ProductService {
 
         let matches = this.products.filter(p => {
             const name = p.name.toLowerCase();
-            return name.includes(lowerQuery) || lowerQuery.includes(name);
+            // Exact substring matches (e.g., query is "aeromax 10mg tab" or product is "acer 50mg" and query is "buy acer 50mg")
+            if (name.includes(lowerQuery) || lowerQuery.includes(name)) return true;
+            
+            // Allow matching if the primary product name (first word) is clearly requested in the query
+            // e.g. Product: "AEROMAX 10MG TAB", Query: "i want to buy aeromax"
+            const firstWord = name.split(/\s+/)[0];
+            if (firstWord.length > 2 && lowerQuery.includes(firstWord)) return true;
+            
+            return false;
         });
-
-        if (matches.length === 0 && lowerQuery.length >= 3) {
-            matches = this.products.filter(p => {
-                const pName = p.name.toLowerCase();
-                const distance = this.levenshteinDistance(lowerQuery, pName);
-                const threshold = Math.max(2, Math.floor(lowerQuery.length * 0.3));
-                return distance <= threshold;
-            });
-        }
 
         matches.sort((a, b) => {
             const aName = a.name.toLowerCase();
@@ -209,8 +168,8 @@ class ProductService {
     }
 
     async updateProductStock(productId, quantity, operation = 'subtract') {
-        try {
-            // Update in-memory
+        return new Promise((resolve, reject) => {
+            // Update in-memory cache first
             const product = this.products.find(p => String(p.id) === String(productId));
             if (product) {
                 if (operation === 'subtract') {
@@ -218,44 +177,30 @@ class ProductService {
                 } else if (operation === 'add') {
                     product.stock += quantity;
                 }
-                // Always sync status to actual stock
                 product.status = product.stock === 0 ? 'Out of Stock' : 'Available';
                 product.original_data.stock = product.stock;
                 product.original_data.status = product.status;
-            } else {
-                console.warn(`[STOCK] Product not found in memory for ID: ${productId}`);
             }
 
-            // Update JSON file
-            if (await fs.pathExists(this.localDataPath)) {
-                let localData = await fs.readJson(this.localDataPath);
-                let updated = false;
-                for (let item of localData) {
-                    const itemId = item.id || item.item_id;
-                    // Use String() coercion to handle numeric vs string ID mismatches
-                    if (String(itemId) === String(productId)) {
-                        if (operation === 'subtract') {
-                            item.stock = Math.max(0, (item.stock || 0) - quantity);
-                        } else if (operation === 'add') {
-                            item.stock = (item.stock || 0) + quantity;
-                        }
-                        if (item.stock === 0) {
-                            item.status = 'Out of Stock';
-                        }
-                        updated = true;
-                        break;
-                    }
-                }
-                if (updated) {
-                    await fs.writeJson(this.localDataPath, localData, { spaces: 2 });
-                    console.log(`✅ Updated stock for product ${productId} in medicines.json`);
+            // Update SQLite DB
+            const sql = operation === 'subtract'
+                ? `UPDATE medicines SET stock = MAX(0, stock - ?), status = CASE WHEN (stock - ?) <= 0 THEN 'Out of Stock' ELSE 'Available' END WHERE id = ?`
+                : `UPDATE medicines SET stock = stock + ?, status = 'Available' WHERE id = ?`;
+
+            const params = operation === 'subtract'
+                ? [quantity, quantity, productId]
+                : [quantity, productId];
+
+            db.run(sql, params, function (err) {
+                if (err) {
+                    console.error('❌ Failed to update stock in SQLite:', err.message);
+                    resolve(false);
                 } else {
-                    console.warn(`[STOCK] ⚠️ Product ID "${productId}" not found in medicines.json — stock NOT updated in file.`);
+                    console.log(`✅ Updated stock for product ${productId} in SQLite medicines table`);
+                    resolve(true);
                 }
-            }
-        } catch (err) {
-            console.error('❌ Failed to update stock in medicines.json:', err.message);
-        }
+            });
+        });
     }
 }
 

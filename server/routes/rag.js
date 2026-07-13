@@ -181,12 +181,31 @@ router.post('/query', async (req, res) => {
         const isQuantityOnlyQuery = /^(add\s+)?\d+\s*(box(es)?|units?|pcs?|pieces?|tabs?|tablets?|strips?|packs?|bottles?|vials?|capsules?|caps?|sachets?)?$/i.test(query.trim());
         const isAllOfItQuery = /^(all\s+(of\s+)?(it|them|those|the\s+stock|stock|units?|everything)|everything|whole\s+stock|full\s+stock|take\s+all|buy\s+all)$/i.test(query.trim());
         let effectiveQuery = query;
+        let explicitProductMatch = null;
+        
         if ((isQuantityOnlyQuery || isAllOfItQuery) && context.chatHistory && context.chatHistory.length > 0) {
             // Find the most recent bot message
             const lastBotMsg = [...context.chatHistory].reverse().find(m => m.sender === 'bot');
             if (lastBotMsg && lastBotMsg.message_text) {
-                effectiveQuery = `${query} ${lastBotMsg.message_text.substring(0, 150)}`;
-                console.log(`[QUANTITY-FIX] Augmented query with last bot message. Original: "${query}", Effective: "${effectiveQuery.substring(0, 80)}..."`);
+                const { productService } = require('../services/productService');
+                
+                // Explicitly find the longest matching product name in the bot's last message
+                let longestMatch = 0;
+                for (const p of productService.products) {
+                    if (lastBotMsg.message_text.toLowerCase().includes(p.name.toLowerCase())) {
+                        if (p.name.length > longestMatch) {
+                            explicitProductMatch = p;
+                            longestMatch = p.name.length;
+                        }
+                    }
+                }
+                
+                if (explicitProductMatch) {
+                    console.log(`[QUANTITY-FIX] Explicitly extracted product from previous message: ${explicitProductMatch.name}`);
+                } else {
+                    // Fallback to vector search augmentation if strict name extraction fails
+                    effectiveQuery = `${query} ${lastBotMsg.message_text.substring(0, 150)}`;
+                }
             }
         }
 
@@ -250,8 +269,15 @@ router.post('/query', async (req, res) => {
         // we deterministically add the product to cart without asking the LLM.
         // This prevents the LLM from saying "which product did you mean?"
         // =====================================================================
-        if ((isQuantityOnlyQuery || isAllOfItQuery) && results && results.length > 0) {
-            const product = results[0].metadata;
+        if ((isQuantityOnlyQuery || isAllOfItQuery)) {
+            let product = null;
+            if (explicitProductMatch) {
+                product = explicitProductMatch;
+            } else if (results && results.length > 0) {
+                product = results[0].metadata;
+            }
+
+            if (product) {
             // For "all of it" style queries, use the full available stock as quantity
             let qty;
             if (isAllOfItQuery) {
@@ -305,6 +331,7 @@ router.post('/query', async (req, res) => {
                 actions: [{ type: 'ADD_TO_CART', product_id: product.id, product_name: product.name, quantity: qty, price: (product.price || 0) * qty }],
                 updatedContext: { ...context, cart: context.cart, cart_total: context.cart_total }
             });
+            }
         }
         // =====================================================================
 

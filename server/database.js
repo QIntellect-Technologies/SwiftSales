@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const { DATABASE_FILE } = require('./paths');
+const fs = require('fs-extra');
+const { DATABASE_FILE, MEDICINES_FILE } = require('./paths');
 
 // Initialize SQLite database
 const dbPath = DATABASE_FILE;
@@ -11,6 +12,61 @@ const db = new sqlite3.Database(dbPath, (err) => {
         console.log('✅ Connected to SQLite database at:', dbPath);
     }
 });
+
+function migrateMedicinesFromJson() {
+    db.get('SELECT COUNT(*) as count FROM medicines', async (err, row) => {
+        if (err) {
+            console.error('Error checking medicines table:', err);
+            return;
+        }
+        if (row.count === 0) {
+            console.log('📦 Medicines table is empty. Attempting migration from medicines.json...');
+            if (await fs.pathExists(MEDICINES_FILE)) {
+                try {
+                    const data = await fs.readJson(MEDICINES_FILE);
+                    console.log(`Found ${data.length} items to migrate.`);
+                    
+                    db.serialize(() => {
+                        db.run('BEGIN TRANSACTION');
+                        const stmt = db.prepare(`
+                            INSERT INTO medicines (id, name, generic_name, category, company, price, stock, pack_size, status, description)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        `);
+                        let count = 0;
+                        for (const item of data) {
+                            stmt.run(
+                                item.id || `PROD_${Date.now()}_${count}`,
+                                item.name || '',
+                                item.generic_name || '',
+                                item.category || 'General',
+                                item.company || 'Unknown',
+                                item.price || 0,
+                                item.stock != null ? item.stock : 100,
+                                item.pack_size || '',
+                                item.status || 'Available',
+                                item.description || ''
+                            );
+                            count++;
+                        }
+                        stmt.finalize();
+                        db.run('COMMIT', (commitErr) => {
+                            if (commitErr) {
+                                console.error('Migration commit error:', commitErr);
+                            } else {
+                                console.log(`✅ Successfully migrated ${count} products to SQLite medicines table!`);
+                            }
+                        });
+                    });
+                } catch (readErr) {
+                    console.error('Error reading medicines.json for migration:', readErr);
+                }
+            } else {
+                console.log('ℹ️ medicines.json not found, skipping migration.');
+            }
+        }
+    });
+}
+
 
 // Create tables
 db.serialize(() => {
@@ -152,7 +208,7 @@ db.serialize(() => {
         else console.log('✅ Table: analytics created/verified');
     });
 
-    // Product Inventory Table (for stock tracking)
+    // Product Inventory Table (for stock tracking - legacy)
     db.run(`
     CREATE TABLE IF NOT EXISTS product_inventory (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -168,16 +224,29 @@ db.serialize(() => {
     )
   `, (err) => {
         if (err) console.error('Error creating product_inventory table:', err);
-        else {
-            console.log('✅ Table: product_inventory created/verified');
+        else console.log('✅ Table: product_inventory created/verified (legacy)');
+    });
 
-            // Initialize inventory for common products
-            db.run(`
-                INSERT OR IGNORE INTO product_inventory 
-                (product_id, product_name, quantity_in_stock, status)
-                VALUES 
-                ('DEFAULT', 'ALL_PRODUCTS', 100, 'in_stock')
-            `);
+    // Core Medicines Table (Migrated from JSON)
+    db.run(`
+    CREATE TABLE IF NOT EXISTS medicines (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      generic_name TEXT,
+      category TEXT,
+      company TEXT,
+      price REAL DEFAULT 0,
+      stock INTEGER DEFAULT 0,
+      pack_size TEXT,
+      status TEXT DEFAULT 'Available',
+      description TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `, (err) => {
+        if (err) console.error('Error creating medicines table:', err);
+        else {
+            console.log('✅ Table: medicines created/verified');
+            migrateMedicinesFromJson();
         }
     });
 
