@@ -180,10 +180,12 @@ router.post('/query', async (req, res) => {
         // enough context to retrieve the right product.
         const isQuantityOnlyQuery = /^(add\s+)?\d+\s*(box(es)?|units?|pcs?|pieces?|tabs?|tablets?|strips?|packs?|bottles?|vials?|capsules?|caps?|sachets?)?$/i.test(query.trim());
         const isAllOfItQuery = /^(all\s+(of\s+)?(it|them|those|the\s+stock|stock|units?|everything)|everything|whole\s+stock|full\s+stock|take\s+all|buy\s+all)$/i.test(query.trim());
+        const isShortFollowUpQuery = query.split(/\s+/).length <= 8; // e.g. "what is the price"
+        
         let effectiveQuery = query;
         let explicitProductMatch = null;
         
-        if ((isQuantityOnlyQuery || isAllOfItQuery) && context.chatHistory && context.chatHistory.length > 0) {
+        if ((isQuantityOnlyQuery || isAllOfItQuery || isShortFollowUpQuery) && context.chatHistory && context.chatHistory.length > 0) {
             // Find the most recent bot message
             const lastBotMsg = [...context.chatHistory].reverse().find(m => m.sender === 'bot');
             if (lastBotMsg && lastBotMsg.message_text) {
@@ -201,7 +203,9 @@ router.post('/query', async (req, res) => {
                 }
                 
                 if (explicitProductMatch) {
-                    console.log(`[QUANTITY-FIX] Explicitly extracted product from previous message: ${explicitProductMatch.name}`);
+                    console.log(`[CONTEXT-FIX] Explicitly extracted product from previous message: ${explicitProductMatch.name}`);
+                    // Prepend it to the effective query so vector search always finds it if keyword matching fails
+                    effectiveQuery = `${explicitProductMatch.name} ${query}`;
                 } else {
                     // Fallback to vector search augmentation if strict name extraction fails
                     effectiveQuery = `${query} ${lastBotMsg.message_text.substring(0, 150)}`;
@@ -233,6 +237,28 @@ router.post('/query', async (req, res) => {
             console.log(`[HYBRID] Ensuring ${keywordResults.products.length} keyword matches are prioritized...`);
             const kwIds = new Set(keywordResults.products.map(p => p.metadata.id));
             results = [...keywordResults.products, ...results.filter(r => !kwIds.has(r.metadata.id))].slice(0, 5);
+        }
+
+        // CONTEXT RE-INJECTION: If we explicitly extracted a product from the bot's last message, push it to the very top!
+        if (explicitProductMatch) {
+            console.log(`[CONTEXT-FIX] Forcing explicitly matched product "${explicitProductMatch.name}" to top of results.`);
+            const emId = explicitProductMatch.id;
+            const explicitResult = {
+                metadata: {
+                    id: emId,
+                    name: explicitProductMatch.name,
+                    price: explicitProductMatch.price,
+                    stock: explicitProductMatch.stock,
+                    status: explicitProductMatch.status,
+                    company: explicitProductMatch.company,
+                    pack_size: explicitProductMatch.pack_size
+                },
+                similarity: 1.0
+            };
+            results = [explicitResult, ...results.filter(r => r.metadata.id !== emId)].slice(0, 5);
+
+            // Also stamp it into the session context so the LLM has it explicitly flagged
+            context.last_discussed_product = explicitProductMatch.name;
         }
 
         // HYDRATION: Fetch real-time price/stock for the top results to ensure accuracy

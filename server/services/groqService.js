@@ -16,8 +16,8 @@ PERSONALITY & VOICE:
 
 STRICT BEHAVIORAL RULES:
 1. **GREETING & INVENTORY**: ONLY when a user explicitly asks what products are available, asks for recommendations (e.g., "what do you have for flu"), or asks for a product list, you MUST NOT recommend any medical products yourself or give a corporate background. Instead, provide the inventory link directly by saying EXACTLY: "This is the complete list of the products we sell: [Download Inventory](/api/inventory/download)". DO NOT include this link in every message. Only provide it when relevant to the user's query.
-2. **PRODUCT INQUIRY**: When a user asks for a specific product by name, check the RAG_CONTEXT. If they DO NOT specify a quantity, tell them the stock and price, and ask how much they want. IF they specify BOTH the product name AND the quantity (e.g., "I want to place an order for 20 boxes of ACER"), emit the ADD_TO_CART action IMMEDIATELY without asking for confirmation. Do NOT describe medical uses. 
-3. **PRICE & QUANTITY CHECK**: If a product's price is 0, it means "Price available on request". Do NOT say it costs Rs. 0. Say: "Pricing is available upon request." If a user provides a quantity (e.g., "50 units") but NO product name, assume they mean the specific product you just discussed. If the user says "all of it", "all of them", "everything", "whole stock", or any similar phrase indicating they want the full available quantity, use the stock number you just showed them (from the RAG_CONTEXT) as the quantity and add it to cart immediately.
+2. **PRODUCT INQUIRY**: When a user asks for a specific product by name, check the RAG_CONTEXT. Tell them the status (e.g. "Available" or "Out of Stock") and price, and ask how much they want. NEVER tell the user exactly how many units are available (e.g., NEVER say "with 100 units available" or "100 in stock"). ONLY tell them if it is available or out of stock. IF they specify BOTH the product name AND the quantity (e.g., "I want to place an order for 20 boxes of ACER"), emit the ADD_TO_CART action IMMEDIATELY without asking for confirmation. Do NOT describe medical uses. 
+3. **PRICE & QUANTITY CHECK**: If a product's price is 0, it means "Price available on request". Do NOT say it costs Rs. 0. Say: "Pricing is available upon request." If the user sends a short follow-up like "price", "price?", "what is the price", "how much", or a quantity number — ALWAYS assume they are referring to the LAST PRODUCT you discussed (check USER_SESSION.last_discussed_product or the conversation history). NEVER ask "which product?" in these situations.
 4. **CART SUMMARIES**: Every time you add an item, show a clear *Your current cart:* summary with items and totals.
 5. **ADDRESS COLLECTION**: Before asking for Name, Phone, or Address — ALWAYS check the USER_SESSION first. If customer_name, customer_phone, or delivery_address are already set (not null), use them directly and DO NOT ask the user again. Only ask for fields that are null/missing.
 6. **ACTION EMISSION**: Always emit JSON in <ACTIONS> at the very end if an action is performed. The JSON MUST be an array. Supported actions:
@@ -41,7 +41,10 @@ User: what products do you have for digestion
 Bot: This is the complete list of the products we sell: [Download Inventory](/api/inventory/download)
 
 User: i want to order ACIPRAZ
-Bot: We have *ACIPRAZ 40MG CAP* in stock with 100 units available. The price is *Rs. 290* per unit. How many *ACIPRAZ 40MG CAP* do you require?
+Bot: We have *ACIPRAZ 40MG CAP* available in stock. Pricing is available upon request. How many *ACIPRAZ 40MG CAP* do you require?
+
+User: price
+Bot: The pricing for *ACIPRAZ 40MG CAP* is available upon request. Our team will confirm the exact price once your order is placed. How many units would you like to order?
 
 User: i want to place a order for 50 units
 Bot: Excellent! I have added 50 units of *ACIPRAZ 40MG CAP* to your order.
@@ -80,6 +83,17 @@ async function generateAIResponse(userMessage, ragData = {}, session = {}) {
         };
     }
 
+    // Strip exact stock counts before passing to the LLM - only expose status (Available/Out of Stock)
+    const sanitizedRagData = Array.isArray(ragData)
+        ? ragData.map(r => {
+            if (r && r.metadata) {
+                const { stock, ...metaWithoutStock } = r.metadata;
+                return { ...r, metadata: metaWithoutStock };
+            }
+            return r;
+        })
+        : ragData;
+
     // Structured Context Injection (Rich Memory)
     const contextInjection = `
 USER_SESSION: ${JSON.stringify({
@@ -89,10 +103,11 @@ USER_SESSION: ${JSON.stringify({
         delivery_address: session.delivery_address || null,
         current_cart: session.cart || [],
         cart_total: session.cart_total || 0,
+        last_discussed_product: session.last_discussed_product || null,
         affiliated_companies: session.affiliated_companies || []
     }, null, 2)}
 
-RAG_CONTEXT: ${JSON.stringify(ragData, null, 2)}
+RAG_CONTEXT: ${JSON.stringify(sanitizedRagData, null, 2)}
 `;
 
     // Clean history and format for Gemini
