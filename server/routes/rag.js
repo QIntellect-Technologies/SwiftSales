@@ -173,13 +173,15 @@ router.post('/query', async (req, res) => {
         const reRanker = getReRankingService();
 
         // QUANTITY-ONLY QUERY FIX:
-        // When a user replies with just a quantity (e.g., "2 box", "add 5", "10 units"),
+        // When a user replies with just a quantity (e.g., "2 box", "add 5", "10 units")
+        // OR with a "whole stock" phrase (e.g., "all of it", "all of them", "everything"),
         // the semantic search finds nothing. We augment the query with the last bot
         // message text which contains the product name, giving the vector search
         // enough context to retrieve the right product.
         const isQuantityOnlyQuery = /^(add\s+)?\d+\s*(box(es)?|units?|pcs?|pieces?|tabs?|tablets?|strips?|packs?|bottles?|vials?|capsules?|caps?|sachets?)?$/i.test(query.trim());
+        const isAllOfItQuery = /^(all\s+(of\s+)?(it|them|those|the\s+stock|stock|units?|everything)|everything|whole\s+stock|full\s+stock|take\s+all|buy\s+all)$/i.test(query.trim());
         let effectiveQuery = query;
-        if (isQuantityOnlyQuery && context.chatHistory && context.chatHistory.length > 0) {
+        if ((isQuantityOnlyQuery || isAllOfItQuery) && context.chatHistory && context.chatHistory.length > 0) {
             // Find the most recent bot message
             const lastBotMsg = [...context.chatHistory].reverse().find(m => m.sender === 'bot');
             if (lastBotMsg && lastBotMsg.message_text) {
@@ -248,10 +250,17 @@ router.post('/query', async (req, res) => {
         // we deterministically add the product to cart without asking the LLM.
         // This prevents the LLM from saying "which product did you mean?"
         // =====================================================================
-        if (isQuantityOnlyQuery && results && results.length > 0) {
-            const qtyMatch = query.trim().match(/(\d+)/);
-            const qty = qtyMatch ? parseInt(qtyMatch[1]) : 1;
+        if ((isQuantityOnlyQuery || isAllOfItQuery) && results && results.length > 0) {
             const product = results[0].metadata;
+            // For "all of it" style queries, use the full available stock as quantity
+            let qty;
+            if (isAllOfItQuery) {
+                qty = (product.stock && product.stock > 0) ? product.stock : 1;
+                console.log(`[ALL-OF-IT-HANDLER] User requested all stock. Using quantity: ${qty} for ${product.name}`);
+            } else {
+                const qtyMatch = query.trim().match(/(\d+)/);
+                qty = qtyMatch ? parseInt(qtyMatch[1]) : 1;
+            }
 
             // Add to cart
             if (!context.cart) context.cart = [];

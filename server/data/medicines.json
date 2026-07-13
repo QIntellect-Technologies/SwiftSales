@@ -6,9 +6,45 @@
     "category": "General",
     "company": "SHROOQ PHARMA",
     "price": 0,
-    "stock": 60,
+    "stock": 100,
     "pack_size": "30`S",
-    "status": "Available"
+    "status": "Available",
+    "description": "ACER 50MG CAP",
+    "original_data": {
+      "id": "PROD_1783755690150_YVCGN",
+      "name": "ACER 50MG CAP",
+      "generic_name": "",
+      "category": "General",
+      "company": "SHROOQ PHARMA",
+      "price": 0,
+      "stock": 100,
+      "pack_size": "30`S",
+      "status": "Out of Stock",
+      "description": "ACER 50MG CAP",
+      "original_data": {
+        "id": "PROD_1783755690150_YVCGN",
+        "name": "ACER 50MG CAP",
+        "generic_name": "",
+        "category": "General",
+        "company": "SHROOQ PHARMA",
+        "price": 0,
+        "stock": 0,
+        "pack_size": "30`S",
+        "status": "Out of Stock",
+        "description": "ACER 50MG CAP",
+        "original_data": {
+          "id": "PROD_1783755690150_YVCGN",
+          "name": "ACER 50MG CAP",
+          "generic_name": "",
+          "category": "General",
+          "company": "SHROOQ PHARMA",
+          "price": 0,
+          "stock": 0,
+          "pack_size": "30`S",
+          "status": "Available"
+        }
+      }
+    }
   },
   {
     "id": "PROD_1783755690150_EMJGN",

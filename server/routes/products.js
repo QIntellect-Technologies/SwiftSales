@@ -117,7 +117,7 @@ router.post('/upload', authMiddleware, async (req, res) => {
                         category: incoming.category || finalData[idx].category,
                         pack_size: incoming.pack_size || finalData[idx].pack_size,
                         generic_name: incoming.generic_name || finalData[idx].generic_name,
-                        status: incoming.status || finalData[idx].status,
+                        status: ((finalData[idx].stock || 0) + (incoming.stock || 0)) > 0 ? 'Available' : 'Out of Stock',
                     };
                     updatedCount++;
                 } else {
@@ -214,6 +214,14 @@ router.patch('/:id/status', authMiddleware, async (req, res) => {
         }
 
         currentData[idx].status = status;
+        // When manually marking Out of Stock, set stock to 0 so the display stays consistent.
+        // When marking Available, do NOT override stock — preserve the real post-order count.
+        // Only zero out if explicitly marking Out of Stock.
+        if (status === 'Out of Stock') {
+            currentData[idx].stock = 0;
+        }
+        // NOTE: We intentionally do NOT reset stock to 100 when toggling back to Available.
+        // The real stock figure (e.g. 0 after selling all units) must be preserved.
         await fs.writeJson(dataPath, currentData, { spaces: 2 });
 
         // Reload products in memory

@@ -356,6 +356,10 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
       return;
     }
 
+    // Auto-compute status based on stock
+    const computedStatus = (activeProduct.stock && activeProduct.stock > 0) ? 'Available' : 'Out of Stock';
+    const productToSave = { ...activeProduct, status: computedStatus };
+
     try {
       const isEdit = modalMode === 'edit';
       const endpoint = isEdit ? `/api/products/${encodeURIComponent(activeProduct.id!)}` : `/api/products/add`;
@@ -364,7 +368,7 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
       const res = await fetch(`${apiBase}${endpoint}`, {
         method,
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify(activeProduct)
+        body: JSON.stringify(productToSave)
       });
       const data = await res.json();
       if (data.success) {
@@ -548,15 +552,13 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
                       {product.price != null ? `Rs. ${Number(product.price).toFixed(0)}` : '—'}
                     </td>
                     <td style={S.td}>
-                      <span onClick={() => toggleStatus(product)} style={{
+                      <span style={{
                         ...S.statusBadge,
                         background: isInStock ? 'rgba(74,222,128,0.15)' : 'rgba(248,113,113,0.15)',
                         color: isInStock ? '#4ade80' : '#f87171',
-                        borderColor: isInStock ? 'rgba(74,222,128,0.3)' : 'rgba(248,113,113,0.3)',
-                        cursor: 'pointer',
-                        opacity: isUpdating ? 0.5 : 1
+                        borderColor: isInStock ? 'rgba(74,222,128,0.3)' : 'rgba(248,113,113,0.3)'
                       }}>
-                        {isUpdating ? '...' : isInStock ? '● In Stock' : '● Out of Stock'}
+                        {isInStock ? '● In Stock' : '● Out of Stock'}
                       </span>
                     </td>
                     <td style={{ ...S.td, textAlign: 'center' }}>
@@ -617,19 +619,6 @@ const ProductsPanel: React.FC<{ token: string }> = ({ token }) => {
                 <div style={{ ...S.formGroup, flex: 1 }}>
                   <label style={S.label}>Pack Size</label>
                   <input style={S.input} value={activeProduct.pack_size || ''} onChange={e => setActiveProduct({...activeProduct, pack_size: e.target.value})} placeholder="e.g., 200 ml, 10x10" />
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: 16 }}>
-                <div style={{ ...S.formGroup, flex: 1 }}>
-                  <label style={S.label}>Pack Size</label>
-                  <input style={S.input} value={activeProduct.pack_size || ''} onChange={e => setActiveProduct({...activeProduct, pack_size: e.target.value})} placeholder="e.g., 200 ml, 10x10" />
-                </div>
-                <div style={{ ...S.formGroup, flex: 1 }}>
-                  <label style={S.label}>Status</label>
-                  <select style={S.input} value={activeProduct.status || 'Available'} onChange={e => setActiveProduct({...activeProduct, status: e.target.value as any})}>
-                    <option value="Available">Available</option>
-                    <option value="Out of Stock">Out of Stock</option>
-                  </select>
                 </div>
               </div>
               
